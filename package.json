@@ -1,0 +1,18 @@
+{
+  "name": "bim-agent-team",
+  "version": "0.1.0",
+  "description": "Autonomous multi-agent BIM project team for Swiss residential construction",
+  "type": "module",
+  "scripts": {
+    "start": "tsx scripts/run-project.ts",
+    "start:services": "bash scripts/start-services.sh"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.1.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "@types/node": "^22.0.0"
+  }
+}

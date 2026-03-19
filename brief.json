@@ -1,0 +1,7 @@
+{
+  "program": "residential",
+  "target_units": 4,
+  "target_storeys": 3,
+  "energy_standard": "Minergie",
+  "budget_class": "standard"
+}

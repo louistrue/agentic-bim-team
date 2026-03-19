@@ -1,0 +1,87 @@
+{
+  "project_id": "zh-loorenstrasse-20260319-001",
+  "created_at": "2026-03-19T12:13:27.159314",
+  "address": "Loorenstrasse 62, 8053 Z\u00fcrich",
+  "brief": {
+    "program": "residential",
+    "target_units": 4,
+    "target_storeys": 3,
+    "energy_standard": "Minergie",
+    "budget_class": "standard"
+  },
+  "site": {
+    "egrid": "CH999979659148",
+    "parcel_number": "WI3988",
+    "area_m2": 11156,
+    "municipality": "Z\u00fcrich",
+    "canton": "ZH",
+    "coordinates_wgs84": {
+      "lat": 47.363190447919635,
+      "lng": 8.593429932071018
+    },
+    "coordinates_lv95": {
+      "e": 2687232.75,
+      "n": 1246458.125
+    },
+    "ifc_project_origin": null,
+    "parcel_centroid_local": null,
+    "files": {
+      "site_context_ifc": null
+    },
+    "notes": "IFC site context generation failed after retry. Project can proceed without site context - specialists will skip site-dependent queries."
+  },
+  "zoning": {
+    "zone_code": "W3",
+    "zone_name": "Wohnzone W3",
+    "zone_category": "residential",
+    "max_height_m": 9.5,
+    "max_floors": 3,
+    "far": 0.9,
+    "coverage": 0.4,
+    "max_gfa_m2": 10040.4,
+    "max_footprint_m2": 4462.400000000001,
+    "setback_m": 3.17,
+    "setback_note": "ZH W-zone default: max(3.0m, H/3) = max(3.0, 9.5/3) = 3.17m. Verify BZO \u00a7272.",
+    "allowed_uses": [
+      "Single-family housing",
+      "Multi-family housing",
+      "Apartments",
+      "Home offices (non-disturbing)"
+    ],
+    "prohibited_uses": [
+      "Industrial activities",
+      "Heavy commercial",
+      "Nightclubs",
+      "Warehousing"
+    ],
+    "data_confidence": "high",
+    "data_sources": {
+      "parcel": [
+        "Zurich Map Viewer"
+      ],
+      "zone": [
+        "Zurich WFS"
+      ],
+      "buildingParams": [],
+      "restrictions": [
+        "Zurich \u00d6REB WFS",
+        "\u00d6REB"
+      ]
+    }
+  },
+  "cycle": 0,
+  "phases": {
+    "site_prep": "done",
+    "design": "pending",
+    "specialists": "pending"
+  },
+  "files": {
+    "design_current": null,
+    "bcf_merged_current": null
+  },
+  "convergence": {
+    "open_errors": null,
+    "open_warnings": null,
+    "history": []
+  }
+}

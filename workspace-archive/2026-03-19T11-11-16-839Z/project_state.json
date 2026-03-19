@@ -1,0 +1,161 @@
+{
+  "project_id": "zh-loorenstrasse-20260319-001",
+  "created_at": "2026-03-19T09:48:38.324681",
+  "address": "Loorenstrasse 62, 8053 Zürich",
+  "brief": {
+    "program": "residential",
+    "target_units": 4,
+    "target_storeys": 3,
+    "energy_standard": "Minergie",
+    "budget_class": "standard"
+  },
+  "site": {
+    "egrid": "CH999979659148",
+    "parcel_number": "WI3988",
+    "area_m2": 11156,
+    "municipality": "Zürich",
+    "canton": "ZH",
+    "coordinates_wgs84": {
+      "lat": 47.363190447919635,
+      "lng": 8.593429932071018
+    },
+    "coordinates_lv95": {
+      "e": 2687232.75,
+      "n": 1246458.125
+    },
+    "ifc_project_origin": null,
+    "parcel_centroid_local": null,
+    "files": {
+      "site_context_ifc": null
+    },
+    "error": "IFC site context generation failed - ifc-site service returned internal server error"
+  },
+  "zoning": {
+    "zone_code": "W3",
+    "zone_name": "Wohnzone W3",
+    "zone_category": "residential",
+    "max_height_m": 9.5,
+    "max_floors": 3,
+    "far": 0.9,
+    "coverage": 0.4,
+    "max_gfa_m2": 10040.4,
+    "max_footprint_m2": 4462.4,
+    "setback_m": 3.17,
+    "setback_note": "ZH W-zone default: max(3.0m, H/3). Verify BZO §272.",
+    "allowed_uses": [
+      "Single-family housing",
+      "Multi-family housing",
+      "Apartments",
+      "Home offices (non-disturbing)"
+    ],
+    "prohibited_uses": [
+      "Industrial activities",
+      "Heavy commercial",
+      "Nightclubs",
+      "Warehousing"
+    ],
+    "data_confidence": "high",
+    "data_sources": {
+      "parcel": ["Zurich Map Viewer"],
+      "zone": ["Zurich WFS"],
+      "buildingParams": [],
+      "restrictions": ["Zurich ÖREB WFS", "ÖREB"]
+    }
+  },
+  "cycle": 3,
+  "phases": {
+    "site_prep": "partial",
+    "design": "completed",
+    "specialists": "completed_v3"
+  },
+  "files": {
+    "design_current": "workspace/design_v3.ifc",
+    "bcf_merged_current": null
+  },
+  "convergence": {
+    "converged": false,
+    "escalated_to_human": true,
+    "open_errors": 4,
+    "open_warnings": 7,
+    "history": [
+      {
+        "cycle": 0,
+        "design_file": "workspace/design_v1.ifc",
+        "errors": 7,
+        "warnings": 7,
+        "infos": 4,
+        "error_details": [
+          "MEP: Missing ceiling height data in building storeys",
+          "MEP: No ventilation shaft for Minergie MVHR system",
+          "FACADE: Missing element quantities for energy compliance verification",
+          "FACADE: Missing thermal properties (U-values) on external wall material",
+          "FACADE: Windows lack material and thermal properties",
+          "FIRE: Missing fire rating on internal party walls between residential units",
+          "FIRE: Staircase width specifications missing"
+        ],
+        "bcf_files": [
+          "workspace/structural_v1.bcf",
+          "workspace/mep_v1.bcf",
+          "workspace/facade_v1.bcf",
+          "workspace/fire_v1.bcf"
+        ]
+      },
+      {
+        "cycle": 1,
+        "design_file": "workspace/design_v2.ifc",
+        "errors": 9,
+        "warnings": 5,
+        "infos": 3,
+        "resolved_from_v1": [
+          "FIRE: Party wall fire ratings (EI60/EI30 now assigned)",
+          "MEP: Ventilation shaft added (Lüftungsschacht on all storeys)"
+        ],
+        "error_details": [
+          "STRUCTURAL: Foundation elements still missing",
+          "STRUCTURAL: Excessive slab spans (12-20m) without intermediate columns",
+          "STRUCTURAL: Duplicate IfcBuildingStorey instances (29 instead of 3)",
+          "STRUCTURAL: No structural columns for slab support",
+          "MEP: Missing storey elevation and height data",
+          "MEP: Ventilation shaft undersized",
+          "FACADE: Missing element quantities",
+          "FACADE: Missing thermal transmittance on wall materials",
+          "FACADE: Windows lack thermal properties"
+        ],
+        "bcf_files": [
+          "workspace/structural_v2.bcf",
+          "workspace/mep_v2.bcf",
+          "workspace/facade_v2.bcf",
+          "workspace/fire_v2.bcf"
+        ]
+      },
+      {
+        "cycle": 2,
+        "design_file": "workspace/design_v3.ifc",
+        "errors": 4,
+        "warnings": 7,
+        "infos": 5,
+        "resolved_from_v2": [
+          "STRUCTURAL: Foundations added (4 strip footings)",
+          "STRUCTURAL: Columns added (18 at 5x6m grid)",
+          "STRUCTURAL: Duplicate storeys consolidated (4 unique)",
+          "MEP: Storey elevations and heights added",
+          "MEP: Ventilation shaft enlarged to 1.0 m²",
+          "FACADE: Wall U-values added (0.15 W/m²K)",
+          "FACADE: Window thermal properties added (U=0.7, g=0.55)"
+        ],
+        "error_details": [
+          "STRUCTURAL: Columns don't extend to foundation level (load path gap)",
+          "MEP: Ceiling height below minimum after MEP zone deduction",
+          "FACADE: Element quantities still missing (Qto_WallBaseQuantities, Qto_WindowBaseQuantities)",
+          "FACADE: Roof slab missing U-value"
+        ],
+        "bcf_files": [
+          "workspace/structural_v3.bcf",
+          "workspace/mep_v3.bcf",
+          "workspace/facade_v3.bcf",
+          "workspace/fire_v3.bcf"
+        ]
+      }
+    ]
+  }
+}
