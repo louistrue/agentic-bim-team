@@ -50,11 +50,21 @@ curl -s -o workspace/site_context.ifc "http://localhost:$IFC_SITE_PORT/jobs/$JOB
 ```
 
 ### 3. Extract Project Origin
-Get the IfcMapConversion values (EPSG:2056 project origin) from the generated IFC:
+Get the IfcMapConversion values (EPSG:2056 project origin) from the generated IFC using `ifc-lite run`:
 ```bash
-ifc-lite eval workspace/site_context.ifc \
-  "bim.query().byType('IfcMapConversion').toArray()" --json
+cat << 'GEOREF' > /tmp/extract_georef.js
+async function run() {
+  const parser = await import('@ifc-lite/parser');
+  const georef = parser.extractGeoreferencingOnDemand(bim._backend.store);
+  console.log(JSON.stringify(georef, null, 2));
+}
+run();
+GEOREF
+ifc-lite run /tmp/extract_georef.js workspace/site_context.ifc
 ```
+
+This returns a JSON object with `mapConversion.eastings`, `mapConversion.northings`, `mapConversion.orthogonalHeight`, and `projectedCRS.name` (e.g. "EPSG:2056").
+Map the values to `ifc_project_origin: { e: eastings, n: northings, z: orthogonalHeight }`.
 
 ### 4. Verify Site Model
 ```bash

@@ -96,6 +96,8 @@ const AGENT_DEFINITIONS: Record<string, AgentDefinition> = {
 // ── Agent runner ─────────────────────────────────────────────────────────────
 
 function logMessage(msg: SDKMessage, agentName: string) {
+  const prefix = `${DIM}${timestamp()}${RESET} ${MAGENTA}${BOLD}${agentName}${RESET}`;
+
   switch (msg.type) {
     case "system": {
       if (msg.subtype === "init") {
@@ -110,12 +112,17 @@ function logMessage(msg: SDKMessage, agentName: string) {
 
     case "assistant": {
       for (const block of msg.message.content) {
-        if (block.type === "text" && block.text.trim()) {
+        if (block.type === "thinking" && (block as any).thinking?.trim()) {
+          // Show thinking in dim cyan
+          const thinking = (block as any).thinking.trim();
+          console.log(`${prefix} ${DIM}${CYAN}[thinking]${RESET}`);
+          for (const line of thinking.split("\n")) {
+            console.log(`${prefix}   ${DIM}${line}${RESET}`);
+          }
+        } else if (block.type === "text" && block.text.trim()) {
           const lines = block.text.trim().split("\n");
           for (const line of lines) {
-            console.log(
-              `${DIM}${timestamp()}${RESET} ${MAGENTA}${BOLD}${agentName}${RESET}  ${line}`,
-            );
+            console.log(`${prefix}  ${line}`);
           }
         } else if (block.type === "tool_use") {
           const toolName = block.name;
@@ -125,20 +132,54 @@ function logMessage(msg: SDKMessage, agentName: string) {
             const cmd = (input.command as string) || "";
             const desc = (input.description as string) || "";
             console.log(
-              `${DIM}${timestamp()}${RESET} ${YELLOW}${BOLD}BASH${RESET}   ${desc ? `${DIM}${desc}${RESET} → ` : ""}${cmd.length > 120 ? cmd.slice(0, 120) + "..." : cmd}`,
+              `${prefix} ${YELLOW}${BOLD}BASH${RESET}  ${desc ? `${DIM}${desc}${RESET} → ` : ""}${cmd}`,
             );
           } else if (toolName === "Write") {
-            log("WRITE", YELLOW, (input.file_path as string) || "");
+            const fp = (input.file_path as string) || "";
+            const content = (input.content as string) || "";
+            console.log(`${prefix} ${YELLOW}${BOLD}WRITE${RESET} ${fp} ${DIM}(${content.split("\n").length} lines)${RESET}`);
           } else if (toolName === "Read") {
-            log("READ", DIM, (input.file_path as string) || "");
+            console.log(`${prefix} ${DIM}READ  ${(input.file_path as string) || ""}${RESET}`);
           } else if (toolName === "Edit") {
-            log("EDIT", YELLOW, (input.file_path as string) || "");
+            console.log(`${prefix} ${YELLOW}${BOLD}EDIT${RESET}  ${(input.file_path as string) || ""}`);
           } else {
-            log(
-              "TOOL",
-              YELLOW,
-              `${toolName}(${JSON.stringify(input).slice(0, 100)})`,
+            console.log(
+              `${prefix} ${YELLOW}${BOLD}TOOL${RESET}  ${toolName}(${JSON.stringify(input).slice(0, 200)})`,
             );
+          }
+        }
+      }
+      break;
+    }
+
+    case "user": {
+      // Show tool results
+      const content = (msg as any).message?.content;
+      if (Array.isArray(content)) {
+        for (const block of content) {
+          if (block.type === "tool_result") {
+            const resultContent = block.content;
+            let text = "";
+            if (typeof resultContent === "string") {
+              text = resultContent;
+            } else if (Array.isArray(resultContent)) {
+              text = resultContent
+                .filter((c: any) => c.type === "text")
+                .map((c: any) => c.text)
+                .join("\n");
+            }
+            if (text.trim()) {
+              const lines = text.trim().split("\n");
+              const maxLines = 30;
+              const shown = lines.slice(0, maxLines);
+              console.log(`${prefix} ${DIM}${BLUE}[result]${RESET}`);
+              for (const line of shown) {
+                console.log(`${prefix}   ${DIM}${line}${RESET}`);
+              }
+              if (lines.length > maxLines) {
+                console.log(`${prefix}   ${DIM}... (${lines.length - maxLines} more lines)${RESET}`);
+              }
+            }
           }
         }
       }
@@ -152,19 +193,42 @@ function logMessage(msg: SDKMessage, agentName: string) {
           GREEN,
           `${agentName} completed in ${msg.num_turns} turns | $${msg.total_cost_usd.toFixed(2)}`,
         );
+        // Show final result text
+        const result = (msg as any).result;
+        if (result?.trim()) {
+          console.log(`${prefix} ${GREEN}[final result]${RESET}`);
+          for (const line of result.trim().split("\n").slice(0, 20)) {
+            console.log(`${prefix}   ${line}`);
+          }
+        }
       } else {
         log("ERROR", RED, `${agentName} failed: ${msg.subtype}`);
       }
       break;
     }
 
-    case "tool_progress": {
-      if (msg.elapsed_time_seconds > 10) {
-        console.log(
-          `${DIM}${timestamp()} ⏳ ${msg.tool_name} running... ${msg.elapsed_time_seconds.toFixed(0)}s${RESET}`,
-        );
+    case "tool_use_summary": {
+      const summary = (msg as any).summary;
+      if (summary?.trim()) {
+        console.log(`${prefix} ${DIM}${BLUE}[summary] ${summary}${RESET}`);
       }
       break;
+    }
+
+    case "tool_progress": {
+      console.log(
+        `${DIM}${timestamp()} ${prefix} ⏳ ${msg.tool_name} running... ${msg.elapsed_time_seconds.toFixed(0)}s${RESET}`,
+      );
+      break;
+    }
+
+    default: {
+      // Log any other message types for full visibility
+      const t = (msg as any).type;
+      const st = (msg as any).subtype;
+      if (t && t !== "system") {
+        console.log(`${prefix} ${DIM}[${t}${st ? ":" + st : ""}]${RESET}`);
+      }
     }
   }
 }
@@ -284,10 +348,7 @@ function runPreAnalysis(cycle: number) {
   execSync(`bash scripts/pre-analyze.sh ${design}`, { stdio: "inherit" });
 }
 
-function startViewer(cycle: number): number {
-  const v = cycle + 1;
-  const design = `workspace/design_v${v}.ifc`;
-
+function startViewer(filePath: string): number {
   // Kill any existing viewer on the port
   try {
     execSync(`lsof -ti:${VIEWER_PORT} | xargs kill -9 2>/dev/null`, {
@@ -301,7 +362,7 @@ function startViewer(cycle: number): number {
   execSync("sleep 1", { stdio: "ignore" });
 
   execSync(
-    `nohup ifc-lite view ${design} --port ${VIEWER_PORT} --no-open > /tmp/viewer.log 2>&1 &`,
+    `nohup ifc-lite view ${filePath} --port ${VIEWER_PORT} > /tmp/viewer.log 2>&1 &`,
     {
       shell: "/bin/bash",
       stdio: "ignore",
@@ -321,7 +382,7 @@ function startViewer(cycle: number): number {
       log(
         "VIEWER",
         CYAN,
-        `Viewer started at http://localhost:${VIEWER_PORT}`,
+        `Showing ${filePath} at http://localhost:${VIEWER_PORT}`,
       );
       return VIEWER_PORT;
     } catch {
@@ -461,12 +522,20 @@ async function main() {
     process.exit(1);
   }
 
+  // Show site context in viewer as soon as it's available
+  if (existsSync("workspace/site_context.ifc")) {
+    startViewer("workspace/site_context.ifc");
+  }
+
   // ── Design-Review Loop ─────────────────────────────────────────────────
   let finalCycle = 0;
 
   for (let cycle = 0; cycle < MAX_CYCLES; cycle++) {
     finalCycle = cycle;
     const v = cycle + 1;
+
+    // Stop previous viewer before architect creates a new design
+    if (cycle > 0) stopViewer();
 
     // Phase 1: Architect Design
     log("PHASE", CYAN, `1: Architect Design — Cycle ${cycle}`);
@@ -490,9 +559,11 @@ async function main() {
       continue;
     }
 
+    // Start viewer so user can inspect the design throughout the cycle
+    const port = startViewer(designPath);
+
     // Phase 1.5: Visual QA Gate
     log("PHASE", CYAN, `1.5: Visual QA — Cycle ${cycle}`);
-    const port = startViewer(cycle);
     let vqaResult = "";
     try {
       vqaResult = await spawnAgent(
@@ -506,7 +577,7 @@ async function main() {
         `Visual QA agent crashed (${(e as Error).message?.slice(0, 80)}) — proceeding with specialists`,
       );
     }
-    stopViewer();
+    // Viewer stays running — user can inspect while specialists review
 
     if (
       vqaResult.toUpperCase().includes("FAIL") ||
@@ -592,10 +663,9 @@ Write your BCF output to workspace/{discipline}_v${v}.bcf using ifc-lite bcf cre
 
   // Launch final viewer
   const v = finalCycle + 1;
-  const designPath = `workspace/design_v${v}.ifc`;
-  if (existsSync(designPath)) {
-    startViewer(finalCycle);
-    log("DONE", GREEN, `Viewer: http://localhost:${VIEWER_PORT}`);
+  const designPath2 = `workspace/design_v${v}.ifc`;
+  if (existsSync(designPath2)) {
+    startViewer(designPath2);
   }
 
   const elapsed = ((Date.now() - startTime) / 60000).toFixed(1);

@@ -56,13 +56,15 @@ for (const s of storeys) {
 }
 
 // 2. Create elements per storey
+// IMPORTANT: All Z coordinates are RELATIVE to the storey elevation.
+// Walls, slabs, spaces sit at z=0 (storey floor level).
+// Only windows/doors need a z-offset (e.g. sill height 0.8m).
 for (const s of storeys) {
   const ref = storeyRefs[s.name];
-  const z = s.elevation;
 
-  // External walls (all 4 sides per storey)
+  // External walls (all 4 sides per storey) — z=0 relative to storey
   const w_south = b.addIfcWall(ref, {
-    Start: [-10, -6, z], End: [10, -6, z], Height: 2.8, Thickness: 0.36
+    Start: [-10, -6, 0], End: [10, -6, 0], Height: 2.8, Thickness: 0.36
   });
   b.addIfcPropertySet(w_south, { Name: "Pset_WallCommon", Properties: [
     { Name: "IsExternal", NominalValue: true },
@@ -75,7 +77,7 @@ for (const s of storeys) {
 
   // Internal party wall (between units)
   const pw = b.addIfcWall(ref, {
-    Start: [0, -6, z], End: [0, 6, z], Height: 2.8, Thickness: 0.20
+    Start: [0, -6, 0], End: [0, 6, 0], Height: 2.8, Thickness: 0.20
   });
   b.addIfcPropertySet(pw, { Name: "Pset_WallCommon", Properties: [
     { Name: "IsExternal", NominalValue: false },
@@ -83,9 +85,9 @@ for (const s of storeys) {
     { Name: "FireRating", NominalValue: "EI60" }
   ]});
 
-  // Floor slab
+  // Floor slab — z=0 (at storey floor level)
   const slab = b.addIfcSlab(ref, {
-    Width: 20, Depth: 12, Thickness: 0.25, Position: [-10, -6, z]
+    Width: 20, Depth: 12, Thickness: 0.25, Position: [-10, -6, 0]
   });
   b.addIfcPropertySet(slab, { Name: "Pset_SlabCommon", Properties: [
     { Name: "IsExternal", NominalValue: false },
@@ -93,29 +95,29 @@ for (const s of storeys) {
   ]});
   b.addIfcMaterial(slab, { Name: "Stahlbeton_C30_37" });
 
-  // Spaces (every room with SIA 416 area)
+  // Spaces (every room with SIA 416 area) — z=0
   b.addIfcSpace(ref, {
     Width: 9, Depth: 5, Height: 2.5, LongName: `Wohnung_1_Wohnzimmer`,
-    Position: [-10, -6, z]
+    Position: [-10, -6, 0]
   });
 
   // Ventilation shaft (required per storey for MEP)
   b.addIfcSpace(ref, {
     Width: 1.0, Depth: 0.8, Height: 2.8, LongName: "Lüftungsschacht",
-    Position: [-2, -3, z]
+    Position: [-2, -3, 0]
   });
 
-  // Windows with thermal properties
+  // Windows — z=0.8 is the SILL HEIGHT offset from storey, not absolute
   const win = b.addIfcWindow(ref, {
-    Width: 1.2, Height: 1.5, Position: [-5, -6, z + 0.8]
+    Width: 1.2, Height: 1.5, Position: [-5, -6, 0.8]
   });
   b.addIfcPropertySet(win, { Name: "Pset_WindowCommon", Properties: [
     { Name: "IsExternal", NominalValue: true },
     { Name: "ThermalTransmittance", NominalValue: 0.7 }
   ]});
 
-  // Doors
-  b.addIfcDoor(ref, { Width: 0.9, Height: 2.1, Position: [-5, 0, z] });
+  // Doors — z=0 (at storey floor level)
+  b.addIfcDoor(ref, { Width: 0.9, Height: 2.1, Position: [-5, 0, 0] });
 
   // Staircase (width ≥ 1.2m for fire safety)
   if (s.name !== storeys[storeys.length - 1].name) {
@@ -125,9 +127,11 @@ for (const s of storeys) {
   }
 }
 
-// 3. Roof slab (external, with thermal properties)
+// 3. Roof slab (external, with thermal properties) — z=0 relative to top storey
+const roofStoreyElev = storeys[storeys.length - 1].elevation;
+const roofZ = 2.8; // storey height above top storey = offset from that storey
 const roof = b.addIfcSlab(storeyRefs["OG2"], {
-  Width: 20, Depth: 12, Thickness: 0.30, Position: [-10, -6, 8.4]
+  Width: 20, Depth: 12, Thickness: 0.30, Position: [-10, -6, roofZ]
 });
 b.addIfcPropertySet(roof, { Name: "Pset_SlabCommon", Properties: [
   { Name: "IsExternal", NominalValue: true },
@@ -238,4 +242,4 @@ Set these on EVERY element to avoid specialist rejections:
 - **Every IfcBuildingStorey**: Must have a unique Name and correct Elevation
 - **Single build script**: Do NOT use individual `ifc-lite create` commands — use `ifc-lite run` with one script
 - **No merge step**: The build script produces one complete IFC file directly
-- **Storey elevations**: Z coordinates in element geometry MUST match storey elevations. A wall on OG1 (elevation 2.8) must have z=2.8 in its Start/End coordinates.
+- **Storey-relative placement**: All element Z coordinates are RELATIVE to their storey. Walls, slabs, and spaces on ANY storey use z=0. Only use a z-offset for elements that sit above the floor (e.g. windows at sill height z=0.8, roof slab at z=storey_height). NEVER set z=storey.elevation — the storey's IfcLocalPlacement already handles the vertical offset. Setting z=elevation double-counts and creates floating geometry.

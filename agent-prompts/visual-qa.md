@@ -43,7 +43,7 @@ ifc-lite eval workspace/design_v{N}.ifc "
 " --json
 ```
 
-Check that walls on each storey have Z coordinates matching that storey's elevation.
+Check that walls on each storey have Z coordinates near 0 (storey-relative). Elements are placed relative to their storey — a wall on OG1 (elevation 2.8) should have z=0, NOT z=2.8. A non-zero z means the element is offset from the storey floor (only valid for windows at sill height, etc.).
 
 ### 4. Check slab positions
 ```bash
@@ -101,7 +101,7 @@ Write `workspace/visual_qa_v{N}.md` with this structure:
 (paste ifc-lite info summary)
 
 ## Geometry Checks
-- Wall Z-coordinates match storey elevations: OK / FAIL
+- Wall Z-coordinates at 0 (storey-relative): OK / FAIL
 - Slab positions correct: OK / FAIL
 - Foundation at/below ground: OK / N/A
 - Roof at top: OK / FAIL
@@ -123,7 +123,7 @@ detects it and re-runs the architect before specialist review.
 - **Wrong EG elevation**: Ground floor not at z=0
 - **Non-monotonic elevations**: Storey elevations not increasing
 - **Missing storeys**: Fewer storeys than specified in brief
-- **Walls at wrong Z**: Wall coordinates don't match their storey elevation
+- **Walls at wrong Z**: Walls/slabs should have z=0 (storey-relative). If z equals the storey elevation, placement is double-counted and geometry will float
 - **Foundation above ground**: Foundation slab at z > 0
 - **Missing roof**: No slab at the top of the building
 
