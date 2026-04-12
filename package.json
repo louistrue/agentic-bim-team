@@ -8,7 +8,8 @@
     "start:services": "bash scripts/start-services.sh"
   },
   "dependencies": {
-    "@anthropic-ai/claude-agent-sdk": "^0.2.101"
+    "@anthropic-ai/claude-agent-sdk": "^0.2.101",
+    "linkedom": "^0.18.12"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

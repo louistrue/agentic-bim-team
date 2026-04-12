@@ -13,9 +13,10 @@ Use `ifc-lite` for ALL BIM operations. It's designed for LLM terminal use.
 - `ifc-lite run <script.js> <file>`                  — run JS with full bim SDK
 - `ifc-lite merge <files...> --out <f> --schema IFC4`
 - `ifc-lite validate <file> --json`
-- `ifc-lite ids <file> <spec.ids> --json`            — exit 0=pass, 1=fail
+- `bash scripts/run-ids.sh <file> <spec.ids> --json`  — IDS validation (wrapper that polyfills DOMParser — direct `ifc-lite ids` fails)
 - `ifc-lite diff <v1> <v2> --by-entity --json`
-- `ifc-lite bcf create --title "..." --description "..." --out <f>`
+- `ifc-lite bcf list <file.bcf> --json`              — list topics + viewpoints (parses BCF zip)
+- `ifc-lite run scripts/bcf-build.js <design.ifc>`   — build multi-topic BCF with viewpoints (see BCF conventions below)
 - `ifc-lite view <f1> [<f2>] --port 3456`
 - `ifc-lite bsdd psets <IfcType>`
 - `ifc-lite schema --compact`                        — discover full API
@@ -54,10 +55,29 @@ GI/II: Gewerbezone (industrial/commercial)
 L:   Landwirtschaftszone — no new construction
 ZH default setback: max(3.0m, H/3) for W-zones
 
-## BCF Severity Conventions
-ERROR   — must fix before project proceeds (zone violation, fire safety, structural failure risk)
-WARNING — should fix, logged in final report
-INFO    — advisory only, architect to consider
+## BCF Conventions (openBIM / buildingSMART BCF 2.1)
+
+### Creation — always via `scripts/bcf-build.js`
+Specialists write a multi-topic BCF with viewpoints by:
+1. Writing `workspace/bcf-input-{discipline}.json` (Write tool — per-discipline filename avoids parallel races between specialists)
+2. Running `BCF_INPUT=workspace/bcf-input-{discipline}.json ifc-lite run scripts/bcf-build.js workspace/design_vN.ifc`
+
+The build script uses the `bim.bcf.*` SDK: `createProject` / `createFromIDSReport`, `createTopic`, `createViewpoint`, `addTopic`, `addViewpoint`, `write`.
+
+Never call `ifc-lite bcf create` directly — it only writes one topic per invocation, has no `--from-json` flag, and overwrites any previous file. Never manually zip BCF archives.
+
+### Severity → `topicType`
+- `"ERROR"`   → `topicType: "Error"`   (must fix before project proceeds: zone violation, fire safety, structural failure risk, IDS requirement failure)
+- `"WARNING"` → `topicType: "Warning"` (should fix, logged in final report)
+- `"INFO"`    → `topicType: "Info"`    (advisory only, architect to consider)
+
+The orchestrator counts severities from `topic.topicType`, not the title prefix. Every topic must have the right `topicType` or it will not contribute to convergence.
+
+### Viewpoints are mandatory
+Every topic must include a viewpoint whose `components.selection` references the affected element `GlobalId`s. `bcf-build.js` additionally applies severity-coloured `coloring` (red / amber / blue). A topic without selection is useless in a BCF viewer.
+
+### IDS → BCF
+Use `bash scripts/run-ids.sh <ifc> <ids> --json` (the wrapper polyfills browser `DOMParser` via linkedom — direct `ifc-lite ids` calls fail with `DOMParser is not defined`). Pass the resulting `.report` field as `idsReport` in `bcf-input-{discipline}.json`; `bcf-build.js` then calls `bim.bcf.createFromIDSReport` to convert failing entities into topics automatically, with viewpoints that isolate and colour each failing element.
 
 ## Georeferencing Rule (CRITICAL)
 The Architect MUST use the IDENTICAL IfcMapConversion values from project_state.json.

@@ -282,6 +282,51 @@ function cleanWorkspace() {
   mkdirSync("workspace/analysis", { recursive: true });
 }
 
+type Finding = {
+  severity: "ERROR" | "WARNING" | "INFO";
+  title: string;
+  description?: string;
+  globalIds?: string[];
+};
+
+function classifySeverity(topicType: unknown, title: string): Finding["severity"] {
+  const tt = String(topicType ?? "").toLowerCase();
+  if (tt === "error") return "ERROR";
+  if (tt === "warning") return "WARNING";
+  if (tt === "info" || tt === "information") return "INFO";
+  // Fallback: title prefix, e.g. "ERROR: Missing LoadBearing"
+  const m = title.match(/^(ERROR|WARNING|INFO)\b/i);
+  if (m) return m[1].toUpperCase() as Finding["severity"];
+  return "INFO";
+}
+
+function loadFindings(discipline: string, v: number): Finding[] {
+  const bcf = `workspace/${discipline}_v${v}.bcf`;
+  if (!existsSync(bcf)) return [];
+  try {
+    const out = execSync(`ifc-lite bcf list ${bcf} --json`, { encoding: "utf8" });
+    const parsed = JSON.parse(out);
+    const rawTopics = parsed?.topics ?? {};
+    const topicList: any[] = Array.isArray(rawTopics)
+      ? rawTopics
+      : Object.values(rawTopics);
+    return topicList
+      .filter((t) => t && typeof t === "object")
+      .map((t: any) => {
+        const title = String(t.title ?? "");
+        const severity = classifySeverity(t.topicType, title);
+        const selection = t.viewpoints?.[0]?.components?.selection ?? [];
+        const globalIds = Array.isArray(selection)
+          ? selection.map((c: any) => c?.ifcGuid).filter(Boolean)
+          : [];
+        return { severity, title, description: t.description, globalIds };
+      });
+  } catch (e) {
+    log("WARN", YELLOW, `Could not parse BCF ${bcf}: ${(e as Error).message}`);
+    return [];
+  }
+}
+
 function countBcfErrors(cycle: number): {
   errors: number;
   warnings: number;
@@ -293,23 +338,13 @@ function countBcfErrors(cycle: number): {
   const details: string[] = [];
 
   for (const d of ["structural", "mep", "facade", "fire"]) {
-    const bcf = `workspace/${d}_v${v}.bcf`;
-    if (!existsSync(bcf)) continue;
-    try {
-      const out = execSync(`ifc-lite bcf list ${bcf} --json`, {
-        encoding: "utf8",
-      });
-      const topics = JSON.parse(out);
-      for (const t of topics) {
-        if (t.title.startsWith("ERROR")) {
-          errors++;
-          details.push(`[${d.toUpperCase()}] ${t.title}`);
-        } else if (t.title.startsWith("WARNING")) {
-          warnings++;
-        }
+    for (const f of loadFindings(d, v)) {
+      if (f.severity === "ERROR") {
+        errors++;
+        details.push(`[${d.toUpperCase()}] ${f.title}`);
+      } else if (f.severity === "WARNING") {
+        warnings++;
       }
-    } catch {
-      log("WARN", YELLOW, `Could not parse BCF: ${bcf}`);
     }
   }
   return { errors, warnings, details };
@@ -320,22 +355,12 @@ function readBcfErrors(cycle: number): string {
   const errors: string[] = [];
 
   for (const d of ["structural", "mep", "facade", "fire"]) {
-    const bcf = `workspace/${d}_v${v}.bcf`;
-    if (!existsSync(bcf)) continue;
-    try {
-      const out = execSync(`ifc-lite bcf list ${bcf} --json`, {
-        encoding: "utf8",
-      });
-      const topics = JSON.parse(out);
-      for (const t of topics) {
-        if (t.title.startsWith("ERROR")) {
-          errors.push(
-            `[${d.toUpperCase()}] ${t.title}${t.description ? ": " + t.description : ""}`,
-          );
-        }
-      }
-    } catch {
-      /* skip unparseable BCF */
+    for (const f of loadFindings(d, v)) {
+      if (f.severity !== "ERROR") continue;
+      const gids = f.globalIds?.length ? ` (GlobalIds: ${f.globalIds.join(", ")})` : "";
+      errors.push(
+        `[${d.toUpperCase()}] ${f.title}${f.description ? ": " + f.description : ""}${gids}`,
+      );
     }
   }
   return errors.join("\n\n");

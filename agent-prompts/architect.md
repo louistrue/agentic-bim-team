@@ -179,8 +179,10 @@ ifc-lite validate workspace/design_v{N}.ifc --json
 ```
 
 ### Step 6: IDS Check
+Use the `run-ids.sh` wrapper — it sets `NODE_OPTIONS` to polyfill the browser `DOMParser` that `ifc-lite ids` relies on. A direct `ifc-lite ids` call fails with `DOMParser is not defined`.
+
 ```bash
-ifc-lite ids workspace/design_v{N}.ifc specs/swiss_residential_min.ids --json \
+bash scripts/run-ids.sh workspace/design_v{N}.ifc specs/swiss_residential_min.ids --json \
   > workspace/ids_report_v{N}.json
 echo "IDS exit: $?"
 ```
