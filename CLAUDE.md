@@ -1,3 +1,7 @@
+> **v2 (Nov 2026):** the pipeline in `orchestrator-v2.ts` does not use the conventions below. Agents write design intent
+> (`design_vN.json`), `scripts/compile.mjs` writes IFC, `scripts/check.mjs` runs IDS (`ifc-lite ids` works directly with
+> current ifc-lite), `scripts/issues.mjs` writes BCF. See README-v2.md and agent-prompts-v2/. The text below documents v1.
+
 # BIM Agent Team — Swiss Residential Construction
 
 ## IFC Analysis & Creation (ifc-lite CLI)

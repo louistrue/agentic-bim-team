@@ -6,3 +6,8 @@ workspace-archive/
 .env.local
 *.log
 .DS_Store
+cache/
+logs/
+test/*.ifc
+test/*.keys.json
+test/mini*

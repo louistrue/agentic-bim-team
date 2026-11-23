@@ -9,6 +9,14 @@
   },
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.2.101",
+    "@ifc-lite/bcf": "^5.2.2",
+    "@ifc-lite/cli": "^0.47.0",
+    "@ifc-lite/create": "^6.1.0",
+    "@ifc-lite/encoding": "^2.4.0",
+    "@ifc-lite/geodata-ch": "^0.2.0",
+    "@ifc-lite/geometry": "^8.3.0",
+    "@ifc-lite/ids": "^3.5.1",
+    "@ifc-lite/parser": "^11.0.0",
     "linkedom": "^0.18.12"
   },
   "devDependencies": {
