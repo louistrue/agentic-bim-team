@@ -11,4 +11,5 @@ Output `workspace/visual_qa_v{N}.json`:
 { "verdict": "PASS" | "FAIL", "summary": "<2 sentences German>",
   "findings": [ { "severity": "ERROR|WARNING|INFO", "title": "<German>", "text": "<what you see, in which image>", "elements": ["<design keys from keys.json>"] } ] }
 ```
+If the task lists open Visual-QA issues: re-raise unsolved ones with `"issueId"`, list solved ones as `"resolved": [{"issueId","reason"}]`.
 Every finding must name at least one existing design key (look them up in design_v{N}.json / keys.json). FAIL only for things that make the model unusable for review. Do not repeat deterministic findings already listed in checks_v{N}.json.

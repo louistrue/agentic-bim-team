@@ -40,8 +40,13 @@ for (const f of current) {
   L.text = f.text; L.source = f.source; L.who = f.who; L.lastSeen = v; L.status = 'Open';
   if (!L.history.some((h) => h.v === v)) L.history.push({ v, event: L.firstSeen === v ? 'neu' : 'noch offen', text: f.text });
 }
+const resolvedBy = Object.fromEntries((review.resolved ?? []).map((r) => [r.issueId, r]));
 for (const L of Object.values(ledger.issues)) {
-  if (L.status === 'Open' && !seen.has(L.id) && L.lastSeen < v) { L.status = 'Closed'; L.closedIn = v; L.history.push({ v, event: 'erledigt', text: `In v${v} nicht mehr gefunden (gleiche Prüfung, gleiche Bauteil-GUIDs).` }); }
+  if (L.status !== 'Open' || seen.has(L.id) || L.lastSeen >= v) continue;
+  const stillThere = L.elements.filter((k) => K[k]);
+  if (L.origin === 'Prüfregel') { L.status = 'Closed'; L.closedIn = v; L.history.push({ v, event: 'erledigt', text: `Gleiche Prüfregel in v${v} ohne Befund (Bauteile ${stillThere.join(', ') || '–'}, gleiche GlobalIds).` }); }
+  else if (resolvedBy[L.id]) { L.status = 'Closed'; L.closedIn = v; L.history.push({ v, event: 'erledigt', text: `${resolvedBy[L.id].discipline}: ${resolvedBy[L.id].reason}` }); }
+  else { L.lastSeen = v; L.history.push({ v, event: 'nicht neu beurteilt', text: 'Der Fach-Agent hat den Punkt weder bestätigt noch als erledigt gemeldet – bleibt offen.' }); }
 }
 writeFileSync('workspace/issues.json', JSON.stringify(ledger, null, 1));
 

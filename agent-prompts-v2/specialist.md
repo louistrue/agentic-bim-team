@@ -14,14 +14,16 @@ Focus ({{DISCIPLINE}}): {{FOCUS}}
 Output `workspace/review_v{N}_{{KEY}}.json`:
 ```json
 { "discipline": "{{DISCIPLINE}}", "summary": "<3 sentences German>",
-  "findings": [ { "severity": "ERROR|WARNING|INFO", "title": "<German, short>", "text": "<German: what, where, why, what to change>",
+  "findings": [ { "issueId": "<only when re-raising an open issue>", "severity": "ERROR|WARNING|INFO", "title": "<German, short>", "text": "<German: what, where, why, what to change>",
                   "elements": ["<existing design keys>"], "basis": "<norm clause or 'Projektannahme' or 'fachliche Einschätzung'>",
                   "verify": "<how a human checks this claim>" } ],
+  "resolved": [ { "issueId": "<id of an open issue from your discipline>", "reason": "<German: what changed in the model, which element keys>" } ],
   "notCheckable": ["<things in your field that need a qualified person or data not in the model>"] }
 ```
 Rules:
 - Every finding names at least one key that exists in design_v{N}.keys.json. Findings with unknown keys are rejected by the orchestrator and reported as rejected.
 - ERROR only if the design cannot proceed to the next phase without the change. Use WARNING for should-fix, INFO for advice.
 - Cite norms only where you are sure of the clause; otherwise write "fachliche Einschätzung". Never invent numbers.
-- Max 6 findings. Quality over quantity. If the previous version's issue is resolved, do not raise it again.
+- Open issues from earlier versions (listed in the task message): for EACH one of your discipline decide. Still a problem → re-raise it with `"issueId": "<the same id>"` (wording may change). Solved → put it in `resolved` with the reason, citing the element keys you checked. Never just drop it.
+- Max 6 findings (re-raised issues count). Quality over quantity. If the previous version's issue is resolved, do not raise it again.
 - German for all text.

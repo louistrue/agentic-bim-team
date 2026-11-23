@@ -42,10 +42,12 @@ async function agent(name: string, systemPrompt: string, task: string, model = "
   return result;
 }
 
-function openIssuesText(): string {
+function openIssuesText(discipline?: string): string {
   if (!existsSync("workspace/issues.json")) return "(keine – erste Version)";
   const L = Object.values(json("workspace/issues.json").issues) as any[];
-  return L.filter((i) => i.status === "Open").sort((a, b) => (a.severity > b.severity ? 1 : -1))
+  const sel = L.filter((i) => i.status === "Open" && (!discipline || i.discipline === discipline));
+  if (!sel.length) return "(keine)";
+  return sel.sort((a, b) => (a.severity > b.severity ? 1 : -1))
     .map((i) => `- [${i.severity}] ${i.id} · ${i.title}\n  Bauteile: ${i.elements.join(", ") || "Modell"}\n  ${i.text}`).join("\n");
 }
 
@@ -62,31 +64,39 @@ function mergeReviews(v: number) {
       const els = (x.elements ?? []).filter((e: string) => K[e]);
       if (!els.length) { rejected.push({ source: disc, title: x.title, reason: `kein existierendes Bauteil (${(x.elements ?? []).join(", ") || "keins angegeben"})` }); return; }
       const slug = (x.title ?? "").toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").slice(0, 40);
-      findings.push({ id: `${k.toUpperCase()}-${slug}:${els[0]}`, rule: k.toUpperCase(), severity: x.severity ?? "INFO", title: x.title, text: `${x.text}${x.basis ? `\nGrundlage: ${x.basis}` : ""}${x.verify ? `\nPrüfen: ${x.verify}` : ""}`, elements: els, discipline: disc, source: x.basis, who: `${disc}` });
+      const known = x.issueId && existsSync("workspace/issues.json") && json("workspace/issues.json").issues[x.issueId];
+      findings.push({ id: known ? x.issueId : `${k.toUpperCase()}-${slug}:${els[0]}`, rule: k.toUpperCase(), severity: x.severity ?? "INFO", title: x.title, text: `${x.text}${x.basis ? `\nGrundlage: ${x.basis}` : ""}${x.verify ? `\nPrüfen: ${x.verify}` : ""}`, elements: els, discipline: disc, source: x.basis, who: `${disc}` });
     });
   }
-  writeFileSync(`workspace/review_v${v}.json`, JSON.stringify({ version: v, findings, rejected, summaries }, null, 1));
+  const resolved: any[] = [];
+  for (const [k, f, disc] of files) if (existsSync(f)) { try { for (const r of json(f).resolved ?? []) resolved.push({ ...r, discipline: disc }); } catch {} }
+  writeFileSync(`workspace/review_v${v}.json`, JSON.stringify({ version: v, findings, rejected, resolved, summaries }, null, 1));
   return { findings, rejected };
 }
 
 async function main() {
   const address = process.argv[2] ?? "Loorenstrasse 62, 8053 Zürich";
   const briefPath = process.argv[3] ?? "brief.json";
-  if (existsSync("workspace/run.json")) { const t = new Date().toISOString().replace(/[:.]/g, "-"); mkdirSync("workspace-archive", { recursive: true }); renameSync("workspace", `workspace-archive/${t}`); }
+  const RESUME = process.env.RESUME === "1" && existsSync("workspace/run.json");
+  if (RESUME) Object.assign(state, json("workspace/run.json"));
+  else if (existsSync("workspace/run.json")) { const t = new Date().toISOString().replace(/[:.]/g, "-"); mkdirSync("workspace-archive", { recursive: true }); renameSync("workspace", `workspace-archive/${t}`); }
   mkdirSync("workspace/renders", { recursive: true });
   console.log(`\n${C.cy}${C.b}AGENTENTEAM v2 · ${address}${C.r}\n${C.dim}Deterministisch: Standort, IDS, Compiler, Prüfungen, BCF, Bericht · Agenten: Architektur, Visual QA, 4 Fachplaner${C.r}\n`);
 
+  if (!RESUME) {
   log("PHASE", C.cy, "0 Standort + Anforderungen");
   state.site = JSON.parse(run("node", ["scripts/site.mjs", address, briefPath]).trim().split("\n").pop()!);
   state.ids = JSON.parse(run("node", ["scripts/requirements-to-ids.mjs", briefPath, "workspace/requirements.ids"]));
   run("npx", ["ifc-lite", "ids", "audit", "workspace/requirements.ids"]); // throws if the IDS itself is invalid
   log("SITE", C.g, JSON.stringify(state.site)); saveState();
+  }
 
   const archPrompt = readFileSync("agent-prompts-v2/architect.md", "utf8");
   const vqaPrompt = readFileSync("agent-prompts-v2/visual-qa.md", "utf8");
   const specTpl = readFileSync("agent-prompts-v2/specialist.md", "utf8");
 
-  for (let v = 1; v <= MAX_CYCLES; v++) {
+  const firstV = RESUME ? Math.max(...state.versions.map((x: any) => x.v)) + 1 : 1;
+  for (let v = firstV; v <= MAX_CYCLES; v++) {
     const V: any = { v, started: new Date().toISOString() }; state.versions.push(V);
     log("PHASE", C.cy, `v${v} · 1 Architektur`);
     await agent(`architect v${v}`, archPrompt, `Version N=${v}.\n${v === 1 ? "Erste Version: entwirf das Gebäude." : `Überarbeite workspace/design_v${v - 1}.json. Offene Punkte aus dem Issue-Ledger (alle mit Bauteil-Keys):\n${openIssuesText()}`}\nSchreibe workspace/design_v${v}.json, kompiliere, prüfe, schreibe workspace/design_v${v}_notes.md.`, "claude-opus-5-5");
@@ -107,8 +117,8 @@ async function main() {
     }
     log("PHASE", C.cy, `v${v} · 3 Visual QA + Fachplanung (parallel)`);
     await Promise.all([
-      agent(`visual-qa v${v}`, vqaPrompt, `Version N=${v}. Prüfe die Renders und schreibe workspace/visual_qa_v${v}.json.`, "claude-sonnet-5-5", ["Read", "Write", "Bash"]),
-      ...Object.entries(SPECIALISTS).map(([k, s]) => agent(`${k} v${v}`, specTpl.replaceAll("{{DISCIPLINE}}", s.discipline).replaceAll("{{ROLE}}", s.role).replaceAll("{{FOCUS}}", s.focus).replaceAll("{{KEY}}", k), `Version N=${v}. Schreibe workspace/review_v${v}_${k}.json.`, "claude-sonnet-5-5", ["Read", "Write", "Bash"])),
+      agent(`visual-qa v${v}`, vqaPrompt, `Version N=${v}. Prüfe die Renders (auch v${v}_grundriss_*.png) und schreibe workspace/visual_qa_v${v}.json.\nOffene Visual-QA-Punkte:\n${openIssuesText("Visual QA")}`, "claude-sonnet-5-5", ["Read", "Write", "Bash"]),
+      ...Object.entries(SPECIALISTS).map(([k, s]) => agent(`${k} v${v}`, specTpl.replaceAll("{{DISCIPLINE}}", s.discipline).replaceAll("{{ROLE}}", s.role).replaceAll("{{FOCUS}}", s.focus).replaceAll("{{KEY}}", k), `Version N=${v}. Schreibe workspace/review_v${v}_${k}.json.\nOffene Punkte deiner Disziplin aus früheren Versionen:\n${openIssuesText(s.discipline)}\nNotizen der Architektur: workspace/design_v${v}_notes.md`, "claude-sonnet-5-5", ["Read", "Write", "Bash"])),
     ]);
     const merged = mergeReviews(v);
     V.review = { findings: merged.findings.length, rejected: merged.rejected };
@@ -119,7 +129,8 @@ async function main() {
     V.openErrors = open.filter((i) => i.severity === "ERROR").length; V.openWarnings = open.filter((i) => i.severity === "WARNING").length;
     V.finished = new Date().toISOString(); saveState();
     log("CONVERGE", V.openErrors ? C.y : C.g, `v${v}: ${V.openErrors} ERROR offen, ${V.openWarnings} WARNING offen, ${V.issues.closed} erledigt`);
-    if (V.openErrors === 0) break;
+    // STOP_ON=ERROR (default): stop when no ERROR is open. STOP_ON=WARNING: also work off the warnings.
+    if (V.openErrors === 0 && (process.env.STOP_ON !== "WARNING" || V.openWarnings === 0)) break;
   }
   log("PHASE", C.cy, "5 Bericht");
   state.finished = new Date().toISOString(); saveState();
