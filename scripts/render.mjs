@@ -43,4 +43,5 @@ for (const st of storeys) {
   if (!e.size) continue;
   renderView({ elems: e, f: [0, -1, 0.0001], up: [0, 0, -1], pxPerM: 26, out: `workspace/renders/v${v}_plan_${st.key}.png` }); out.push(`workspace/renders/v${v}_plan_${st.key}.png`);
 }
+try { const p = JSON.parse(execFileSync('uv', ['run', '--quiet', '--with', 'pillow', 'python', new URL('./plan.py', import.meta.url).pathname, String(v)], { encoding: 'utf8' })); out.push(...p.plans); } catch (e) { console.error('plan.py failed', e.message); }
 console.log(JSON.stringify({ ok: true, renders: out, highlighted: bad.size }));
