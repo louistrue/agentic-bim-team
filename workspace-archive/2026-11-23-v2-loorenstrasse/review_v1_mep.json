@@ -1,0 +1,53 @@
+{
+ "discipline": "Haustechnik",
+ "summary": "Die Nasszellen sind in allen drei Geschossen deckungsgleich übereinander angeordnet, was für die Stapelung der Fallleitungen günstig ist. Im Modell fehlen jedoch Steigzonen/Schächte, ein Technikraum und jeder Platznachweis für die Minergie-Komfortlüftung; das ist für den Übergang aus dem Vorprojekt zu klären. Zusätzlich müssen die Leitungsdurchführungen durch die REI-60-Decken und die Wohnungstrennwand im Brandschutzkonzept berücksichtigt werden.",
+ "findings": [
+  {
+   "severity": "WARNING",
+   "title": "Keine Steigzonen/Schächte im Modell",
+   "text": "Im Modell sind keine vertikalen Schächte (Sanitär, Lüftung, Elektro) ausgewiesen. Die Bäder und Duschen liegen in jedem Geschoss an derselben Stelle (Wohnung A: Bad an der Kernwand im Norden, Dusche in der Mitte; Wohnung B: Bad in der Mitte). Je Wohnung ist eine Steigzone direkt an Bad/Dusche vorzusehen, z.B. für A an der Kernwestwand beim Bad, für B zwischen Bad und Reduit. Sie ist als Raum/Aussparung in allen Geschossen deckungsgleich zu modellieren und in den Decken auszusparen.",
+   "elements": ["EG-A-BA", "EG-A-DU", "EG-B-BA", "EG-B-RE"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Grundrisse EG/OG1/OG2 übereinanderlegen. Prüfen, ob in jedem Geschoss ein Schachtfeld an Bad/Dusche liegt, und die Schachtgrösse mit dem Sanitär- und Lüftungsplaner abstimmen."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Kein Technikraum / keine Haustechnikzentrale",
+   "text": "Es gibt weder UG noch einen Technikraum im EG. Wärmeerzeugung (z.B. Wärmepumpe mit Speicher), Hausanschlüsse (Wasser, Strom, Telekom), Zähler und Verteilung brauchen einen Platz. Für das Vorprojekt ist ein Raum von geeigneter Grösse im EG festzulegen, am besten am Treppenkern. Sonst sind die Technikflächen im Aussenraum oder im Dach nachzuweisen. Die Zugänglichkeit für Wartung und der Schallschutz zu den Wohnungen sind zu beachten.",
+   "elements": ["EG-BP", "EG-TH"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Energie- und HLKS-Konzept bestätigen den Erzeuger und dessen Platzbedarf. Dann mit dem Raumprogramm im EG abgleichen."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Platz für Komfortlüftung (Minergie) nicht nachgewiesen",
+   "text": "Minergie verlangt eine kontrollierte Wohnungslüftung. Im Modell sind weder Lüftungsgeräte noch Verteilung, Aussenluft- und Fortluftöffnungen ausgewiesen. Die Decken sind 0.32 m dick (BSP) bei 2.63 m lichter Höhe, im OG2 nur 2.55 m beim Flachdach. Es ist festzulegen, ob je Wohnung ein dezentrales Gerät im Reduit steht und wie die Aussenluft/Fortluft durch die hinterlüftete Fassade oder das Dach geführt wird. Die Verteilung ist über Vorsatzschalen, Abhangdecken oder Flure zu planen. Die Mindesthöhe von 2.40 m muss danach noch erreicht sein.",
+   "elements": ["EG-A-RE", "EG-B-RE", "OG2-DA"],
+   "basis": "Projektannahme (Minergie gemäss Brief)",
+   "verify": "Lüftungsplaner legt Geräteort, Kanalführung und Aussenluft-/Fortluftstellen fest. Danach lichte Höhen im Flur und in den Bädern am Schnitt prüfen."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Leitungsdurchführungen durch Brandabschnitte",
+   "text": "Die Steigzonen und Lüftungsleitungen durchdringen die Geschossdecken (BSP, REI 60) und müssen Wohnungstrennwand und Treppenhaus berühren. Jede Durchführung ist so abzuschotten, dass die Feuerwiderstandsdauer des Bauteils erhalten bleibt. Bei der brennbaren Holzdecke sind Schächte in REI 60 zu verkleiden. Leitungen durch die Wohnungstrennwand (doppelter Holzrahmen) sind möglichst zu vermeiden. Im Treppenhauskern (REI 90) dürfen keine wohnungsfremden Leitungen verlaufen.",
+   "elements": ["EG-WT-1", "OG1-DE", "OG2-DE", "EG-TK-W"],
+   "basis": "fachliche Einschätzung (VKF-Brandschutzvorschriften; Anforderungen durch die Brandschutzfachperson festzulegen)",
+   "verify": "Brandschutzfachperson legt Brandabschnitte und Abschottungssysteme fest. Dann die Durchdringungen in den Grundrissen markieren."
+  },
+  {
+   "severity": "INFO",
+   "title": "Nasszellen und Küche je Wohnung verteilt",
+   "text": "In Wohnung A liegen Küche (Süd, am Kern), Dusche (Mitte) und Bad (Nord, am Kern) rund 8 m auseinander. In Wohnung B liegen Küche (Ost) und Bad (Mitte) auch getrennt. Die Stapelung über die Geschosse ist gut, aber pro Wohnung entstehen mehrere Leitungsstränge und lange Liegeleitungen in den BSP-Decken. Falls möglich, sind Dusche und Bad zu einem Nassbereich zu verdichten. Alternativ sind die Stränge in einer gemeinsamen Steigzone zu bündeln. Bei Nassräumen auf Holzdecken ist die Abdichtung mit dem Holzbauer zu klären.",
+   "elements": ["EG-A-KU", "EG-A-DU", "EG-A-BA", "EG-B-KU", "EG-B-BA"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Strangschema mit dem Sanitärplaner erstellen und die Leitungslängen sowie Deckendurchbrüche je Wohnung vergleichen."
+  }
+ ],
+ "notCheckable": [
+  "Dimensionierung Heizung, Lüftung und Sanitär (Heizlast, Luftmengen, Rohrnetz)",
+  "Wahl des Wärmeerzeugers und Nachweis Minergie-Anforderungen an Lüftung und Wärmeerzeugung",
+  "Brandabschnitte und Abschottungen: Nachweis durch eine Brandschutzfachperson",
+  "Schallschutz der Haustechnik (Körperschall Fallleitungen, Lüftungsgeräte) nach SIA 181",
+  "Entwässerung, Grundleitungen und Retention (kein UG im Modell, Parzellenentwässerung nicht modelliert)"
+ ]
+}

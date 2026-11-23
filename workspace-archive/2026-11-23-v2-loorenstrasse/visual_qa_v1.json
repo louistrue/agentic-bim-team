@@ -1,0 +1,7 @@
+{"verdict":"PASS","summary":"Das Gebäude ist als dreigeschossiger Riegel mit Flachdach sauber gestapelt, Fenster sitzen in den Fassaden, keine Überlagerungen sichtbar. Auffällig sind das nur winzig dargestellte Treppenelement im Kern, die fehlende Attika und die Lage exakt auf dem Rückbau-Bestand.",
+"findings":[
+{"severity":"WARNING","title":"Treppe im Treppenkern kaum erkennbar","text":"In v1_plan_EG.png ist im Treppenhauskern nur ein kleines braunes Rechteck zu sehen, der Kern wirkt sonst leer; im Plan OG2 fehlt jede Treppendarstellung. Läufe/Podeste sind nicht lesbar, Treppe wirkt unterdimensioniert oder falsch positioniert.","elements":["EG-TR","OG1-TR"]},
+{"severity":"INFO","title":"Flachdach ohne Attika/Brüstung","text":"In beiden Axonometrien (axon_sw, axon_ne) ist das Dach eine nackte Platte ohne Attika, Absturzsicherung oder Überstand; wirkt schematisch.","elements":["OG2-DA"]},
+{"severity":"INFO","title":"Einziger Hauseingang schwach sichtbar","text":"In axon_ne.png ist nur eine einzelne Tür im EG der Nordost-Fassade sichtbar; die Erschliessung der beiden Hälften über einen Eingang wirkt knapp, kein Vordach oder Absatz.","elements":["EG-HE"]},
+{"severity":"INFO","title":"Neubau deckt sich mit Bestandsfootprint","text":"Im Lageplan (v1_site.png) liegt der Neubau innerhalb der Rückbau-Schraffur des Bestands EGID 302060735; die Nordfassade ist nur ~10 m von Nachbarn entfernt, optisch eng.","elements":["EG-BP"]}
+]}

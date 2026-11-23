@@ -1,0 +1,52 @@
+{
+ "discipline": "Brandschutz",
+ "summary": "Die Brandschutzpunkte aus v1 sind im Modell weitgehend aufgenommen: anleiterbare Fenster bezeichnet, Brandsperren im Wandaufbau vermerkt, Südbrüstungen im OG angehoben und eine Rauchabzugsöffnung im Dach vorgesehen. Offen bleiben der Nachweis des Brandüberschlags bei brennbarer Holzschalung und die Nachbarabstände, die weiterhin auf einer Projektannahme beruhen. Neu zu klären sind der Technikraum am Treppenhaus (Türklasse) und die Abschottungen der Steigzonen in den Holz-Beton-Verbunddecken.",
+ "findings": [
+  {
+   "issueId": "FIRE-brandu-berschlag-u-ber-u-bereinanderlieg:EG-A-F6",
+   "severity": "WARNING",
+   "title": "Brandüberschlag Südfassade: Brüstungsband nicht nachgewiesen",
+   "text": "Die Brüstung im OG1/OG2 wurde auf 0.5 m gesenkt (OG1-A-F6 Höhe 1.7 m), das Band zwischen Sturz EG-A-F6 (OK 2.2 m) und OG1-A-F6 beträgt laut Architektur rund 1.25 m. Das ist besser als v1, aber das Band ist weiterhin mit brennbarer Holzschalung bekleidet und über der Geschossdecke liegt nur die Brandsperre. Bitte im Schichtaufbau von EG-AW-S1 und OG1-AW-S1 ein nichtbrennbares Brüstungs-/Sturzband festlegen oder den Nachweis der geforderten Mindesthöhe nach Brandschutzkonzept führen.",
+   "elements": ["EG-A-F6", "OG1-A-F6", "EG-AW-S1", "OG1-AW-S1"],
+   "basis": "fachliche Einschätzung (VKF Brandschutzrichtlinie Brandschutzabstände, Tragwerke und Fassaden)",
+   "verify": "Fassadenschnitt Süd durch EG/OG1/OG2 mit Massen: freie Bandhöhe und Bekleidungsklasse mit dem Brandschutzkonzept abgleichen."
+  },
+  {
+   "issueId": "FIRE-schutzabstand-der-holzfassade-zu-nachbar:EG-AW-W",
+   "severity": "INFO",
+   "title": "Schutzabstand Holzfassade: Nachbarbauten weiterhin Projektannahme",
+   "text": "Keine Modelländerung. Der nächste Bestandesbau liegt laut Check 7.1 m entfernt (Hüllrechteck), die Ostfassade hat 9.29 m Grenzabstand. Die Zulässigkeit der brennbaren Bekleidung und der Öffnungen hängt vom realen Gebäudeabstand und der Gebäudehöhe (9.26 m) ab. Bitte Katasterplan mit Nachbargebäuden beiziehen und die Abstände gegen die VKF-Richtlinie prüfen, insbesondere Ost und West.",
+   "elements": ["EG-AW-W", "OG2-AW-W", "EG-AW-E"],
+   "basis": "Projektannahme",
+   "verify": "Katasterplan mit Nachbargebäuden: Abstände zu Ost-, West- und Südfassade messen und mit der Richtlinie Brandschutzabstände vergleichen."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Technikraum am Treppenhaus: Türklasse EI 30 gegenüber Wand EI 60",
+   "text": "Der neue Technikraum EG-TE (Hausanschlüsse, Zähler, Speicher, Verteilung) grenzt über EG-TE-T1 an den Fluchtweg bei EG-TK-S. Die Tür ist EI 30 selbstschliessend, die Trennwand EG-TE-IW1 EI 60. Ein Raum mit erhöhter Brandlast und elektrischen Anlagen am Treppenhaus sollte als eigener Brandabschnitt gelten, die Tür sollte der Wandklasse entsprechen. Bitte Anforderung festlegen und Türklasse anpassen oder die Abweichung begründen.",
+   "elements": ["EG-TE-T1", "EG-TE-IW1", "EG-TK-S", "EG-TE"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Grundriss EG: Türklasse und Wandklasse des Technikraums im Brandschutzkonzept vergleichen; Nutzung (Speicher, Elektro) mit Haustechnik klären."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Steigzonen durchdringen Holz-Beton-Decken: Abschottung offen",
+   "text": "Die Steigzonen (Schachtwände EI 60) laufen deckungsgleich durch EG bis OG2 und durchstossen OG1-DE, OG2-DE und OG2-DA. Das Dach ist ein BSP-Hohlkastenelement. Die Abschottung der Durchführungen auf Geschossniveau und die Dichtigkeit der Schächte gegen Brandübertragung zwischen Geschossen und Wohnungen sind nicht festgelegt. Bitte Schachtdeckel/Abschottungen mit gleichwertiger Feuerwiderstandsklasse wie die Decke definieren.",
+   "elements": ["EG-A-SW1", "OG1-A-SW1", "OG1-DE", "OG2-DE"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Schnitt durch Steigzone: Abschottung je Decke und Feuerwiderstand mit Brandschutzkonzept und Sanitärplaner abgleichen."
+  }
+ ],
+ "resolved": [
+  {"issueId": "FIRE-rettung-u-ber-ein-einziges-treppenhaus-u:OG2-A-F1", "reason": "OG1/OG2-A-F1 und OG1/OG2-B-F2 (Nordfassade, 1.8/1.6 × 1.5 m, Brüstung 0.8 m) sind als anleiterbare Fenster bezeichnet. Die Aufstellfläche liegt ausserhalb des Modells und steht unter «nicht prüfbar»."},
+  {"issueId": "FIRE-hinterlu-ftete-holzfassade-brandsperren-:EG-AW-S1", "reason": "Im Materialnamen der Holzrahmen-Aussenwände (z.B. EG-AW-S1) ist «Brandsperre Stahlblech je Geschossdecke» eingetragen, Leibungen nicht brennbar bekleiden ist als Detail vermerkt. Ausführungsdetail bleibt Teil der Ausführungsplanung."},
+  {"issueId": "FIRE-rauchabzug-im-treppenhaus-nicht-nachgewi:OG2-DA", "reason": "OG2-DA hat eine Aussparung 1.0 × 1.2 m (RWA-Lichtkuppel) über dem Treppenhaus. Der freie Querschnitt und die Auslösung bleiben nachzuweisen (siehe nicht prüfbar)."}
+ ],
+ "notCheckable": [
+  "Lage und Tragfähigkeit der Feuerwehrzufahrt und Aufstellfläche vor den Nordfenstern (Umgebungsplan, Feuerwehr)",
+  "Freier Querschnitt, Auslösung und Bedienstellen der RWA-Lichtkuppel über dem Treppenhaus",
+  "Reale Nachbargebäude und Gebäudeabstände (Katasterplan)",
+  "Einstufung Gebäude geringer Höhe, Feuerwiderstände der Holzbauteile und Bekleidungsklassen: Brandschutzfachperson/VKF-Nachweis",
+  "Brandschutz-Detailausbildung der Hinterlüftung an Leibungen und Geschossdecken"
+ ]
+}

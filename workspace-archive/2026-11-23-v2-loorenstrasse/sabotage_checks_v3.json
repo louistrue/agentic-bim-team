@@ -1,0 +1,201 @@
+{
+ "version": 3,
+ "ran": [
+  "IDS workspace/requirements.ids (ifc-lite ids)",
+  "Georeferenz (ifc-lite georef check)",
+  "Zonenordnung W3 (Geschosse, Höhe, Grenzabstand inkl. Mehrlängenzuschlag, Ausnützung)",
+  "Raumprogramm (Wohnungen, Raumgrössen, lichte Höhe, Belichtung)",
+  "Brandschutz (Treppe, Fluchtweg, Wohnungstüren)",
+  "Gebäudehülle (Dach, Bodenplatte, Fensteranteil)"
+ ],
+ "counts": {
+  "ERROR": 4,
+  "WARNING": 0,
+  "INFO": 0
+ },
+ "metrics": {
+  "version": 3,
+  "grossFloorArea": 756,
+  "floorAreaRatioThisBuilding": 0.07,
+  "parcelArea": 11156,
+  "units": 6,
+  "fullStoreys": 3,
+  "buildingHeight": 9.26,
+  "floorAboveTerrain": 0.41,
+  "facades": [
+   {
+    "facade": "Nord",
+    "length": 21,
+    "required": 8,
+    "actual": 6.12
+   },
+   {
+    "facade": "Süd",
+    "length": 21,
+    "required": 8,
+    "actual": 18.71
+   },
+   {
+    "facade": "West",
+    "length": 11.2,
+    "required": 5,
+    "actual": 40.04
+   },
+   {
+    "facade": "Ost",
+    "length": 11.2,
+    "required": 5,
+    "actual": 5.46
+   }
+  ],
+  "windowWallRatio": {
+   "Nord": {
+    "wallArea": 185.85,
+    "openingArea": 37.62,
+    "ratio": 0.2
+   },
+   "Süd": {
+    "wallArea": 185.85,
+    "openingArea": 62.2,
+    "ratio": 0.33
+   },
+   "West": {
+    "wallArea": 99.12,
+    "openingArea": 23,
+    "ratio": 0.23
+   },
+   "Ost": {
+    "wallArea": 99.12,
+    "openingArea": 21.44,
+    "ratio": 0.22
+   }
+  },
+  "ids": [
+   {
+    "id": "R01",
+    "status": "pass",
+    "applicable": 106,
+    "failed": 0
+   },
+   {
+    "id": "R02",
+    "status": "fail",
+    "applicable": 21,
+    "failed": 1
+   },
+   {
+    "id": "R03",
+    "status": "pass",
+    "applicable": 51,
+    "failed": 0
+   },
+   {
+    "id": "R04",
+    "status": "pass",
+    "applicable": 66,
+    "failed": 0
+   },
+   {
+    "id": "R05",
+    "status": "pass",
+    "applicable": 12,
+    "failed": 0
+   },
+   {
+    "id": "R06",
+    "status": "fail",
+    "applicable": 6,
+    "failed": 1
+   },
+   {
+    "id": "R07",
+    "status": "pass",
+    "applicable": 63,
+    "failed": 0
+   },
+   {
+    "id": "R08",
+    "status": "pass",
+    "applicable": 1,
+    "failed": 0
+   }
+  ],
+  "elements": 282
+ },
+ "findings": [
+  {
+   "id": "R02:EG-AW-N1",
+   "rule": "R02",
+   "severity": "ERROR",
+   "title": "R02: Aussenwände haben einen U-Wert ≤ 0.17 W/m²K.",
+   "text": "EG-AW-N1: Property \"Pset_WallCommon.ThermalTransmittance\" value 0.24 is out of range <= 0.17",
+   "elements": [
+    "EG-AW-N1"
+   ],
+   "guids": [
+    "0iZW7GkQ5TZemk$51QHM7i"
+   ],
+   "discipline": "IDS",
+   "source": "SIA 380/1:2016 Grenzwert Einzelbauteil (Projektwert, Energieplanung bestätigt)",
+   "who": "Architektur liefert, Energieplanung prüft",
+   "evidence": "Property \"Pset_WallCommon.ThermalTransmittance\" value 0.24 is out of range <= 0.17"
+  },
+  {
+   "id": "R06:OG1-A-WT",
+   "rule": "R06",
+   "severity": "ERROR",
+   "title": "R06: Türen vom Treppenhaus in die Wohnungen sind EI 30 und selbstschliessend.",
+   "text": "OG1-A-WT: Property \"Pset_DoorCommon.FireRating\" is \"EI 15\", expected \"EI 30\"",
+   "elements": [
+    "OG1-A-WT"
+   ],
+   "guids": [
+    "0OJmfz2R1GjQOnfX1gc5PO"
+   ],
+   "discipline": "IDS",
+   "source": "VKF 15-15 (Projektannahme)",
+   "who": "Architektur liefert, Brandschutz prüft",
+   "evidence": "Property \"Pset_DoorCommon.FireRating\" is \"EI 15\", expected \"EI 30\""
+  },
+  {
+   "id": "Z3:EG-AW-N1",
+   "rule": "Z3",
+   "severity": "ERROR",
+   "title": "Grenzabstand Fassade Nord zu klein",
+   "text": "Fassade Nord, Länge 21 m: Abstand zur Parzellengrenze 6.12 m, verlangt 8 m (5 m + Mehrlängenzuschlag ⅓ über 12 m, max. 10 m; gemessen zur Grenze vor der Fassade, 45°-Sektor – Näherung, Planer prüft).",
+   "elements": [
+    "EG-AW-N1",
+    "EG-AW-N2",
+    "EG-AW-N3"
+   ],
+   "guids": [
+    "0iZW7GkQ5TZemk$51QHM7i",
+    "1XVTzMMfXG5uQOaCi5ciOS",
+    "1qX5kdeNzM$wnwswSmynIy"
+   ],
+   "discipline": "Zonenordnung",
+   "source": "Bauordnung der Stadt Zürich (BZO 2016) Art. 13 Abs. 1, Fassung V45 Stand 15.04.2026, https://oerebdocs.zh.ch/getDoc?docid=6; BZO 2016 Art. 14 Abs. 1",
+   "evidence": {
+    "facade": "Nord",
+    "length": 21,
+    "required": 8,
+    "actual": 6.12
+   }
+  },
+  {
+   "id": "P2:OG2-A-Z1",
+   "rule": "P2",
+   "severity": "ERROR",
+   "title": "Belichtung OG2-A-Z1 ungenügend",
+   "text": "Fensterfläche 0 m² für 11.56 m² Bodenfläche = 0 %, verlangt 10 %. (Fenster werden über das Feld \"space\" dem Raum zugeordnet.)",
+   "elements": [
+    "OG2-A-Z1"
+   ],
+   "guids": [
+    "3pl0smYV1RLwLp1hxuPila"
+   ],
+   "discipline": "Architektur",
+   "source": "Projektanforderung (Belichtung ≥ 1/10 der Bodenfläche)"
+  }
+ ]
+}

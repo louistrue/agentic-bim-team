@@ -1,0 +1,54 @@
+{
+  "discipline": "Energie/Fassade",
+  "summary": "Die Kubatur ist mit einem Riegel von 21 × 12 m und drei Geschossen kompakt. Die geschätzte Gebäudehüllzahl liegt bei ca. 1.4, und die U-Werte der Schichtaufbauten sind plausibel. Offene Punkte sind der sommerliche Wärmeschutz der Südfassade (40 % Fensteranteil, kein Sonnenschutz im Modell) sowie die Wärmebrücken am Sockel und am Betonkern. Ein ERROR ist nicht nötig.",
+  "findings": [
+    {
+      "severity": "WARNING",
+      "title": "Sommerlicher Wärmeschutz Süd/West: kein Sonnenschutz modelliert",
+      "text": "Die Südfassade hat 73.6 m² Öffnungen (40 % der Wandfläche), die Westfassade 27.6 m² (28 %). Die Fenster haben g = 0.5. Im Modell gibt es weder Vordächer, Balkone, Lamellen noch Storen. Die Konstruktion ist leicht (Holzrahmen, Brettsperrholz-Decken), die speicherwirksame Masse ist klein. Das Flachdach hat keinen Dachvorsprung. Wir empfehlen, in der Vorprojektphase aussenliegenden, beweglichen Sonnenschutz (Raffstoren oder Lamellen) auf Süd und West festzulegen. Die Wohnungen A und B sollen Querlüftung oder Nachtlüftung ermöglichen. Der Nachweis des sommerlichen Wärmeschutzes ist rechnerisch zu führen. Der Sonnenschutz soll im Modell und im Fassadenschnitt sichtbar werden.",
+      "elements": ["EG-A-F6", "EG-A-F7", "EG-A-F9", "EG-B-F5", "EG-B-F6", "OG2-A-F6", "OG2-A-F7", "OG2-A-F9", "OG2-B-F5", "OG2-B-F6", "OG2-A-F2", "OG2-A-F5", "OG2-A-F8"],
+      "basis": "fachliche Einschätzung (Nachweis sommerlicher Wärmeschutz nach SIA 180 durch Energieplaner)",
+      "verify": "Anteile aus checks_v1.json (windowWallRatio) übernehmen. Sommerlicher Nachweis nach SIA 180 mit Verschattungs- und Lüftungsannahmen rechnen. Die Wohnungen im OG2 sind wegen des Flachdachs am kritischsten."
+    },
+    {
+      "severity": "WARNING",
+      "title": "Sockel- und Plattenrand: Wärmebrücke Holzwand auf Stahlbetonplatte",
+      "text": "Die Bodenplatte EG-BP ist nur unterseitig mit XPS 160 mm gedämmt. Die Holzrahmenwände stehen auf der Betonplatte, die 0.41 m über dem Terrain liegt. Eine Randdämmung am Plattenrand ist nicht beschrieben. Das ergibt eine lineare Wärmebrücke (Sockel). Der angegebene U-Wert 0.20 liegt bei XPS 160 mm im Bereich der Plausibilität, nämlich ca. 0.21 mit Beton von 0.30 m und λ ≈ 0.036, hat also keine Reserve. Wir empfehlen, den Sockelaufbau zu definieren: Perimeterdämmung am Plattenrand bis unter die Schwelle sowie Spritzwasserschutz an der Holzschalung. Der Wandfuss soll mit dichter Abdichtung und thermisch getrennt aufgelagert werden. Der Plattenrand ist ins Detail zu übernehmen.",
+      "elements": ["EG-BP", "EG-AW-S1", "EG-AW-W"],
+      "basis": "fachliche Einschätzung",
+      "verify": "Sockeldetail im Schnitt 1:20 verlangen. Ψ-Wert des Sockels berechnen (Wärmebrückenkatalog oder 2D-Berechnung). U-Wert der Bodenplatte mit den Materialwerten des Produkts nachrechnen."
+    },
+    {
+      "severity": "WARNING",
+      "title": "Kernfassade Nord: U = 0.16 hat fast keine Reserve zum Grenzwert 0.17",
+      "text": "Die Wand EG-AW-N2 besteht aus Stahlbeton 0.18 m und Mineralwolle 0.18 m (λ 0.031). Das ergibt rechnerisch ca. 0.16 W/m²K ohne Befestigungen. Hinterlüftete Fassaden haben zusätzliche punktuelle Wärmebrücken durch Konsolen und Halter, die den U-Wert erhöhen. Der Grenzwert 0.17 (R02) wird damit voraussichtlich überschritten. Wir empfehlen, die Dämmstärke auf 0.20–0.22 m zu erhöhen oder thermisch getrennte Halter zu wählen. Der Anschluss der Betonwand an die Holzrahmenwände N1 und N3 (Wechsel des Materials in der Fassadenebene) ist zu detaillieren.",
+      "elements": ["EG-AW-N2", "OG1-AW-N2", "OG2-AW-N2"],
+      "basis": "Projektannahme (R02: Aussenwände U ≤ 0.17 W/m²K)",
+      "verify": "U-Wert mit Befestigungszuschlag nach SIA 380/1 oder Herstellerangaben rechnen. Dämmstärke und Konsolensystem im Fassadenschnitt prüfen."
+    },
+    {
+      "severity": "INFO",
+      "title": "U-Wert Holzrahmenwand 0.15 ist plausibel, aber ohne grosse Reserve",
+      "text": "Aufbau: Holzrahmen/Mineralwolle 220 mm, Installationsebene gedämmt 40 mm, Holzfaserdämmplatte 60 mm. Bei einem Holzanteil von ca. 10–15 % ergibt eine überschlägige Rechnung ca. 0.13–0.15 W/m²K. Das passt zum Modellwert 0.15 und liegt unter dem Grenzwert 0.17. Die Rechnung soll mit realen Produktwerten und dem Holzanteil (Fenster-Laibungen, Stürze, Ständer) bestätigt werden. Die Wandstärke 0.40 m ist konsistent mit der Summe der Schichten. Das Fenster U = 0.8 (Gesamtfenster) ist ambitioniert und setzt Dreifachverglasung mit warmem Rand und gedämmtem Rahmen voraus.",
+      "elements": ["EG-AW-N1", "EG-AW-S1", "EG-AW-W", "EG-AW-E"],
+      "basis": "fachliche Einschätzung",
+      "verify": "U-Wert mit Rechenprogramm (z. B. nach SIA 380/1 oder EN ISO 6946) aus den Schichten inkl. Holzanteil nachrechnen. Fenster-Uw aus Herstellerdatenblatt oder Zertifikat entnehmen."
+    },
+    {
+      "severity": "INFO",
+      "title": "Kompaktheit und Fensterverteilung: positiv",
+      "text": "Die Hüllfläche liegt grob bei 1090 m² (Wände ca. 585 m², Dach und Boden je 252 m²) gegenüber 756 m² Geschossfläche. Daraus ergibt sich Ae/AE von ca. 1.4. Das ist für Minergie günstig. Die Fenstergrösse der Nordfassade (22 %) ist moderat, die Süd-Orientierung bringt passive Gewinne im Winter. Wir empfehlen, den Fensteranteil Süd nicht weiter zu erhöhen, weil sonst der Sommerkomfort leidet. Flachdach U = 0.12 (CLT 200 mm und Dämmung 240 mm) ist plausibel.",
+      "elements": ["OG2-DA", "EG-AW-S1", "EG-AW-N1"],
+      "basis": "fachliche Einschätzung",
+      "verify": "Hüllfläche aus dem IFC aufsummieren (Wände, Dach, Bodenplatte) und durch die EBF teilen. Energiebezugsfläche im Energienachweis festlegen."
+    }
+  ],
+  "notCheckable": [
+    "Energienachweis nach SIA 380/1 bzw. Minergie (Heizwärmebedarf, Gebäudekategorie, Zertifizierungsnachweis)",
+    "Sommerlicher Wärmeschutz als Berechnung nach SIA 180 (interne Lasten, Verschattung, Speichermasse)",
+    "Wärmebrücken (Ψ-Werte) von Fensteranschlüssen, Dach-Wand-Anschluss, Sockel und Kernanschlüssen: braucht Detailpläne und 2D-Berechnung",
+    "Luftdichtheit der Gebäudehülle und Details der Luftdichtung (OSB-Ebene)",
+    "Heiz- und Lüftungskonzept sowie PV-Pflicht (Haustechnikplanung)",
+    "Tatsächliche Verschattung durch Nachbarbauten und Bäume (nicht im Modell)"
+  ]
+}

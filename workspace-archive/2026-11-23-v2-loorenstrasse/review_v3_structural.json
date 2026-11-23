@@ -1,0 +1,105 @@
+{
+ "discipline": "Tragwerk",
+ "summary": "Die neue BSP-Zwischenlinie (A-IW5/6/7/9/10, B-IW8/7/6) verkürzt die HBV-Deckenfelder auf 3.1–4.75 m und löst das Spannweitenproblem der Südzone weitgehend. Offen bleibt die Lücke der Linie in Wohnung B (Küchenöffnung x 4.7–6.8), wo weiterhin ca. 7.85 m überspannt werden und der Unterzug nur als Text existiert. Die neuen 0.10 m dicken BSP-Wände tragen die Lasten dreier Geschosse und brauchen einen Querdruck- und Brandnachweis; Aussteifung, Bodenplatte, Südsturz und Setzungen bleiben Nachweisthemen für das Vorprojekt.",
+ "findings": [
+  {
+   "severity": "WARNING",
+   "title": "Küche B: Zwischenlinie unterbrochen, Unterzug nicht im Modell",
+   "text": "Die Zwischenlinie in Wohnung B endet bei x = 4.6 (EG-B-IW7); EG-B-IW6 steht bei x = 4.65 nur zwischen y = -0.05 und 3.05. Über der Küchenöffnung x 4.7–6.8 fehlt ein Auflager, das Deckenfeld misst dort wieder ca. 7.85 m (Südwand y = -4.8 bis B-IW1 y = 3.05). Der Unterzug BSH (ca. 2.0 m) ist laut Notiz nicht abgebildet; seine Höhe und die Auflagerung auf B-IW6 und Ostwand sind offen. Bitte Unterzug im Modell als Bauteil oder Stütze/Wandstück ergänzen, oder die Öffnung verkleinern; Deckenhöhe und Auflagerkraft in B-IW6 mit prüfen. Gilt für alle Geschosse. Übrige Felder (3.1–4.75 m, ohne Einlagen im Überbeton) sind entschärft; Vorbemessung Durchbiegung/Schwingung bleibt Nachweisthema.",
+   "elements": [
+    "OG1-DE",
+    "OG2-DE",
+    "EG-B-IW7",
+    "EG-B-IW6",
+    "OG1-B-IW7",
+    "OG2-B-IW7"
+   ],
+   "basis": "fachliche Einschätzung",
+   "verify": "Spannweite im Bereich x 4.7–6.8 aus design_v3.json messen; Unterzugs- und Deckenvorbemessung (Durchbiegung, Schwingung) durch Holzbauingenieur.",
+   "issueId": "STRUCTURAL-spannweite-su-dzone-ca-7-85-m-bei-0-32-m:OG1-DE"
+  },
+  {
+   "severity": "WARNING",
+   "title": "Zwischenwände BSP 80 mm: Querdruck und Abbrand über drei Geschosse",
+   "text": "Die neuen Zwischenlinienwände sind nur 0.10 m dick (BSP 80 mm plus Gipsfaser) und tragen beidseitig Deckenfelder von je ca. 3–4.7 m aus drei Geschossen, im EG also Linienlasten aus OG1, OG2 und Dach auf 80 mm Brettsperrholz. Querdruck am Deckenauflager (Auflagerfläche, Wandstösse, Schwelle) sowie REI 60 mit so dünnem Querschnitt sind fraglich. Bitte Wanddicke oder Lagenaufbau im EG erhöhen bzw. Nachweis führen; Schlitze und Türöffnungen in IW6/IW9 berücksichtigen.",
+   "elements": [
+    "EG-A-IW5",
+    "EG-A-IW6",
+    "EG-A-IW7",
+    "EG-A-IW9",
+    "EG-A-IW10",
+    "EG-B-IW8"
+   ],
+   "basis": "fachliche Einschätzung",
+   "verify": "Linienlast aus Deckenaufbau und Einzugsbreite ermitteln, Querdruck und Abbrand REI 60 nach SIA 265 / Lignum-Tabellen durch Holzbauingenieur."
+  },
+  {
+   "issueId": "STRUCTURAL-aussteifung-quer-zum-geba-ude-kern-exzen:EG-TK-S",
+   "severity": "WARNING",
+   "title": "Aussteifung: Steifigkeits- und Massenmittelpunkt nicht gerechnet",
+   "text": "Richtigstellung der Architektur gilt: Kernwände TK-W/TK-E (7.75 m, Stahlbeton) steifen Nord–Süd aus; N2 und TK-S laufen in x. Schwach ist Ost–West, weil der Kern in y nördlich liegt, und die Aussteifung dort hängt an den Holzscheiben S1/S2/N1/N3, den BSP-Wänden und der Zwischenlinie. Die Holzscheiben sind nur im Materialnamen belegt und haben Fenster (S1, W, E). Bitte Torsion (Kern exzentrisch in y) und Abhebesicherung der Scheiben nachweisen; ggf. Scheiben W/E/S als BSP mit Zugankern ausbilden.",
+   "elements": [
+    "EG-TK-W",
+    "EG-TK-E",
+    "EG-TK-S",
+    "EG-AW-N2",
+    "EG-AW-S1",
+    "EG-AW-W",
+    "EG-AW-E",
+    "EG-WT-1"
+   ],
+   "basis": "fachliche Einschätzung",
+   "verify": "Steifigkeitsmittelpunkt und Massenmittelpunkt aus design_v3.json rechnen; Horizontallastnachweis nach SIA 261 (Wind, Erdbeben) durch Tragwerksplaner."
+  },
+  {
+   "issueId": "STRUCTURAL-bodenplatte-0-30-m-ohne-ug-baugrund-und-:EG-BP",
+   "severity": "INFO",
+   "title": "Bodenplatte: Baugrund, XPS-Druck, Verstärkung unter neuen Linien",
+   "text": "EG-BP (0.30 m, XPS 200 mm) ist unverändert, ein geotechnischer Bericht fehlt. Unter Kern, WT-1, A-IW1/B-IW1 und neu unter der BSP-Zwischenlinie entstehen konzentrierte Linienlasten; die Notiz sieht Verstärkungen vor, sie sind nicht modelliert. XPS-Druckspannung inkl. Kriechen, Setzungen, Frost und Grundwasser nachweisen.",
+   "elements": [
+    "EG-BP",
+    "EG-WT-1",
+    "EG-A-IW1",
+    "EG-B-IW1",
+    "EG-A-IW7"
+   ],
+   "basis": "fachliche Einschätzung",
+   "verify": "Geotechnischen Bericht einholen; Plattenbemessung mit Linienlasten und XPS-Nachweis."
+  },
+  {
+   "issueId": "STRUCTURAL-grosse-su-dfenster-in-tragender-holzrahm:EG-AW-S1",
+   "severity": "INFO",
+   "title": "Südfenster: Sturz 0.39 m und Pfeiler nachweisen",
+   "text": "Geometrie unverändert (Sturz 0.39 m, Pfeiler 1.2/0.9 m). Das Deckenfeld auf S1 sinkt auf 3.7–4.75 m, die Auflagerlast ist damit kleiner; Sturzbemessung und Pfostenpressung bleiben im Vorprojekt nachzuweisen, inkl. Raffstorenkasten im Sturz.",
+   "elements": [
+    "EG-AW-S1",
+    "EG-A-F6",
+    "EG-A-F7",
+    "EG-A-F8",
+    "EG-AW-W"
+   ],
+   "basis": "fachliche Einschätzung",
+   "verify": "Sturz- und Pfostenbemessung mit Auflagerkräften der HBV-Decke."
+  },
+  {
+   "issueId": "STRUCTURAL-mischbau-beton-holz-schwinden-und-setzun:OG1-TK-W",
+   "severity": "INFO",
+   "title": "Mischbau Beton/Holz: Setzungsdifferenzen offen",
+   "text": "Keine Modelländerung; Konsolen mit Elastomer und Überhöhung sind nicht modelliert. Kürzere Spannweiten senken die Auflagerkräfte je Wand, die BSP-Zwischenlinie fügt aber neue setzungsempfindliche Querdruckstellen hinzu. Setzung und Schwinden über drei Geschosse abschätzen und Details (Treppe, Türschwellen, Steigzonen) abstimmen.",
+   "elements": [
+    "OG1-TK-W",
+    "OG1-TK-E",
+    "OG1-DE",
+    "OG1-AW-W"
+   ],
+   "basis": "fachliche Einschätzung",
+   "verify": "Setzungsberechnung durch Holzbauingenieur."
+  }
+ ],
+ "resolved": [],
+ "notCheckable": [
+  "Schwingungsnachweis und Verbundmittel der HBV-Decke",
+  "Baugrund, Grundwasser, Frosttiefe",
+  "Erdbebennachweis (Baugrundklasse, Bauwerksklasse) nach SIA 261"
+ ]
+}

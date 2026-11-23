@@ -1,0 +1,126 @@
+{
+ "version": 2,
+ "ran": [
+  "IDS workspace/requirements.ids (ifc-lite ids)",
+  "Georeferenz (ifc-lite georef check)",
+  "Zonenordnung W3 (Geschosse, Höhe, Grenzabstand inkl. Mehrlängenzuschlag, Ausnützung)",
+  "Raumprogramm (Wohnungen, Raumgrössen, lichte Höhe, Belichtung)",
+  "Brandschutz (Treppe, Fluchtweg, Wohnungstüren)",
+  "Gebäudehülle (Dach, Bodenplatte, Fensteranteil)"
+ ],
+ "counts": {
+  "ERROR": 0,
+  "WARNING": 0,
+  "INFO": 0
+ },
+ "metrics": {
+  "version": 2,
+  "grossFloorArea": 756,
+  "floorAreaRatioThisBuilding": 0.07,
+  "parcelArea": 11156,
+  "units": 6,
+  "fullStoreys": 3,
+  "buildingHeight": 9.26,
+  "floorAboveTerrain": 0.41,
+  "facades": [
+   {
+    "facade": "Nord",
+    "length": 21,
+    "required": 8,
+    "actual": 10.47
+   },
+   {
+    "facade": "Süd",
+    "length": 21,
+    "required": 8,
+    "actual": 21.2
+   },
+   {
+    "facade": "West",
+    "length": 11.2,
+    "required": 5,
+    "actual": 36.74
+   },
+   {
+    "facade": "Ost",
+    "length": 11.2,
+    "required": 5,
+    "actual": 9.29
+   }
+  ],
+  "windowWallRatio": {
+   "Nord": {
+    "wallArea": 185.85,
+    "openingArea": 40.32,
+    "ratio": 0.22
+   },
+   "Süd": {
+    "wallArea": 185.85,
+    "openingArea": 58.04,
+    "ratio": 0.31
+   },
+   "West": {
+    "wallArea": 99.12,
+    "openingArea": 25.4,
+    "ratio": 0.26
+   },
+   "Ost": {
+    "wallArea": 99.12,
+    "openingArea": 21.44,
+    "ratio": 0.22
+   }
+  },
+  "ids": [
+   {
+    "id": "R01",
+    "status": "pass",
+    "applicable": 100,
+    "failed": 0
+   },
+   {
+    "id": "R02",
+    "status": "pass",
+    "applicable": 21,
+    "failed": 0
+   },
+   {
+    "id": "R03",
+    "status": "pass",
+    "applicable": 51,
+    "failed": 0
+   },
+   {
+    "id": "R04",
+    "status": "pass",
+    "applicable": 39,
+    "failed": 0
+   },
+   {
+    "id": "R05",
+    "status": "pass",
+    "applicable": 12,
+    "failed": 0
+   },
+   {
+    "id": "R06",
+    "status": "pass",
+    "applicable": 6,
+    "failed": 0
+   },
+   {
+    "id": "R07",
+    "status": "pass",
+    "applicable": 58,
+    "failed": 0
+   },
+   {
+    "id": "R08",
+    "status": "pass",
+    "applicable": 1,
+    "failed": 0
+   }
+  ],
+  "elements": 262
+ },
+ "findings": []
+}

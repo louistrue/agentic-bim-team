@@ -1,0 +1,76 @@
+{
+ "discipline": "Brandschutz",
+ "summary": "Das Brandschutzkonzept ist im Vorprojekt grundsätzlich schlüssig: Treppenhauskern in Stahlbeton REI 90, Wohnungstrennwände und Decken REI 60, Wohnungstüren EI 30 selbstschliessend. Offen sind Rauchabzug im Treppenhaus sowie Brandüberschlag und Hinterlüftung der Holzfassade. Nachbarabstände und Feuerwehrzugang beruhen auf Annahmen und müssen im Brandschutzkonzept bestätigt werden.",
+ "findings": [
+  {
+   "severity": "WARNING",
+   "title": "Rauchabzug im Treppenhaus nicht nachgewiesen",
+   "text": "Das Treppenhaus (Stahlbetonkern, Fluchtweg für 6 Wohnungen auf 3 Geschossen) hat oben nur ein Fenster (OG2-TH-F1, Brüstung 1.0 m) und keine Öffnung im Dach OG2-DA. Ein Rauchabzug am höchsten Punkt (Dachlukenöffnung oder Fenster oben, von EG und Geschoss aus bedienbar) ist nicht modelliert. Vorschlag: Rauchabzugsöffnung in OG2-DA über dem Treppenlauf vorsehen und im Modell abbilden; Mass nach VKF-Brandschutzrichtlinie Fluchtwege prüfen.",
+   "elements": [
+    "OG2-DA",
+    "OG2-TH-F1",
+    "EG-TR"
+   ],
+   "basis": "fachliche Einschätzung (VKF Brandschutzrichtlinie Fluchtwege und Rettungswege)",
+   "verify": "Im Grundriss/Schnitt prüfen, ob eine Rauchabzugsvorrichtung mit Ansteuerung am Zugangsgeschoss und freiem Querschnitt vorgesehen ist."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Brandüberschlag über übereinanderliegende Fenster (Holzfassade)",
+   "text": "Fenstertüren mit Brüstung 0.1 m (z.B. EG-A-F6 mit Sturz 2.3 m, OG1-A-F6 Brüstung 3.05 m) liegen auf der Südfassade direkt übereinander; die freie Fassadenhöhe zwischen den Öffnungen beträgt rund 0.75 m ohne Vordach oder Balkon. Mit brennbarer Holzschalung ist der vertikale Brandüberschlag zu beurteilen. Vorschlag: Brandschutzkonzept festlegen (Brüstungs-/Sturzband mit nichtbrennbarer Bekleidung, Auskragung oder Gebäudeklasse-gerechte Lösung) und im Modell als Schichtaufbau abbilden.",
+   "elements": [
+    "EG-A-F6",
+    "OG1-A-F6",
+    "EG-AW-S1",
+    "OG1-AW-S1"
+   ],
+   "basis": "fachliche Einschätzung (VKF Brandschutznorm / Richtlinie Brandschutzabstände, Tragwerke)",
+   "verify": "Fassadenschnitt Süd durch Fenster EG/OG1/OG2 mit Massen prüfen und gegen die Anforderung des Brandschutzkonzepts abgleichen."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Hinterlüftete Holzfassade: Brandsperren fehlen",
+   "text": "Die Aussenwände haben eine 30 mm Hinterlüftung mit Holzschalung (brennbar). Brandsperren/Abschottungen der Hinterlüftungsebene auf Geschossniveau und an Fensterleibungen sind weder im Schichtaufbau noch als Element erfasst. Vorschlag: horizontale Brandsperren (z.B. Metallprofil) je Geschossdecke und Leibungsverkleidung im Detail festlegen.",
+   "elements": [
+    "EG-AW-S1",
+    "OG1-AW-S1",
+    "OG2-AW-S1",
+    "OG1-AW-N1"
+   ],
+   "basis": "fachliche Einschätzung",
+   "verify": "Fassadendetail 1:5 an der Geschossdecke prüfen: Hinterlüftungsspalt unterbrochen oder abgeschottet?"
+  },
+  {
+   "severity": "INFO",
+   "title": "Schutzabstand der Holzfassade zu Nachbarbauten",
+   "text": "Der Nachbarabstand beruht auf einer Projektannahme (5 m). Bei brennbarer Aussenwandbekleidung hängen die erforderlichen Gebäudeabstände und die Zulässigkeit von Öffnungen von Gebäudehöhe und Bekleidungsklasse ab. Vorschlag: reale Nachbargebäude und -abstände erheben und gegen die VKF-Richtlinie Brandschutzabstände prüfen, besonders Westfassade mit grösster Fensterfläche.",
+   "elements": [
+    "EG-AW-W",
+    "OG2-AW-W",
+    "EG-AW-E"
+   ],
+   "basis": "Projektannahme",
+   "verify": "Katasterplan mit Nachbargebäuden und Gebäudeabständen ansehen; Bekleidungsklasse und Abstand laut Richtlinie vergleichen."
+  },
+  {
+   "severity": "INFO",
+   "title": "Rettung über ein einziges Treppenhaus und Anleiterbarkeit",
+   "text": "Alle Wohnungen sind nur über das eine Treppenhaus erschlossen. Als zweiter Rettungsweg gilt die Anleiterung der Feuerwehr; im OG2 (Boden +5.9 m) muss je Wohnung ein Fenster zugänglich und für Rettungsgeräte geeignet sein. Der Hauseingang liegt im Norden; Zufahrt und Aufstellflächen sind im Modell nicht erfasst. Vorschlag: Aufstellfläche festlegen und je Wohnung ein anleiterbares Fenster (z.B. OG2-A-F1, OG2-B-F2) bezeichnen.",
+   "elements": [
+    "OG2-A-F1",
+    "OG2-B-F2",
+    "EG-HE"
+   ],
+   "basis": "fachliche Einschätzung",
+   "verify": "Umgebungsplan mit Feuerwehrzufahrt und Aufstellflächen vor den Nordfenstern prüfen; Feuerwehr/Brandschutzbehörde konsultieren."
+  }
+ ],
+ "notCheckable": [
+  "Brandschutznachweis und Qualitätssicherungsstufe durch Brandschutzfachperson",
+  "Abschottungen von Leitungs- und Lüftungsdurchführungen (nicht im Modell)",
+  "Brandverhalten Dämmstoffe und Fassadenbekleidung (Produktdaten)",
+  "Fluchtweglängen im Detail, Notbeleuchtung, Rauchmelder",
+  "Feuerwehrzufahrt, Aufstellflächen, Löschwasserversorgung",
+  "Nachbarbebauung und tatsächliche Gebäudeabstände"
+ ]
+}

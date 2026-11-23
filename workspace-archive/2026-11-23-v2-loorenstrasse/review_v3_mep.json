@@ -1,0 +1,45 @@
+{
+ "discipline": "Haustechnik",
+ "summary": "Die Küchen von Wohnung A liegen jetzt in allen Geschossen deckungsgleich bei x −7.0…−4.675 und haben mit A-SZ2 einen eigenen Strang. Der Essplatz über dem Technikraum, die grösseren Steigzonen und die Revisionsöffnungen lösen drei frühere Punkte. Offen bleiben die Aufstellplanung des Technikraums, die Abschottung der Deckendurchbrüche und die Lüftungsverteilung in den nicht modellierten Abhangdecken.",
+ "findings": [
+  {
+   "issueId": "MEP-platz-fu-r-komfortlu-ftung-minergie-nich:EG-A-RE",
+   "severity": "INFO",
+   "title": "Lüftungsverteilung in Abhangdecken: Weg und Reserve nachweisen",
+   "text": "Die Kanäle liegen nicht mehr im Überbeton, das ist gelöst. Die Abhangdecken (0.15 m, lichte Höhe 2.44 m) sind nicht modelliert und bieten wenig Reserve für Flachkanal samt Dämmung und Schalldämpfer. Die Geräte stehen in EG-A-RE (x −10.15…−8.25), A-SZ liegt bei x −5.35, der Weg beträgt rund 4 bis 5 m. Wohn- und Schlafräume behalten 2.59 m ohne Abhangdecke. Zuluft und Abluft dorthin müssen über Wanddurchführungen oder Überströmung gelöst werden. Kanalrouten je Geschoss im Grundriss einzeichnen, Kreuzungen mit den BSP-Wänden der Zwischenlinie (REI 60) vermeiden oder mit Schott lösen und die Aussenluft getrennt von der Fortluft führen.",
+   "elements": ["EG-A-RE", "OG1-DE", "OG2-DA", "OG2-A-SZ"],
+   "basis": "Projektannahme (Minergie gemäss Brief)",
+   "verify": "Lüftungsplaner zeichnet Kanalnetz mit Querschnitten in Grundriss und Schnitt. Lichte Höhe unter den Kanälen nachmessen."
+  },
+  {
+   "issueId": "MEP-technikraum-verteilwege-und-schall:EG-TE",
+   "severity": "INFO",
+   "title": "Technikraum: Aufstellplan, Verteilwege und Schall",
+   "text": "Der Weg zu Wohnung A über EG-TE-IW1 in A-SZ2 ist kurz. Zu B-SZ führt er rund 7 m in Leerrohren unter WT-1 durch. Der Aufstellplan fehlt weiterhin: Speicher, Hausanschlüsse, Verteiler, Zähler und Revisionsflächen auf 10 m². Die Annahme mit Aussengerät an der Südfassade vor EG-TE ist nicht modelliert. Schall von Speicher, Pumpen und Aussengerät ist für A-KU und den Essplatz darüber nachzuweisen. Aufstellplan und Schallschutzkonzept durch den HLKS-Planer erstellen.",
+   "elements": ["EG-TE", "EG-TE-IW1", "EG-TE-T1"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Aufstellplan mit Gerätemassen auf EG-TE legen. Leerrohrtrasse EG-TE bis B-SZ im Plan prüfen. Schallprognose für Aussengerät einholen."
+  },
+  {
+   "issueId": "MEP-leitungsdurchfu-hrungen-durch-brandabsch:EG-WT-1",
+   "severity": "INFO",
+   "title": "Abschottung der Deckendurchbrüche festlegen",
+   "text": "Das Konzept ist im Materialtext der Decken beschrieben: Schott EI 60 je Geschossdecke in allen Steigzonen, keine Leitungen durch WT-1 oder die Kernwände. Dazu sind es jetzt drei Zonen pro Geschoss (A-SZ, A-SZ2, B-SZ) plus die Leerrohre unter WT-1. Die konkreten Abschottungssysteme sind noch nicht festgelegt. Die Revisionsöffnungen sind EI 30, die Schachtwände EI 60, das ist abzugleichen. Die Brandschutzfachperson legt Systeme und Revisionsklassen fest.",
+   "elements": ["EG-WT-1", "OG1-DE", "OG2-DE", "OG2-DA", "EG-A-SW1", "EG-B-SW1", "EG-A-RV1"],
+   "basis": "fachliche Einschätzung (VKF-Brandschutzvorschriften; Anforderungen durch die Brandschutzfachperson festzulegen)",
+   "verify": "Durchdringungen in den Grundrissen markieren. Brandschutzfachperson bestätigt Systeme und Klasse der Revisionsöffnungen (EI 30 gegen EI 60 der Schachtwand)."
+  }
+ ],
+ "resolved": [
+  {"issueId": "MEP-nasszellen-und-ku-che-je-wohnung-verteil:EG-A-KU", "reason": "EG-A-KU, OG1-A-KU und OG2-A-KU liegen deckungsgleich bei x −7.0…−4.675. Der Küchenstrang läuft in der neuen Steigzone EG-A-SZ2 / OG1-A-SZ2 / OG2-A-SZ2 direkt an der Küche. Bad und Dusche hängen an A-SZ."},
+  {"issueId": "MEP-ku-che-og1-u-ber-technikraum:EG-TE", "reason": "Über EG-TE liegt in OG1 und OG2 jetzt der trockene Essplatz OG1-A-ES / OG2-A-ES. OG1-A-KU und OG2-A-KU liegen nicht mehr über dem Technikraum."},
+  {"issueId": "MEP-steigzonenquerschnitt-knapp-fu-r-alle-me:EG-A-SZ", "reason": "A-SZ auf 0.93 × 0.65 m und B-SZ auf 0.75 × 0.75 m vergrössert. Die Küchenmedien laufen in A-SZ2. Revisionsöffnungen EG-A-RV1, EG-A-RV2 und EG-B-RV1 sind vorhanden. Die Querschnittsrechnung bleibt Aufgabe des Fachplaners im nächsten Schritt."}
+ ],
+ "notCheckable": [
+  "Rohr- und Kanaldimensionen, Dämmstärken und freie Querschnitte in A-SZ, A-SZ2 und B-SZ (Strangschema fehlt)",
+  "Auslegung Wärmepumpe, Speichergrösse, Erdsonde oder Aussengerät sowie Schallimmission an der Südfassade",
+  "Lage und Abstände von Aussenluft und Fortluft an der Fassade bzw. über Dach",
+  "Zulässigkeit der Durchbrüche in den BSP-Wänden und Decken (Tragwerksplaner)",
+  "Abschottungssysteme und Brandschutzklassen der Revisionsöffnungen (Brandschutzfachperson)"
+ ]
+}

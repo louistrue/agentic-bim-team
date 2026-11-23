@@ -1,0 +1,61 @@
+{
+ "discipline": "Tragwerk",
+ "summary": "Die Lastabtragung ist im Grundsatz sauber: Alle tragenden Wände stehen in EG, OG1 und OG2 deckungsgleich übereinander, und der Stahlbeton-Treppenkern liegt in x-Richtung nahe der Gebäudemitte. Kritisch sind die Spannweite der Südzone (ca. 7.85 m Achsmass bei 0.32 m Deckenstärke), die hoch belastete, nur 0.15 m dicke Mittelwand mit Türöffnungen sowie die Aussteifung in Querrichtung (Nord–Süd). Fundation, Baugrund und Erdbeben sind im Modell nicht belegt und müssen in der nächsten Phase geklärt werden.",
+ "findings": [
+  {
+   "severity": "WARNING",
+   "title": "Spannweite Südzone ca. 7.85 m bei 0.32 m Decke",
+   "text": "Die Decken (Brettsperrholz, 0.32 m gesamt) spannen in der Südzone von der tragenden Mittelwand (y = 3.05) bis zur Südfassade (y = -4.8), das sind ca. 7.85 m Achsmass (die Notiz nennt 7.6 m lichte Weite). Bei dieser Spannweite bestimmen Durchbiegung und Schwingung (Wohnnutzung), nicht die Tragfähigkeit. Eine reine BSP-Decke von 0.32 m inkl. Bodenaufbau ist dafür sehr knapp. Bitte entweder BSP-Beton-Verbunddecke mit Aufbaustärke im Modell ausweisen, eine zusätzliche Linienstütze/Unterzug im Wohnbereich vorsehen oder die tragende Mittellinie in Richtung Süden verschieben (z. B. auf die Wand A-IW7/B-IW7 bei y ≈ 0), damit die Spannweiten ausgeglichener werden (aktuell Nord ca. 3.75 m gegenüber Süd ca. 7.85 m).",
+   "elements": ["OG1-DE", "OG2-DE", "OG2-DA", "EG-A-IW1", "EG-B-IW1"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Spannweite aus design_v1.json (Wandachsen y = -4.8 und y = 3.05) nachmessen; Vorbemessung der Decke mit Durchbiegungs- und Schwingungsnachweis durch Tragwerksplaner (Holzbau)."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Tragende Mittelwand 0.15 m mit Türen, hohe Linienlast",
+   "text": "Die Wände A-IW1/B-IW1 (Holzrahmen 0.15 m) sind die Zwischenauflager der Deckenfelder Nord und Süd und tragen über drei Geschosse (inkl. Dach) die Lasten von rund 5.8 m Einflussbreite. Das ergibt eine hohe Linienlast am EG-Wandfuss. Die Druckspannung quer zur Faser in den Schwellen und Deckenauflagern sowie die Türöffnungen (3 in A-IW1, 2 in B-IW1) mit Stürzen sind kritisch. Bitte die Wand dicker oder als BSP-Wandscheibe/Pfosten-Riegel-Konstruktion mit Stützen auslegen, Türstürze und Lasteinleitung ausweisen und die Türlage auf die Pfosten abstimmen.",
+   "elements": ["EG-A-IW1", "EG-B-IW1", "OG1-A-IW1", "OG1-B-IW1", "EG-A-T2", "EG-A-T3"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Lastermittlung (Decke, Dach, Aufbau, Nutzlast, Schnee) für die Wand im EG; Nachweis der Querdruckpressung am Wandfuss und Sturzbemessung."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Aussteifung quer zum Gebäude: Kern exzentrisch und geschwächt",
+   "text": "Der Stahlbeton-Kern (TK-W, TK-E, TK-S, AW-N2) liegt in x-Richtung nahe der Gebäudemitte, aber in y-Richtung deutlich nach Norden verschoben (Kernmitte y ≈ 2.8, Gebäudemitte y ≈ 1.0). Für Wind und Erdbeben in Nord–Süd-Richtung wirken nur die kurzen Kernwände TK-S und AW-N2 (je 2.8 m); AW-N2 ist durch den Hauseingang (1.2 m) und das Treppenhausfenster weiter geschwächt, zudem sind die Kernlängswände durch Wohnungstüren gelocht. Daraus ergeben sich Torsion und eine zu geringe Quersteifigkeit. Bitte die Aussteifung in beiden Richtungen nachweisen und prüfen, ob zusätzliche Scheiben (z. B. Stirnfassaden W/E als Holzrahmen- oder BSP-Scheiben, Wohnungstrennwand) oder ein Eingang ausserhalb der Kernwand nötig sind.",
+   "elements": ["EG-TK-S", "EG-AW-N2", "EG-HE", "EG-TK-W", "EG-TK-E", "EG-A-WT"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Steifigkeitsmittelpunkt des Kerns gegenüber Massenmittelpunkt bestimmen; Horizontallastnachweis (Wind, Erdbeben) beider Richtungen durch Tragwerksplaner."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Grosse Südfenster in tragender Holzrahmenwand: Stürze und Pfeiler",
+   "text": "In der Südwand sitzen Fenster 2.6 m breit und 2.2 m hoch (Brüstung 0.1 m), im Westen eine Öffnung von 2.0 m Breite. Bei 2.95 m Geschosshöhe und 0.32 m Decke bleibt über der Öffnung nur ca. 0.33 m für Sturz und Deckenauflager. Die Südwand trägt die Deckenauflagerkraft der grössten Spannweite (7.85 m) und die Lasten aus drei Geschossen. Die Eckpfeiler (ca. 1.0 m) und Zwischenpfeiler (ca. 1.4 m) sind schmal. Bitte Stürze (z. B. Brettschichtholz/BSP-Sturz) und Pfeilerbreiten nachweisen oder die Öffnungen verkleinern bzw. die Brüstung erhöhen.",
+   "elements": ["EG-AW-S1", "EG-A-F6", "EG-A-F7", "EG-A-F8", "EG-AW-W"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Sturzhöhe aus Geschosshöhe − Fensterhöhe − Sill − Deckenstärke berechnen (design_v1.json) und Sturzbemessung mit Auflagerkräften der Decke durchführen."
+  },
+  {
+   "severity": "INFO",
+   "title": "Mischbau Beton/Holz: Schwinden und Setzung",
+   "text": "Der Stahlbeton-Kern und die Holzrahmenwände mit BSP-Decken verformen sich unterschiedlich: Das Holz setzt sich durch Schwinden und Querdruck pro Geschoss, der Beton nicht. Wo Decken auf Kern und Holzwänden gleichzeitig aufliegen, entstehen Höhendifferenzen, die die Anschlüsse (Decke–Kern, Treppe, Wohnungstüren) beeinflussen. Bitte Schwindmass und Setzungsdifferenz abschätzen und die Anschlussdetails (Gleitlager, Stellschrauben, Fugen) im Vorprojekt festlegen.",
+   "elements": ["OG1-TK-W", "OG1-TK-E", "OG1-DE", "OG1-AW-W"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Setzungsberechnung durch Holzbauingenieur anhand Holzfeuchte und Querdruckanteil."
+  },
+  {
+   "severity": "INFO",
+   "title": "Bodenplatte 0.30 m ohne UG: Baugrund und Frost offen",
+   "text": "Die Bodenplatte EG-BP (Stahlbeton, 0.30 m) liegt als Plattenfundation 0.41 m über Terrain. Die Linienlasten der Mittelwand (EG-A-IW1/B-IW1) und des Kerns sind deutlich höher als die der Fassaden, daher sind verstärkte Plattenränder oder -streifen und ein Setzungsnachweis nötig. Frostsicherheit, Baugrundtragfähigkeit und Grundwasser sind im Modell nicht belegt. Zusätzlich verläuft die Geschossdecke als durchgehende Platte über die Wohnungstrennwand WT-1; für den Schallschutz ist eine Trennfuge der Decke über dieser Wand mit der Akustikplanung abzustimmen.",
+   "elements": ["EG-BP", "EG-WT-1", "EG-A-IW1"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Geotechnischer Bericht (Baugrunduntersuchung) einholen; Bemessung der Bodenplatte inkl. Setzungen; Deckenstoss über WT-1 im Detail klären."
+  }
+ ],
+ "notCheckable": [
+  "Baugrund, Grundwasser, Frosttiefe und Tragfähigkeit (geotechnischer Bericht fehlt)",
+  "Erdbebenzone und Baugrundklasse nach SIA 261 sowie Horizontallastnachweis (Wind und Erdbeben)",
+  "Tatsächlicher BSP-Aufbau, Brettlagen, Verbunddecke und Schwingungsnachweis (Vorbemessung nötig)",
+  "Brandschutznachweis der tragenden Holzbauteile (Abbrand) nach Lignum/VKF",
+  "Anschlussdetails Holz–Beton, Zugverankerung und Abhebesicherung der Aussenwände"
+ ]
+}

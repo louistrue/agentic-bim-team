@@ -1,0 +1,57 @@
+{
+ "discipline": "Energie/Fassade",
+ "summary": "Die Architektur hat die Energiepunkte aus v1 weitgehend aufgenommen: Kernwand N2 mit 0.21 m Dämmung und thermisch getrennten Konsolen, Sockel mit Randdämmung, Fensteranteil Süd 31 % und West 26 %. Offen bleibt der sommerliche Wärmeschutz, weil der Sonnenschutz nur beschrieben und nicht im Modell sichtbar ist. Die übrigen Punkte sind Nachweise und Details für die nächste Phase (U-Wert-Rechnung, Ψ-Werte Sockel und Attika).",
+ "findings": [
+  {
+   "issueId": "FACADE-sommerlicher-wa-rmeschutz-su-d-west-kein:EG-A-F6",
+   "severity": "WARNING",
+   "title": "Sommerlicher Wärmeschutz Süd/West: Sonnenschutz nur beschrieben, nicht im Modell",
+   "text": "Der Fensteranteil ist gesunken (Süd 58.0 m², 31 %, West 25.4 m², 26 %), die HBV-Decken bringen Speichermasse. Die Raffstoren auf Süd, West und Ost sind aber nur in den Notizen vorgesehen. Im IFC gibt es weder Sonnenschutz noch Vordach. Die Fenstertüren im EG (Brüstung 0.1 m, g = 0.5) und die Wohnungen im OG2 unter dem Flachdach sind am kritischsten. Bitte Sonnenschutz als Merkmal an den Fenstern (z. B. Pset-Eintrag Sonnenschutz aussenliegend, Fc-Wert) führen und den Nachweis nach SIA 180 mit Nachtlüftung als Annahme rechnen lassen. Die Raffstorenkästen sind im Fassadenschnitt (Sturzhöhe 0.39 m) einzuplanen.",
+   "elements": ["EG-A-F6", "EG-A-F7", "EG-B-F5", "EG-B-F6", "OG2-A-F6", "OG2-A-F7", "OG2-B-F5", "OG2-B-F6", "OG2-DA"],
+   "basis": "fachliche Einschätzung (Nachweis sommerlicher Wärmeschutz nach SIA 180)",
+   "verify": "Fensterliste mit g-Wert, Fc-Wert und Sonnenschutztyp prüfen. Sommerlichen Nachweis für die kritischsten Räume (OG2, Süd und West) rechnen. Kastenhöhe der Raffstoren im Fassadenschnitt kontrollieren."
+  },
+  {
+   "issueId": "FACADE-sockel-und-plattenrand-wa-rmebru-cke-hol:EG-BP",
+   "severity": "INFO",
+   "title": "Sockel: Randdämmung vorgesehen, Ψ-Wert und Detail noch offen",
+   "text": "Mit XPS 200 mm unter der Platte und 120 mm Randdämmung bis UK Schwelle ist die Anforderung aufgenommen. Die Überschlagsrechnung ergibt ca. 0.16 W/m²K für die Bodenplatte (Beton 0.30 m, λ XPS ≤ 0.034), das passt zum Modellwert 0.17. Offen sind die lineare Wärmebrücke am Wandfuss (Holzrahmenwand auf Betonplatte, Platte 0.41 m über Terrain), die Auflagerung der Schwelle mit Abdichtung und der Spritzwasserschutz an der Holzschalung. Das Sockeldetail ist im Schnitt 1:20 nachzuliefern.",
+   "elements": ["EG-BP", "EG-AW-S1", "EG-AW-W"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Sockeldetail im Schnitt 1:20 verlangen. Ψ-Wert mit Wärmebrückenkatalog oder 2D-Berechnung bestimmen. Die Erdreichdämmung gesondert nachrechnen."
+  },
+  {
+   "issueId": "FACADE-u-wert-holzrahmenwand-0-15-ist-plausibel:EG-AW-N1",
+   "severity": "INFO",
+   "title": "U-Wert Holzrahmenwand 0.15 und Fenster Uw 0.8: Nachweis mit Produktwerten steht aus",
+   "text": "Der Wandaufbau ist unverändert (Holzrahmen/Mineralwolle 220 mm, Installationsebene 40 mm, Holzfaserplatte 60 mm). Die Überschlagsrechnung mit 10–15 % Holzanteil bleibt bei 0.13–0.15 W/m²K, ohne grosse Reserve zum Grenzwert 0.17. Fenster Uw 0.8 setzt Dreifachverglasung mit warmem Rand und gedämmtem Rahmen voraus. Beides ist mit realen Produktwerten zu bestätigen, vor allem bei den schmalen Pfeilern der Südfassade (1.2 m und 0.9 m), wo der Holzanteil höher ausfällt.",
+   "elements": ["EG-AW-N1", "EG-AW-S1", "EG-AW-W", "EG-AW-E"],
+   "basis": "fachliche Einschätzung",
+   "verify": "U-Wert mit Rechenprogramm nach EN ISO 6946 inkl. Holzanteil nachrechnen. Fenster-Uw aus Datenblatt oder Zertifikat entnehmen."
+  },
+  {
+   "severity": "INFO",
+   "title": "Attika und Vordach nur in Notizen: Wärmebrücken am Dachrand und am Eingang",
+   "text": "Die Attika (Aufbordung 0.2 m) und das Vordach über EG-HE sind nicht modelliert. Am Dachrand des Flachdachs (U 0.12) und am Anschluss des Vordachs an den Kern entstehen lineare Wärmebrücken. Die Gebäudehöhe von ca. 9.46 m liegt knapp unter 9.5 m. Bitte die Attikadämmung ohne Unterbruch bis über die Aufbordung führen und das Vordach thermisch getrennt befestigen. Die Wärmebrücken kommen in den Energienachweis.",
+   "elements": ["OG2-DA", "EG-HE", "OG2-AW-N2"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Attikadetail im Schnitt 1:20 prüfen. Ψ-Werte für Dachrand und Vordachanschluss im Energienachweis aufführen."
+  }
+ ],
+ "resolved": [
+  {
+   "issueId": "FACADE-kompaktheit-und-fensterverteilung-positi:OG2-DA",
+   "reason": "Die Kompaktheit ist unverändert günstig (Hüllfläche OG2-DA und EG-BP je 252 m², Geschossfläche 756 m²). Der Fensteranteil Süd (EG-AW-S1) sank laut checks_v2 von 40 % auf 31 %, Nord (EG-AW-N1) bleibt bei 22 %. Die Empfehlung, Süd nicht weiter zu erhöhen, ist eingehalten."
+  },
+  {
+   "issueId": "FACADE-kernfassade-nord-u-0-16-hat-fast-keine-r:EG-AW-N2",
+   "reason": "EG-AW-N2 hat nun Stahlbeton 0.20 m, Mineralwolle 0.21 m (λ 0.031) und thermisch getrennte Konsolen. Meine Gegenrechnung ergibt ca. 0.14 W/m²K ohne Befestigung. Mit Zuschlag passt der Modellwert 0.15 und liegt unter dem Grenzwert 0.17. Die Wanddicke 0.45 m stimmt mit der Schichtsumme überein. Die Wände OG1-AW-N2 und OG2-AW-N2 sind gleich aufgebaut. Der Anschluss an N1 und N3 ist weiter ein Detailpunkt für die Ausführungsplanung."
+  }
+ ],
+ "notCheckable": [
+  "Sommerlicher Wärmeschutz nach SIA 180 (braucht Raumdaten, Verschattung, Lüftungsannahmen)",
+  "Energienachweis SIA 380/1 und Minergie (EBF, Heizwärmebedarf, Wärmebrücken-Ψ-Werte)",
+  "U-Werte mit Herstellerdaten (Mineralwolle, Holzfaser, XPS, Fenster)",
+  "Dimensionierung der Wärmepumpe und Erdsonde bzw. Aussengerät-Schall"
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "discipline": "Tragwerk",
+ "summary": "Die Architektur hat auf die Tragwerkspunkte aus v1 wirksam reagiert: Mittelwand als BSP-Scheibe 0.20 m, Südfenster verkleinert, Decken als Holz-Beton-Verbund. Offen bleiben die Vorbemessung der 7.85 m weit spannenden HBV-Decke (inkl. Flachkanäle im Überbeton und Steigzonen-Aussparungen) und die exzentrische Quer-Aussteifung. Baugrund und Mischbau-Setzungen sind weiterhin nur über Annahmen abgedeckt.",
+ "findings": [
+  {
+   "issueId": "STRUCTURAL-spannweite-su-dzone-ca-7-85-m-bei-0-32-m:OG1-DE",
+   "severity": "WARNING",
+   "title": "HBV-Decke Südzone 7.85 m: Querschnitt knapp, Überbeton durch Kanäle und Schächte geschwächt",
+   "text": "Die Decken OG1-DE/OG2-DE sind jetzt BSP 160 + Überbeton 120 mm (0.36 m gesamt) und damit gegenüber v1 deutlich besser. Die Spannweite von ca. 7.85 m (Mittelwand EG-A-IW1/EG-B-IW1 y = 3.05 bis Südwand y = -4.8) bleibt aber unverändert. Das statische Konstruktionsmass BSP+Beton von 0.28 m ergibt ein Verhältnis l/h von rund 28, das für Wohnnutzung mit Schwingungsanforderungen am oberen Rand liegt. Laut Notiz liegen zusätzlich Lüftungs-Flachkanäle im Überbeton, und in OG1-DE/OG2-DE/OG2-DA sind Steigzonen-Aussparungen vorgesehen. Beides reduziert die mitwirkende Betonhöhe und die Verbundwirkung genau im Feld bzw. nahe dem Auflager. Die Eigenlast der Decke steigt zudem gegenüber reinem BSP, was Auflagerkräfte auf die Holzwände und die Setzungen erhöht. Bitte Vorbemessung (Durchbiegung, Schwingung, Verbundmittel) mit den realen Kanal- und Schachtlagen durchführen. Bei Nichterfüllung: Unterzug oder Linienstütze im Wohnbereich, Mittelwand nach Süden verschieben oder Kanäle in eine Installationsebene unter der Decke verlegen.",
+   "elements": ["OG1-DE", "OG2-DE", "OG2-DA", "EG-A-IW1", "EG-B-IW1"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Spannweite aus design_v2.json (Wandachsen y = -4.8 und y = 3.05) nachmessen; HBV-Vorbemessung mit Durchbiegungs- und Schwingungsnachweis nach SIA 265 / 265-1 durch Holzbauingenieur, mit Plan der Kanäle im Überbeton."
+  },
+  {
+   "issueId": "STRUCTURAL-aussteifung-quer-zum-geba-ude-kern-exzen:EG-TK-S",
+   "severity": "WARNING",
+   "title": "Aussteifung Nord–Süd: Kern exzentrisch, Eingang schwächt Nordwand des Kerns",
+   "text": "Die Kernwand EG-AW-N2 ist jetzt Stahlbeton 0.20 m, das ist eine echte Verbesserung. Sie misst aber nur 2.8 m und enthält den Hauseingang EG-HE (1.2 m, Höhe 2.3 m), zusammen mit EG-TK-S (2.8 m) ergibt sich in y-Richtung weiterhin eine kurze, nicht symmetrische Scheibenwirkung. Die Kernmitte liegt in y deutlich nördlich der Gebäudemitte, deshalb entsteht bei Wind und Erdbeben in Nord–Süd-Richtung eine Torsion. Die Giebelwände W/E und WT-1 sind laut Notiz als Holzrahmenscheiben deklariert (OSB-Beplankung), im Modell aber nur durch den Materialnamen belegt. Die Holzscheiben W/E enthalten zudem Fenster (z. B. EG-A-F8, 2.0 m). Bitte Steifigkeitsmittelpunkt gegenüber Massenmittelpunkt bestimmen und die Aussteifung in beiden Richtungen nachweisen (Wind, Erdbeben nach SIA 261). Wenn nötig Eingang aus der Kernwand verschieben oder die Scheiben W/E/WT-1 als BSP-Scheiben mit Zuganker (Abhebesicherung) ausbilden.",
+   "elements": ["EG-TK-S", "EG-AW-N2", "EG-HE", "EG-AW-W", "EG-AW-E", "EG-WT-1"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Kernwände und Giebelwände aus design_v2.json (Start/Ende, Öffnungen) lesen, Steifigkeits- und Massenmittelpunkt rechnen; Horizontallastnachweis beider Richtungen durch Tragwerksplaner."
+  },
+  {
+   "issueId": "STRUCTURAL-grosse-su-dfenster-in-tragender-holzrahm:EG-AW-S1",
+   "severity": "INFO",
+   "title": "Südfenster: Sturz 0.39 m und schmale Pfeiler nachweisen",
+   "text": "Die Südfenster EG-A-F6/F7 wurden auf 2.2 m Breite reduziert (OK 2.2 m), die Pfeiler messen laut Notiz 1.2 m (innen) bzw. 0.9 m (Ecke). Die Sturzhöhe beträgt 2.95 − 0.36 − 2.2 = 0.39 m (BSH-Sturz). Die Südwand EG-AW-S1 nimmt das Auflager des grössten Deckenfelds (7.85 m) und die Lasten aus drei Geschossen auf, dazu kommt die höhere Eigenlast der HBV-Decken. 0.39 m Sturzhöhe inkl. Auflager ist für 2.2 m Spannweite machbar, aber ohne Nachweis nicht belegt. Das Problem ist damit entschärft und auf Nachweisebene reduziert. Bitte im Vorprojekt Sturzbemessung und Pfostenpressung (Querdruck) der Eckpfeiler vornehmen; die Westöffnung EG-A-F8 (2.0 m) in der Giebelscheibe ist zu berücksichtigen.",
+   "elements": ["EG-AW-S1", "EG-A-F6", "EG-A-F7", "EG-A-F8", "EG-AW-W"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Sturzhöhe aus design_v2.json berechnen (Geschosshöhe − Deckenstärke − Fenster-OK); Sturz- und Pfostenbemessung mit Auflagerkräften der HBV-Decke."
+  },
+  {
+   "issueId": "STRUCTURAL-mischbau-beton-holz-schwinden-und-setzun:OG1-TK-W",
+   "severity": "INFO",
+   "title": "Mischbau Beton/Holz: Setzungsdifferenzen, Detaillierung offen",
+   "text": "Die Architektur sieht Deckenauflager am Kern auf Stahlkonsolen mit Elastomerlager, Überhöhung und tolerante Türschwellen vor. Das ist der richtige Ansatz, aber noch nicht im Modell und nicht bemessen. Mit der schwereren HBV-Decke steigen Auflast und Querdruckanteil in den Holzwänden und damit die Setzungsdifferenz zum Betonkern. Schwindmass und Setzung der drei Geschosse sind abzuschätzen und die Details (Treppenanschluss, Wohnungstüren, Steigzonen, Fassadenfugen) darauf abzustimmen.",
+   "elements": ["OG1-TK-W", "OG1-TK-E", "OG1-DE", "OG1-AW-W"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Setzungsberechnung durch Holzbauingenieur anhand Holzfeuchte, Querdruckanteil und Deckenlast."
+  },
+  {
+   "issueId": "STRUCTURAL-bodenplatte-0-30-m-ohne-ug-baugrund-und-:EG-BP",
+   "severity": "INFO",
+   "title": "Bodenplatte 0.30 m: Baugrund, Frost und Randverstärkung offen",
+   "text": "Die Bodenplatte EG-BP (Stahlbeton 0.30 m, XPS 200 mm unter der Platte, Randdämmung) ist geometrisch unverändert. Ein geotechnischer Bericht liegt weiterhin nicht vor. Die Linienlasten unter Kern, BSP-Mittelwand EG-A-IW1/EG-B-IW1 und der Wohnungstrennwand EG-WT-1 sind deutlich höher als unter den Fassaden und mit den HBV-Decken noch gestiegen; daher sind Plattenverstärkungen bzw. ein Setzungsnachweis nötig. Die XPS-Dämmung unter der Platte ist lastabtragend zu bemessen (Druckspannung, Kriechen), Frostschutz und Grundwasser sind zu klären. Die Deckenfuge über WT-1 ist mit der Akustik abzustimmen.",
+   "elements": ["EG-BP", "EG-WT-1", "EG-A-IW1", "EG-B-IW1"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Geotechnischen Bericht einholen; Bemessung der Bodenplatte inkl. Setzungen und XPS-Druckspannung; Deckenstoss über WT-1 im Detail klären."
+  }
+ ],
+ "resolved": [
+  {
+   "issueId": "STRUCTURAL-tragende-mittelwand-0-15-m-mit-tu-ren-ho:EG-A-IW1",
+   "reason": "EG-A-IW1/EG-B-IW1 (und OG1-A-IW1) sind jetzt BSP-Wandscheibe tragend, 0.20 m dick (v1: Holzrahmen 0.15 m). Das Querdruckproblem an Schwelle und Lasteinleitung ist damit wesentlich entschärft, die Türen EG-A-T1/T2/T3 und EG-B-T1/T2 (je 0.8 m breit) sind in BSP unkritisch. Verbleibende Bemessung der Linienlast gehört zum normalen Nachweis und ist durch die Spannweiten-/Bodenplattenpunkte abgedeckt."
+  }
+ ],
+ "notCheckable": [
+  "Baugrund, Grundwasser, Frosttiefe (kein geotechnischer Bericht)",
+  "Schwingungsnachweis und Durchbiegung der HBV-Decken (Verbundmittel, Kriechen)",
+  "Erdbebennachweis und Horizontallastverteilung (Baugrundklasse, Wind nach SIA 261 nicht im Modell)",
+  "Lage der Lüftungskanäle im Überbeton und Auswirkung auf den Querschnitt (kein Kanalplan)",
+  "Schnee- und Nutzlasten, Brandwiderstand der Holzbauteile (Abbrand, SIA 265 / VKF)"
+ ]
+}

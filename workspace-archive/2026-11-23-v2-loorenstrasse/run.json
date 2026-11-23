@@ -1,0 +1,270 @@
+{
+ "started": "2026-11-23T21:56:52.808Z",
+ "versions": [
+  {
+   "v": 1,
+   "started": "2026-11-23T21:56:55.590Z",
+   "compile": {
+    "ok": true,
+    "out": "workspace/design_v1.ifc",
+    "elements": 240,
+    "grossFloorArea": 756
+   },
+   "checks": {
+    "ok": true,
+    "counts": {
+     "ERROR": 0,
+     "WARNING": 0,
+     "INFO": 0
+    },
+    "ids": "R01:pass R02:pass R03:pass R04:pass R05:pass R06:pass R07:pass R08:pass"
+   },
+   "review": {
+    "findings": 25,
+    "rejected": []
+   },
+   "issues": {
+    "ok": true,
+    "topics": 25,
+    "open": 25,
+    "closed": 0,
+    "newInThisVersion": 25,
+    "refused": []
+   },
+   "openErrors": 0,
+   "openWarnings": 15,
+   "finished": "2026-11-23T22:05:32.946Z"
+  },
+  {
+   "v": 2,
+   "started": "2026-11-23T22:06:20.470Z",
+   "compile": {
+    "ok": true,
+    "out": "workspace/design_v2.ifc",
+    "elements": 262,
+    "grossFloorArea": 756
+   },
+   "checks": {
+    "ok": true,
+    "counts": {
+     "ERROR": 0,
+     "WARNING": 0,
+     "INFO": 0
+    },
+    "ids": "R01:pass R02:pass R03:pass R04:pass R05:pass R06:pass R07:pass R08:pass"
+   },
+   "identity": {
+    "common": 338,
+    "added": 31,
+    "removed": 0
+   },
+   "review": {
+    "findings": 23,
+    "rejected": []
+   },
+   "issues": {
+    "ok": true,
+    "topics": 32,
+    "open": 23,
+    "closed": 9,
+    "newInThisVersion": 7,
+    "refused": []
+   },
+   "openErrors": 0,
+   "openWarnings": 9,
+   "finished": "2026-11-23T22:13:29.785Z"
+  },
+  {
+   "v": 3,
+   "started": "2026-11-23T22:13:29.785Z",
+   "compile": {
+    "ok": true,
+    "out": "workspace/design_v3.ifc",
+    "elements": 284,
+    "grossFloorArea": 756
+   },
+   "checks": {
+    "ok": true,
+    "counts": {
+     "ERROR": 0,
+     "WARNING": 0,
+     "INFO": 0
+    },
+    "ids": "R01:pass R02:pass R03:pass R04:pass R05:pass R06:pass R07:pass R08:pass"
+   },
+   "identity": {
+    "common": 369,
+    "added": 36,
+    "removed": 0
+   },
+   "review": {
+    "findings": 20,
+    "rejected": []
+   },
+   "issues": {
+    "ok": true,
+    "topics": 35,
+    "open": 20,
+    "closed": 15,
+    "newInThisVersion": 3,
+    "refused": []
+   },
+   "openErrors": 0,
+   "openWarnings": 4,
+   "finished": "2026-11-23T22:19:45.470Z"
+  }
+ ],
+ "agents": [
+  {
+   "name": "architect v1",
+   "model": "claude-opus-5-5",
+   "ok": true,
+   "seconds": 439,
+   "costUsd": 1.879111
+  },
+  {
+   "name": "visual-qa v1",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 22,
+   "costUsd": 0.1527829
+  },
+  {
+   "name": "mep v1",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 48,
+   "costUsd": 0.2405756
+  },
+  {
+   "name": "fire v1",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 50,
+   "costUsd": 0.2496633
+  },
+  {
+   "name": "facade v1",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 57,
+   "costUsd": 0.25706490000000004
+  },
+  {
+   "name": "structural v1",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 75,
+   "costUsd": 0.31457820000000003
+  },
+  {
+   "name": "architect v2",
+   "model": "claude-opus-5-5",
+   "ok": true,
+   "seconds": 358,
+   "costUsd": 1.7493058
+  },
+  {
+   "name": "visual-qa v2",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 30,
+   "costUsd": 0.14001
+  },
+  {
+   "name": "facade v2",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 42,
+   "costUsd": 0.1717816
+  },
+  {
+   "name": "fire v2",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 44,
+   "costUsd": 0.1739982
+  },
+  {
+   "name": "structural v2",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 49,
+   "costUsd": 0.20702520000000002
+  },
+  {
+   "name": "mep v2",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 65,
+   "costUsd": 0.24101770000000003
+  },
+  {
+   "name": "architect v3",
+   "model": "claude-opus-5-5",
+   "ok": true,
+   "seconds": 312,
+   "costUsd": 1.4263085999999998
+  },
+  {
+   "name": "visual-qa v3",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 26,
+   "costUsd": 0.12811150000000002
+  },
+  {
+   "name": "facade v3",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 30,
+   "costUsd": 0.135572
+  },
+  {
+   "name": "fire v3",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 31,
+   "costUsd": 0.1401475
+  },
+  {
+   "name": "mep v3",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 44,
+   "costUsd": 0.18416889999999997
+  },
+  {
+   "name": "structural v3",
+   "model": "claude-sonnet-5-5",
+   "ok": true,
+   "seconds": 59,
+   "costUsd": 0.2065644
+  }
+ ],
+ "costUsd": 7.9977873000000015,
+ "site": {
+  "ok": true,
+  "parcel": "CH999979659148",
+  "area": 11159,
+  "zone": "siehe gültige Bau- und Zonenordnung der Stadt Zürich (W3)",
+  "neighbours": 42,
+  "origin": {
+   "eastings": 2687233,
+   "northings": 1246459,
+   "height": 600,
+   "crs": "EPSG:2056",
+   "verticalDatum": "LN02",
+   "note": "Mitte des Hüllrechtecks des Bestandesbaus EGID 302060735"
+  }
+ },
+ "ids": {
+  "ok": true,
+  "out": "workspace/requirements.ids",
+  "specifications": 8,
+  "notIds": [
+   "R09"
+  ]
+ },
+ "finished": "2026-11-23T22:19:45.471Z"
+}

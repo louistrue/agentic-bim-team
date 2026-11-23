@@ -1,0 +1,6512 @@
+{
+ "name": "Ersatzneubau Loorenstrasse 62",
+ "reference": "Ersatzneubau",
+ "placement": {
+  "eastings": 2687233,
+  "northings": 1246459,
+  "height": 600,
+  "rotationDeg": 0
+ },
+ "storeys": [
+  {
+   "key": "EG",
+   "name": "EG",
+   "elevation": 0,
+   "height": 2.95
+  },
+  {
+   "key": "OG1",
+   "name": "OG1",
+   "elevation": 2.95,
+   "height": 2.95
+  },
+  {
+   "key": "OG2",
+   "name": "OG2",
+   "elevation": 5.9,
+   "height": 2.95
+  }
+ ],
+ "walls": [
+  {
+   "key": "EG-AW-N1",
+   "storey": "EG",
+   "start": [
+    -14,
+    6.8
+   ],
+   "end": [
+    -4.3,
+    6.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-AW-N2",
+   "storey": "EG",
+   "start": [
+    -4.3,
+    6.775
+   ],
+   "end": [
+    -1.5,
+    6.775
+   ],
+   "thickness": 0.45,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Stahlbeton Treppenkern, Aussendämmung hinterlüftet, thermisch getrennte Konsolen",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.2
+     },
+     {
+      "Name": "Mineralwolle λ 0.031",
+      "Thickness": 0.21
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.02
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-AW-N3",
+   "storey": "EG",
+   "start": [
+    -1.5,
+    6.8
+   ],
+   "end": [
+    7,
+    6.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-AW-S1",
+   "storey": "EG",
+   "start": [
+    -14,
+    -4.8
+   ],
+   "end": [
+    -1.5,
+    -4.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-AW-S2",
+   "storey": "EG",
+   "start": [
+    7,
+    -4.8
+   ],
+   "end": [
+    -1.5,
+    -4.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-AW-W",
+   "storey": "EG",
+   "start": [
+    -13.8,
+    -4.6
+   ],
+   "end": [
+    -13.8,
+    6.6
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-AW-E",
+   "storey": "EG",
+   "start": [
+    6.8,
+    6.6
+   ],
+   "end": [
+    6.8,
+    -4.6
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-TK-W",
+   "storey": "EG",
+   "start": [
+    -4.3,
+    -1.15
+   ],
+   "end": [
+    -4.3,
+    6.6
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-TK-E",
+   "storey": "EG",
+   "start": [
+    -1.5,
+    -1.15
+   ],
+   "end": [
+    -1.5,
+    6.6
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-TK-S",
+   "storey": "EG",
+   "start": [
+    -4.175,
+    -1.025
+   ],
+   "end": [
+    -1.625,
+    -1.025
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-WT-1",
+   "storey": "EG",
+   "start": [
+    -1.5,
+    -1.15
+   ],
+   "end": [
+    -1.5,
+    -4.6
+   ],
+   "thickness": 0.25,
+   "type": "party",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Wohnungstrennwand Holzrahmen doppelt",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.08
+     },
+     {
+      "Name": "Trennfuge Mineralwolle",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.08
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   },
+   "unitA": "EG-A",
+   "unitB": "EG-B"
+  },
+  {
+   "key": "EG-A-IW1",
+   "storey": "EG",
+   "start": [
+    -13.6,
+    3.05
+   ],
+   "end": [
+    -4.425,
+    3.05
+   ],
+   "thickness": 0.2,
+   "type": "partition",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Brettsperrholz-Wandscheibe tragend",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Brettsperrholz",
+      "Thickness": 0.14
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW2",
+   "storey": "EG",
+   "start": [
+    -10.2,
+    3.15
+   ],
+   "end": [
+    -10.2,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW3",
+   "storey": "EG",
+   "start": [
+    -6.55,
+    3.15
+   ],
+   "end": [
+    -6.55,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW4",
+   "storey": "EG",
+   "start": [
+    -13.6,
+    2
+   ],
+   "end": [
+    -6.45,
+    2
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW5",
+   "storey": "EG",
+   "start": [
+    -13.6,
+    -1.1
+   ],
+   "end": [
+    -10.15,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW6",
+   "storey": "EG",
+   "start": [
+    -10.2,
+    -1.15
+   ],
+   "end": [
+    -10.2,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW7",
+   "storey": "EG",
+   "start": [
+    -10.15,
+    -0.05
+   ],
+   "end": [
+    -6.45,
+    -0.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW8",
+   "storey": "EG",
+   "start": [
+    -8.2,
+    0
+   ],
+   "end": [
+    -8.2,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW9",
+   "storey": "EG",
+   "start": [
+    -6.4,
+    -1.15
+   ],
+   "end": [
+    -6.4,
+    2.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-IW10",
+   "storey": "EG",
+   "start": [
+    -6.45,
+    -1.1
+   ],
+   "end": [
+    -4.425,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-TE-IW1",
+   "storey": "EG",
+   "start": [
+    -4.6,
+    -4.6
+   ],
+   "end": [
+    -4.6,
+    -1.15
+   ],
+   "thickness": 0.15,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-SW1",
+   "storey": "EG",
+   "start": [
+    -5.05,
+    2.2
+   ],
+   "end": [
+    -5.05,
+    2.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-A-SW2",
+   "storey": "EG",
+   "start": [
+    -5,
+    2.25
+   ],
+   "end": [
+    -4.425,
+    2.25
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-IW1",
+   "storey": "EG",
+   "start": [
+    -1.375,
+    3.05
+   ],
+   "end": [
+    6.6,
+    3.05
+   ],
+   "thickness": 0.2,
+   "type": "partition",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Brettsperrholz-Wandscheibe tragend",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Brettsperrholz",
+      "Thickness": 0.14
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-IW2",
+   "storey": "EG",
+   "start": [
+    2.5,
+    3.15
+   ],
+   "end": [
+    2.5,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-IW3",
+   "storey": "EG",
+   "start": [
+    0.55,
+    2
+   ],
+   "end": [
+    4.65,
+    2
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-IW4",
+   "storey": "EG",
+   "start": [
+    0.6,
+    -1.15
+   ],
+   "end": [
+    0.6,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-IW5",
+   "storey": "EG",
+   "start": [
+    3,
+    0
+   ],
+   "end": [
+    3,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-IW6",
+   "storey": "EG",
+   "start": [
+    4.65,
+    -0.05
+   ],
+   "end": [
+    4.65,
+    2.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-IW7",
+   "storey": "EG",
+   "start": [
+    0.65,
+    -0.05
+   ],
+   "end": [
+    4.6,
+    -0.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-IW8",
+   "storey": "EG",
+   "start": [
+    -1.375,
+    -1.1
+   ],
+   "end": [
+    0.65,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-SW1",
+   "storey": "EG",
+   "start": [
+    3.65,
+    0
+   ],
+   "end": [
+    3.65,
+    0.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "EG-B-SW2",
+   "storey": "EG",
+   "start": [
+    3.05,
+    0.6
+   ],
+   "end": [
+    3.7,
+    0.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-AW-N1",
+   "storey": "OG1",
+   "start": [
+    -14,
+    6.8
+   ],
+   "end": [
+    -4.3,
+    6.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-AW-N2",
+   "storey": "OG1",
+   "start": [
+    -4.3,
+    6.775
+   ],
+   "end": [
+    -1.5,
+    6.775
+   ],
+   "thickness": 0.45,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Stahlbeton Treppenkern, Aussendämmung hinterlüftet, thermisch getrennte Konsolen",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.2
+     },
+     {
+      "Name": "Mineralwolle λ 0.031",
+      "Thickness": 0.21
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.02
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-AW-N3",
+   "storey": "OG1",
+   "start": [
+    -1.5,
+    6.8
+   ],
+   "end": [
+    7,
+    6.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-AW-S1",
+   "storey": "OG1",
+   "start": [
+    -14,
+    -4.8
+   ],
+   "end": [
+    -1.5,
+    -4.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-AW-S2",
+   "storey": "OG1",
+   "start": [
+    7,
+    -4.8
+   ],
+   "end": [
+    -1.5,
+    -4.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-AW-W",
+   "storey": "OG1",
+   "start": [
+    -13.8,
+    -4.6
+   ],
+   "end": [
+    -13.8,
+    6.6
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-AW-E",
+   "storey": "OG1",
+   "start": [
+    6.8,
+    6.6
+   ],
+   "end": [
+    6.8,
+    -4.6
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-TK-W",
+   "storey": "OG1",
+   "start": [
+    -4.3,
+    -1.15
+   ],
+   "end": [
+    -4.3,
+    6.6
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-TK-E",
+   "storey": "OG1",
+   "start": [
+    -1.5,
+    -1.15
+   ],
+   "end": [
+    -1.5,
+    6.6
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-TK-S",
+   "storey": "OG1",
+   "start": [
+    -4.175,
+    -1.025
+   ],
+   "end": [
+    -1.625,
+    -1.025
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-WT-1",
+   "storey": "OG1",
+   "start": [
+    -1.5,
+    -1.15
+   ],
+   "end": [
+    -1.5,
+    -4.6
+   ],
+   "thickness": 0.25,
+   "type": "party",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Wohnungstrennwand Holzrahmen doppelt",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.08
+     },
+     {
+      "Name": "Trennfuge Mineralwolle",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.08
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   },
+   "unitA": "OG1-A",
+   "unitB": "OG1-B"
+  },
+  {
+   "key": "OG1-A-IW1",
+   "storey": "OG1",
+   "start": [
+    -13.6,
+    3.05
+   ],
+   "end": [
+    -4.425,
+    3.05
+   ],
+   "thickness": 0.2,
+   "type": "partition",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Brettsperrholz-Wandscheibe tragend",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Brettsperrholz",
+      "Thickness": 0.14
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW2",
+   "storey": "OG1",
+   "start": [
+    -10.2,
+    3.15
+   ],
+   "end": [
+    -10.2,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW3",
+   "storey": "OG1",
+   "start": [
+    -6.55,
+    3.15
+   ],
+   "end": [
+    -6.55,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW4",
+   "storey": "OG1",
+   "start": [
+    -13.6,
+    2
+   ],
+   "end": [
+    -6.45,
+    2
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW5",
+   "storey": "OG1",
+   "start": [
+    -13.6,
+    -1.1
+   ],
+   "end": [
+    -10.15,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW6",
+   "storey": "OG1",
+   "start": [
+    -10.2,
+    -1.15
+   ],
+   "end": [
+    -10.2,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW7",
+   "storey": "OG1",
+   "start": [
+    -10.15,
+    -0.05
+   ],
+   "end": [
+    -6.45,
+    -0.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW8",
+   "storey": "OG1",
+   "start": [
+    -8.2,
+    0
+   ],
+   "end": [
+    -8.2,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW9",
+   "storey": "OG1",
+   "start": [
+    -6.4,
+    -1.15
+   ],
+   "end": [
+    -6.4,
+    2.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-IW10",
+   "storey": "OG1",
+   "start": [
+    -6.45,
+    -1.1
+   ],
+   "end": [
+    -4.425,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-SW1",
+   "storey": "OG1",
+   "start": [
+    -5.05,
+    2.2
+   ],
+   "end": [
+    -5.05,
+    2.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-A-SW2",
+   "storey": "OG1",
+   "start": [
+    -5,
+    2.25
+   ],
+   "end": [
+    -4.425,
+    2.25
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-IW1",
+   "storey": "OG1",
+   "start": [
+    -1.375,
+    3.05
+   ],
+   "end": [
+    6.6,
+    3.05
+   ],
+   "thickness": 0.2,
+   "type": "partition",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Brettsperrholz-Wandscheibe tragend",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Brettsperrholz",
+      "Thickness": 0.14
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-IW2",
+   "storey": "OG1",
+   "start": [
+    2.5,
+    3.15
+   ],
+   "end": [
+    2.5,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-IW3",
+   "storey": "OG1",
+   "start": [
+    0.55,
+    2
+   ],
+   "end": [
+    4.65,
+    2
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-IW4",
+   "storey": "OG1",
+   "start": [
+    0.6,
+    -1.15
+   ],
+   "end": [
+    0.6,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-IW5",
+   "storey": "OG1",
+   "start": [
+    3,
+    0
+   ],
+   "end": [
+    3,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-IW6",
+   "storey": "OG1",
+   "start": [
+    4.65,
+    -0.05
+   ],
+   "end": [
+    4.65,
+    2.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-IW7",
+   "storey": "OG1",
+   "start": [
+    0.65,
+    -0.05
+   ],
+   "end": [
+    4.6,
+    -0.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-IW8",
+   "storey": "OG1",
+   "start": [
+    -1.375,
+    -1.1
+   ],
+   "end": [
+    0.65,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-SW1",
+   "storey": "OG1",
+   "start": [
+    3.65,
+    0
+   ],
+   "end": [
+    3.65,
+    0.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG1-B-SW2",
+   "storey": "OG1",
+   "start": [
+    3.05,
+    0.6
+   ],
+   "end": [
+    3.7,
+    0.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-AW-N1",
+   "storey": "OG2",
+   "start": [
+    -14,
+    6.8
+   ],
+   "end": [
+    -4.3,
+    6.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-AW-N2",
+   "storey": "OG2",
+   "start": [
+    -4.3,
+    6.775
+   ],
+   "end": [
+    -1.5,
+    6.775
+   ],
+   "thickness": 0.45,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Stahlbeton Treppenkern, Aussendämmung hinterlüftet, thermisch getrennte Konsolen",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.2
+     },
+     {
+      "Name": "Mineralwolle λ 0.031",
+      "Thickness": 0.21
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.02
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-AW-N3",
+   "storey": "OG2",
+   "start": [
+    -1.5,
+    6.8
+   ],
+   "end": [
+    7,
+    6.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-AW-S1",
+   "storey": "OG2",
+   "start": [
+    -14,
+    -4.8
+   ],
+   "end": [
+    -1.5,
+    -4.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-AW-S2",
+   "storey": "OG2",
+   "start": [
+    7,
+    -4.8
+   ],
+   "end": [
+    -1.5,
+    -4.8
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-AW-W",
+   "storey": "OG2",
+   "start": [
+    -13.8,
+    -4.6
+   ],
+   "end": [
+    -13.8,
+    6.6
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-AW-E",
+   "storey": "OG2",
+   "start": [
+    6.8,
+    6.6
+   ],
+   "end": [
+    6.8,
+    -4.6
+   ],
+   "thickness": 0.4,
+   "type": "external",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "uValue": 0.15,
+   "material": {
+    "Name": "Holzrahmenbau Aussenwand hinterlüftet, Brandsperre Stahlblech je Geschossdecke",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Installationsebene gedämmt",
+      "Thickness": 0.04
+     },
+     {
+      "Name": "OSB-Platte (Luftdichtung, aussteifende Beplankung)",
+      "Thickness": 0.015
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.22
+     },
+     {
+      "Name": "Holzfaserdämmplatte",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Hinterlüftung / Lattung",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzschalung",
+      "Thickness": 0.02
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-TK-W",
+   "storey": "OG2",
+   "start": [
+    -4.3,
+    -1.15
+   ],
+   "end": [
+    -4.3,
+    6.6
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-TK-E",
+   "storey": "OG2",
+   "start": [
+    -1.5,
+    -1.15
+   ],
+   "end": [
+    -1.5,
+    6.6
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-TK-S",
+   "storey": "OG2",
+   "start": [
+    -4.175,
+    -1.025
+   ],
+   "end": [
+    -1.625,
+    -1.025
+   ],
+   "thickness": 0.25,
+   "type": "core",
+   "loadBearing": true,
+   "fireRating": "REI 90",
+   "material": {
+    "Name": "Stahlbeton",
+    "Layers": [
+     {
+      "Name": "Stahlbeton",
+      "Thickness": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-WT-1",
+   "storey": "OG2",
+   "start": [
+    -1.5,
+    -1.15
+   ],
+   "end": [
+    -1.5,
+    -4.6
+   ],
+   "thickness": 0.25,
+   "type": "party",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Wohnungstrennwand Holzrahmen doppelt",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.08
+     },
+     {
+      "Name": "Trennfuge Mineralwolle",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzrahmen / Mineralwolle",
+      "Thickness": 0.08
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   },
+   "unitA": "OG2-A",
+   "unitB": "OG2-B"
+  },
+  {
+   "key": "OG2-A-IW1",
+   "storey": "OG2",
+   "start": [
+    -13.6,
+    3.05
+   ],
+   "end": [
+    -4.425,
+    3.05
+   ],
+   "thickness": 0.2,
+   "type": "partition",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Brettsperrholz-Wandscheibe tragend",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Brettsperrholz",
+      "Thickness": 0.14
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW2",
+   "storey": "OG2",
+   "start": [
+    -10.2,
+    3.15
+   ],
+   "end": [
+    -10.2,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW3",
+   "storey": "OG2",
+   "start": [
+    -6.55,
+    3.15
+   ],
+   "end": [
+    -6.55,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW4",
+   "storey": "OG2",
+   "start": [
+    -13.6,
+    2
+   ],
+   "end": [
+    -6.45,
+    2
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW5",
+   "storey": "OG2",
+   "start": [
+    -13.6,
+    -1.1
+   ],
+   "end": [
+    -10.15,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW6",
+   "storey": "OG2",
+   "start": [
+    -10.2,
+    -1.15
+   ],
+   "end": [
+    -10.2,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW7",
+   "storey": "OG2",
+   "start": [
+    -10.15,
+    -0.05
+   ],
+   "end": [
+    -6.45,
+    -0.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW8",
+   "storey": "OG2",
+   "start": [
+    -8.2,
+    0
+   ],
+   "end": [
+    -8.2,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW9",
+   "storey": "OG2",
+   "start": [
+    -6.4,
+    -1.15
+   ],
+   "end": [
+    -6.4,
+    2.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-IW10",
+   "storey": "OG2",
+   "start": [
+    -6.45,
+    -1.1
+   ],
+   "end": [
+    -4.425,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-SW1",
+   "storey": "OG2",
+   "start": [
+    -5.05,
+    2.2
+   ],
+   "end": [
+    -5.05,
+    2.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-A-SW2",
+   "storey": "OG2",
+   "start": [
+    -5,
+    2.25
+   ],
+   "end": [
+    -4.425,
+    2.25
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-IW1",
+   "storey": "OG2",
+   "start": [
+    -1.375,
+    3.05
+   ],
+   "end": [
+    6.6,
+    3.05
+   ],
+   "thickness": 0.2,
+   "type": "partition",
+   "loadBearing": true,
+   "fireRating": "REI 60",
+   "material": {
+    "Name": "Brettsperrholz-Wandscheibe tragend",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Brettsperrholz",
+      "Thickness": 0.14
+     },
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-IW2",
+   "storey": "OG2",
+   "start": [
+    2.5,
+    3.15
+   ],
+   "end": [
+    2.5,
+    6.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-IW3",
+   "storey": "OG2",
+   "start": [
+    0.55,
+    2
+   ],
+   "end": [
+    4.65,
+    2
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-IW4",
+   "storey": "OG2",
+   "start": [
+    0.6,
+    -1.15
+   ],
+   "end": [
+    0.6,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-IW5",
+   "storey": "OG2",
+   "start": [
+    3,
+    0
+   ],
+   "end": [
+    3,
+    1.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-IW6",
+   "storey": "OG2",
+   "start": [
+    4.65,
+    -0.05
+   ],
+   "end": [
+    4.65,
+    2.95
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-IW7",
+   "storey": "OG2",
+   "start": [
+    0.65,
+    -0.05
+   ],
+   "end": [
+    4.6,
+    -0.05
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-IW8",
+   "storey": "OG2",
+   "start": [
+    -1.375,
+    -1.1
+   ],
+   "end": [
+    0.65,
+    -1.1
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "material": {
+    "Name": "Leichtbauwand Holzständer",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.075
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.0125
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-SW1",
+   "storey": "OG2",
+   "start": [
+    3.65,
+    0
+   ],
+   "end": [
+    3.65,
+    0.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  },
+  {
+   "key": "OG2-B-SW2",
+   "storey": "OG2",
+   "start": [
+    3.05,
+    0.6
+   ],
+   "end": [
+    3.7,
+    0.6
+   ],
+   "thickness": 0.1,
+   "type": "partition",
+   "loadBearing": false,
+   "fireRating": "EI 60",
+   "material": {
+    "Name": "Schachtwand Holzständer, Gipsfaser EI 60",
+    "Layers": [
+     {
+      "Name": "Gipsfaserplatte 2-lagig",
+      "Thickness": 0.03
+     },
+     {
+      "Name": "Holzständer / Mineralwolle",
+      "Thickness": 0.06
+     },
+     {
+      "Name": "Gipsfaserplatte",
+      "Thickness": 0.01
+     }
+    ]
+   }
+  }
+ ],
+ "openings": [
+  {
+   "key": "EG-TE-T1",
+   "kind": "door",
+   "wall": "EG-TK-S",
+   "offset": 0.9,
+   "width": 0.9,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Technik",
+   "fireRating": "EI 30",
+   "selfClosing": true
+  },
+  {
+   "key": "EG-A-T1",
+   "kind": "door",
+   "wall": "EG-A-IW1",
+   "offset": 1.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-A-T2",
+   "kind": "door",
+   "wall": "EG-A-IW1",
+   "offset": 5.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-A-T3",
+   "kind": "door",
+   "wall": "EG-A-IW1",
+   "offset": 7.4,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-A-T4",
+   "kind": "door",
+   "wall": "EG-A-IW4",
+   "offset": 1.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-A-T5",
+   "kind": "door",
+   "wall": "EG-A-IW4",
+   "offset": 6,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-A-T6",
+   "kind": "door",
+   "wall": "EG-A-IW4",
+   "offset": 4,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-A-T7",
+   "kind": "door",
+   "wall": "EG-A-IW10",
+   "offset": 0.5,
+   "width": 0.9,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-B-T1",
+   "kind": "door",
+   "wall": "EG-B-IW1",
+   "offset": 0.775,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-B-T2",
+   "kind": "door",
+   "wall": "EG-B-IW1",
+   "offset": 4.375,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-B-T3",
+   "kind": "door",
+   "wall": "EG-B-IW3",
+   "offset": 0.85,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-B-T4",
+   "kind": "door",
+   "wall": "EG-B-IW3",
+   "offset": 3.05,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-B-T5",
+   "kind": "door",
+   "wall": "EG-B-IW8",
+   "offset": 0.5,
+   "width": 0.9,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "EG-A-WT",
+   "kind": "door",
+   "wall": "EG-TK-W",
+   "offset": 0.35,
+   "width": 1,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Wohnungstuer",
+   "unit": "EG-A",
+   "fireRating": "EI 30",
+   "selfClosing": true
+  },
+  {
+   "key": "EG-B-WT",
+   "kind": "door",
+   "wall": "EG-TK-E",
+   "offset": 0.35,
+   "width": 1,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Wohnungstuer",
+   "unit": "EG-B",
+   "fireRating": "EI 30",
+   "selfClosing": true
+  },
+  {
+   "key": "EG-HE",
+   "kind": "door",
+   "wall": "EG-AW-N2",
+   "offset": 1.4,
+   "width": 1.2,
+   "height": 2.3,
+   "sill": 0,
+   "reference": "Hauseingang",
+   "uValue": 1
+  },
+  {
+   "key": "EG-A-F1",
+   "kind": "window",
+   "wall": "EG-AW-N1",
+   "offset": 1.2,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "EG-A-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F2",
+   "kind": "window",
+   "wall": "EG-AW-W",
+   "offset": 8.6,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "EG-A-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F3",
+   "kind": "window",
+   "wall": "EG-AW-N1",
+   "offset": 4.7,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "EG-A-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F4",
+   "kind": "window",
+   "wall": "EG-AW-N1",
+   "offset": 8,
+   "width": 0.9,
+   "height": 1,
+   "sill": 1.3,
+   "space": "EG-A-BA",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F5",
+   "kind": "window",
+   "wall": "EG-AW-W",
+   "offset": 4.35,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "EG-A-Z3",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F6",
+   "kind": "window",
+   "wall": "EG-AW-S1",
+   "offset": 1.3,
+   "width": 2.2,
+   "height": 2.1,
+   "sill": 0.1,
+   "space": "EG-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F7",
+   "kind": "window",
+   "wall": "EG-AW-S1",
+   "offset": 4.7,
+   "width": 2.2,
+   "height": 2.1,
+   "sill": 0.1,
+   "space": "EG-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F8",
+   "kind": "window",
+   "wall": "EG-AW-W",
+   "offset": 1,
+   "width": 2,
+   "height": 2.1,
+   "sill": 0.1,
+   "space": "EG-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F9",
+   "kind": "window",
+   "wall": "EG-AW-S1",
+   "offset": 10.1,
+   "width": 1.8,
+   "height": 1.4,
+   "sill": 0.9,
+   "space": "EG-TE",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-A-F10",
+   "kind": "window",
+   "wall": "EG-AW-S1",
+   "offset": 7.3,
+   "width": 1.6,
+   "height": 1.3,
+   "sill": 0.9,
+   "space": "EG-A-KU",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-B-F1",
+   "kind": "window",
+   "wall": "EG-AW-N3",
+   "offset": 1.3,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "EG-B-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-B-F2",
+   "kind": "window",
+   "wall": "EG-AW-N3",
+   "offset": 5.3,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "EG-B-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-B-F3",
+   "kind": "window",
+   "wall": "EG-AW-E",
+   "offset": 1.1,
+   "width": 1.2,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "EG-B-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-B-F4",
+   "kind": "window",
+   "wall": "EG-AW-E",
+   "offset": 4.8,
+   "width": 1.2,
+   "height": 1.4,
+   "sill": 0.9,
+   "space": "EG-B-KU",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-B-F5",
+   "kind": "window",
+   "wall": "EG-AW-S2",
+   "offset": 5.3,
+   "width": 2.2,
+   "height": 2.1,
+   "sill": 0.1,
+   "space": "EG-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-B-F6",
+   "kind": "window",
+   "wall": "EG-AW-S2",
+   "offset": 1.7,
+   "width": 2.2,
+   "height": 2.1,
+   "sill": 0.1,
+   "space": "EG-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "EG-B-F7",
+   "kind": "window",
+   "wall": "EG-AW-E",
+   "offset": 8.2,
+   "width": 2,
+   "height": 2.1,
+   "sill": 0.1,
+   "space": "EG-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-T1",
+   "kind": "door",
+   "wall": "OG1-A-IW1",
+   "offset": 1.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-A-T2",
+   "kind": "door",
+   "wall": "OG1-A-IW1",
+   "offset": 5.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-A-T3",
+   "kind": "door",
+   "wall": "OG1-A-IW1",
+   "offset": 7.4,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-A-T4",
+   "kind": "door",
+   "wall": "OG1-A-IW4",
+   "offset": 1.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-A-T5",
+   "kind": "door",
+   "wall": "OG1-A-IW4",
+   "offset": 6,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-A-T6",
+   "kind": "door",
+   "wall": "OG1-A-IW4",
+   "offset": 4,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-A-T7",
+   "kind": "door",
+   "wall": "OG1-A-IW10",
+   "offset": 0.5,
+   "width": 0.9,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-B-T1",
+   "kind": "door",
+   "wall": "OG1-B-IW1",
+   "offset": 0.775,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-B-T2",
+   "kind": "door",
+   "wall": "OG1-B-IW1",
+   "offset": 4.375,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-B-T3",
+   "kind": "door",
+   "wall": "OG1-B-IW3",
+   "offset": 0.85,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-B-T4",
+   "kind": "door",
+   "wall": "OG1-B-IW3",
+   "offset": 3.05,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-B-T5",
+   "kind": "door",
+   "wall": "OG1-B-IW8",
+   "offset": 0.5,
+   "width": 0.9,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG1-A-WT",
+   "kind": "door",
+   "wall": "OG1-TK-W",
+   "offset": 0.35,
+   "width": 1,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Wohnungstuer",
+   "unit": "OG1-A",
+   "fireRating": "EI 30",
+   "selfClosing": true
+  },
+  {
+   "key": "OG1-B-WT",
+   "kind": "door",
+   "wall": "OG1-TK-E",
+   "offset": 0.35,
+   "width": 1,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Wohnungstuer",
+   "unit": "OG1-B",
+   "fireRating": "EI 30",
+   "selfClosing": true
+  },
+  {
+   "key": "OG1-TH-F1",
+   "kind": "window",
+   "wall": "OG1-AW-N2",
+   "offset": 0.8,
+   "width": 1.2,
+   "height": 1.4,
+   "sill": 1,
+   "space": "OG1-TH",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F1",
+   "name": "Fenster Zimmer 1 (anleiterbar, 2. Rettungsweg)",
+   "kind": "window",
+   "wall": "OG1-AW-N1",
+   "offset": 1.2,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG1-A-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F2",
+   "kind": "window",
+   "wall": "OG1-AW-W",
+   "offset": 8.6,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG1-A-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F3",
+   "kind": "window",
+   "wall": "OG1-AW-N1",
+   "offset": 4.7,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG1-A-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F4",
+   "kind": "window",
+   "wall": "OG1-AW-N1",
+   "offset": 8,
+   "width": 0.9,
+   "height": 1,
+   "sill": 1.3,
+   "space": "OG1-A-BA",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F5",
+   "kind": "window",
+   "wall": "OG1-AW-W",
+   "offset": 4.35,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG1-A-Z3",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F6",
+   "kind": "window",
+   "wall": "OG1-AW-S1",
+   "offset": 1.3,
+   "width": 2.2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG1-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F7",
+   "kind": "window",
+   "wall": "OG1-AW-S1",
+   "offset": 4.7,
+   "width": 2.2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG1-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F8",
+   "kind": "window",
+   "wall": "OG1-AW-W",
+   "offset": 1,
+   "width": 2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG1-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-A-F9",
+   "kind": "window",
+   "wall": "OG1-AW-S1",
+   "offset": 10.1,
+   "width": 1.8,
+   "height": 1.4,
+   "sill": 0.9,
+   "space": "OG1-A-KU",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-B-F1",
+   "kind": "window",
+   "wall": "OG1-AW-N3",
+   "offset": 1.3,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG1-B-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-B-F2",
+   "name": "Fenster Zimmer 2 (anleiterbar, 2. Rettungsweg)",
+   "kind": "window",
+   "wall": "OG1-AW-N3",
+   "offset": 5.3,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG1-B-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-B-F3",
+   "kind": "window",
+   "wall": "OG1-AW-E",
+   "offset": 1.1,
+   "width": 1.2,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG1-B-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-B-F4",
+   "kind": "window",
+   "wall": "OG1-AW-E",
+   "offset": 4.8,
+   "width": 1.2,
+   "height": 1.4,
+   "sill": 0.9,
+   "space": "OG1-B-KU",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-B-F5",
+   "kind": "window",
+   "wall": "OG1-AW-S2",
+   "offset": 5.3,
+   "width": 2.2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG1-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-B-F6",
+   "kind": "window",
+   "wall": "OG1-AW-S2",
+   "offset": 1.7,
+   "width": 2.2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG1-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG1-B-F7",
+   "kind": "window",
+   "wall": "OG1-AW-E",
+   "offset": 8.2,
+   "width": 2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG1-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-T1",
+   "kind": "door",
+   "wall": "OG2-A-IW1",
+   "offset": 1.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-A-T2",
+   "kind": "door",
+   "wall": "OG2-A-IW1",
+   "offset": 5.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-A-T3",
+   "kind": "door",
+   "wall": "OG2-A-IW1",
+   "offset": 7.4,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-A-T4",
+   "kind": "door",
+   "wall": "OG2-A-IW4",
+   "offset": 1.6,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-A-T5",
+   "kind": "door",
+   "wall": "OG2-A-IW4",
+   "offset": 6,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-A-T6",
+   "kind": "door",
+   "wall": "OG2-A-IW4",
+   "offset": 4,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-A-T7",
+   "kind": "door",
+   "wall": "OG2-A-IW10",
+   "offset": 0.5,
+   "width": 0.9,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-B-T1",
+   "kind": "door",
+   "wall": "OG2-B-IW1",
+   "offset": 0.775,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-B-T2",
+   "kind": "door",
+   "wall": "OG2-B-IW1",
+   "offset": 4.375,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-B-T3",
+   "kind": "door",
+   "wall": "OG2-B-IW3",
+   "offset": 0.85,
+   "width": 0.8,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-B-T4",
+   "kind": "door",
+   "wall": "OG2-B-IW3",
+   "offset": 3.05,
+   "width": 0.7,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-B-T5",
+   "kind": "door",
+   "wall": "OG2-B-IW8",
+   "offset": 0.5,
+   "width": 0.9,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Innentuer"
+  },
+  {
+   "key": "OG2-A-WT",
+   "kind": "door",
+   "wall": "OG2-TK-W",
+   "offset": 0.35,
+   "width": 1,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Wohnungstuer",
+   "unit": "OG2-A",
+   "fireRating": "EI 30",
+   "selfClosing": true
+  },
+  {
+   "key": "OG2-B-WT",
+   "kind": "door",
+   "wall": "OG2-TK-E",
+   "offset": 0.35,
+   "width": 1,
+   "height": 2.1,
+   "sill": 0,
+   "reference": "Wohnungstuer",
+   "unit": "OG2-B",
+   "fireRating": "EI 30",
+   "selfClosing": true
+  },
+  {
+   "key": "OG2-TH-F1",
+   "kind": "window",
+   "wall": "OG2-AW-N2",
+   "offset": 0.8,
+   "width": 1.2,
+   "height": 1.4,
+   "sill": 1,
+   "space": "OG2-TH",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F1",
+   "name": "Fenster Zimmer 1 (anleiterbar, 2. Rettungsweg)",
+   "kind": "window",
+   "wall": "OG2-AW-N1",
+   "offset": 1.2,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG2-A-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F2",
+   "kind": "window",
+   "wall": "OG2-AW-W",
+   "offset": 8.6,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG2-A-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F3",
+   "kind": "window",
+   "wall": "OG2-AW-N1",
+   "offset": 4.7,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG2-A-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F4",
+   "kind": "window",
+   "wall": "OG2-AW-N1",
+   "offset": 8,
+   "width": 0.9,
+   "height": 1,
+   "sill": 1.3,
+   "space": "OG2-A-BA",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F5",
+   "kind": "window",
+   "wall": "OG2-AW-W",
+   "offset": 4.35,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG2-A-Z3",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F6",
+   "kind": "window",
+   "wall": "OG2-AW-S1",
+   "offset": 1.3,
+   "width": 2.2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG2-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F7",
+   "kind": "window",
+   "wall": "OG2-AW-S1",
+   "offset": 4.7,
+   "width": 2.2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG2-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F8",
+   "kind": "window",
+   "wall": "OG2-AW-W",
+   "offset": 1,
+   "width": 2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG2-A-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-A-F9",
+   "kind": "window",
+   "wall": "OG2-AW-S1",
+   "offset": 10.1,
+   "width": 1.8,
+   "height": 1.4,
+   "sill": 0.9,
+   "space": "OG2-A-KU",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-B-F1",
+   "kind": "window",
+   "wall": "OG2-AW-N3",
+   "offset": 1.3,
+   "width": 1.8,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG2-B-Z1",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-B-F2",
+   "name": "Fenster Zimmer 2 (anleiterbar, 2. Rettungsweg)",
+   "kind": "window",
+   "wall": "OG2-AW-N3",
+   "offset": 5.3,
+   "width": 1.6,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG2-B-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-B-F3",
+   "kind": "window",
+   "wall": "OG2-AW-E",
+   "offset": 1.1,
+   "width": 1.2,
+   "height": 1.5,
+   "sill": 0.8,
+   "space": "OG2-B-Z2",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-B-F4",
+   "kind": "window",
+   "wall": "OG2-AW-E",
+   "offset": 4.8,
+   "width": 1.2,
+   "height": 1.4,
+   "sill": 0.9,
+   "space": "OG2-B-KU",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-B-F5",
+   "kind": "window",
+   "wall": "OG2-AW-S2",
+   "offset": 5.3,
+   "width": 2.2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG2-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-B-F6",
+   "kind": "window",
+   "wall": "OG2-AW-S2",
+   "offset": 1.7,
+   "width": 2.2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG2-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  },
+  {
+   "key": "OG2-B-F7",
+   "kind": "window",
+   "wall": "OG2-AW-E",
+   "offset": 8.2,
+   "width": 2,
+   "height": 1.7,
+   "sill": 0.5,
+   "space": "OG2-B-WO",
+   "uValue": 0.8,
+   "gValue": 0.5,
+   "reference": "Fenster"
+  }
+ ],
+ "slabs": [
+  {
+   "key": "EG-BP",
+   "storey": "EG",
+   "kind": "base",
+   "thickness": 0.3,
+   "polygon": [
+    [
+     -14,
+     -5
+    ],
+    [
+     7,
+     -5
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     -14,
+     7
+    ]
+   ],
+   "fireRating": "REI 90",
+   "uValue": 0.17,
+   "material": "Stahlbeton 300 mm, unterseitig XPS 200 mm, Randdämmung XPS 120 mm am Plattenrand bis UK Schwelle"
+  },
+  {
+   "key": "OG1-DE",
+   "storey": "OG1",
+   "kind": "floor",
+   "thickness": 0.36,
+   "polygon": [
+    [
+     -14,
+     -5
+    ],
+    [
+     7,
+     -5
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     -14,
+     7
+    ]
+   ],
+   "fireRating": "REI 60",
+   "material": "Holz-Beton-Verbunddecke: Brettsperrholz 160 mm, Überbeton 120 mm (Lüftungsverteilung eingelegt), Trittschall 20 mm, Unterlagsboden 60 mm",
+   "openings": [
+    {
+     "x": -4.175,
+     "y": 0.61,
+     "w": 1.2,
+     "d": 4.59
+    },
+    {
+     "x": -5,
+     "y": 2.3,
+     "w": 0.575,
+     "d": 0.65
+    },
+    {
+     "x": 3.05,
+     "y": 0,
+     "w": 0.55,
+     "d": 0.55
+    }
+   ]
+  },
+  {
+   "key": "OG2-DE",
+   "storey": "OG2",
+   "kind": "floor",
+   "thickness": 0.36,
+   "polygon": [
+    [
+     -14,
+     -5
+    ],
+    [
+     7,
+     -5
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     -14,
+     7
+    ]
+   ],
+   "fireRating": "REI 60",
+   "material": "Holz-Beton-Verbunddecke: Brettsperrholz 160 mm, Überbeton 120 mm (Lüftungsverteilung eingelegt), Trittschall 20 mm, Unterlagsboden 60 mm",
+   "openings": [
+    {
+     "x": -2.825,
+     "y": 0.61,
+     "w": 1.2,
+     "d": 4.59
+    },
+    {
+     "x": -5,
+     "y": 2.3,
+     "w": 0.575,
+     "d": 0.65
+    },
+    {
+     "x": 3.05,
+     "y": 0,
+     "w": 0.55,
+     "d": 0.55
+    }
+   ]
+  },
+  {
+   "key": "OG2-DA",
+   "storey": "OG2",
+   "kind": "roof",
+   "thickness": 0.4,
+   "polygon": [
+    [
+     -14,
+     -5
+    ],
+    [
+     7,
+     -5
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     -14,
+     7
+    ]
+   ],
+   "fireRating": "REI 60",
+   "uValue": 0.12,
+   "material": "Flachdach: Brettsperrholz-Hohlkastenelement 240 mm (gedämmt), Aufdämmung 140 mm, Abdichtung, extensiv begrünt; RWA-Lichtkuppel über Treppenhaus",
+   "openings": [
+    {
+     "x": -3.4,
+     "y": 3,
+     "w": 1,
+     "d": 1.2
+    },
+    {
+     "x": -5,
+     "y": 2.3,
+     "w": 0.575,
+     "d": 0.65
+    },
+    {
+     "x": 3.05,
+     "y": 0,
+     "w": 0.55,
+     "d": 0.55
+    }
+   ]
+  }
+ ],
+ "spaces": [
+  {
+   "key": "EG-A-WO",
+   "storey": "EG",
+   "usage": "Wohnen/Essen",
+   "unit": "EG-A",
+   "longName": "Wohnen/Essen",
+   "polygon": [
+    [
+     -13.6,
+     -4.6
+    ],
+    [
+     -7,
+     -4.6
+    ],
+    [
+     -7,
+     -0.1
+    ],
+    [
+     -10.15,
+     -0.1
+    ],
+    [
+     -10.15,
+     -1.15
+    ],
+    [
+     -13.6,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-KU",
+   "storey": "EG",
+   "usage": "Kochen",
+   "unit": "EG-A",
+   "longName": "Küche",
+   "polygon": [
+    [
+     -7,
+     -4.6
+    ],
+    [
+     -4.675,
+     -4.6
+    ],
+    [
+     -4.675,
+     -1.15
+    ],
+    [
+     -6.45,
+     -1.15
+    ],
+    [
+     -6.45,
+     -0.1
+    ],
+    [
+     -7,
+     -0.1
+    ]
+   ]
+  },
+  {
+   "key": "EG-TE",
+   "storey": "EG",
+   "usage": "Technik",
+   "unit": "-",
+   "longName": "Technik / Hausanschlüsse",
+   "polygon": [
+    [
+     -4.525,
+     -4.6
+    ],
+    [
+     -1.625,
+     -4.6
+    ],
+    [
+     -1.625,
+     -1.15
+    ],
+    [
+     -4.525,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-Z1",
+   "storey": "EG",
+   "usage": "Zimmer",
+   "unit": "EG-A",
+   "longName": "Zimmer 1",
+   "polygon": [
+    [
+     -13.6,
+     3.15
+    ],
+    [
+     -10.25,
+     3.15
+    ],
+    [
+     -10.25,
+     6.6
+    ],
+    [
+     -13.6,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-Z2",
+   "storey": "EG",
+   "usage": "Zimmer",
+   "unit": "EG-A",
+   "longName": "Zimmer 2",
+   "polygon": [
+    [
+     -10.15,
+     3.15
+    ],
+    [
+     -6.6,
+     3.15
+    ],
+    [
+     -6.6,
+     6.6
+    ],
+    [
+     -10.15,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-Z3",
+   "storey": "EG",
+   "usage": "Zimmer",
+   "unit": "EG-A",
+   "longName": "Zimmer 3",
+   "polygon": [
+    [
+     -13.6,
+     -1.05
+    ],
+    [
+     -10.25,
+     -1.05
+    ],
+    [
+     -10.25,
+     1.95
+    ],
+    [
+     -13.6,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-BA",
+   "storey": "EG",
+   "usage": "Bad",
+   "unit": "EG-A",
+   "longName": "Bad",
+   "polygon": [
+    [
+     -6.5,
+     3.15
+    ],
+    [
+     -4.425,
+     3.15
+    ],
+    [
+     -4.425,
+     6.6
+    ],
+    [
+     -6.5,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-DU",
+   "storey": "EG",
+   "usage": "Bad",
+   "unit": "EG-A",
+   "longName": "Dusche/WC",
+   "polygon": [
+    [
+     -8.15,
+     0
+    ],
+    [
+     -6.45,
+     0
+    ],
+    [
+     -6.45,
+     1.95
+    ],
+    [
+     -8.15,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-RE",
+   "storey": "EG",
+   "usage": "Reduit",
+   "unit": "EG-A",
+   "longName": "Reduit / Lüftungsgerät",
+   "polygon": [
+    [
+     -10.15,
+     0
+    ],
+    [
+     -8.25,
+     0
+    ],
+    [
+     -8.25,
+     1.95
+    ],
+    [
+     -10.15,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-EN",
+   "storey": "EG",
+   "usage": "Entree",
+   "unit": "EG-A",
+   "longName": "Entree/Korridor",
+   "polygon": [
+    [
+     -4.425,
+     -1.05
+    ],
+    [
+     -4.425,
+     2.25
+    ],
+    [
+     -5.1,
+     2.25
+    ],
+    [
+     -5.1,
+     2.95
+    ],
+    [
+     -13.6,
+     2.95
+    ],
+    [
+     -13.6,
+     2.05
+    ],
+    [
+     -6.35,
+     2.05
+    ],
+    [
+     -6.35,
+     -1.05
+    ]
+   ]
+  },
+  {
+   "key": "EG-A-SZ",
+   "storey": "EG",
+   "usage": "Technik",
+   "unit": "EG-A",
+   "longName": "Steigzone",
+   "polygon": [
+    [
+     -5,
+     2.3
+    ],
+    [
+     -4.425,
+     2.3
+    ],
+    [
+     -4.425,
+     2.95
+    ],
+    [
+     -5,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "EG-B-WO",
+   "storey": "EG",
+   "usage": "Wohnen/Essen",
+   "unit": "EG-B",
+   "longName": "Wohnen/Essen",
+   "polygon": [
+    [
+     -1.375,
+     -4.6
+    ],
+    [
+     6.6,
+     -4.6
+    ],
+    [
+     6.6,
+     -0.1
+    ],
+    [
+     0.65,
+     -0.1
+    ],
+    [
+     0.65,
+     -1.15
+    ],
+    [
+     -1.375,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "EG-B-KU",
+   "storey": "EG",
+   "usage": "Kochen",
+   "unit": "EG-B",
+   "longName": "Küche",
+   "polygon": [
+    [
+     4.7,
+     -0.1
+    ],
+    [
+     6.6,
+     -0.1
+    ],
+    [
+     6.6,
+     2.95
+    ],
+    [
+     4.7,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "EG-B-Z1",
+   "storey": "EG",
+   "usage": "Zimmer",
+   "unit": "EG-B",
+   "longName": "Zimmer 1",
+   "polygon": [
+    [
+     -1.375,
+     3.15
+    ],
+    [
+     2.45,
+     3.15
+    ],
+    [
+     2.45,
+     6.6
+    ],
+    [
+     -1.375,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "EG-B-Z2",
+   "storey": "EG",
+   "usage": "Zimmer",
+   "unit": "EG-B",
+   "longName": "Zimmer 2",
+   "polygon": [
+    [
+     2.55,
+     3.15
+    ],
+    [
+     6.6,
+     3.15
+    ],
+    [
+     6.6,
+     6.6
+    ],
+    [
+     2.55,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "EG-B-BA",
+   "storey": "EG",
+   "usage": "Bad",
+   "unit": "EG-B",
+   "longName": "Bad",
+   "polygon": [
+    [
+     0.65,
+     0
+    ],
+    [
+     2.95,
+     0
+    ],
+    [
+     2.95,
+     1.95
+    ],
+    [
+     0.65,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "EG-B-RE",
+   "storey": "EG",
+   "usage": "Reduit",
+   "unit": "EG-B",
+   "longName": "Reduit / Lüftungsgerät",
+   "polygon": [
+    [
+     3.7,
+     0
+    ],
+    [
+     4.6,
+     0
+    ],
+    [
+     4.6,
+     1.95
+    ],
+    [
+     3.05,
+     1.95
+    ],
+    [
+     3.05,
+     0.65
+    ],
+    [
+     3.7,
+     0.65
+    ]
+   ]
+  },
+  {
+   "key": "EG-B-EN",
+   "storey": "EG",
+   "usage": "Entree",
+   "unit": "EG-B",
+   "longName": "Entree/Korridor",
+   "polygon": [
+    [
+     -1.375,
+     -1.05
+    ],
+    [
+     0.55,
+     -1.05
+    ],
+    [
+     0.55,
+     2.05
+    ],
+    [
+     4.6,
+     2.05
+    ],
+    [
+     4.6,
+     2.95
+    ],
+    [
+     -1.375,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "EG-B-SZ",
+   "storey": "EG",
+   "usage": "Technik",
+   "unit": "EG-B",
+   "longName": "Steigzone",
+   "polygon": [
+    [
+     3.05,
+     0
+    ],
+    [
+     3.6,
+     0
+    ],
+    [
+     3.6,
+     0.55
+    ],
+    [
+     3.05,
+     0.55
+    ]
+   ]
+  },
+  {
+   "key": "EG-TH",
+   "storey": "EG",
+   "usage": "Treppenhaus",
+   "unit": "-",
+   "longName": "Treppenhaus",
+   "polygon": [
+    [
+     -4.175,
+     -0.9
+    ],
+    [
+     -1.625,
+     -0.9
+    ],
+    [
+     -1.625,
+     6.6
+    ],
+    [
+     -4.175,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-WO",
+   "storey": "OG1",
+   "usage": "Wohnen/Essen",
+   "unit": "OG1-A",
+   "longName": "Wohnen/Essen",
+   "polygon": [
+    [
+     -13.6,
+     -4.6
+    ],
+    [
+     -4.525,
+     -4.6
+    ],
+    [
+     -4.525,
+     -1.15
+    ],
+    [
+     -6.45,
+     -1.15
+    ],
+    [
+     -6.45,
+     -0.1
+    ],
+    [
+     -10.15,
+     -0.1
+    ],
+    [
+     -10.15,
+     -1.15
+    ],
+    [
+     -13.6,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-KU",
+   "storey": "OG1",
+   "usage": "Kochen",
+   "unit": "OG1-A",
+   "longName": "Küche",
+   "polygon": [
+    [
+     -4.525,
+     -4.6
+    ],
+    [
+     -1.625,
+     -4.6
+    ],
+    [
+     -1.625,
+     -1.15
+    ],
+    [
+     -4.525,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-Z1",
+   "storey": "OG1",
+   "usage": "Zimmer",
+   "unit": "OG1-A",
+   "longName": "Zimmer 1",
+   "polygon": [
+    [
+     -13.6,
+     3.15
+    ],
+    [
+     -10.25,
+     3.15
+    ],
+    [
+     -10.25,
+     6.6
+    ],
+    [
+     -13.6,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-Z2",
+   "storey": "OG1",
+   "usage": "Zimmer",
+   "unit": "OG1-A",
+   "longName": "Zimmer 2",
+   "polygon": [
+    [
+     -10.15,
+     3.15
+    ],
+    [
+     -6.6,
+     3.15
+    ],
+    [
+     -6.6,
+     6.6
+    ],
+    [
+     -10.15,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-Z3",
+   "storey": "OG1",
+   "usage": "Zimmer",
+   "unit": "OG1-A",
+   "longName": "Zimmer 3",
+   "polygon": [
+    [
+     -13.6,
+     -1.05
+    ],
+    [
+     -10.25,
+     -1.05
+    ],
+    [
+     -10.25,
+     1.95
+    ],
+    [
+     -13.6,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-BA",
+   "storey": "OG1",
+   "usage": "Bad",
+   "unit": "OG1-A",
+   "longName": "Bad",
+   "polygon": [
+    [
+     -6.5,
+     3.15
+    ],
+    [
+     -4.425,
+     3.15
+    ],
+    [
+     -4.425,
+     6.6
+    ],
+    [
+     -6.5,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-DU",
+   "storey": "OG1",
+   "usage": "Bad",
+   "unit": "OG1-A",
+   "longName": "Dusche/WC",
+   "polygon": [
+    [
+     -8.15,
+     0
+    ],
+    [
+     -6.45,
+     0
+    ],
+    [
+     -6.45,
+     1.95
+    ],
+    [
+     -8.15,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-RE",
+   "storey": "OG1",
+   "usage": "Reduit",
+   "unit": "OG1-A",
+   "longName": "Reduit / Lüftungsgerät",
+   "polygon": [
+    [
+     -10.15,
+     0
+    ],
+    [
+     -8.25,
+     0
+    ],
+    [
+     -8.25,
+     1.95
+    ],
+    [
+     -10.15,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-EN",
+   "storey": "OG1",
+   "usage": "Entree",
+   "unit": "OG1-A",
+   "longName": "Entree/Korridor",
+   "polygon": [
+    [
+     -4.425,
+     -1.05
+    ],
+    [
+     -4.425,
+     2.25
+    ],
+    [
+     -5.1,
+     2.25
+    ],
+    [
+     -5.1,
+     2.95
+    ],
+    [
+     -13.6,
+     2.95
+    ],
+    [
+     -13.6,
+     2.05
+    ],
+    [
+     -6.35,
+     2.05
+    ],
+    [
+     -6.35,
+     -1.05
+    ]
+   ]
+  },
+  {
+   "key": "OG1-A-SZ",
+   "storey": "OG1",
+   "usage": "Technik",
+   "unit": "OG1-A",
+   "longName": "Steigzone",
+   "polygon": [
+    [
+     -5,
+     2.3
+    ],
+    [
+     -4.425,
+     2.3
+    ],
+    [
+     -4.425,
+     2.95
+    ],
+    [
+     -5,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "OG1-B-WO",
+   "storey": "OG1",
+   "usage": "Wohnen/Essen",
+   "unit": "OG1-B",
+   "longName": "Wohnen/Essen",
+   "polygon": [
+    [
+     -1.375,
+     -4.6
+    ],
+    [
+     6.6,
+     -4.6
+    ],
+    [
+     6.6,
+     -0.1
+    ],
+    [
+     0.65,
+     -0.1
+    ],
+    [
+     0.65,
+     -1.15
+    ],
+    [
+     -1.375,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "OG1-B-KU",
+   "storey": "OG1",
+   "usage": "Kochen",
+   "unit": "OG1-B",
+   "longName": "Küche",
+   "polygon": [
+    [
+     4.7,
+     -0.1
+    ],
+    [
+     6.6,
+     -0.1
+    ],
+    [
+     6.6,
+     2.95
+    ],
+    [
+     4.7,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "OG1-B-Z1",
+   "storey": "OG1",
+   "usage": "Zimmer",
+   "unit": "OG1-B",
+   "longName": "Zimmer 1",
+   "polygon": [
+    [
+     -1.375,
+     3.15
+    ],
+    [
+     2.45,
+     3.15
+    ],
+    [
+     2.45,
+     6.6
+    ],
+    [
+     -1.375,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG1-B-Z2",
+   "storey": "OG1",
+   "usage": "Zimmer",
+   "unit": "OG1-B",
+   "longName": "Zimmer 2",
+   "polygon": [
+    [
+     2.55,
+     3.15
+    ],
+    [
+     6.6,
+     3.15
+    ],
+    [
+     6.6,
+     6.6
+    ],
+    [
+     2.55,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG1-B-BA",
+   "storey": "OG1",
+   "usage": "Bad",
+   "unit": "OG1-B",
+   "longName": "Bad",
+   "polygon": [
+    [
+     0.65,
+     0
+    ],
+    [
+     2.95,
+     0
+    ],
+    [
+     2.95,
+     1.95
+    ],
+    [
+     0.65,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "OG1-B-RE",
+   "storey": "OG1",
+   "usage": "Reduit",
+   "unit": "OG1-B",
+   "longName": "Reduit / Lüftungsgerät",
+   "polygon": [
+    [
+     3.7,
+     0
+    ],
+    [
+     4.6,
+     0
+    ],
+    [
+     4.6,
+     1.95
+    ],
+    [
+     3.05,
+     1.95
+    ],
+    [
+     3.05,
+     0.65
+    ],
+    [
+     3.7,
+     0.65
+    ]
+   ]
+  },
+  {
+   "key": "OG1-B-EN",
+   "storey": "OG1",
+   "usage": "Entree",
+   "unit": "OG1-B",
+   "longName": "Entree/Korridor",
+   "polygon": [
+    [
+     -1.375,
+     -1.05
+    ],
+    [
+     0.55,
+     -1.05
+    ],
+    [
+     0.55,
+     2.05
+    ],
+    [
+     4.6,
+     2.05
+    ],
+    [
+     4.6,
+     2.95
+    ],
+    [
+     -1.375,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "OG1-B-SZ",
+   "storey": "OG1",
+   "usage": "Technik",
+   "unit": "OG1-B",
+   "longName": "Steigzone",
+   "polygon": [
+    [
+     3.05,
+     0
+    ],
+    [
+     3.6,
+     0
+    ],
+    [
+     3.6,
+     0.55
+    ],
+    [
+     3.05,
+     0.55
+    ]
+   ]
+  },
+  {
+   "key": "OG1-TH",
+   "storey": "OG1",
+   "usage": "Treppenhaus",
+   "unit": "-",
+   "longName": "Treppenhaus",
+   "polygon": [
+    [
+     -4.175,
+     -0.9
+    ],
+    [
+     -1.625,
+     -0.9
+    ],
+    [
+     -1.625,
+     6.6
+    ],
+    [
+     -4.175,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-WO",
+   "storey": "OG2",
+   "usage": "Wohnen/Essen",
+   "unit": "OG2-A",
+   "longName": "Wohnen/Essen",
+   "polygon": [
+    [
+     -13.6,
+     -4.6
+    ],
+    [
+     -4.525,
+     -4.6
+    ],
+    [
+     -4.525,
+     -1.15
+    ],
+    [
+     -6.45,
+     -1.15
+    ],
+    [
+     -6.45,
+     -0.1
+    ],
+    [
+     -10.15,
+     -0.1
+    ],
+    [
+     -10.15,
+     -1.15
+    ],
+    [
+     -13.6,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-KU",
+   "storey": "OG2",
+   "usage": "Kochen",
+   "unit": "OG2-A",
+   "longName": "Küche",
+   "polygon": [
+    [
+     -4.525,
+     -4.6
+    ],
+    [
+     -1.625,
+     -4.6
+    ],
+    [
+     -1.625,
+     -1.15
+    ],
+    [
+     -4.525,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-Z1",
+   "storey": "OG2",
+   "usage": "Zimmer",
+   "unit": "OG2-A",
+   "longName": "Zimmer 1",
+   "polygon": [
+    [
+     -13.6,
+     3.15
+    ],
+    [
+     -10.25,
+     3.15
+    ],
+    [
+     -10.25,
+     6.6
+    ],
+    [
+     -13.6,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-Z2",
+   "storey": "OG2",
+   "usage": "Zimmer",
+   "unit": "OG2-A",
+   "longName": "Zimmer 2",
+   "polygon": [
+    [
+     -10.15,
+     3.15
+    ],
+    [
+     -6.6,
+     3.15
+    ],
+    [
+     -6.6,
+     6.6
+    ],
+    [
+     -10.15,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-Z3",
+   "storey": "OG2",
+   "usage": "Zimmer",
+   "unit": "OG2-A",
+   "longName": "Zimmer 3",
+   "polygon": [
+    [
+     -13.6,
+     -1.05
+    ],
+    [
+     -10.25,
+     -1.05
+    ],
+    [
+     -10.25,
+     1.95
+    ],
+    [
+     -13.6,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-BA",
+   "storey": "OG2",
+   "usage": "Bad",
+   "unit": "OG2-A",
+   "longName": "Bad",
+   "polygon": [
+    [
+     -6.5,
+     3.15
+    ],
+    [
+     -4.425,
+     3.15
+    ],
+    [
+     -4.425,
+     6.6
+    ],
+    [
+     -6.5,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-DU",
+   "storey": "OG2",
+   "usage": "Bad",
+   "unit": "OG2-A",
+   "longName": "Dusche/WC",
+   "polygon": [
+    [
+     -8.15,
+     0
+    ],
+    [
+     -6.45,
+     0
+    ],
+    [
+     -6.45,
+     1.95
+    ],
+    [
+     -8.15,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-RE",
+   "storey": "OG2",
+   "usage": "Reduit",
+   "unit": "OG2-A",
+   "longName": "Reduit / Lüftungsgerät",
+   "polygon": [
+    [
+     -10.15,
+     0
+    ],
+    [
+     -8.25,
+     0
+    ],
+    [
+     -8.25,
+     1.95
+    ],
+    [
+     -10.15,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-EN",
+   "storey": "OG2",
+   "usage": "Entree",
+   "unit": "OG2-A",
+   "longName": "Entree/Korridor",
+   "polygon": [
+    [
+     -4.425,
+     -1.05
+    ],
+    [
+     -4.425,
+     2.25
+    ],
+    [
+     -5.1,
+     2.25
+    ],
+    [
+     -5.1,
+     2.95
+    ],
+    [
+     -13.6,
+     2.95
+    ],
+    [
+     -13.6,
+     2.05
+    ],
+    [
+     -6.35,
+     2.05
+    ],
+    [
+     -6.35,
+     -1.05
+    ]
+   ]
+  },
+  {
+   "key": "OG2-A-SZ",
+   "storey": "OG2",
+   "usage": "Technik",
+   "unit": "OG2-A",
+   "longName": "Steigzone",
+   "polygon": [
+    [
+     -5,
+     2.3
+    ],
+    [
+     -4.425,
+     2.3
+    ],
+    [
+     -4.425,
+     2.95
+    ],
+    [
+     -5,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "OG2-B-WO",
+   "storey": "OG2",
+   "usage": "Wohnen/Essen",
+   "unit": "OG2-B",
+   "longName": "Wohnen/Essen",
+   "polygon": [
+    [
+     -1.375,
+     -4.6
+    ],
+    [
+     6.6,
+     -4.6
+    ],
+    [
+     6.6,
+     -0.1
+    ],
+    [
+     0.65,
+     -0.1
+    ],
+    [
+     0.65,
+     -1.15
+    ],
+    [
+     -1.375,
+     -1.15
+    ]
+   ]
+  },
+  {
+   "key": "OG2-B-KU",
+   "storey": "OG2",
+   "usage": "Kochen",
+   "unit": "OG2-B",
+   "longName": "Küche",
+   "polygon": [
+    [
+     4.7,
+     -0.1
+    ],
+    [
+     6.6,
+     -0.1
+    ],
+    [
+     6.6,
+     2.95
+    ],
+    [
+     4.7,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "OG2-B-Z1",
+   "storey": "OG2",
+   "usage": "Zimmer",
+   "unit": "OG2-B",
+   "longName": "Zimmer 1",
+   "polygon": [
+    [
+     -1.375,
+     3.15
+    ],
+    [
+     2.45,
+     3.15
+    ],
+    [
+     2.45,
+     6.6
+    ],
+    [
+     -1.375,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG2-B-Z2",
+   "storey": "OG2",
+   "usage": "Zimmer",
+   "unit": "OG2-B",
+   "longName": "Zimmer 2",
+   "polygon": [
+    [
+     2.55,
+     3.15
+    ],
+    [
+     6.6,
+     3.15
+    ],
+    [
+     6.6,
+     6.6
+    ],
+    [
+     2.55,
+     6.6
+    ]
+   ]
+  },
+  {
+   "key": "OG2-B-BA",
+   "storey": "OG2",
+   "usage": "Bad",
+   "unit": "OG2-B",
+   "longName": "Bad",
+   "polygon": [
+    [
+     0.65,
+     0
+    ],
+    [
+     2.95,
+     0
+    ],
+    [
+     2.95,
+     1.95
+    ],
+    [
+     0.65,
+     1.95
+    ]
+   ]
+  },
+  {
+   "key": "OG2-B-RE",
+   "storey": "OG2",
+   "usage": "Reduit",
+   "unit": "OG2-B",
+   "longName": "Reduit / Lüftungsgerät",
+   "polygon": [
+    [
+     3.7,
+     0
+    ],
+    [
+     4.6,
+     0
+    ],
+    [
+     4.6,
+     1.95
+    ],
+    [
+     3.05,
+     1.95
+    ],
+    [
+     3.05,
+     0.65
+    ],
+    [
+     3.7,
+     0.65
+    ]
+   ]
+  },
+  {
+   "key": "OG2-B-EN",
+   "storey": "OG2",
+   "usage": "Entree",
+   "unit": "OG2-B",
+   "longName": "Entree/Korridor",
+   "polygon": [
+    [
+     -1.375,
+     -1.05
+    ],
+    [
+     0.55,
+     -1.05
+    ],
+    [
+     0.55,
+     2.05
+    ],
+    [
+     4.6,
+     2.05
+    ],
+    [
+     4.6,
+     2.95
+    ],
+    [
+     -1.375,
+     2.95
+    ]
+   ]
+  },
+  {
+   "key": "OG2-B-SZ",
+   "storey": "OG2",
+   "usage": "Technik",
+   "unit": "OG2-B",
+   "longName": "Steigzone",
+   "polygon": [
+    [
+     3.05,
+     0
+    ],
+    [
+     3.6,
+     0
+    ],
+    [
+     3.6,
+     0.55
+    ],
+    [
+     3.05,
+     0.55
+    ]
+   ]
+  },
+  {
+   "key": "OG2-TH",
+   "storey": "OG2",
+   "usage": "Treppenhaus",
+   "unit": "-",
+   "longName": "Treppenhaus",
+   "polygon": [
+    [
+     -4.175,
+     -0.9
+    ],
+    [
+     -1.625,
+     -0.9
+    ],
+    [
+     -1.625,
+     6.6
+    ],
+    [
+     -4.175,
+     6.6
+    ]
+   ]
+  }
+ ],
+ "stairs": [
+  {
+   "key": "EG-TR",
+   "storey": "EG",
+   "position": [
+    -4.175,
+    5.2
+   ],
+   "directionDeg": 270,
+   "risers": 17,
+   "riserHeight": 0.1735,
+   "tread": 0.27,
+   "width": 1.2,
+   "fireRating": "REI 90"
+  },
+  {
+   "key": "OG1-TR",
+   "storey": "OG1",
+   "position": [
+    -1.625,
+    0.61
+   ],
+   "directionDeg": 90,
+   "risers": 17,
+   "riserHeight": 0.1735,
+   "tread": 0.27,
+   "width": 1.2,
+   "fireRating": "REI 90"
+  }
+ ],
+ "columns": []
+}

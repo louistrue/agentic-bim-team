@@ -1,0 +1,75 @@
+{
+ "discipline": "Haustechnik",
+ "summary": "Die Steigzonen A-SZ und B-SZ liegen in allen Geschossen deckungsgleich, sind in OG1-DE, OG2-DE und OG2-DA ausgespart, und ein Technikraum EG-TE ist vorhanden. Damit sind die Punkte Steigzonen und Technikraum aus v1 gelöst. Neu ist ein Stapelungsbruch in Wohnung A: Die Küche liegt im EG im Westen, in OG1 und OG2 aber über dem Technikraum, und sie ist in keinem Geschoss nahe an der Steigzone. Die Komfortlüftung mit Flachkanälen im Überbeton der HBV-Decke ist konstruktiv und brandschutztechnisch ungeklärt.",
+ "findings": [
+  {
+   "issueId": "MEP-nasszellen-und-ku-che-je-wohnung-verteil:EG-A-KU",
+   "severity": "WARNING",
+   "title": "Küche Wohnung A nicht gestapelt und fern der Steigzone",
+   "text": "Bad und Dusche hängen jetzt an A-SZ, das ist verbessert. Die Küche EG-A-KU liegt aber im EG bei x −7.0…−4.7 (West), die Küchen OG1-A-KU und OG2-A-KU bei x −4.5…−1.6 (Ost), also nicht übereinander. Alle drei Küchen liegen 3.5 m und mehr von A-SZ (y 2.3…2.95) entfernt, durch den Wohnbereich getrennt. Das gibt lange Liegeleitungen in den Decken und eine zweite Strangführung. Küchen in allen Geschossen deckungsgleich legen (EG zurück nach Osten oder OG nach Westen) und an A-SZ oder an eine zweite Steigzone an der Küche anbinden. Alternativ die Küchenstränge in der Kernwand führen.",
+   "elements": ["EG-A-KU", "OG1-A-KU", "OG2-A-KU", "EG-A-SZ", "EG-A-DU"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Grundrisse EG, OG1 und OG2 von Wohnung A überlagern: Küchenpolygone und Abstand zum Schachtfeld A-SZ messen. Strangschema mit dem Sanitärplaner erstellen."
+  },
+  {
+   "severity": "WARNING",
+   "title": "Küche OG1 über Technikraum",
+   "text": "OG1-A-KU liegt direkt über EG-TE. Dort stehen Speicher, Verteilung und Elektro-Hausanschlüsse. Eine undichte Küchendecke oder ein Leitungsschaden gefährdet Elektro und Zähler. Die Küchenabwasserleitung müsste zudem durch die HBV-Decke über dem Technikraum oder lang horizontal zu A-SZ. Küche nicht über den Technikraum legen. Falls nicht möglich: Decke über EG-TE mit Abdichtung und Entwässerung planen und die Elektroverteilung ausserhalb der Tropfzone anordnen.",
+   "elements": ["EG-TE", "OG1-A-KU", "OG1-DE"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Schnitt durch EG-TE und OG1-A-KU: Lage von Küchenzeile, Abläufen und Technikgeräten prüfen. Mit dem Elektro- und Sanitärplaner abstimmen."
+  },
+  {
+   "issueId": "MEP-platz-fu-r-komfortlu-ftung-minergie-nich:EG-A-RE",
+   "severity": "WARNING",
+   "title": "Lüftungsverteilung im Überbeton der HBV-Decke ungeklärt",
+   "text": "Die Geräte stehen jetzt im Reduit (EG-A-RE, EG-B-RE), das ist gelöst. Die Verteilung soll aber in Flachkanälen im 120 mm Überbeton der HBV-Decke liegen. Dort sitzen Bewehrung und Schubverbindung, und Kanäle schwächen den Verbund. Im OG2 gibt es keinen Überbeton, dort liegt ein 240 mm Hohlkastenelement. Die Reduit EG-A-RE liegt zudem rund 4 m von A-SZ entfernt, und die Kanäle brauchen einen Weg dorthin. Verteilung im Bodenaufbau oder in lokalen Abhangdecken über Flur und Bädern mit dem Tragwerksplaner klären. Lichte Höhe 2.40 m danach nachweisen. Aussenluft und Fortluft sind getrennt zu führen (Kurzschluss vermeiden).",
+   "elements": ["EG-A-RE", "EG-B-RE", "OG1-DE", "OG2-DE", "OG2-DA"],
+   "basis": "Projektannahme (Minergie gemäss Brief)",
+   "verify": "Lüftungsplaner legt Kanalquerschnitte und Weg Gerät – SZ – Dach fest. Tragwerksplaner bestätigt, ob Einlagen im Überbeton zulässig sind. Lichte Höhe am Schnitt prüfen."
+  },
+  {
+   "severity": "INFO",
+   "title": "Steigzonenquerschnitt knapp für alle Medien",
+   "text": "A-SZ misst 0.58 × 0.65 m, B-SZ 0.55 × 0.55 m. Darin sollen Schmutzwasser-Fallstrang mit Lüftung, Kalt-/Warmwasser, Zu-/Abluft, Fortluft und Elektro Platz finden. Das ist für zwei Lüftungsleitungen plus Sanitär knapp, besonders bei B-SZ. Querschnitte mit Sanitär- und Lüftungsplaner nachrechnen, Revisionszugang vorsehen und gegebenenfalls vergrössern. Die Schachtwände EI 60 mit Zugangstüren oder Revisionsöffnungen im Bad planen.",
+   "elements": ["EG-A-SZ", "EG-B-SZ", "EG-A-SW1", "EG-B-SW1"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Strangschema mit Rohrdurchmessern und Dämmstärken auf den Schachtgrundriss legen und die freie Fläche messen."
+  },
+  {
+   "issueId": "MEP-leitungsdurchfu-hrungen-durch-brandabsch:EG-WT-1",
+   "severity": "INFO",
+   "title": "Abschottung der Deckendurchbrüche festlegen",
+   "text": "Die Steigzonen liegen innerhalb der Wohnungen, nicht an der Wohnungstrennwand oder im Kern, und die Schachtwände sind EI 60. Das reduziert das Risiko. Offen ist die Abschottung der Durchbrüche in OG1-DE, OG2-DE und OG2-DA (REI 60) für Leitungen und Lüftungsrohre. Auch die Verbindung vom Technikraum zu den Wohnungsstrangen muss geklärt sein, ohne Leitungen durch EG-WT-1 oder den Kern zu führen. Die Brandschutzfachperson legt die Abschottungssysteme fest.",
+   "elements": ["EG-WT-1", "OG1-DE", "OG2-DE", "EG-A-SW1", "EG-B-SW1", "EG-TE-IW1"],
+   "basis": "fachliche Einschätzung (VKF-Brandschutzvorschriften; Anforderungen durch die Brandschutzfachperson festzulegen)",
+   "verify": "Brandschutzfachperson legt Abschottungssysteme fest. Durchdringungen in den Grundrissen markieren."
+  },
+  {
+   "severity": "INFO",
+   "title": "Technikraum: Verteilwege und Schall",
+   "text": "EG-TE (10 m²) liegt südlich des Kerns. Die Wege zu A-SZ sind kurz, zu B-SZ (x 3.0) aber über 7 m und müssen im EG in der Bodenplatte oder im Bodenaufbau geführt werden. Der Platz für Speicher, Hausanschlüsse, Verteiler und Zähler ist bei 10 m² ohne Aufstellplan nicht belegt. Der Raum grenzt an die Küche EG-A-KU. Schallentkopplung von Speicher, Pumpen und Aussengerät ist nachzuweisen. Aussengerät oder Erdsonde mit Aufstellort ausweisen.",
+   "elements": ["EG-TE", "EG-TE-IW1", "EG-TE-T1"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Aufstellplan des Technikraums mit Gerätemassen vom HLKS-Planer, Leitungsführung EG im Grundriss prüfen."
+  }
+ ],
+ "resolved": [
+  {
+   "issueId": "MEP-kein-technikraum-keine-haustechnikzentra:EG-BP",
+   "reason": "Neuer Technikraum EG-TE (10 m²) mit Wand EG-TE-IW1 (EI 60) und Tür EG-TE-T1 am Treppenhaus. Die Technikfläche ist im Modell vorhanden. Aufstellplan und Schall siehe INFO."
+  },
+  {
+   "issueId": "MEP-keine-steigzonen-scha-chte-im-modell:EG-A-BA",
+   "reason": "Steigzonen EG/OG1/OG2-A-SZ und -B-SZ mit Schachtwänden SW1/SW2 sind in allen Geschossen deckungsgleich modelliert. Aussparungen in OG1-DE, OG2-DE und OG2-DA vorhanden. A-SZ liegt zwischen Dusche und Bad, B-SZ zwischen Bad und Reduit."
+  }
+ ],
+ "notCheckable": [
+  "Dimensionierung Sanitär, Heizung, Lüftung (Rohrquerschnitte, Kanalquerschnitte, Luftmengen)",
+  "Wärmeerzeuger-Wahl und Schallpegel Aussengerät",
+  "Brandschutzanforderungen an Abschottungen und Lüftungsleitungen (Brandschutzfachperson)",
+  "Einlagen im Überbeton der HBV-Decke (Tragwerksplaner)",
+  "Minergie-Nachweis der Lüftung und Luftdichtheit",
+  "Abdichtung von Nassräumen auf der Holzdecke (Holzbauer)"
+ ]
+}

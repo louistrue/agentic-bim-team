@@ -1,0 +1,50 @@
+{
+ "discipline": "Energie/Fassade",
+ "summary": "Die Gebäudehülle ist kompakt, das Dach (U 0.12) und die Bodenplatte (U 0.17) sind plausibel. Der Sonnenschutz ist neu im Fensternamen vermerkt (Raffstore aussen, Fc 0.15), das ist ein Fortschritt, aber noch kein Merkmal und kein Nachweis. Die Wärmebrücken (Attika, Vordach, Sockel) und die U-Werte mit Produktdaten bleiben für den Energienachweis offen.",
+ "findings": [
+  {
+   "issueId": "FACADE-sommerlicher-wa-rmeschutz-su-d-west-kein:EG-A-F6",
+   "severity": "INFO",
+   "title": "Sommerlicher Wärmeschutz Süd/West: Sonnenschutz nur im Fensternamen, Nachweis offen",
+   "text": "Die Südfenster tragen neu den Vermerk «Raffstore aussen, Fc 0.15, Kasten im Sturz». Damit ist die Absicht im Modell lesbar, der Fensteranteil Süd steigt aber durch die neuen Küchenfenster auf 33 % (62.2 m²). Ein Pset-Merkmal fehlt weiterhin, die Angabe im Namen ist nicht auswertbar. Kritisch bleiben die Fenstertüren im EG (Brüstung 0.1 m) und die Wohnungen im OG2 unter dem Flachdach. Der Raffstorenkasten (ca. 0.20 m) im Sturz von 0.39 m ist im Fassadenschnitt zu bestätigen. Bitte den Nachweis nach SIA 180 mit Nachtlüftung als Annahme rechnen lassen. Der Fc-Wert 0.15 ist mit dem Produktdatenblatt zu belegen, bei Windlast fährt der Sonnenschutz nicht.",
+   "elements": ["EG-A-F6", "EG-A-F7", "EG-B-F5", "EG-B-F6", "OG2-A-F6", "OG2-A-F7", "OG2-B-F5", "OG2-B-F6", "OG2-DA"],
+   "basis": "fachliche Einschätzung (Nachweis sommerlicher Wärmeschutz nach SIA 180)",
+   "verify": "Fensterliste mit g-Wert, Fc-Wert und Sonnenschutztyp prüfen. Sommernachweis für OG2 Süd/West rechnen. Kastenhöhe im Fassadenschnitt 1:20 kontrollieren."
+  },
+  {
+   "issueId": "FACADE-attika-und-vordach-nur-in-notizen-wa-rme:OG2-DA",
+   "severity": "INFO",
+   "title": "Attika und Vordach nicht modelliert: Wärmebrücken Dachrand und Eingang",
+   "text": "Attika (Aufbordung 0.2 m) und Vordach über EG-HE sind weiterhin nur in Text und Notizen vorhanden. Die Attikadämmung ist ohne Unterbruch über die Aufbordung zu führen, das Vordach mit thermisch getrennten Konsolen am Kern zu befestigen (so in den Notizen vorgesehen). Die linearen Wärmebrücken sind im Energienachweis aufzuführen. Die Gebäudehöhe von ca. 9.46 m mit Attika liegt knapp unter 9.5 m, jede Aufbauänderung am Dach ist gegen die Höhe zu prüfen.",
+   "elements": ["OG2-DA", "EG-HE", "OG2-AW-N2"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Attikadetail und Vordachanschluss im Schnitt 1:20 prüfen. Ψ-Werte im Energienachweis kontrollieren. Gebäudehöhe inkl. Attika nachmessen."
+  },
+  {
+   "issueId": "FACADE-u-wert-holzrahmenwand-0-15-ist-plausibel:EG-AW-N1",
+   "severity": "INFO",
+   "title": "U-Wert Holzrahmenwand 0.15 und Fenster Uw 0.8: Nachweis mit Produktwerten steht aus",
+   "text": "Der Wandaufbau ist unverändert. Die Überschlagsrechnung bleibt bei 0.13–0.15 W/m²K, die Reserve zum Grenzwert 0.17 ist klein. Neu ist in den Süd-, West- und Ostwänden ein Faserzementband (A1) im Brüstungsbereich. Es ersetzt nur die Schalung und ändert den U-Wert kaum, die Befestigung ist aber ohne durchdringende Metallanker zu planen. Fenster Uw 0.8 setzt Dreifachverglasung mit warmem Rand und gedämmtem Rahmen voraus. Beides ist mit Produktwerten zu bestätigen, besonders bei den schmalen Pfeilern der Südfassade mit höherem Holzanteil.",
+   "elements": ["EG-AW-N1", "EG-AW-S1", "EG-AW-W", "EG-AW-E"],
+   "basis": "fachliche Einschätzung",
+   "verify": "U-Wert nach EN ISO 6946 inkl. Holzanteil nachrechnen. Fenster-Uw aus Datenblatt oder Zertifikat entnehmen."
+  },
+  {
+   "issueId": "FACADE-sockel-und-plattenrand-wa-rmebru-cke-hol:EG-BP",
+   "severity": "INFO",
+   "title": "Sockel: Wärmebrücke Wandfuss und Detail noch offen",
+   "text": "Die Bodenplatte (XPS 200 mm, Randdämmung 120 mm) ergibt überschlägig ca. 0.16 W/m²K und passt zum Modellwert 0.17. Offen sind die lineare Wärmebrücke am Wandfuss (Holzrahmenwand auf Betonplatte, Platte 0.41 m über Terrain), die Schwellenauflagerung mit Abdichtung und der Spritzwasserschutz der Holzschalung. Die neuen Linienlasten und Plattenverstärkungen unter Kern und BSP-Zwischenlinie können die Dämmung durchdringen oder verdünnen, das ist im Detail zu zeigen.",
+   "elements": ["EG-BP", "EG-AW-S1", "EG-AW-W"],
+   "basis": "fachliche Einschätzung",
+   "verify": "Sockeldetail 1:20 verlangen. Ψ-Wert mit Wärmebrückenkatalog oder 2D-Rechnung bestimmen. Dämmung unter Verstärkungen separat nachrechnen."
+  }
+ ],
+ "resolved": [],
+ "notCheckable": [
+  "Sommerlicher Wärmeschutz nach SIA 180 (Rechenprogramm, Klimadaten, Nachtlüftungsannahme)",
+  "Energienachweis (Gebäudehüllzahl, Heizwärmebedarf) mit Produktwerten und Ψ-Katalog",
+  "Fenster-Uw, g-Wert und Fc-Wert aus Herstellerdaten",
+  "Luftdichtheit und Anschlussdetails (Blower-Door-Ziel)",
+  "Wirkung der Aussengerät-Aufstellung der Wärmepumpe auf die Südfassade"
+ ]
+}

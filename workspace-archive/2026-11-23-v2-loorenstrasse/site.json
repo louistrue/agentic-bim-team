@@ -1,0 +1,1248 @@
+{
+ "address": "Loorenstrasse 62 8053 Zürich",
+ "geocode": {
+  "e": 2687232.75,
+  "n": 1246458.125,
+  "source": "geo.admin.ch SearchServer"
+ },
+ "parcel": {
+  "egrid": "CH999979659148",
+  "number": "WI3988",
+  "municipality": "Zürich",
+  "computedArea": 11159,
+  "registeredArea": 11156,
+  "polygonLocal": [
+   [
+    -98.3,
+    96.9
+   ],
+   [
+    -93.2,
+    97.7
+   ],
+   [
+    -92.9,
+    98.7
+   ],
+   [
+    -92.8,
+    98.9
+   ],
+   [
+    -92.7,
+    99.1
+   ],
+   [
+    -92.6,
+    99.2
+   ],
+   [
+    -92.4,
+    99.4
+   ],
+   [
+    -92.3,
+    99.6
+   ],
+   [
+    -92.2,
+    99.8
+   ],
+   [
+    -92.1,
+    99.9
+   ],
+   [
+    -92,
+    100.1
+   ],
+   [
+    -91.8,
+    100.2
+   ],
+   [
+    -91.7,
+    100.4
+   ],
+   [
+    -91.5,
+    100.5
+   ],
+   [
+    -91.4,
+    100.7
+   ],
+   [
+    -91.2,
+    100.8
+   ],
+   [
+    -91.1,
+    100.9
+   ],
+   [
+    -90.9,
+    101
+   ],
+   [
+    -90.7,
+    101.2
+   ],
+   [
+    -90.6,
+    101.3
+   ],
+   [
+    -90.4,
+    101.4
+   ],
+   [
+    -90.2,
+    101.5
+   ],
+   [
+    -90,
+    101.6
+   ],
+   [
+    -89.8,
+    101.7
+   ],
+   [
+    -89.7,
+    101.8
+   ],
+   [
+    -89.5,
+    101.8
+   ],
+   [
+    -89.3,
+    101.9
+   ],
+   [
+    -86.1,
+    103
+   ],
+   [
+    -77.7,
+    105.6
+   ],
+   [
+    -77.8,
+    105.8
+   ],
+   [
+    -75,
+    106.7
+   ],
+   [
+    -74.9,
+    106.4
+   ],
+   [
+    -73.7,
+    106.7
+   ],
+   [
+    -72.6,
+    107
+   ],
+   [
+    -71.4,
+    107.3
+   ],
+   [
+    -70.3,
+    107.6
+   ],
+   [
+    -69.1,
+    107.9
+   ],
+   [
+    -68,
+    108.1
+   ],
+   [
+    -66.8,
+    108.4
+   ],
+   [
+    -65.9,
+    108.6
+   ],
+   [
+    -64.9,
+    108.8
+   ],
+   [
+    -64,
+    109
+   ],
+   [
+    -63,
+    109.2
+   ],
+   [
+    -62.1,
+    109.4
+   ],
+   [
+    -61.1,
+    109.6
+   ],
+   [
+    -17,
+    118.8
+   ],
+   [
+    -13.6,
+    107.2
+   ],
+   [
+    -6.2,
+    82.8
+   ],
+   [
+    1.4,
+    57.4
+   ],
+   [
+    8.9,
+    32.5
+   ],
+   [
+    16.4,
+    7.6
+   ],
+   [
+    24.5,
+    -19.2
+   ],
+   [
+    23.5,
+    -19.8
+   ],
+   [
+    22.6,
+    -20.3
+   ],
+   [
+    21.6,
+    -20.9
+   ],
+   [
+    20.7,
+    -21.5
+   ],
+   [
+    19.7,
+    -22.1
+   ],
+   [
+    18.8,
+    -22.7
+   ],
+   [
+    17.7,
+    -23.3
+   ],
+   [
+    16.7,
+    -24
+   ],
+   [
+    15.7,
+    -24.6
+   ],
+   [
+    14.7,
+    -25.3
+   ],
+   [
+    13.6,
+    -25.9
+   ],
+   [
+    12.6,
+    -26.6
+   ],
+   [
+    11.6,
+    -27.3
+   ],
+   [
+    10.6,
+    -28
+   ],
+   [
+    9.6,
+    -28.7
+   ],
+   [
+    8.6,
+    -29.4
+   ],
+   [
+    7.6,
+    -30.1
+   ],
+   [
+    6.6,
+    -30.8
+   ],
+   [
+    5.7,
+    -31.5
+   ],
+   [
+    4.7,
+    -32.3
+   ],
+   [
+    -20.1,
+    -50.7
+   ],
+   [
+    -20.3,
+    -50.7
+   ],
+   [
+    -20.5,
+    -50.7
+   ],
+   [
+    -20.8,
+    -50.7
+   ],
+   [
+    -21,
+    -50.7
+   ],
+   [
+    -21.2,
+    -50.6
+   ],
+   [
+    -21.5,
+    -50.6
+   ],
+   [
+    -21.7,
+    -50.6
+   ],
+   [
+    -21.9,
+    -50.5
+   ],
+   [
+    -22.2,
+    -50.5
+   ],
+   [
+    -22.4,
+    -50.4
+   ],
+   [
+    -22.6,
+    -50.4
+   ],
+   [
+    -22.8,
+    -50.3
+   ],
+   [
+    -23,
+    -50.2
+   ],
+   [
+    -23.3,
+    -50.1
+   ],
+   [
+    -23.5,
+    -50
+   ],
+   [
+    -23.7,
+    -49.9
+   ],
+   [
+    -23.9,
+    -49.8
+   ],
+   [
+    -24.1,
+    -49.7
+   ],
+   [
+    -24.3,
+    -49.6
+   ],
+   [
+    -24.5,
+    -49.5
+   ],
+   [
+    -24.7,
+    -49.4
+   ],
+   [
+    -24.9,
+    -49.2
+   ],
+   [
+    -25.1,
+    -49.1
+   ],
+   [
+    -25.2,
+    -48.9
+   ],
+   [
+    -25.4,
+    -48.8
+   ],
+   [
+    -25.6,
+    -48.6
+   ],
+   [
+    -25.8,
+    -48.5
+   ],
+   [
+    -25.9,
+    -48.3
+   ],
+   [
+    -26.1,
+    -48.1
+   ],
+   [
+    -26.2,
+    -48
+   ],
+   [
+    -26.4,
+    -48.1
+   ],
+   [
+    -36.8,
+    -36.3
+   ],
+   [
+    -46.9,
+    -21.6
+   ],
+   [
+    -52.2,
+    -10.3
+   ],
+   [
+    -55.4,
+    0.9
+   ],
+   [
+    -61.4,
+    26.4
+   ],
+   [
+    -65.7,
+    40.2
+   ],
+   [
+    -74.3,
+    55
+   ],
+   [
+    -77.3,
+    62.4
+   ],
+   [
+    -87.3,
+    79.5
+   ],
+   [
+    -93.7,
+    90.9
+   ],
+   [
+    -98.3,
+    96.9
+   ]
+  ]
+ },
+ "origin": {
+  "eastings": 2687233,
+  "northings": 1246459,
+  "height": 600,
+  "crs": "EPSG:2056",
+  "verticalDatum": "LN02",
+  "note": "Mitte des Hüllrechtecks des Bestandesbaus EGID 302060735"
+ },
+ "zoning": {
+  "zone": "W3",
+  "source": "Bauordnung der Stadt Zürich (BZO 2016) Art. 13 Abs. 1, Fassung V45 Stand 15.04.2026, https://oerebdocs.zh.ch/getDoc?docid=6",
+  "maxFullStoreys": 3,
+  "maxAtticStoreysCountable": 1,
+  "maxBasementCountable": 0,
+  "maxBuildingHeight_m": 9.5,
+  "minBoundaryDistance_m": 5,
+  "lengthSurcharge": {
+   "facadeOver_m": 12,
+   "factor": 0.3333,
+   "maxDistance_m": 10,
+   "source": "BZO 2016 Art. 14 Abs. 1"
+  },
+  "maxFloorAreaRatio": 0.9,
+  "maxFloorAboveGround_m": 1,
+  "neighbourDistance_m": 5,
+  "neighbourDistanceNote": "Projektannahme: Schutzabstand zu Bestandesbauten bei brennbarer Aussenwand (Holzfassade) – durch Brandschutzfachperson nach VKF zu bestätigen",
+  "oereb": {
+   "status": "ok",
+   "url": "https://maps.zh.ch/oereb/v2/extract/pdf/?EGRID=CH999979659148",
+   "created": "2026-11-23T22:56:52",
+   "registeredArea": 11156,
+   "restrictions": [
+    {
+     "theme": "Nutzungsplanung (kantonal/kommunal): Grundnutzungen",
+     "legend": "siehe gültige Bau- und Zonenordnung der Stadt Zürich (W3)",
+     "typeCode": "C110321",
+     "areaShare": 11156,
+     "documents": [
+      {
+       "title": "BZO-Revision 2016 Genehmigung vom 05.07.2017",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=6808"
+      },
+      {
+       "title": "Bauordnung Stadt Zürich 2016 (V45 Stand 15.04.2026)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=6"
+      }
+     ]
+    },
+    {
+     "theme": "Nutzungsplanung (kantonal/kommunal): überlagernde Nutzungen",
+     "legend": "Arealüberbauungen zulässig",
+     "typeCode": "C690902",
+     "areaShare": 11156,
+     "documents": [
+      {
+       "title": "Bauordnung Stadt Zürich 2016 (V45 Stand 15.04.2026)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=6"
+      },
+      {
+       "title": "Raumplanungsgesetz (RPG)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=2293"
+      }
+     ]
+    },
+    {
+     "theme": "Nutzungsplanung (kantonal/kommunal): überlagernde Nutzungen",
+     "legend": "Quartierplan",
+     "typeCode": "C690201",
+     "areaShare": 11156,
+     "documents": [
+      {
+       "title": "Raumplanungsgesetz (RPG)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=2293"
+      },
+      {
+       "title": "Planungs- und Baugesetz (PBG)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=2283"
+      }
+     ]
+    },
+    {
+     "theme": "Nutzungsplanung (kantonal/kommunal): überlagernde Nutzungen",
+     "legend": "Quartierplan",
+     "typeCode": "C690201",
+     "areaShare": 11156,
+     "documents": [
+      {
+       "title": "QP Nr. 493 Looren",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=16656"
+      },
+      {
+       "title": "Raumplanungsgesetz (RPG)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=2293"
+      }
+     ]
+    },
+    {
+     "theme": "Baulinien (kantonal/kommunal)",
+     "legend": "Baulinie.Verkehr, kommunal",
+     "typeCode": "baulinien-0-kommunal",
+     "lengthShare": 164,
+     "documents": [
+      {
+       "title": "BLG Beschluss vom 20. Januar 2009",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=13247"
+      },
+      {
+       "title": "Planungs- und Baugesetz (PBG)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=2283"
+      }
+     ]
+    },
+    {
+     "theme": "Sicherheitszonenplan",
+     "legend": "Genehmigter Sicherheitszonenperimeter",
+     "typeCode": "sicherheitszonen",
+     "areaShare": 11156,
+     "documents": [
+      {
+       "title": "Sicherheitszonenplan (Anpassung Anflug 34) \"Flughafen Zuerich\", 1:5000 Gemeinde Zürich-Hottingen",
+       "url": "https://data.geo.admin.ch/ch.bazl.sicherheitszonenplan_v2_0.oereb/Rechtsvorschriften/108-D-0051.pdf"
+      },
+      {
+       "title": "Sicherheitszonenplan (Anpassung Anflug 34) \"Flughafen Zuerich\", 1:5000 Gemeinde Zürich-Schwamendingen",
+       "url": "https://data.geo.admin.ch/ch.bazl.sicherheitszonenplan_v2_0.oereb/Rechtsvorschriften/108-D-0052.pdf"
+      }
+     ]
+    },
+    {
+     "theme": "Sicherheitszonenplan (öffentlich aufgelegt)",
+     "legend": "Öffentlich aufgelegter Sicherheitszonenperimeter",
+     "typeCode": "sz-proj",
+     "areaShare": 11156,
+     "documents": [
+      {
+       "title": "Sicherheitszonenplan \"Flughafen Zürich\" 1:5'000 Stadt Zürich (Kreis 7)",
+       "url": "https://data.geo.admin.ch/ch.bazl.sicherheitszonenplan_v2_0.oereb/Rechtsvorschriften/Aenderung/108-D-0190.pdf"
+      },
+      {
+       "title": "Sicherheitszonenplan \"Flughafen Zürich\" 1:5'000 Stadt Zürich (Kreise 6 und 12)",
+       "url": "https://data.geo.admin.ch/ch.bazl.sicherheitszonenplan_v2_0.oereb/Rechtsvorschriften/Aenderung/108-D-0189.pdf"
+      }
+     ]
+    },
+    {
+     "theme": "Sicherheitszonenplan (öffentlich aufgelegt)",
+     "legend": "Öffentlich aufgelegter Sicherheitszonenperimeter",
+     "typeCode": "sz-proj",
+     "areaShare": 11156,
+     "documents": [
+      {
+       "title": "Bundesgesetz über die Luftfahrt LFG SR 748.0",
+       "url": "https://www.admin.ch/ch/d/sr/c748_0.html"
+      },
+      {
+       "title": "Verordnung über die Infrastruktur der Luftfahrt VIL SR 748.131.1",
+       "url": "https://www.admin.ch/ch/d/sr/c748_131_1.html"
+      }
+     ]
+    },
+    {
+     "theme": "Lärmempfindlichkeitsstufen (in Nutzungszonen)",
+     "legend": "Empfindlichkeitsstufe II, aufgestuft (nein)",
+     "typeCode": "laermempfindlichkeitsstufen_2_0",
+     "areaShare": 11156,
+     "documents": [
+      {
+       "title": "Bauordnung Stadt Zürich 2016 (V45 Stand 15.04.2026)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=6"
+      },
+      {
+       "title": "Lärmschutz-Verordnung (LSV)",
+       "url": "https://oerebdocs.zh.ch/getDoc?docid=2298"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "existingBuildings": [
+  {
+   "egid": "302060735",
+   "name": "Gebaeude Einzelhaus (EGID 302060735)",
+   "height": 13.15,
+   "terrain": 599.59,
+   "bboxLocal": [
+    -14.3,
+    -11.1,
+    13.3,
+    10.3
+   ],
+   "toBeReplaced": true
+  },
+  {
+   "egid": "158343",
+   "name": "Gebaeude Einzelhaus (EGID 158343)",
+   "height": 7.92,
+   "terrain": 602.26,
+   "bboxLocal": [
+    23.2,
+    -3.4,
+    34.2,
+    6.6
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302060736",
+   "name": "Gebaeude Einzelhaus (EGID 302060736)",
+   "height": 12.66,
+   "terrain": 599.21,
+   "bboxLocal": [
+    -29.3,
+    -40.2,
+    -2.9,
+    -12.1
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302060733",
+   "name": "Gebaeude Einzelhaus (EGID 302060733)",
+   "height": 13.19,
+   "terrain": 601.09,
+   "bboxLocal": [
+    -23.2,
+    18.9,
+    3.8,
+    39.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302060734",
+   "name": "Gebaeude Einzelhaus (EGID 302060734)",
+   "height": 12.98,
+   "terrain": 600.64,
+   "bboxLocal": [
+    -43.8,
+    -5.2,
+    -22.4,
+    21.4
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158321",
+   "name": "Gebaeude Einzelhaus (EGID 158321)",
+   "height": 11.93,
+   "terrain": 601.77,
+   "bboxLocal": [
+    31.8,
+    -3.2,
+    41.6,
+    8.5
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158322",
+   "name": "Gebaeude Einzelhaus (EGID 158322)",
+   "height": 6.34,
+   "terrain": 603.35,
+   "bboxLocal": [
+    15.9,
+    18.7,
+    33.1,
+    34.5
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158342",
+   "name": "Gebaeude Einzelhaus (EGID 158342)",
+   "height": 7.4,
+   "terrain": 601.55,
+   "bboxLocal": [
+    13,
+    -52.6,
+    32.1,
+    -36.1
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158344",
+   "name": "Gebaeude Einzelhaus (EGID 158344)",
+   "height": 6.12,
+   "terrain": 601.89,
+   "bboxLocal": [
+    32.5,
+    -39.3,
+    44.1,
+    -25.4
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302022994",
+   "name": "Gebaeude Einzelhaus (EGID 302022994)",
+   "height": 3.77,
+   "terrain": 601.98,
+   "bboxLocal": [
+    28.7,
+    -41.7,
+    37.8,
+    -32.9
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302021040",
+   "name": "Gebaeude Einzelhaus (EGID 302021040)",
+   "height": 1.85,
+   "terrain": 599.86,
+   "bboxLocal": [
+    3,
+    -56.1,
+    13.3,
+    -46
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158345",
+   "name": "Gebaeude Einzelhaus (EGID 158345)",
+   "height": 5.87,
+   "terrain": 602.14,
+   "bboxLocal": [
+    39.7,
+    -34.1,
+    52.6,
+    -21.4
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": null,
+   "name": "Gebaeude Einzelhaus",
+   "height": 8.4,
+   "terrain": 604.69,
+   "bboxLocal": [
+    14.8,
+    44.3,
+    27.4,
+    59.6
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158341",
+   "name": "Gebaeude Einzelhaus (EGID 158341)",
+   "height": 9.28,
+   "terrain": 599.52,
+   "bboxLocal": [
+    -8.6,
+    -70.4,
+    11.9,
+    -50.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302060732",
+   "name": "Gebaeude Einzelhaus (EGID 302060732)",
+   "height": 15.84,
+   "terrain": 601.34,
+   "bboxLocal": [
+    -53.2,
+    35.8,
+    -23.1,
+    58.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158347",
+   "name": "Gebaeude Einzelhaus (EGID 158347)",
+   "height": 7.36,
+   "terrain": 603.32,
+   "bboxLocal": [
+    50.2,
+    7.8,
+    67.9,
+    25
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158325",
+   "name": "Gebaeude Einzelhaus (EGID 158325)",
+   "height": 5.69,
+   "terrain": 604.07,
+   "bboxLocal": [
+    42.5,
+    37.4,
+    58.2,
+    52.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158346",
+   "name": "Gebaeude Einzelhaus (EGID 158346)",
+   "height": 6.63,
+   "terrain": 603.09,
+   "bboxLocal": [
+    58.3,
+    -27.2,
+    75.3,
+    -12.9
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158273",
+   "name": "Gebaeude Einzelhaus (EGID 158273)",
+   "height": 12.95,
+   "terrain": 604.86,
+   "bboxLocal": [
+    -72.7,
+    43.1,
+    -12.2,
+    98.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158271",
+   "name": "Gebaeude Einzelhaus (EGID 158271)",
+   "height": 6.91,
+   "terrain": 598.02,
+   "bboxLocal": [
+    -81,
+    -18.9,
+    -69.1,
+    -6.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302009666",
+   "name": "Gebaeude Einzelhaus (EGID 302009666)",
+   "height": 6.71,
+   "terrain": 596.81,
+   "bboxLocal": [
+    -72.8,
+    -43.2,
+    -61.1,
+    -31.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158324",
+   "name": "Gebaeude Einzelhaus (EGID 158324)",
+   "height": 8.08,
+   "terrain": 606.63,
+   "bboxLocal": [
+    5.3,
+    70.9,
+    19.3,
+    84.2
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158348",
+   "name": "Gebaeude Einzelhaus (EGID 158348)",
+   "height": 8.79,
+   "terrain": 604.52,
+   "bboxLocal": [
+    76,
+    18.3,
+    88.1,
+    31.1
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158328",
+   "name": "Gebaeude Einzelhaus (EGID 158328)",
+   "height": 8.1,
+   "terrain": 605.38,
+   "bboxLocal": [
+    60,
+    51.7,
+    73.5,
+    66.3
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158351",
+   "name": "Gebaeude Einzelhaus (EGID 158351)",
+   "height": 6.08,
+   "terrain": 604.22,
+   "bboxLocal": [
+    84.5,
+    -17.6,
+    96.9,
+    -4.8
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158349",
+   "name": "Gebaeude Einzelhaus (EGID 158349)",
+   "height": 8.5,
+   "terrain": 604.72,
+   "bboxLocal": [
+    84.9,
+    20.9,
+    95.4,
+    32.1
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158327",
+   "name": "Gebaeude Einzelhaus (EGID 158327)",
+   "height": 7.47,
+   "terrain": 607.19,
+   "bboxLocal": [
+    30.4,
+    80,
+    48.5,
+    96.6
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158352",
+   "name": "Gebaeude Einzelhaus (EGID 158352)",
+   "height": 6.03,
+   "terrain": 604.27,
+   "bboxLocal": [
+    94,
+    -14.4,
+    106.6,
+    -2.1
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158326",
+   "name": "Gebaeude Einzelhaus (EGID 158326)",
+   "height": 9.85,
+   "terrain": 609.14,
+   "bboxLocal": [
+    -5.5,
+    91.3,
+    10.8,
+    106.9
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158350",
+   "name": "Gebaeude Einzelhaus (EGID 158350)",
+   "height": 8.47,
+   "terrain": 604.75,
+   "bboxLocal": [
+    92.6,
+    23.5,
+    103.5,
+    34.8
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158272",
+   "name": "Gebaeude Einzelhaus (EGID 158272)",
+   "height": 5.25,
+   "terrain": 603.58,
+   "bboxLocal": [
+    -98.6,
+    37.5,
+    -86.9,
+    48.3
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302021039",
+   "name": "Gebaeude Einzelhaus (EGID 302021039)",
+   "height": 2.28,
+   "terrain": 595.41,
+   "bboxLocal": [
+    -114.7,
+    -13,
+    -102.7,
+    -8.1
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158330",
+   "name": "Gebaeude Einzelhaus (EGID 158330)",
+   "height": 7.07,
+   "terrain": 605.76,
+   "bboxLocal": [
+    80.7,
+    57.6,
+    96.9,
+    74.4
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302009592",
+   "name": "Gebaeude Einzelhaus (EGID 302009592)",
+   "height": 1.18,
+   "terrain": 610.59,
+   "bboxLocal": [
+    -15.9,
+    107.2,
+    -5.7,
+    116.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158329",
+   "name": "Gebaeude Einzelhaus (EGID 158329)",
+   "height": 7.51,
+   "terrain": 607.77,
+   "bboxLocal": [
+    53.8,
+    89.9,
+    70.2,
+    103.5
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158354",
+   "name": "Gebaeude Einzelhaus (EGID 158354)",
+   "height": 6.15,
+   "terrain": 604.05,
+   "bboxLocal": [
+    113.7,
+    -7.1,
+    126.1,
+    5.5
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158313",
+   "name": "Gebaeude Einzelhaus (EGID 158313)",
+   "height": 5.72,
+   "terrain": 611.09,
+   "bboxLocal": [
+    20.8,
+    109.6,
+    34.9,
+    124.2
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158314",
+   "name": "Gebaeude Einzelhaus (EGID 158314)",
+   "height": 5.41,
+   "terrain": 611.27,
+   "bboxLocal": [
+    28.4,
+    113.5,
+    52.1,
+    127.8
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158332",
+   "name": "Gebaeude Einzelhaus (EGID 158332)",
+   "height": 8.22,
+   "terrain": 605.77,
+   "bboxLocal": [
+    105.7,
+    60.1,
+    119.2,
+    72.1
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158331",
+   "name": "Gebaeude Einzelhaus (EGID 158331)",
+   "height": 7.72,
+   "terrain": 607.64,
+   "bboxLocal": [
+    89.4,
+    93.6,
+    104.8,
+    109.7
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "158335",
+   "name": "Gebaeude Einzelhaus (EGID 158335)",
+   "height": 6.24,
+   "terrain": 609.29,
+   "bboxLocal": [
+    118.5,
+    102.4,
+    133.1,
+    117.1
+   ],
+   "toBeReplaced": false
+  },
+  {
+   "egid": "302062449",
+   "name": "Im Bau (EGID 302062449)",
+   "height": 9.51,
+   "terrain": 607.82,
+   "bboxLocal": [
+    -161,
+    84.6,
+    -119.9,
+    107.7
+   ],
+   "toBeReplaced": false
+  }
+ ],
+ "siteContext": {
+  "file": "workspace/site_context.glb",
+  "layers": [
+   {
+    "kind": "terrain",
+    "features": 17,
+    "attribution": [
+     "© swisstopo"
+    ]
+   },
+   {
+    "kind": "parcel",
+    "features": 1,
+    "attribution": [
+     "© Cadastral surveying (CS) and the cantons",
+     "© swisstopo"
+    ]
+   },
+   {
+    "kind": "buildings",
+    "features": 42,
+    "attribution": [
+     "© swisstopo (swissBUILDINGS3D)"
+    ]
+   }
+  ],
+  "origin": [
+   2687233,
+   1246458,
+   600
+  ]
+ },
+ "humanChecks": [
+  "Zonenwerte BZO 2016 Art. 13 gegen gültige Fassung und Quartierplan prüfen (Planer)",
+  "ÖREB: Nutzungsplanung (kantonal/kommunal): überlagernde Nutzungen – Arealüberbauungen zulässig",
+  "ÖREB: Nutzungsplanung (kantonal/kommunal): überlagernde Nutzungen – Quartierplan",
+  "ÖREB: Nutzungsplanung (kantonal/kommunal): überlagernde Nutzungen – Quartierplan",
+  "ÖREB: Baulinien (kantonal/kommunal) – Baulinie.Verkehr, kommunal",
+  "ÖREB: Sicherheitszonenplan – Genehmigter Sicherheitszonenperimeter",
+  "ÖREB: Sicherheitszonenplan (öffentlich aufgelegt) – Öffentlich aufgelegter Sicherheitszonenperimeter",
+  "ÖREB: Sicherheitszonenplan (öffentlich aufgelegt) – Öffentlich aufgelegter Sicherheitszonenperimeter",
+  "ÖREB: Lärmempfindlichkeitsstufen (in Nutzungszonen) – Empfindlichkeitsstufe II, aufgestuft (nein)",
+  "Hüllrechtecke der Nachbarbauten (swissBUILDINGS3D) sind Näherungen, keine Grundrisse"
+ ]
+}

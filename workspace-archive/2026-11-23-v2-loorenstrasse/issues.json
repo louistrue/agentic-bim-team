@@ -1,0 +1,1406 @@
+{
+ "issues": {
+  "VISUAL-treppe-im-treppenkern-kaum-erkennbar:EG-TR": {
+   "id": "VISUAL-treppe-im-treppenkern-kaum-erkennbar:EG-TR",
+   "topicGuid": "c888da37-2aeb-522a-8af1-2938a4442e73",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "In v1_plan_EG.png ist im Treppenhauskern nur ein kleines braunes Rechteck zu sehen, der Kern wirkt sonst leer; im Plan OG2 fehlt jede Treppendarstellung. Läufe/Podeste sind nicht lesbar, Treppe wirkt unterdimensioniert oder falsch positioniert."
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Visual QA: In v2_grundriss_EG.png ist im Treppenhaus ein Lauf mit Stufen und Lauflinie deutlich erkennbar und liegt im Kern; kein winziges Rechteck mehr."
+    }
+   ],
+   "title": "Treppe im Treppenkern kaum erkennbar",
+   "severity": "WARNING",
+   "discipline": "Visual QA",
+   "origin": "Fach-Agent Visual QA",
+   "elements": [
+    "EG-TR",
+    "OG1-TR"
+   ],
+   "guids": [
+    "3gSqkIY0PN8xHO8NjH3I2l",
+    "3GiGg1L81VzwMxHUfogRDt"
+   ],
+   "text": "In v1_plan_EG.png ist im Treppenhauskern nur ein kleines braunes Rechteck zu sehen, der Kern wirkt sonst leer; im Plan OG2 fehlt jede Treppendarstellung. Läufe/Podeste sind nicht lesbar, Treppe wirkt unterdimensioniert oder falsch positioniert.",
+   "who": "Visual QA",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "VISUAL-flachdach-ohne-attika-bru-stung:OG2-DA": {
+   "id": "VISUAL-flachdach-ohne-attika-bru-stung:OG2-DA",
+   "topicGuid": "7f6785a2-2320-5b72-8e3b-bd97d2459a24",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "In beiden Axonometrien (axon_sw, axon_ne) ist das Dach eine nackte Platte ohne Attika, Absturzsicherung oder Überstand; wirkt schematisch."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "In v2_axon_sw.png und v2_axon_ne.png ist das Dach weiterhin eine Platte mit nur kleinen Aufbauten, ohne Attika, Absturzsicherung oder Überstand; wirkt schematisch."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "In v3_axon_sw.png und v3_axon_ne.png ist das Dach eine Platte mit wenigen kleinen Aufbauten, ohne Attika, Absturzsicherung oder Überstand. Wirkt schematisch."
+    }
+   ],
+   "title": "Flachdach ohne Attika/Brüstung",
+   "severity": "INFO",
+   "discipline": "Visual QA",
+   "origin": "Fach-Agent Visual QA",
+   "elements": [
+    "OG2-DA"
+   ],
+   "guids": [
+    "1CXqAS5pPHbfPWpgD_6nmC"
+   ],
+   "text": "In v3_axon_sw.png und v3_axon_ne.png ist das Dach eine Platte mit wenigen kleinen Aufbauten, ohne Attika, Absturzsicherung oder Überstand. Wirkt schematisch.",
+   "who": "Visual QA",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "VISUAL-einziger-hauseingang-schwach-sichtbar:EG-HE": {
+   "id": "VISUAL-einziger-hauseingang-schwach-sichtbar:EG-HE",
+   "topicGuid": "420019f7-ce20-52e9-a5ef-ee3bbc7ad682",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "In axon_ne.png ist nur eine einzelne Tür im EG der Nordost-Fassade sichtbar; die Erschliessung der beiden Hälften über einen Eingang wirkt knapp, kein Vordach oder Absatz."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "In v2_axon_ne.png ist nur eine schmale braune Tür im EG sichtbar, ohne Vordach oder Absatz. Im Grundriss EG liegt sie nun klar an der Nordseite des Treppenhauses, wirkt aber in der Axonometrie untergeordnet."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "In v3_axon_ne.png ist der Eingang nur eine schmale braune Tür ohne Vordach oder Absatz. Im EG-Grundriss liegt er klar an der Nordseite, wirkt in der Axonometrie aber untergeordnet."
+    }
+   ],
+   "title": "Einziger Hauseingang schwach sichtbar",
+   "severity": "INFO",
+   "discipline": "Visual QA",
+   "origin": "Fach-Agent Visual QA",
+   "elements": [
+    "EG-HE"
+   ],
+   "guids": [
+    "16HQBg96LS4hbbcg0JCUKn"
+   ],
+   "text": "In v3_axon_ne.png ist der Eingang nur eine schmale braune Tür ohne Vordach oder Absatz. Im EG-Grundriss liegt er klar an der Nordseite, wirkt in der Axonometrie aber untergeordnet.",
+   "who": "Visual QA",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "VISUAL-neubau-deckt-sich-mit-bestandsfootprint:EG-BP": {
+   "id": "VISUAL-neubau-deckt-sich-mit-bestandsfootprint:EG-BP",
+   "topicGuid": "668f32b1-2ec6-530f-8b30-7cb9dc07e70b",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Im Lageplan (v1_site.png) liegt der Neubau innerhalb der Rückbau-Schraffur des Bestands EGID 302060735; die Nordfassade ist nur ~10 m von Nachbarn entfernt, optisch eng."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Im Lageplan (v2_site.png) liegt der Neubau weiterhin innerhalb der Rückbau-Schraffur des Bestands EGID 302060735; die Nordfassade ist nur ca. 10 m von Nachbarn entfernt, optisch eng (Abstand im Lageplan als OK ausgewiesen)."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "In v3_site.png liegt der Neubau innerhalb der Rückbau-Schraffur des Bestands EGID 302060735. Die Nachbarn sind einige Meter entfernt, optisch eng, der Abstand ist aber als OK ausgewiesen."
+    }
+   ],
+   "title": "Neubau deckt sich mit Bestandsfootprint",
+   "severity": "INFO",
+   "discipline": "Visual QA",
+   "origin": "Fach-Agent Visual QA",
+   "elements": [
+    "EG-BP"
+   ],
+   "guids": [
+    "2AZBAAYI5HK8bAg8WThnTv"
+   ],
+   "text": "In v3_site.png liegt der Neubau innerhalb der Rückbau-Schraffur des Bestands EGID 302060735. Die Nachbarn sind einige Meter entfernt, optisch eng, der Abstand ist aber als OK ausgewiesen.",
+   "who": "Visual QA",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "STRUCTURAL-spannweite-su-dzone-ca-7-85-m-bei-0-32-m:OG1-DE": {
+   "id": "STRUCTURAL-spannweite-su-dzone-ca-7-85-m-bei-0-32-m:OG1-DE",
+   "topicGuid": "dae5eee1-2331-547e-b6ee-421deb5d1a8a",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Decken (Brettsperrholz, 0.32 m gesamt) spannen in der Südzone von der tragenden Mittelwand (y = 3.05) bis zur Südfassade (y = -4.8), das sind ca. 7.85 m Achsmass (die Notiz nennt 7.6 m lichte Weite). Bei dieser Spannweite bestimmen Durchbiegung und Schwingung (Wohnnutzung), nicht die Tragfähigkeit. Eine reine BSP-Decke von 0.32 m inkl. Bodenaufbau ist dafür sehr knapp. Bitte entweder BSP-Beton-Verbunddecke mit Aufbaustärke im Modell ausweisen, eine zusätzliche Linienstütze/Unterzug im Wohnbereich vorsehen oder die tragende Mittellinie in Richtung Süden verschieben (z. B. auf die Wand A-IW7/B-IW7 bei y ≈ 0), damit die Spannweiten ausgeglichener werden (aktuell Nord ca. 3.75 m gegenüber Süd ca. 7.85 m).\nGrundlage: fachliche Einschätzung\nPrüfen: Spannweite aus design_v1.json (Wandachsen y = -4.8 und y = 3.05) nachmessen; Vorbemessung der Decke mit Durchbiegungs- und Schwingungsnachweis durch Tragwerksplaner (Holzbau)."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Die Decken OG1-DE/OG2-DE sind jetzt BSP 160 + Überbeton 120 mm (0.36 m gesamt) und damit gegenüber v1 deutlich besser. Die Spannweite von ca. 7.85 m (Mittelwand EG-A-IW1/EG-B-IW1 y = 3.05 bis Südwand y = -4.8) bleibt aber unverändert. Das statische Konstruktionsmass BSP+Beton von 0.28 m ergibt ein Verhältnis l/h von rund 28, das für Wohnnutzung mit Schwingungsanforderungen am oberen Rand liegt. Laut Notiz liegen zusätzlich Lüftungs-Flachkanäle im Überbeton, und in OG1-DE/OG2-DE/OG2-DA sind Steigzonen-Aussparungen vorgesehen. Beides reduziert die mitwirkende Betonhöhe und die Verbundwirkung genau im Feld bzw. nahe dem Auflager. Die Eigenlast der Decke steigt zudem gegenüber reinem BSP, was Auflagerkräfte auf die Holzwände und die Setzungen erhöht. Bitte Vorbemessung (Durchbiegung, Schwingung, Verbundmittel) mit den realen Kanal- und Schachtlagen durchführen. Bei Nichterfüllung: Unterzug oder Linienstütze im Wohnbereich, Mittelwand nach Süden verschieben oder Kanäle in eine Installationsebene unter der Decke verlegen.\nGrundlage: fachliche Einschätzung\nPrüfen: Spannweite aus design_v2.json (Wandachsen y = -4.8 und y = 3.05) nachmessen; HBV-Vorbemessung mit Durchbiegungs- und Schwingungsnachweis nach SIA 265 / 265-1 durch Holzbauingenieur, mit Plan der Kanäle im Überbeton."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Die Zwischenlinie in Wohnung B endet bei x = 4.6 (EG-B-IW7); EG-B-IW6 steht bei x = 4.65 nur zwischen y = -0.05 und 3.05. Über der Küchenöffnung x 4.7–6.8 fehlt ein Auflager, das Deckenfeld misst dort wieder ca. 7.85 m (Südwand y = -4.8 bis B-IW1 y = 3.05). Der Unterzug BSH (ca. 2.0 m) ist laut Notiz nicht abgebildet; seine Höhe und die Auflagerung auf B-IW6 und Ostwand sind offen. Bitte Unterzug im Modell als Bauteil oder Stütze/Wandstück ergänzen, oder die Öffnung verkleinern; Deckenhöhe und Auflagerkraft in B-IW6 mit prüfen. Gilt für alle Geschosse. Übrige Felder (3.1–4.75 m, ohne Einlagen im Überbeton) sind entschärft; Vorbemessung Durchbiegung/Schwingung bleibt Nachweisthema.\nGrundlage: fachliche Einschätzung\nPrüfen: Spannweite im Bereich x 4.7–6.8 aus design_v3.json messen; Unterzugs- und Deckenvorbemessung (Durchbiegung, Schwingung) durch Holzbauingenieur."
+    }
+   ],
+   "title": "Küche B: Zwischenlinie unterbrochen, Unterzug nicht im Modell",
+   "severity": "WARNING",
+   "discipline": "Tragwerk",
+   "origin": "Fach-Agent Tragwerk",
+   "elements": [
+    "OG1-DE",
+    "OG2-DE",
+    "EG-B-IW7",
+    "EG-B-IW6",
+    "OG1-B-IW7",
+    "OG2-B-IW7"
+   ],
+   "guids": [
+    "1JOxvuoWfM1gZ7HHN8sQsE",
+    "0dlGPxxa1VrAMJW$oEe3dY",
+    "3jr8_AsJPIZ82f6epW5sKY",
+    "1$0UtvhxTV7Qb_CpvxICNH",
+    "0j73zlf2rTLRuOASVxtYfa",
+    "0Ej_LvNMnJEB0kIiwxwKCV"
+   ],
+   "text": "Die Zwischenlinie in Wohnung B endet bei x = 4.6 (EG-B-IW7); EG-B-IW6 steht bei x = 4.65 nur zwischen y = -0.05 und 3.05. Über der Küchenöffnung x 4.7–6.8 fehlt ein Auflager, das Deckenfeld misst dort wieder ca. 7.85 m (Südwand y = -4.8 bis B-IW1 y = 3.05). Der Unterzug BSH (ca. 2.0 m) ist laut Notiz nicht abgebildet; seine Höhe und die Auflagerung auf B-IW6 und Ostwand sind offen. Bitte Unterzug im Modell als Bauteil oder Stütze/Wandstück ergänzen, oder die Öffnung verkleinern; Deckenhöhe und Auflagerkraft in B-IW6 mit prüfen. Gilt für alle Geschosse. Übrige Felder (3.1–4.75 m, ohne Einlagen im Überbeton) sind entschärft; Vorbemessung Durchbiegung/Schwingung bleibt Nachweisthema.\nGrundlage: fachliche Einschätzung\nPrüfen: Spannweite im Bereich x 4.7–6.8 aus design_v3.json messen; Unterzugs- und Deckenvorbemessung (Durchbiegung, Schwingung) durch Holzbauingenieur.",
+   "source": "fachliche Einschätzung",
+   "who": "Tragwerk",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "STRUCTURAL-tragende-mittelwand-0-15-m-mit-tu-ren-ho:EG-A-IW1": {
+   "id": "STRUCTURAL-tragende-mittelwand-0-15-m-mit-tu-ren-ho:EG-A-IW1",
+   "topicGuid": "027b2a6c-bf1a-557c-bac6-93e2a7fa074a",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Wände A-IW1/B-IW1 (Holzrahmen 0.15 m) sind die Zwischenauflager der Deckenfelder Nord und Süd und tragen über drei Geschosse (inkl. Dach) die Lasten von rund 5.8 m Einflussbreite. Das ergibt eine hohe Linienlast am EG-Wandfuss. Die Druckspannung quer zur Faser in den Schwellen und Deckenauflagern sowie die Türöffnungen (3 in A-IW1, 2 in B-IW1) mit Stürzen sind kritisch. Bitte die Wand dicker oder als BSP-Wandscheibe/Pfosten-Riegel-Konstruktion mit Stützen auslegen, Türstürze und Lasteinleitung ausweisen und die Türlage auf die Pfosten abstimmen.\nGrundlage: fachliche Einschätzung\nPrüfen: Lastermittlung (Decke, Dach, Aufbau, Nutzlast, Schnee) für die Wand im EG; Nachweis der Querdruckpressung am Wandfuss und Sturzbemessung."
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Tragwerk: EG-A-IW1/EG-B-IW1 (und OG1-A-IW1) sind jetzt BSP-Wandscheibe tragend, 0.20 m dick (v1: Holzrahmen 0.15 m). Das Querdruckproblem an Schwelle und Lasteinleitung ist damit wesentlich entschärft, die Türen EG-A-T1/T2/T3 und EG-B-T1/T2 (je 0.8 m breit) sind in BSP unkritisch. Verbleibende Bemessung der Linienlast gehört zum normalen Nachweis und ist durch die Spannweiten-/Bodenplattenpunkte abgedeckt."
+    }
+   ],
+   "title": "Tragende Mittelwand 0.15 m mit Türen, hohe Linienlast",
+   "severity": "WARNING",
+   "discipline": "Tragwerk",
+   "origin": "Fach-Agent Tragwerk",
+   "elements": [
+    "EG-A-IW1",
+    "EG-B-IW1",
+    "OG1-A-IW1",
+    "OG1-B-IW1",
+    "EG-A-T2",
+    "EG-A-T3"
+   ],
+   "guids": [
+    "22sHeJIkTLhf8CwTO4GSgO",
+    "1jRu6iyhXK6P98QTbOQhHM",
+    "2uWICzOr1OR9avOXZfDLnc",
+    "2Dv14DMPzJGef2DRIekYMF",
+    "1xHVa5Hf5Kkwn_1812FUjt",
+    "2Wue1LevbPmQalBY7$skuy"
+   ],
+   "text": "Die Wände A-IW1/B-IW1 (Holzrahmen 0.15 m) sind die Zwischenauflager der Deckenfelder Nord und Süd und tragen über drei Geschosse (inkl. Dach) die Lasten von rund 5.8 m Einflussbreite. Das ergibt eine hohe Linienlast am EG-Wandfuss. Die Druckspannung quer zur Faser in den Schwellen und Deckenauflagern sowie die Türöffnungen (3 in A-IW1, 2 in B-IW1) mit Stürzen sind kritisch. Bitte die Wand dicker oder als BSP-Wandscheibe/Pfosten-Riegel-Konstruktion mit Stützen auslegen, Türstürze und Lasteinleitung ausweisen und die Türlage auf die Pfosten abstimmen.\nGrundlage: fachliche Einschätzung\nPrüfen: Lastermittlung (Decke, Dach, Aufbau, Nutzlast, Schnee) für die Wand im EG; Nachweis der Querdruckpressung am Wandfuss und Sturzbemessung.",
+   "source": "fachliche Einschätzung",
+   "who": "Tragwerk",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "STRUCTURAL-aussteifung-quer-zum-geba-ude-kern-exzen:EG-TK-S": {
+   "id": "STRUCTURAL-aussteifung-quer-zum-geba-ude-kern-exzen:EG-TK-S",
+   "topicGuid": "ddbdf692-1590-5a79-96b6-9efa404783ea",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Der Stahlbeton-Kern (TK-W, TK-E, TK-S, AW-N2) liegt in x-Richtung nahe der Gebäudemitte, aber in y-Richtung deutlich nach Norden verschoben (Kernmitte y ≈ 2.8, Gebäudemitte y ≈ 1.0). Für Wind und Erdbeben in Nord–Süd-Richtung wirken nur die kurzen Kernwände TK-S und AW-N2 (je 2.8 m); AW-N2 ist durch den Hauseingang (1.2 m) und das Treppenhausfenster weiter geschwächt, zudem sind die Kernlängswände durch Wohnungstüren gelocht. Daraus ergeben sich Torsion und eine zu geringe Quersteifigkeit. Bitte die Aussteifung in beiden Richtungen nachweisen und prüfen, ob zusätzliche Scheiben (z. B. Stirnfassaden W/E als Holzrahmen- oder BSP-Scheiben, Wohnungstrennwand) oder ein Eingang ausserhalb der Kernwand nötig sind.\nGrundlage: fachliche Einschätzung\nPrüfen: Steifigkeitsmittelpunkt des Kerns gegenüber Massenmittelpunkt bestimmen; Horizontallastnachweis (Wind, Erdbeben) beider Richtungen durch Tragwerksplaner."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Die Kernwand EG-AW-N2 ist jetzt Stahlbeton 0.20 m, das ist eine echte Verbesserung. Sie misst aber nur 2.8 m und enthält den Hauseingang EG-HE (1.2 m, Höhe 2.3 m), zusammen mit EG-TK-S (2.8 m) ergibt sich in y-Richtung weiterhin eine kurze, nicht symmetrische Scheibenwirkung. Die Kernmitte liegt in y deutlich nördlich der Gebäudemitte, deshalb entsteht bei Wind und Erdbeben in Nord–Süd-Richtung eine Torsion. Die Giebelwände W/E und WT-1 sind laut Notiz als Holzrahmenscheiben deklariert (OSB-Beplankung), im Modell aber nur durch den Materialnamen belegt. Die Holzscheiben W/E enthalten zudem Fenster (z. B. EG-A-F8, 2.0 m). Bitte Steifigkeitsmittelpunkt gegenüber Massenmittelpunkt bestimmen und die Aussteifung in beiden Richtungen nachweisen (Wind, Erdbeben nach SIA 261). Wenn nötig Eingang aus der Kernwand verschieben oder die Scheiben W/E/WT-1 als BSP-Scheiben mit Zuganker (Abhebesicherung) ausbilden.\nGrundlage: fachliche Einschätzung\nPrüfen: Kernwände und Giebelwände aus design_v2.json (Start/Ende, Öffnungen) lesen, Steifigkeits- und Massenmittelpunkt rechnen; Horizontallastnachweis beider Richtungen durch Tragwerksplaner."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Richtigstellung der Architektur gilt: Kernwände TK-W/TK-E (7.75 m, Stahlbeton) steifen Nord–Süd aus; N2 und TK-S laufen in x. Schwach ist Ost–West, weil der Kern in y nördlich liegt, und die Aussteifung dort hängt an den Holzscheiben S1/S2/N1/N3, den BSP-Wänden und der Zwischenlinie. Die Holzscheiben sind nur im Materialnamen belegt und haben Fenster (S1, W, E). Bitte Torsion (Kern exzentrisch in y) und Abhebesicherung der Scheiben nachweisen; ggf. Scheiben W/E/S als BSP mit Zugankern ausbilden.\nGrundlage: fachliche Einschätzung\nPrüfen: Steifigkeitsmittelpunkt und Massenmittelpunkt aus design_v3.json rechnen; Horizontallastnachweis nach SIA 261 (Wind, Erdbeben) durch Tragwerksplaner."
+    }
+   ],
+   "title": "Aussteifung: Steifigkeits- und Massenmittelpunkt nicht gerechnet",
+   "severity": "WARNING",
+   "discipline": "Tragwerk",
+   "origin": "Fach-Agent Tragwerk",
+   "elements": [
+    "EG-TK-W",
+    "EG-TK-E",
+    "EG-TK-S",
+    "EG-AW-N2",
+    "EG-AW-S1",
+    "EG-AW-W",
+    "EG-AW-E",
+    "EG-WT-1"
+   ],
+   "guids": [
+    "2gFBYBP6rQhBpbelgIt67V",
+    "3msxeAt0fO5fHjPR4WIhJ_",
+    "14ktiGbM1PUBBaDic9gONN",
+    "1XVTzMMfXG5uQOaCi5ciOS",
+    "20vzodnx5Nhf0LBO$vq5YP",
+    "2cxaKyXUvN9BQrQa4TcuI6",
+    "3uF9VFA9PIzR$w9Wm1f5Rv",
+    "2l1ECMh51QwhGgXHNP0rlD"
+   ],
+   "text": "Richtigstellung der Architektur gilt: Kernwände TK-W/TK-E (7.75 m, Stahlbeton) steifen Nord–Süd aus; N2 und TK-S laufen in x. Schwach ist Ost–West, weil der Kern in y nördlich liegt, und die Aussteifung dort hängt an den Holzscheiben S1/S2/N1/N3, den BSP-Wänden und der Zwischenlinie. Die Holzscheiben sind nur im Materialnamen belegt und haben Fenster (S1, W, E). Bitte Torsion (Kern exzentrisch in y) und Abhebesicherung der Scheiben nachweisen; ggf. Scheiben W/E/S als BSP mit Zugankern ausbilden.\nGrundlage: fachliche Einschätzung\nPrüfen: Steifigkeitsmittelpunkt und Massenmittelpunkt aus design_v3.json rechnen; Horizontallastnachweis nach SIA 261 (Wind, Erdbeben) durch Tragwerksplaner.",
+   "source": "fachliche Einschätzung",
+   "who": "Tragwerk",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "STRUCTURAL-grosse-su-dfenster-in-tragender-holzrahm:EG-AW-S1": {
+   "id": "STRUCTURAL-grosse-su-dfenster-in-tragender-holzrahm:EG-AW-S1",
+   "topicGuid": "7d22713b-7593-5d6e-97b1-939ffe9749f2",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "In der Südwand sitzen Fenster 2.6 m breit und 2.2 m hoch (Brüstung 0.1 m), im Westen eine Öffnung von 2.0 m Breite. Bei 2.95 m Geschosshöhe und 0.32 m Decke bleibt über der Öffnung nur ca. 0.33 m für Sturz und Deckenauflager. Die Südwand trägt die Deckenauflagerkraft der grössten Spannweite (7.85 m) und die Lasten aus drei Geschossen. Die Eckpfeiler (ca. 1.0 m) und Zwischenpfeiler (ca. 1.4 m) sind schmal. Bitte Stürze (z. B. Brettschichtholz/BSP-Sturz) und Pfeilerbreiten nachweisen oder die Öffnungen verkleinern bzw. die Brüstung erhöhen.\nGrundlage: fachliche Einschätzung\nPrüfen: Sturzhöhe aus Geschosshöhe − Fensterhöhe − Sill − Deckenstärke berechnen (design_v1.json) und Sturzbemessung mit Auflagerkräften der Decke durchführen."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Die Südfenster EG-A-F6/F7 wurden auf 2.2 m Breite reduziert (OK 2.2 m), die Pfeiler messen laut Notiz 1.2 m (innen) bzw. 0.9 m (Ecke). Die Sturzhöhe beträgt 2.95 − 0.36 − 2.2 = 0.39 m (BSH-Sturz). Die Südwand EG-AW-S1 nimmt das Auflager des grössten Deckenfelds (7.85 m) und die Lasten aus drei Geschossen auf, dazu kommt die höhere Eigenlast der HBV-Decken. 0.39 m Sturzhöhe inkl. Auflager ist für 2.2 m Spannweite machbar, aber ohne Nachweis nicht belegt. Das Problem ist damit entschärft und auf Nachweisebene reduziert. Bitte im Vorprojekt Sturzbemessung und Pfostenpressung (Querdruck) der Eckpfeiler vornehmen; die Westöffnung EG-A-F8 (2.0 m) in der Giebelscheibe ist zu berücksichtigen.\nGrundlage: fachliche Einschätzung\nPrüfen: Sturzhöhe aus design_v2.json berechnen (Geschosshöhe − Deckenstärke − Fenster-OK); Sturz- und Pfostenbemessung mit Auflagerkräften der HBV-Decke."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Geometrie unverändert (Sturz 0.39 m, Pfeiler 1.2/0.9 m). Das Deckenfeld auf S1 sinkt auf 3.7–4.75 m, die Auflagerlast ist damit kleiner; Sturzbemessung und Pfostenpressung bleiben im Vorprojekt nachzuweisen, inkl. Raffstorenkasten im Sturz.\nGrundlage: fachliche Einschätzung\nPrüfen: Sturz- und Pfostenbemessung mit Auflagerkräften der HBV-Decke."
+    }
+   ],
+   "title": "Südfenster: Sturz 0.39 m und Pfeiler nachweisen",
+   "severity": "INFO",
+   "discipline": "Tragwerk",
+   "origin": "Fach-Agent Tragwerk",
+   "elements": [
+    "EG-AW-S1",
+    "EG-A-F6",
+    "EG-A-F7",
+    "EG-A-F8",
+    "EG-AW-W"
+   ],
+   "guids": [
+    "20vzodnx5Nhf0LBO$vq5YP",
+    "0XJg2ccDXNKvwxePKREj8W",
+    "0lG5KHMVHPOeIgMJG1vD5j",
+    "0Zf2m2xBPLf8p30pOvg8$v",
+    "2cxaKyXUvN9BQrQa4TcuI6"
+   ],
+   "text": "Geometrie unverändert (Sturz 0.39 m, Pfeiler 1.2/0.9 m). Das Deckenfeld auf S1 sinkt auf 3.7–4.75 m, die Auflagerlast ist damit kleiner; Sturzbemessung und Pfostenpressung bleiben im Vorprojekt nachzuweisen, inkl. Raffstorenkasten im Sturz.\nGrundlage: fachliche Einschätzung\nPrüfen: Sturz- und Pfostenbemessung mit Auflagerkräften der HBV-Decke.",
+   "source": "fachliche Einschätzung",
+   "who": "Tragwerk",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "STRUCTURAL-mischbau-beton-holz-schwinden-und-setzun:OG1-TK-W": {
+   "id": "STRUCTURAL-mischbau-beton-holz-schwinden-und-setzun:OG1-TK-W",
+   "topicGuid": "9b26fc55-4e5a-5494-8b01-6bd1885cd0ee",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Der Stahlbeton-Kern und die Holzrahmenwände mit BSP-Decken verformen sich unterschiedlich: Das Holz setzt sich durch Schwinden und Querdruck pro Geschoss, der Beton nicht. Wo Decken auf Kern und Holzwänden gleichzeitig aufliegen, entstehen Höhendifferenzen, die die Anschlüsse (Decke–Kern, Treppe, Wohnungstüren) beeinflussen. Bitte Schwindmass und Setzungsdifferenz abschätzen und die Anschlussdetails (Gleitlager, Stellschrauben, Fugen) im Vorprojekt festlegen.\nGrundlage: fachliche Einschätzung\nPrüfen: Setzungsberechnung durch Holzbauingenieur anhand Holzfeuchte und Querdruckanteil."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Die Architektur sieht Deckenauflager am Kern auf Stahlkonsolen mit Elastomerlager, Überhöhung und tolerante Türschwellen vor. Das ist der richtige Ansatz, aber noch nicht im Modell und nicht bemessen. Mit der schwereren HBV-Decke steigen Auflast und Querdruckanteil in den Holzwänden und damit die Setzungsdifferenz zum Betonkern. Schwindmass und Setzung der drei Geschosse sind abzuschätzen und die Details (Treppenanschluss, Wohnungstüren, Steigzonen, Fassadenfugen) darauf abzustimmen.\nGrundlage: fachliche Einschätzung\nPrüfen: Setzungsberechnung durch Holzbauingenieur anhand Holzfeuchte, Querdruckanteil und Deckenlast."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Keine Modelländerung; Konsolen mit Elastomer und Überhöhung sind nicht modelliert. Kürzere Spannweiten senken die Auflagerkräfte je Wand, die BSP-Zwischenlinie fügt aber neue setzungsempfindliche Querdruckstellen hinzu. Setzung und Schwinden über drei Geschosse abschätzen und Details (Treppe, Türschwellen, Steigzonen) abstimmen.\nGrundlage: fachliche Einschätzung\nPrüfen: Setzungsberechnung durch Holzbauingenieur."
+    }
+   ],
+   "title": "Mischbau Beton/Holz: Setzungsdifferenzen offen",
+   "severity": "INFO",
+   "discipline": "Tragwerk",
+   "origin": "Fach-Agent Tragwerk",
+   "elements": [
+    "OG1-TK-W",
+    "OG1-TK-E",
+    "OG1-DE",
+    "OG1-AW-W"
+   ],
+   "guids": [
+    "3cgY_T2DzIOPOOiCXUj7YR",
+    "36WxV7ugHLTQ5BSNY6rNJS",
+    "1JOxvuoWfM1gZ7HHN8sQsE",
+    "11L4PP4qTMIxcQKb97H2a7"
+   ],
+   "text": "Keine Modelländerung; Konsolen mit Elastomer und Überhöhung sind nicht modelliert. Kürzere Spannweiten senken die Auflagerkräfte je Wand, die BSP-Zwischenlinie fügt aber neue setzungsempfindliche Querdruckstellen hinzu. Setzung und Schwinden über drei Geschosse abschätzen und Details (Treppe, Türschwellen, Steigzonen) abstimmen.\nGrundlage: fachliche Einschätzung\nPrüfen: Setzungsberechnung durch Holzbauingenieur.",
+   "source": "fachliche Einschätzung",
+   "who": "Tragwerk",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "STRUCTURAL-bodenplatte-0-30-m-ohne-ug-baugrund-und-:EG-BP": {
+   "id": "STRUCTURAL-bodenplatte-0-30-m-ohne-ug-baugrund-und-:EG-BP",
+   "topicGuid": "69317d03-0ba6-5ca4-8ff8-6242a2f9597b",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Bodenplatte EG-BP (Stahlbeton, 0.30 m) liegt als Plattenfundation 0.41 m über Terrain. Die Linienlasten der Mittelwand (EG-A-IW1/B-IW1) und des Kerns sind deutlich höher als die der Fassaden, daher sind verstärkte Plattenränder oder -streifen und ein Setzungsnachweis nötig. Frostsicherheit, Baugrundtragfähigkeit und Grundwasser sind im Modell nicht belegt. Zusätzlich verläuft die Geschossdecke als durchgehende Platte über die Wohnungstrennwand WT-1; für den Schallschutz ist eine Trennfuge der Decke über dieser Wand mit der Akustikplanung abzustimmen.\nGrundlage: fachliche Einschätzung\nPrüfen: Geotechnischer Bericht (Baugrunduntersuchung) einholen; Bemessung der Bodenplatte inkl. Setzungen; Deckenstoss über WT-1 im Detail klären."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Die Bodenplatte EG-BP (Stahlbeton 0.30 m, XPS 200 mm unter der Platte, Randdämmung) ist geometrisch unverändert. Ein geotechnischer Bericht liegt weiterhin nicht vor. Die Linienlasten unter Kern, BSP-Mittelwand EG-A-IW1/EG-B-IW1 und der Wohnungstrennwand EG-WT-1 sind deutlich höher als unter den Fassaden und mit den HBV-Decken noch gestiegen; daher sind Plattenverstärkungen bzw. ein Setzungsnachweis nötig. Die XPS-Dämmung unter der Platte ist lastabtragend zu bemessen (Druckspannung, Kriechen), Frostschutz und Grundwasser sind zu klären. Die Deckenfuge über WT-1 ist mit der Akustik abzustimmen.\nGrundlage: fachliche Einschätzung\nPrüfen: Geotechnischen Bericht einholen; Bemessung der Bodenplatte inkl. Setzungen und XPS-Druckspannung; Deckenstoss über WT-1 im Detail klären."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "EG-BP (0.30 m, XPS 200 mm) ist unverändert, ein geotechnischer Bericht fehlt. Unter Kern, WT-1, A-IW1/B-IW1 und neu unter der BSP-Zwischenlinie entstehen konzentrierte Linienlasten; die Notiz sieht Verstärkungen vor, sie sind nicht modelliert. XPS-Druckspannung inkl. Kriechen, Setzungen, Frost und Grundwasser nachweisen.\nGrundlage: fachliche Einschätzung\nPrüfen: Geotechnischen Bericht einholen; Plattenbemessung mit Linienlasten und XPS-Nachweis."
+    }
+   ],
+   "title": "Bodenplatte: Baugrund, XPS-Druck, Verstärkung unter neuen Linien",
+   "severity": "INFO",
+   "discipline": "Tragwerk",
+   "origin": "Fach-Agent Tragwerk",
+   "elements": [
+    "EG-BP",
+    "EG-WT-1",
+    "EG-A-IW1",
+    "EG-B-IW1",
+    "EG-A-IW7"
+   ],
+   "guids": [
+    "2AZBAAYI5HK8bAg8WThnTv",
+    "2l1ECMh51QwhGgXHNP0rlD",
+    "22sHeJIkTLhf8CwTO4GSgO",
+    "1jRu6iyhXK6P98QTbOQhHM",
+    "1I1hRIO4DQ_vx2uJZ_6ICD"
+   ],
+   "text": "EG-BP (0.30 m, XPS 200 mm) ist unverändert, ein geotechnischer Bericht fehlt. Unter Kern, WT-1, A-IW1/B-IW1 und neu unter der BSP-Zwischenlinie entstehen konzentrierte Linienlasten; die Notiz sieht Verstärkungen vor, sie sind nicht modelliert. XPS-Druckspannung inkl. Kriechen, Setzungen, Frost und Grundwasser nachweisen.\nGrundlage: fachliche Einschätzung\nPrüfen: Geotechnischen Bericht einholen; Plattenbemessung mit Linienlasten und XPS-Nachweis.",
+   "source": "fachliche Einschätzung",
+   "who": "Tragwerk",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "MEP-keine-steigzonen-scha-chte-im-modell:EG-A-BA": {
+   "id": "MEP-keine-steigzonen-scha-chte-im-modell:EG-A-BA",
+   "topicGuid": "49191a53-9dfa-5ca8-8104-2227b109dfea",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Im Modell sind keine vertikalen Schächte (Sanitär, Lüftung, Elektro) ausgewiesen. Die Bäder und Duschen liegen in jedem Geschoss an derselben Stelle (Wohnung A: Bad an der Kernwand im Norden, Dusche in der Mitte; Wohnung B: Bad in der Mitte). Je Wohnung ist eine Steigzone direkt an Bad/Dusche vorzusehen, z.B. für A an der Kernwestwand beim Bad, für B zwischen Bad und Reduit. Sie ist als Raum/Aussparung in allen Geschossen deckungsgleich zu modellieren und in den Decken auszusparen.\nGrundlage: fachliche Einschätzung\nPrüfen: Grundrisse EG/OG1/OG2 übereinanderlegen. Prüfen, ob in jedem Geschoss ein Schachtfeld an Bad/Dusche liegt, und die Schachtgrösse mit dem Sanitär- und Lüftungsplaner abstimmen."
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Haustechnik: Steigzonen EG/OG1/OG2-A-SZ und -B-SZ mit Schachtwänden SW1/SW2 sind in allen Geschossen deckungsgleich modelliert. Aussparungen in OG1-DE, OG2-DE und OG2-DA vorhanden. A-SZ liegt zwischen Dusche und Bad, B-SZ zwischen Bad und Reduit."
+    }
+   ],
+   "title": "Keine Steigzonen/Schächte im Modell",
+   "severity": "WARNING",
+   "discipline": "Haustechnik",
+   "origin": "Fach-Agent Haustechnik",
+   "elements": [
+    "EG-A-BA",
+    "EG-A-DU",
+    "EG-B-BA",
+    "EG-B-RE"
+   ],
+   "guids": [
+    "3S1V1Ip8PH8hNY3HIas7bM",
+    "1KxwibAMzROeK8hjcCdUYH",
+    "3IfVtckwfGP8qiYNL_DHV2",
+    "3ECKx6oFLRWO$UL8JIW4U_"
+   ],
+   "text": "Im Modell sind keine vertikalen Schächte (Sanitär, Lüftung, Elektro) ausgewiesen. Die Bäder und Duschen liegen in jedem Geschoss an derselben Stelle (Wohnung A: Bad an der Kernwand im Norden, Dusche in der Mitte; Wohnung B: Bad in der Mitte). Je Wohnung ist eine Steigzone direkt an Bad/Dusche vorzusehen, z.B. für A an der Kernwestwand beim Bad, für B zwischen Bad und Reduit. Sie ist als Raum/Aussparung in allen Geschossen deckungsgleich zu modellieren und in den Decken auszusparen.\nGrundlage: fachliche Einschätzung\nPrüfen: Grundrisse EG/OG1/OG2 übereinanderlegen. Prüfen, ob in jedem Geschoss ein Schachtfeld an Bad/Dusche liegt, und die Schachtgrösse mit dem Sanitär- und Lüftungsplaner abstimmen.",
+   "source": "fachliche Einschätzung",
+   "who": "Haustechnik",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "MEP-kein-technikraum-keine-haustechnikzentra:EG-BP": {
+   "id": "MEP-kein-technikraum-keine-haustechnikzentra:EG-BP",
+   "topicGuid": "0ce2babc-89a1-5c9f-9d5e-511bff574100",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Es gibt weder UG noch einen Technikraum im EG. Wärmeerzeugung (z.B. Wärmepumpe mit Speicher), Hausanschlüsse (Wasser, Strom, Telekom), Zähler und Verteilung brauchen einen Platz. Für das Vorprojekt ist ein Raum von geeigneter Grösse im EG festzulegen, am besten am Treppenkern. Sonst sind die Technikflächen im Aussenraum oder im Dach nachzuweisen. Die Zugänglichkeit für Wartung und der Schallschutz zu den Wohnungen sind zu beachten.\nGrundlage: fachliche Einschätzung\nPrüfen: Energie- und HLKS-Konzept bestätigen den Erzeuger und dessen Platzbedarf. Dann mit dem Raumprogramm im EG abgleichen."
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Haustechnik: Neuer Technikraum EG-TE (10 m²) mit Wand EG-TE-IW1 (EI 60) und Tür EG-TE-T1 am Treppenhaus. Die Technikfläche ist im Modell vorhanden. Aufstellplan und Schall siehe INFO."
+    }
+   ],
+   "title": "Kein Technikraum / keine Haustechnikzentrale",
+   "severity": "WARNING",
+   "discipline": "Haustechnik",
+   "origin": "Fach-Agent Haustechnik",
+   "elements": [
+    "EG-BP",
+    "EG-TH"
+   ],
+   "guids": [
+    "2AZBAAYI5HK8bAg8WThnTv",
+    "0SKKw_rRLPEOEb$A3L$GtV"
+   ],
+   "text": "Es gibt weder UG noch einen Technikraum im EG. Wärmeerzeugung (z.B. Wärmepumpe mit Speicher), Hausanschlüsse (Wasser, Strom, Telekom), Zähler und Verteilung brauchen einen Platz. Für das Vorprojekt ist ein Raum von geeigneter Grösse im EG festzulegen, am besten am Treppenkern. Sonst sind die Technikflächen im Aussenraum oder im Dach nachzuweisen. Die Zugänglichkeit für Wartung und der Schallschutz zu den Wohnungen sind zu beachten.\nGrundlage: fachliche Einschätzung\nPrüfen: Energie- und HLKS-Konzept bestätigen den Erzeuger und dessen Platzbedarf. Dann mit dem Raumprogramm im EG abgleichen.",
+   "source": "fachliche Einschätzung",
+   "who": "Haustechnik",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "MEP-platz-fu-r-komfortlu-ftung-minergie-nich:EG-A-RE": {
+   "id": "MEP-platz-fu-r-komfortlu-ftung-minergie-nich:EG-A-RE",
+   "topicGuid": "02374ccc-fa71-5b8f-8621-3409e9e964e2",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Minergie verlangt eine kontrollierte Wohnungslüftung. Im Modell sind weder Lüftungsgeräte noch Verteilung, Aussenluft- und Fortluftöffnungen ausgewiesen. Die Decken sind 0.32 m dick (BSP) bei 2.63 m lichter Höhe, im OG2 nur 2.55 m beim Flachdach. Es ist festzulegen, ob je Wohnung ein dezentrales Gerät im Reduit steht und wie die Aussenluft/Fortluft durch die hinterlüftete Fassade oder das Dach geführt wird. Die Verteilung ist über Vorsatzschalen, Abhangdecken oder Flure zu planen. Die Mindesthöhe von 2.40 m muss danach noch erreicht sein.\nGrundlage: Projektannahme (Minergie gemäss Brief)\nPrüfen: Lüftungsplaner legt Geräteort, Kanalführung und Aussenluft-/Fortluftstellen fest. Danach lichte Höhen im Flur und in den Bädern am Schnitt prüfen."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Die Geräte stehen jetzt im Reduit (EG-A-RE, EG-B-RE), das ist gelöst. Die Verteilung soll aber in Flachkanälen im 120 mm Überbeton der HBV-Decke liegen. Dort sitzen Bewehrung und Schubverbindung, und Kanäle schwächen den Verbund. Im OG2 gibt es keinen Überbeton, dort liegt ein 240 mm Hohlkastenelement. Die Reduit EG-A-RE liegt zudem rund 4 m von A-SZ entfernt, und die Kanäle brauchen einen Weg dorthin. Verteilung im Bodenaufbau oder in lokalen Abhangdecken über Flur und Bädern mit dem Tragwerksplaner klären. Lichte Höhe 2.40 m danach nachweisen. Aussenluft und Fortluft sind getrennt zu führen (Kurzschluss vermeiden).\nGrundlage: Projektannahme (Minergie gemäss Brief)\nPrüfen: Lüftungsplaner legt Kanalquerschnitte und Weg Gerät – SZ – Dach fest. Tragwerksplaner bestätigt, ob Einlagen im Überbeton zulässig sind. Lichte Höhe am Schnitt prüfen."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Die Kanäle liegen nicht mehr im Überbeton, das ist gelöst. Die Abhangdecken (0.15 m, lichte Höhe 2.44 m) sind nicht modelliert und bieten wenig Reserve für Flachkanal samt Dämmung und Schalldämpfer. Die Geräte stehen in EG-A-RE (x −10.15…−8.25), A-SZ liegt bei x −5.35, der Weg beträgt rund 4 bis 5 m. Wohn- und Schlafräume behalten 2.59 m ohne Abhangdecke. Zuluft und Abluft dorthin müssen über Wanddurchführungen oder Überströmung gelöst werden. Kanalrouten je Geschoss im Grundriss einzeichnen, Kreuzungen mit den BSP-Wänden der Zwischenlinie (REI 60) vermeiden oder mit Schott lösen und die Aussenluft getrennt von der Fortluft führen.\nGrundlage: Projektannahme (Minergie gemäss Brief)\nPrüfen: Lüftungsplaner zeichnet Kanalnetz mit Querschnitten in Grundriss und Schnitt. Lichte Höhe unter den Kanälen nachmessen."
+    }
+   ],
+   "title": "Lüftungsverteilung in Abhangdecken: Weg und Reserve nachweisen",
+   "severity": "INFO",
+   "discipline": "Haustechnik",
+   "origin": "Fach-Agent Haustechnik",
+   "elements": [
+    "EG-A-RE",
+    "OG1-DE",
+    "OG2-DA",
+    "OG2-A-SZ"
+   ],
+   "guids": [
+    "2yAbcCZT9Q1QHzM2dQwc3C",
+    "1JOxvuoWfM1gZ7HHN8sQsE",
+    "1CXqAS5pPHbfPWpgD_6nmC",
+    "2CbytH5j5UTRupZuXnULn2"
+   ],
+   "text": "Die Kanäle liegen nicht mehr im Überbeton, das ist gelöst. Die Abhangdecken (0.15 m, lichte Höhe 2.44 m) sind nicht modelliert und bieten wenig Reserve für Flachkanal samt Dämmung und Schalldämpfer. Die Geräte stehen in EG-A-RE (x −10.15…−8.25), A-SZ liegt bei x −5.35, der Weg beträgt rund 4 bis 5 m. Wohn- und Schlafräume behalten 2.59 m ohne Abhangdecke. Zuluft und Abluft dorthin müssen über Wanddurchführungen oder Überströmung gelöst werden. Kanalrouten je Geschoss im Grundriss einzeichnen, Kreuzungen mit den BSP-Wänden der Zwischenlinie (REI 60) vermeiden oder mit Schott lösen und die Aussenluft getrennt von der Fortluft führen.\nGrundlage: Projektannahme (Minergie gemäss Brief)\nPrüfen: Lüftungsplaner zeichnet Kanalnetz mit Querschnitten in Grundriss und Schnitt. Lichte Höhe unter den Kanälen nachmessen.",
+   "source": "Projektannahme (Minergie gemäss Brief)",
+   "who": "Haustechnik",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "MEP-leitungsdurchfu-hrungen-durch-brandabsch:EG-WT-1": {
+   "id": "MEP-leitungsdurchfu-hrungen-durch-brandabsch:EG-WT-1",
+   "topicGuid": "cc23a93a-e809-522e-9b0e-8a94186f4012",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Steigzonen und Lüftungsleitungen durchdringen die Geschossdecken (BSP, REI 60) und müssen Wohnungstrennwand und Treppenhaus berühren. Jede Durchführung ist so abzuschotten, dass die Feuerwiderstandsdauer des Bauteils erhalten bleibt. Bei der brennbaren Holzdecke sind Schächte in REI 60 zu verkleiden. Leitungen durch die Wohnungstrennwand (doppelter Holzrahmen) sind möglichst zu vermeiden. Im Treppenhauskern (REI 90) dürfen keine wohnungsfremden Leitungen verlaufen.\nGrundlage: fachliche Einschätzung (VKF-Brandschutzvorschriften; Anforderungen durch die Brandschutzfachperson festzulegen)\nPrüfen: Brandschutzfachperson legt Brandabschnitte und Abschottungssysteme fest. Dann die Durchdringungen in den Grundrissen markieren."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Die Steigzonen liegen innerhalb der Wohnungen, nicht an der Wohnungstrennwand oder im Kern, und die Schachtwände sind EI 60. Das reduziert das Risiko. Offen ist die Abschottung der Durchbrüche in OG1-DE, OG2-DE und OG2-DA (REI 60) für Leitungen und Lüftungsrohre. Auch die Verbindung vom Technikraum zu den Wohnungsstrangen muss geklärt sein, ohne Leitungen durch EG-WT-1 oder den Kern zu führen. Die Brandschutzfachperson legt die Abschottungssysteme fest.\nGrundlage: fachliche Einschätzung (VKF-Brandschutzvorschriften; Anforderungen durch die Brandschutzfachperson festzulegen)\nPrüfen: Brandschutzfachperson legt Abschottungssysteme fest. Durchdringungen in den Grundrissen markieren."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Das Konzept ist im Materialtext der Decken beschrieben: Schott EI 60 je Geschossdecke in allen Steigzonen, keine Leitungen durch WT-1 oder die Kernwände. Dazu sind es jetzt drei Zonen pro Geschoss (A-SZ, A-SZ2, B-SZ) plus die Leerrohre unter WT-1. Die konkreten Abschottungssysteme sind noch nicht festgelegt. Die Revisionsöffnungen sind EI 30, die Schachtwände EI 60, das ist abzugleichen. Die Brandschutzfachperson legt Systeme und Revisionsklassen fest.\nGrundlage: fachliche Einschätzung (VKF-Brandschutzvorschriften; Anforderungen durch die Brandschutzfachperson festzulegen)\nPrüfen: Durchdringungen in den Grundrissen markieren. Brandschutzfachperson bestätigt Systeme und Klasse der Revisionsöffnungen (EI 30 gegen EI 60 der Schachtwand)."
+    }
+   ],
+   "title": "Abschottung der Deckendurchbrüche festlegen",
+   "severity": "INFO",
+   "discipline": "Haustechnik",
+   "origin": "Fach-Agent Haustechnik",
+   "elements": [
+    "EG-WT-1",
+    "OG1-DE",
+    "OG2-DE",
+    "OG2-DA",
+    "EG-A-SW1",
+    "EG-B-SW1",
+    "EG-A-RV1"
+   ],
+   "guids": [
+    "2l1ECMh51QwhGgXHNP0rlD",
+    "1JOxvuoWfM1gZ7HHN8sQsE",
+    "0dlGPxxa1VrAMJW$oEe3dY",
+    "1CXqAS5pPHbfPWpgD_6nmC",
+    "1NQLy6MJbQtPEBrDcl99Qi",
+    "0QTW4$JzfRWvj3e$GCb$Ff",
+    "0rAq0NDynNbgHtlwgkFPgh"
+   ],
+   "text": "Das Konzept ist im Materialtext der Decken beschrieben: Schott EI 60 je Geschossdecke in allen Steigzonen, keine Leitungen durch WT-1 oder die Kernwände. Dazu sind es jetzt drei Zonen pro Geschoss (A-SZ, A-SZ2, B-SZ) plus die Leerrohre unter WT-1. Die konkreten Abschottungssysteme sind noch nicht festgelegt. Die Revisionsöffnungen sind EI 30, die Schachtwände EI 60, das ist abzugleichen. Die Brandschutzfachperson legt Systeme und Revisionsklassen fest.\nGrundlage: fachliche Einschätzung (VKF-Brandschutzvorschriften; Anforderungen durch die Brandschutzfachperson festzulegen)\nPrüfen: Durchdringungen in den Grundrissen markieren. Brandschutzfachperson bestätigt Systeme und Klasse der Revisionsöffnungen (EI 30 gegen EI 60 der Schachtwand).",
+   "source": "fachliche Einschätzung (VKF-Brandschutzvorschriften; Anforderungen durch die Brandschutzfachperson festzulegen)",
+   "who": "Haustechnik",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "MEP-nasszellen-und-ku-che-je-wohnung-verteil:EG-A-KU": {
+   "id": "MEP-nasszellen-und-ku-che-je-wohnung-verteil:EG-A-KU",
+   "topicGuid": "fecf7e97-b502-501e-aec2-689658eecda3",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "In Wohnung A liegen Küche (Süd, am Kern), Dusche (Mitte) und Bad (Nord, am Kern) rund 8 m auseinander. In Wohnung B liegen Küche (Ost) und Bad (Mitte) auch getrennt. Die Stapelung über die Geschosse ist gut, aber pro Wohnung entstehen mehrere Leitungsstränge und lange Liegeleitungen in den BSP-Decken. Falls möglich, sind Dusche und Bad zu einem Nassbereich zu verdichten. Alternativ sind die Stränge in einer gemeinsamen Steigzone zu bündeln. Bei Nassräumen auf Holzdecken ist die Abdichtung mit dem Holzbauer zu klären.\nGrundlage: fachliche Einschätzung\nPrüfen: Strangschema mit dem Sanitärplaner erstellen und die Leitungslängen sowie Deckendurchbrüche je Wohnung vergleichen."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Bad und Dusche hängen jetzt an A-SZ, das ist verbessert. Die Küche EG-A-KU liegt aber im EG bei x −7.0…−4.7 (West), die Küchen OG1-A-KU und OG2-A-KU bei x −4.5…−1.6 (Ost), also nicht übereinander. Alle drei Küchen liegen 3.5 m und mehr von A-SZ (y 2.3…2.95) entfernt, durch den Wohnbereich getrennt. Das gibt lange Liegeleitungen in den Decken und eine zweite Strangführung. Küchen in allen Geschossen deckungsgleich legen (EG zurück nach Osten oder OG nach Westen) und an A-SZ oder an eine zweite Steigzone an der Küche anbinden. Alternativ die Küchenstränge in der Kernwand führen.\nGrundlage: fachliche Einschätzung\nPrüfen: Grundrisse EG, OG1 und OG2 von Wohnung A überlagern: Küchenpolygone und Abstand zum Schachtfeld A-SZ messen. Strangschema mit dem Sanitärplaner erstellen."
+    },
+    {
+     "v": 3,
+     "event": "erledigt",
+     "text": "Haustechnik: EG-A-KU, OG1-A-KU und OG2-A-KU liegen deckungsgleich bei x −7.0…−4.675. Der Küchenstrang läuft in der neuen Steigzone EG-A-SZ2 / OG1-A-SZ2 / OG2-A-SZ2 direkt an der Küche. Bad und Dusche hängen an A-SZ."
+    }
+   ],
+   "title": "Küche Wohnung A nicht gestapelt und fern der Steigzone",
+   "severity": "WARNING",
+   "discipline": "Haustechnik",
+   "origin": "Fach-Agent Haustechnik",
+   "elements": [
+    "EG-A-KU",
+    "OG1-A-KU",
+    "OG2-A-KU",
+    "EG-A-SZ",
+    "EG-A-DU"
+   ],
+   "guids": [
+    "0Fv3bkOY5M4wG3mo7UgLTg",
+    "3QLk$X8P5U3fR3wiG6bXVs",
+    "24sSWQqEDQFwo2_0S7V66Q",
+    "0sHzGfNe5TKxhl8iRTD9A6",
+    "1KxwibAMzROeK8hjcCdUYH"
+   ],
+   "text": "Bad und Dusche hängen jetzt an A-SZ, das ist verbessert. Die Küche EG-A-KU liegt aber im EG bei x −7.0…−4.7 (West), die Küchen OG1-A-KU und OG2-A-KU bei x −4.5…−1.6 (Ost), also nicht übereinander. Alle drei Küchen liegen 3.5 m und mehr von A-SZ (y 2.3…2.95) entfernt, durch den Wohnbereich getrennt. Das gibt lange Liegeleitungen in den Decken und eine zweite Strangführung. Küchen in allen Geschossen deckungsgleich legen (EG zurück nach Osten oder OG nach Westen) und an A-SZ oder an eine zweite Steigzone an der Küche anbinden. Alternativ die Küchenstränge in der Kernwand führen.\nGrundlage: fachliche Einschätzung\nPrüfen: Grundrisse EG, OG1 und OG2 von Wohnung A überlagern: Küchenpolygone und Abstand zum Schachtfeld A-SZ messen. Strangschema mit dem Sanitärplaner erstellen.",
+   "source": "fachliche Einschätzung",
+   "who": "Haustechnik",
+   "lastSeen": 2,
+   "status": "Closed",
+   "closedIn": 3
+  },
+  "FACADE-sommerlicher-wa-rmeschutz-su-d-west-kein:EG-A-F6": {
+   "id": "FACADE-sommerlicher-wa-rmeschutz-su-d-west-kein:EG-A-F6",
+   "topicGuid": "5b961262-6441-5634-9575-382941f38e01",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Südfassade hat 73.6 m² Öffnungen (40 % der Wandfläche), die Westfassade 27.6 m² (28 %). Die Fenster haben g = 0.5. Im Modell gibt es weder Vordächer, Balkone, Lamellen noch Storen. Die Konstruktion ist leicht (Holzrahmen, Brettsperrholz-Decken), die speicherwirksame Masse ist klein. Das Flachdach hat keinen Dachvorsprung. Wir empfehlen, in der Vorprojektphase aussenliegenden, beweglichen Sonnenschutz (Raffstoren oder Lamellen) auf Süd und West festzulegen. Die Wohnungen A und B sollen Querlüftung oder Nachtlüftung ermöglichen. Der Nachweis des sommerlichen Wärmeschutzes ist rechnerisch zu führen. Der Sonnenschutz soll im Modell und im Fassadenschnitt sichtbar werden.\nGrundlage: fachliche Einschätzung (Nachweis sommerlicher Wärmeschutz nach SIA 180 durch Energieplaner)\nPrüfen: Anteile aus checks_v1.json (windowWallRatio) übernehmen. Sommerlicher Nachweis nach SIA 180 mit Verschattungs- und Lüftungsannahmen rechnen. Die Wohnungen im OG2 sind wegen des Flachdachs am kritischsten."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Der Fensteranteil ist gesunken (Süd 58.0 m², 31 %, West 25.4 m², 26 %), die HBV-Decken bringen Speichermasse. Die Raffstoren auf Süd, West und Ost sind aber nur in den Notizen vorgesehen. Im IFC gibt es weder Sonnenschutz noch Vordach. Die Fenstertüren im EG (Brüstung 0.1 m, g = 0.5) und die Wohnungen im OG2 unter dem Flachdach sind am kritischsten. Bitte Sonnenschutz als Merkmal an den Fenstern (z. B. Pset-Eintrag Sonnenschutz aussenliegend, Fc-Wert) führen und den Nachweis nach SIA 180 mit Nachtlüftung als Annahme rechnen lassen. Die Raffstorenkästen sind im Fassadenschnitt (Sturzhöhe 0.39 m) einzuplanen.\nGrundlage: fachliche Einschätzung (Nachweis sommerlicher Wärmeschutz nach SIA 180)\nPrüfen: Fensterliste mit g-Wert, Fc-Wert und Sonnenschutztyp prüfen. Sommerlichen Nachweis für die kritischsten Räume (OG2, Süd und West) rechnen. Kastenhöhe der Raffstoren im Fassadenschnitt kontrollieren."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Die Südfenster tragen neu den Vermerk «Raffstore aussen, Fc 0.15, Kasten im Sturz». Damit ist die Absicht im Modell lesbar, der Fensteranteil Süd steigt aber durch die neuen Küchenfenster auf 33 % (62.2 m²). Ein Pset-Merkmal fehlt weiterhin, die Angabe im Namen ist nicht auswertbar. Kritisch bleiben die Fenstertüren im EG (Brüstung 0.1 m) und die Wohnungen im OG2 unter dem Flachdach. Der Raffstorenkasten (ca. 0.20 m) im Sturz von 0.39 m ist im Fassadenschnitt zu bestätigen. Bitte den Nachweis nach SIA 180 mit Nachtlüftung als Annahme rechnen lassen. Der Fc-Wert 0.15 ist mit dem Produktdatenblatt zu belegen, bei Windlast fährt der Sonnenschutz nicht.\nGrundlage: fachliche Einschätzung (Nachweis sommerlicher Wärmeschutz nach SIA 180)\nPrüfen: Fensterliste mit g-Wert, Fc-Wert und Sonnenschutztyp prüfen. Sommernachweis für OG2 Süd/West rechnen. Kastenhöhe im Fassadenschnitt 1:20 kontrollieren."
+    }
+   ],
+   "title": "Sommerlicher Wärmeschutz Süd/West: Sonnenschutz nur im Fensternamen, Nachweis offen",
+   "severity": "INFO",
+   "discipline": "Energie/Fassade",
+   "origin": "Fach-Agent Energie/Fassade",
+   "elements": [
+    "EG-A-F6",
+    "EG-A-F7",
+    "EG-B-F5",
+    "EG-B-F6",
+    "OG2-A-F6",
+    "OG2-A-F7",
+    "OG2-B-F5",
+    "OG2-B-F6",
+    "OG2-DA"
+   ],
+   "guids": [
+    "0XJg2ccDXNKvwxePKREj8W",
+    "0lG5KHMVHPOeIgMJG1vD5j",
+    "0VPHhC6T5HqPpMZoPb4_i$",
+    "21VvX6VqzGSRUCgmSlgxdb",
+    "0KAcbV4SjLSBrWz3K9JJhb",
+    "3adMTXyzfNHeZXVQmXdv69",
+    "1SgLeuLYjGKwQx_lSBk5Z1",
+    "0tbrCycobVNAmWeJGytdCD",
+    "1CXqAS5pPHbfPWpgD_6nmC"
+   ],
+   "text": "Die Südfenster tragen neu den Vermerk «Raffstore aussen, Fc 0.15, Kasten im Sturz». Damit ist die Absicht im Modell lesbar, der Fensteranteil Süd steigt aber durch die neuen Küchenfenster auf 33 % (62.2 m²). Ein Pset-Merkmal fehlt weiterhin, die Angabe im Namen ist nicht auswertbar. Kritisch bleiben die Fenstertüren im EG (Brüstung 0.1 m) und die Wohnungen im OG2 unter dem Flachdach. Der Raffstorenkasten (ca. 0.20 m) im Sturz von 0.39 m ist im Fassadenschnitt zu bestätigen. Bitte den Nachweis nach SIA 180 mit Nachtlüftung als Annahme rechnen lassen. Der Fc-Wert 0.15 ist mit dem Produktdatenblatt zu belegen, bei Windlast fährt der Sonnenschutz nicht.\nGrundlage: fachliche Einschätzung (Nachweis sommerlicher Wärmeschutz nach SIA 180)\nPrüfen: Fensterliste mit g-Wert, Fc-Wert und Sonnenschutztyp prüfen. Sommernachweis für OG2 Süd/West rechnen. Kastenhöhe im Fassadenschnitt 1:20 kontrollieren.",
+   "source": "fachliche Einschätzung (Nachweis sommerlicher Wärmeschutz nach SIA 180)",
+   "who": "Energie/Fassade",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "FACADE-sockel-und-plattenrand-wa-rmebru-cke-hol:EG-BP": {
+   "id": "FACADE-sockel-und-plattenrand-wa-rmebru-cke-hol:EG-BP",
+   "topicGuid": "bf04e5bf-ff01-564f-8d0e-8423099cb815",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Bodenplatte EG-BP ist nur unterseitig mit XPS 160 mm gedämmt. Die Holzrahmenwände stehen auf der Betonplatte, die 0.41 m über dem Terrain liegt. Eine Randdämmung am Plattenrand ist nicht beschrieben. Das ergibt eine lineare Wärmebrücke (Sockel). Der angegebene U-Wert 0.20 liegt bei XPS 160 mm im Bereich der Plausibilität, nämlich ca. 0.21 mit Beton von 0.30 m und λ ≈ 0.036, hat also keine Reserve. Wir empfehlen, den Sockelaufbau zu definieren: Perimeterdämmung am Plattenrand bis unter die Schwelle sowie Spritzwasserschutz an der Holzschalung. Der Wandfuss soll mit dichter Abdichtung und thermisch getrennt aufgelagert werden. Der Plattenrand ist ins Detail zu übernehmen.\nGrundlage: fachliche Einschätzung\nPrüfen: Sockeldetail im Schnitt 1:20 verlangen. Ψ-Wert des Sockels berechnen (Wärmebrückenkatalog oder 2D-Berechnung). U-Wert der Bodenplatte mit den Materialwerten des Produkts nachrechnen."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Mit XPS 200 mm unter der Platte und 120 mm Randdämmung bis UK Schwelle ist die Anforderung aufgenommen. Die Überschlagsrechnung ergibt ca. 0.16 W/m²K für die Bodenplatte (Beton 0.30 m, λ XPS ≤ 0.034), das passt zum Modellwert 0.17. Offen sind die lineare Wärmebrücke am Wandfuss (Holzrahmenwand auf Betonplatte, Platte 0.41 m über Terrain), die Auflagerung der Schwelle mit Abdichtung und der Spritzwasserschutz an der Holzschalung. Das Sockeldetail ist im Schnitt 1:20 nachzuliefern.\nGrundlage: fachliche Einschätzung\nPrüfen: Sockeldetail im Schnitt 1:20 verlangen. Ψ-Wert mit Wärmebrückenkatalog oder 2D-Berechnung bestimmen. Die Erdreichdämmung gesondert nachrechnen."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Die Bodenplatte (XPS 200 mm, Randdämmung 120 mm) ergibt überschlägig ca. 0.16 W/m²K und passt zum Modellwert 0.17. Offen sind die lineare Wärmebrücke am Wandfuss (Holzrahmenwand auf Betonplatte, Platte 0.41 m über Terrain), die Schwellenauflagerung mit Abdichtung und der Spritzwasserschutz der Holzschalung. Die neuen Linienlasten und Plattenverstärkungen unter Kern und BSP-Zwischenlinie können die Dämmung durchdringen oder verdünnen, das ist im Detail zu zeigen.\nGrundlage: fachliche Einschätzung\nPrüfen: Sockeldetail 1:20 verlangen. Ψ-Wert mit Wärmebrückenkatalog oder 2D-Rechnung bestimmen. Dämmung unter Verstärkungen separat nachrechnen."
+    }
+   ],
+   "title": "Sockel: Wärmebrücke Wandfuss und Detail noch offen",
+   "severity": "INFO",
+   "discipline": "Energie/Fassade",
+   "origin": "Fach-Agent Energie/Fassade",
+   "elements": [
+    "EG-BP",
+    "EG-AW-S1",
+    "EG-AW-W"
+   ],
+   "guids": [
+    "2AZBAAYI5HK8bAg8WThnTv",
+    "20vzodnx5Nhf0LBO$vq5YP",
+    "2cxaKyXUvN9BQrQa4TcuI6"
+   ],
+   "text": "Die Bodenplatte (XPS 200 mm, Randdämmung 120 mm) ergibt überschlägig ca. 0.16 W/m²K und passt zum Modellwert 0.17. Offen sind die lineare Wärmebrücke am Wandfuss (Holzrahmenwand auf Betonplatte, Platte 0.41 m über Terrain), die Schwellenauflagerung mit Abdichtung und der Spritzwasserschutz der Holzschalung. Die neuen Linienlasten und Plattenverstärkungen unter Kern und BSP-Zwischenlinie können die Dämmung durchdringen oder verdünnen, das ist im Detail zu zeigen.\nGrundlage: fachliche Einschätzung\nPrüfen: Sockeldetail 1:20 verlangen. Ψ-Wert mit Wärmebrückenkatalog oder 2D-Rechnung bestimmen. Dämmung unter Verstärkungen separat nachrechnen.",
+   "source": "fachliche Einschätzung",
+   "who": "Energie/Fassade",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "FACADE-kernfassade-nord-u-0-16-hat-fast-keine-r:EG-AW-N2": {
+   "id": "FACADE-kernfassade-nord-u-0-16-hat-fast-keine-r:EG-AW-N2",
+   "topicGuid": "d78a1fe9-4572-5df3-9ae8-cfb3655dd9de",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Wand EG-AW-N2 besteht aus Stahlbeton 0.18 m und Mineralwolle 0.18 m (λ 0.031). Das ergibt rechnerisch ca. 0.16 W/m²K ohne Befestigungen. Hinterlüftete Fassaden haben zusätzliche punktuelle Wärmebrücken durch Konsolen und Halter, die den U-Wert erhöhen. Der Grenzwert 0.17 (R02) wird damit voraussichtlich überschritten. Wir empfehlen, die Dämmstärke auf 0.20–0.22 m zu erhöhen oder thermisch getrennte Halter zu wählen. Der Anschluss der Betonwand an die Holzrahmenwände N1 und N3 (Wechsel des Materials in der Fassadenebene) ist zu detaillieren.\nGrundlage: Projektannahme (R02: Aussenwände U ≤ 0.17 W/m²K)\nPrüfen: U-Wert mit Befestigungszuschlag nach SIA 380/1 oder Herstellerangaben rechnen. Dämmstärke und Konsolensystem im Fassadenschnitt prüfen."
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Energie/Fassade: EG-AW-N2 hat nun Stahlbeton 0.20 m, Mineralwolle 0.21 m (λ 0.031) und thermisch getrennte Konsolen. Meine Gegenrechnung ergibt ca. 0.14 W/m²K ohne Befestigung. Mit Zuschlag passt der Modellwert 0.15 und liegt unter dem Grenzwert 0.17. Die Wanddicke 0.45 m stimmt mit der Schichtsumme überein. Die Wände OG1-AW-N2 und OG2-AW-N2 sind gleich aufgebaut. Der Anschluss an N1 und N3 ist weiter ein Detailpunkt für die Ausführungsplanung."
+    }
+   ],
+   "title": "Kernfassade Nord: U = 0.16 hat fast keine Reserve zum Grenzwert 0.17",
+   "severity": "WARNING",
+   "discipline": "Energie/Fassade",
+   "origin": "Fach-Agent Energie/Fassade",
+   "elements": [
+    "EG-AW-N2",
+    "OG1-AW-N2",
+    "OG2-AW-N2"
+   ],
+   "guids": [
+    "1XVTzMMfXG5uQOaCi5ciOS",
+    "1QfJ_iO$5LWfVQnRg3JMGy",
+    "1jXBIw6YHU6e7jEQc9YUjL"
+   ],
+   "text": "Die Wand EG-AW-N2 besteht aus Stahlbeton 0.18 m und Mineralwolle 0.18 m (λ 0.031). Das ergibt rechnerisch ca. 0.16 W/m²K ohne Befestigungen. Hinterlüftete Fassaden haben zusätzliche punktuelle Wärmebrücken durch Konsolen und Halter, die den U-Wert erhöhen. Der Grenzwert 0.17 (R02) wird damit voraussichtlich überschritten. Wir empfehlen, die Dämmstärke auf 0.20–0.22 m zu erhöhen oder thermisch getrennte Halter zu wählen. Der Anschluss der Betonwand an die Holzrahmenwände N1 und N3 (Wechsel des Materials in der Fassadenebene) ist zu detaillieren.\nGrundlage: Projektannahme (R02: Aussenwände U ≤ 0.17 W/m²K)\nPrüfen: U-Wert mit Befestigungszuschlag nach SIA 380/1 oder Herstellerangaben rechnen. Dämmstärke und Konsolensystem im Fassadenschnitt prüfen.",
+   "source": "Projektannahme (R02: Aussenwände U ≤ 0.17 W/m²K)",
+   "who": "Energie/Fassade",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "FACADE-u-wert-holzrahmenwand-0-15-ist-plausibel:EG-AW-N1": {
+   "id": "FACADE-u-wert-holzrahmenwand-0-15-ist-plausibel:EG-AW-N1",
+   "topicGuid": "918b0d62-9003-524d-a375-015990ada79f",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Aufbau: Holzrahmen/Mineralwolle 220 mm, Installationsebene gedämmt 40 mm, Holzfaserdämmplatte 60 mm. Bei einem Holzanteil von ca. 10–15 % ergibt eine überschlägige Rechnung ca. 0.13–0.15 W/m²K. Das passt zum Modellwert 0.15 und liegt unter dem Grenzwert 0.17. Die Rechnung soll mit realen Produktwerten und dem Holzanteil (Fenster-Laibungen, Stürze, Ständer) bestätigt werden. Die Wandstärke 0.40 m ist konsistent mit der Summe der Schichten. Das Fenster U = 0.8 (Gesamtfenster) ist ambitioniert und setzt Dreifachverglasung mit warmem Rand und gedämmtem Rahmen voraus.\nGrundlage: fachliche Einschätzung\nPrüfen: U-Wert mit Rechenprogramm (z. B. nach SIA 380/1 oder EN ISO 6946) aus den Schichten inkl. Holzanteil nachrechnen. Fenster-Uw aus Herstellerdatenblatt oder Zertifikat entnehmen."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Der Wandaufbau ist unverändert (Holzrahmen/Mineralwolle 220 mm, Installationsebene 40 mm, Holzfaserplatte 60 mm). Die Überschlagsrechnung mit 10–15 % Holzanteil bleibt bei 0.13–0.15 W/m²K, ohne grosse Reserve zum Grenzwert 0.17. Fenster Uw 0.8 setzt Dreifachverglasung mit warmem Rand und gedämmtem Rahmen voraus. Beides ist mit realen Produktwerten zu bestätigen, vor allem bei den schmalen Pfeilern der Südfassade (1.2 m und 0.9 m), wo der Holzanteil höher ausfällt.\nGrundlage: fachliche Einschätzung\nPrüfen: U-Wert mit Rechenprogramm nach EN ISO 6946 inkl. Holzanteil nachrechnen. Fenster-Uw aus Datenblatt oder Zertifikat entnehmen."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Der Wandaufbau ist unverändert. Die Überschlagsrechnung bleibt bei 0.13–0.15 W/m²K, die Reserve zum Grenzwert 0.17 ist klein. Neu ist in den Süd-, West- und Ostwänden ein Faserzementband (A1) im Brüstungsbereich. Es ersetzt nur die Schalung und ändert den U-Wert kaum, die Befestigung ist aber ohne durchdringende Metallanker zu planen. Fenster Uw 0.8 setzt Dreifachverglasung mit warmem Rand und gedämmtem Rahmen voraus. Beides ist mit Produktwerten zu bestätigen, besonders bei den schmalen Pfeilern der Südfassade mit höherem Holzanteil.\nGrundlage: fachliche Einschätzung\nPrüfen: U-Wert nach EN ISO 6946 inkl. Holzanteil nachrechnen. Fenster-Uw aus Datenblatt oder Zertifikat entnehmen."
+    }
+   ],
+   "title": "U-Wert Holzrahmenwand 0.15 und Fenster Uw 0.8: Nachweis mit Produktwerten steht aus",
+   "severity": "INFO",
+   "discipline": "Energie/Fassade",
+   "origin": "Fach-Agent Energie/Fassade",
+   "elements": [
+    "EG-AW-N1",
+    "EG-AW-S1",
+    "EG-AW-W",
+    "EG-AW-E"
+   ],
+   "guids": [
+    "0iZW7GkQ5TZemk$51QHM7i",
+    "20vzodnx5Nhf0LBO$vq5YP",
+    "2cxaKyXUvN9BQrQa4TcuI6",
+    "3uF9VFA9PIzR$w9Wm1f5Rv"
+   ],
+   "text": "Der Wandaufbau ist unverändert. Die Überschlagsrechnung bleibt bei 0.13–0.15 W/m²K, die Reserve zum Grenzwert 0.17 ist klein. Neu ist in den Süd-, West- und Ostwänden ein Faserzementband (A1) im Brüstungsbereich. Es ersetzt nur die Schalung und ändert den U-Wert kaum, die Befestigung ist aber ohne durchdringende Metallanker zu planen. Fenster Uw 0.8 setzt Dreifachverglasung mit warmem Rand und gedämmtem Rahmen voraus. Beides ist mit Produktwerten zu bestätigen, besonders bei den schmalen Pfeilern der Südfassade mit höherem Holzanteil.\nGrundlage: fachliche Einschätzung\nPrüfen: U-Wert nach EN ISO 6946 inkl. Holzanteil nachrechnen. Fenster-Uw aus Datenblatt oder Zertifikat entnehmen.",
+   "source": "fachliche Einschätzung",
+   "who": "Energie/Fassade",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "FACADE-kompaktheit-und-fensterverteilung-positi:OG2-DA": {
+   "id": "FACADE-kompaktheit-und-fensterverteilung-positi:OG2-DA",
+   "topicGuid": "297ee270-9d7a-51f4-a593-d8c402f3e1fe",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Hüllfläche liegt grob bei 1090 m² (Wände ca. 585 m², Dach und Boden je 252 m²) gegenüber 756 m² Geschossfläche. Daraus ergibt sich Ae/AE von ca. 1.4. Das ist für Minergie günstig. Die Fenstergrösse der Nordfassade (22 %) ist moderat, die Süd-Orientierung bringt passive Gewinne im Winter. Wir empfehlen, den Fensteranteil Süd nicht weiter zu erhöhen, weil sonst der Sommerkomfort leidet. Flachdach U = 0.12 (CLT 200 mm und Dämmung 240 mm) ist plausibel.\nGrundlage: fachliche Einschätzung\nPrüfen: Hüllfläche aus dem IFC aufsummieren (Wände, Dach, Bodenplatte) und durch die EBF teilen. Energiebezugsfläche im Energienachweis festlegen."
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Energie/Fassade: Die Kompaktheit ist unverändert günstig (Hüllfläche OG2-DA und EG-BP je 252 m², Geschossfläche 756 m²). Der Fensteranteil Süd (EG-AW-S1) sank laut checks_v2 von 40 % auf 31 %, Nord (EG-AW-N1) bleibt bei 22 %. Die Empfehlung, Süd nicht weiter zu erhöhen, ist eingehalten."
+    }
+   ],
+   "title": "Kompaktheit und Fensterverteilung: positiv",
+   "severity": "INFO",
+   "discipline": "Energie/Fassade",
+   "origin": "Fach-Agent Energie/Fassade",
+   "elements": [
+    "OG2-DA",
+    "EG-AW-S1",
+    "EG-AW-N1"
+   ],
+   "guids": [
+    "1CXqAS5pPHbfPWpgD_6nmC",
+    "20vzodnx5Nhf0LBO$vq5YP",
+    "0iZW7GkQ5TZemk$51QHM7i"
+   ],
+   "text": "Die Hüllfläche liegt grob bei 1090 m² (Wände ca. 585 m², Dach und Boden je 252 m²) gegenüber 756 m² Geschossfläche. Daraus ergibt sich Ae/AE von ca. 1.4. Das ist für Minergie günstig. Die Fenstergrösse der Nordfassade (22 %) ist moderat, die Süd-Orientierung bringt passive Gewinne im Winter. Wir empfehlen, den Fensteranteil Süd nicht weiter zu erhöhen, weil sonst der Sommerkomfort leidet. Flachdach U = 0.12 (CLT 200 mm und Dämmung 240 mm) ist plausibel.\nGrundlage: fachliche Einschätzung\nPrüfen: Hüllfläche aus dem IFC aufsummieren (Wände, Dach, Bodenplatte) und durch die EBF teilen. Energiebezugsfläche im Energienachweis festlegen.",
+   "source": "fachliche Einschätzung",
+   "who": "Energie/Fassade",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "FIRE-rauchabzug-im-treppenhaus-nicht-nachgewi:OG2-DA": {
+   "id": "FIRE-rauchabzug-im-treppenhaus-nicht-nachgewi:OG2-DA",
+   "topicGuid": "f1b13cf1-fd00-55c8-9091-b19021cf765b",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Das Treppenhaus (Stahlbetonkern, Fluchtweg für 6 Wohnungen auf 3 Geschossen) hat oben nur ein Fenster (OG2-TH-F1, Brüstung 1.0 m) und keine Öffnung im Dach OG2-DA. Ein Rauchabzug am höchsten Punkt (Dachlukenöffnung oder Fenster oben, von EG und Geschoss aus bedienbar) ist nicht modelliert. Vorschlag: Rauchabzugsöffnung in OG2-DA über dem Treppenlauf vorsehen und im Modell abbilden; Mass nach VKF-Brandschutzrichtlinie Fluchtwege prüfen.\nGrundlage: fachliche Einschätzung (VKF Brandschutzrichtlinie Fluchtwege und Rettungswege)\nPrüfen: Im Grundriss/Schnitt prüfen, ob eine Rauchabzugsvorrichtung mit Ansteuerung am Zugangsgeschoss und freiem Querschnitt vorgesehen ist."
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Brandschutz: OG2-DA hat eine Aussparung 1.0 × 1.2 m (RWA-Lichtkuppel) über dem Treppenhaus. Der freie Querschnitt und die Auslösung bleiben nachzuweisen (siehe nicht prüfbar)."
+    }
+   ],
+   "title": "Rauchabzug im Treppenhaus nicht nachgewiesen",
+   "severity": "WARNING",
+   "discipline": "Brandschutz",
+   "origin": "Fach-Agent Brandschutz",
+   "elements": [
+    "OG2-DA",
+    "OG2-TH-F1",
+    "EG-TR"
+   ],
+   "guids": [
+    "1CXqAS5pPHbfPWpgD_6nmC",
+    "0_8ahipgPMueqpmUuUvr4p",
+    "3gSqkIY0PN8xHO8NjH3I2l"
+   ],
+   "text": "Das Treppenhaus (Stahlbetonkern, Fluchtweg für 6 Wohnungen auf 3 Geschossen) hat oben nur ein Fenster (OG2-TH-F1, Brüstung 1.0 m) und keine Öffnung im Dach OG2-DA. Ein Rauchabzug am höchsten Punkt (Dachlukenöffnung oder Fenster oben, von EG und Geschoss aus bedienbar) ist nicht modelliert. Vorschlag: Rauchabzugsöffnung in OG2-DA über dem Treppenlauf vorsehen und im Modell abbilden; Mass nach VKF-Brandschutzrichtlinie Fluchtwege prüfen.\nGrundlage: fachliche Einschätzung (VKF Brandschutzrichtlinie Fluchtwege und Rettungswege)\nPrüfen: Im Grundriss/Schnitt prüfen, ob eine Rauchabzugsvorrichtung mit Ansteuerung am Zugangsgeschoss und freiem Querschnitt vorgesehen ist.",
+   "source": "fachliche Einschätzung (VKF Brandschutzrichtlinie Fluchtwege und Rettungswege)",
+   "who": "Brandschutz",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "FIRE-brandu-berschlag-u-ber-u-bereinanderlieg:EG-A-F6": {
+   "id": "FIRE-brandu-berschlag-u-ber-u-bereinanderlieg:EG-A-F6",
+   "topicGuid": "e1945a37-de6a-587d-bb82-f816b79d4c12",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Fenstertüren mit Brüstung 0.1 m (z.B. EG-A-F6 mit Sturz 2.3 m, OG1-A-F6 Brüstung 3.05 m) liegen auf der Südfassade direkt übereinander; die freie Fassadenhöhe zwischen den Öffnungen beträgt rund 0.75 m ohne Vordach oder Balkon. Mit brennbarer Holzschalung ist der vertikale Brandüberschlag zu beurteilen. Vorschlag: Brandschutzkonzept festlegen (Brüstungs-/Sturzband mit nichtbrennbarer Bekleidung, Auskragung oder Gebäudeklasse-gerechte Lösung) und im Modell als Schichtaufbau abbilden.\nGrundlage: fachliche Einschätzung (VKF Brandschutznorm / Richtlinie Brandschutzabstände, Tragwerke)\nPrüfen: Fassadenschnitt Süd durch Fenster EG/OG1/OG2 mit Massen prüfen und gegen die Anforderung des Brandschutzkonzepts abgleichen."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Die Brüstung im OG1/OG2 wurde auf 0.5 m gesenkt (OG1-A-F6 Höhe 1.7 m), das Band zwischen Sturz EG-A-F6 (OK 2.2 m) und OG1-A-F6 beträgt laut Architektur rund 1.25 m. Das ist besser als v1, aber das Band ist weiterhin mit brennbarer Holzschalung bekleidet und über der Geschossdecke liegt nur die Brandsperre. Bitte im Schichtaufbau von EG-AW-S1 und OG1-AW-S1 ein nichtbrennbares Brüstungs-/Sturzband festlegen oder den Nachweis der geforderten Mindesthöhe nach Brandschutzkonzept führen.\nGrundlage: fachliche Einschätzung (VKF Brandschutzrichtlinie Brandschutzabstände, Tragwerke und Fassaden)\nPrüfen: Fassadenschnitt Süd durch EG/OG1/OG2 mit Massen: freie Bandhöhe und Bekleidungsklasse mit dem Brandschutzkonzept abgleichen."
+    },
+    {
+     "v": 3,
+     "event": "erledigt",
+     "text": "Brandschutz: Das Band zwischen EG-A-F6 und OG1-A-F6 (1.25 m) ist in EG-AW-S1/OG1-AW-S1 mit Faserzementplatten RF1 (A1) auf Mineralwolle statt Holzschalung ausgeführt. Die Mindesthöhe ist im Brandschutzkonzept zu bestätigen."
+    }
+   ],
+   "title": "Brandüberschlag Südfassade: Brüstungsband nicht nachgewiesen",
+   "severity": "WARNING",
+   "discipline": "Brandschutz",
+   "origin": "Fach-Agent Brandschutz",
+   "elements": [
+    "EG-A-F6",
+    "OG1-A-F6",
+    "EG-AW-S1",
+    "OG1-AW-S1"
+   ],
+   "guids": [
+    "0XJg2ccDXNKvwxePKREj8W",
+    "2p5_vAT6LUr85VADKt1CWu",
+    "20vzodnx5Nhf0LBO$vq5YP",
+    "1IhTczbEfKluf2j70oWYkp"
+   ],
+   "text": "Die Brüstung im OG1/OG2 wurde auf 0.5 m gesenkt (OG1-A-F6 Höhe 1.7 m), das Band zwischen Sturz EG-A-F6 (OK 2.2 m) und OG1-A-F6 beträgt laut Architektur rund 1.25 m. Das ist besser als v1, aber das Band ist weiterhin mit brennbarer Holzschalung bekleidet und über der Geschossdecke liegt nur die Brandsperre. Bitte im Schichtaufbau von EG-AW-S1 und OG1-AW-S1 ein nichtbrennbares Brüstungs-/Sturzband festlegen oder den Nachweis der geforderten Mindesthöhe nach Brandschutzkonzept führen.\nGrundlage: fachliche Einschätzung (VKF Brandschutzrichtlinie Brandschutzabstände, Tragwerke und Fassaden)\nPrüfen: Fassadenschnitt Süd durch EG/OG1/OG2 mit Massen: freie Bandhöhe und Bekleidungsklasse mit dem Brandschutzkonzept abgleichen.",
+   "source": "fachliche Einschätzung (VKF Brandschutzrichtlinie Brandschutzabstände, Tragwerke und Fassaden)",
+   "who": "Brandschutz",
+   "lastSeen": 2,
+   "status": "Closed",
+   "closedIn": 3
+  },
+  "FIRE-hinterlu-ftete-holzfassade-brandsperren-:EG-AW-S1": {
+   "id": "FIRE-hinterlu-ftete-holzfassade-brandsperren-:EG-AW-S1",
+   "topicGuid": "3fbcf5db-587b-59ba-bbb4-f221e6acd9b4",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Die Aussenwände haben eine 30 mm Hinterlüftung mit Holzschalung (brennbar). Brandsperren/Abschottungen der Hinterlüftungsebene auf Geschossniveau und an Fensterleibungen sind weder im Schichtaufbau noch als Element erfasst. Vorschlag: horizontale Brandsperren (z.B. Metallprofil) je Geschossdecke und Leibungsverkleidung im Detail festlegen.\nGrundlage: fachliche Einschätzung\nPrüfen: Fassadendetail 1:5 an der Geschossdecke prüfen: Hinterlüftungsspalt unterbrochen oder abgeschottet?"
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Brandschutz: Im Materialnamen der Holzrahmen-Aussenwände (z.B. EG-AW-S1) ist «Brandsperre Stahlblech je Geschossdecke» eingetragen, Leibungen nicht brennbar bekleiden ist als Detail vermerkt. Ausführungsdetail bleibt Teil der Ausführungsplanung."
+    }
+   ],
+   "title": "Hinterlüftete Holzfassade: Brandsperren fehlen",
+   "severity": "WARNING",
+   "discipline": "Brandschutz",
+   "origin": "Fach-Agent Brandschutz",
+   "elements": [
+    "EG-AW-S1",
+    "OG1-AW-S1",
+    "OG2-AW-S1",
+    "OG1-AW-N1"
+   ],
+   "guids": [
+    "20vzodnx5Nhf0LBO$vq5YP",
+    "1IhTczbEfKluf2j70oWYkp",
+    "3cdIbu_4vUrANT6jSOTHEL",
+    "0iwHzyzH1O28ECLKddW$L1"
+   ],
+   "text": "Die Aussenwände haben eine 30 mm Hinterlüftung mit Holzschalung (brennbar). Brandsperren/Abschottungen der Hinterlüftungsebene auf Geschossniveau und an Fensterleibungen sind weder im Schichtaufbau noch als Element erfasst. Vorschlag: horizontale Brandsperren (z.B. Metallprofil) je Geschossdecke und Leibungsverkleidung im Detail festlegen.\nGrundlage: fachliche Einschätzung\nPrüfen: Fassadendetail 1:5 an der Geschossdecke prüfen: Hinterlüftungsspalt unterbrochen oder abgeschottet?",
+   "source": "fachliche Einschätzung",
+   "who": "Brandschutz",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "FIRE-schutzabstand-der-holzfassade-zu-nachbar:EG-AW-W": {
+   "id": "FIRE-schutzabstand-der-holzfassade-zu-nachbar:EG-AW-W",
+   "topicGuid": "fb7bca2e-cf77-5707-aa4a-5ef39a1a175c",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Der Nachbarabstand beruht auf einer Projektannahme (5 m). Bei brennbarer Aussenwandbekleidung hängen die erforderlichen Gebäudeabstände und die Zulässigkeit von Öffnungen von Gebäudehöhe und Bekleidungsklasse ab. Vorschlag: reale Nachbargebäude und -abstände erheben und gegen die VKF-Richtlinie Brandschutzabstände prüfen, besonders Westfassade mit grösster Fensterfläche.\nGrundlage: Projektannahme\nPrüfen: Katasterplan mit Nachbargebäuden und Gebäudeabständen ansehen; Bekleidungsklasse und Abstand laut Richtlinie vergleichen."
+    },
+    {
+     "v": 2,
+     "event": "noch offen",
+     "text": "Keine Modelländerung. Der nächste Bestandesbau liegt laut Check 7.1 m entfernt (Hüllrechteck), die Ostfassade hat 9.29 m Grenzabstand. Die Zulässigkeit der brennbaren Bekleidung und der Öffnungen hängt vom realen Gebäudeabstand und der Gebäudehöhe (9.26 m) ab. Bitte Katasterplan mit Nachbargebäuden beiziehen und die Abstände gegen die VKF-Richtlinie prüfen, insbesondere Ost und West.\nGrundlage: Projektannahme\nPrüfen: Katasterplan mit Nachbargebäuden: Abstände zu Ost-, West- und Südfassade messen und mit der Richtlinie Brandschutzabstände vergleichen."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Keine Modelländerung. Der nächste Bestandesbau liegt laut Check 7.1 m entfernt (Hüllrechteck), die Ostfassade hat 9.29 m Grenzabstand, Gebäudehöhe 9.26 m. Die Zulässigkeit der brennbaren Bekleidung und der Fensteröffnungen hängt vom realen Gebäudeabstand ab. Bitte Katasterplan mit Nachbargebäuden beiziehen und Abstände gegen die VKF-Brandschutzrichtlinie prüfen, insbesondere Ost und West.\nGrundlage: Projektannahme\nPrüfen: Katasterplan mit Nachbargebäuden: Abstände zu Ost-, West- und Südfassade messen und mit der Richtlinie Brandschutzabstände vergleichen."
+    }
+   ],
+   "title": "Schutzabstand Holzfassade: Nachbarbauten weiterhin Projektannahme",
+   "severity": "INFO",
+   "discipline": "Brandschutz",
+   "origin": "Fach-Agent Brandschutz",
+   "elements": [
+    "EG-AW-W",
+    "OG2-AW-W",
+    "EG-AW-E"
+   ],
+   "guids": [
+    "2cxaKyXUvN9BQrQa4TcuI6",
+    "04sV3exmDS$xVF3jNZV1O4",
+    "3uF9VFA9PIzR$w9Wm1f5Rv"
+   ],
+   "text": "Keine Modelländerung. Der nächste Bestandesbau liegt laut Check 7.1 m entfernt (Hüllrechteck), die Ostfassade hat 9.29 m Grenzabstand, Gebäudehöhe 9.26 m. Die Zulässigkeit der brennbaren Bekleidung und der Fensteröffnungen hängt vom realen Gebäudeabstand ab. Bitte Katasterplan mit Nachbargebäuden beiziehen und Abstände gegen die VKF-Brandschutzrichtlinie prüfen, insbesondere Ost und West.\nGrundlage: Projektannahme\nPrüfen: Katasterplan mit Nachbargebäuden: Abstände zu Ost-, West- und Südfassade messen und mit der Richtlinie Brandschutzabstände vergleichen.",
+   "source": "Projektannahme",
+   "who": "Brandschutz",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "FIRE-rettung-u-ber-ein-einziges-treppenhaus-u:OG2-A-F1": {
+   "id": "FIRE-rettung-u-ber-ein-einziges-treppenhaus-u:OG2-A-F1",
+   "topicGuid": "bd4a57e2-12f2-52e5-9d4d-ab6bc3b9636c",
+   "firstSeen": 1,
+   "history": [
+    {
+     "v": 1,
+     "event": "neu",
+     "text": "Alle Wohnungen sind nur über das eine Treppenhaus erschlossen. Als zweiter Rettungsweg gilt die Anleiterung der Feuerwehr; im OG2 (Boden +5.9 m) muss je Wohnung ein Fenster zugänglich und für Rettungsgeräte geeignet sein. Der Hauseingang liegt im Norden; Zufahrt und Aufstellflächen sind im Modell nicht erfasst. Vorschlag: Aufstellfläche festlegen und je Wohnung ein anleiterbares Fenster (z.B. OG2-A-F1, OG2-B-F2) bezeichnen.\nGrundlage: fachliche Einschätzung\nPrüfen: Umgebungsplan mit Feuerwehrzufahrt und Aufstellflächen vor den Nordfenstern prüfen; Feuerwehr/Brandschutzbehörde konsultieren."
+    },
+    {
+     "v": 2,
+     "event": "erledigt",
+     "text": "Brandschutz: OG1/OG2-A-F1 und OG1/OG2-B-F2 (Nordfassade, 1.8/1.6 × 1.5 m, Brüstung 0.8 m) sind als anleiterbare Fenster bezeichnet. Die Aufstellfläche liegt ausserhalb des Modells und steht unter «nicht prüfbar»."
+    }
+   ],
+   "title": "Rettung über ein einziges Treppenhaus und Anleiterbarkeit",
+   "severity": "INFO",
+   "discipline": "Brandschutz",
+   "origin": "Fach-Agent Brandschutz",
+   "elements": [
+    "OG2-A-F1",
+    "OG2-B-F2",
+    "EG-HE"
+   ],
+   "guids": [
+    "19Qale5LvMcADw3yQlwyzV",
+    "3gCLCHkEfR1wxvE9DYN0TS",
+    "16HQBg96LS4hbbcg0JCUKn"
+   ],
+   "text": "Alle Wohnungen sind nur über das eine Treppenhaus erschlossen. Als zweiter Rettungsweg gilt die Anleiterung der Feuerwehr; im OG2 (Boden +5.9 m) muss je Wohnung ein Fenster zugänglich und für Rettungsgeräte geeignet sein. Der Hauseingang liegt im Norden; Zufahrt und Aufstellflächen sind im Modell nicht erfasst. Vorschlag: Aufstellfläche festlegen und je Wohnung ein anleiterbares Fenster (z.B. OG2-A-F1, OG2-B-F2) bezeichnen.\nGrundlage: fachliche Einschätzung\nPrüfen: Umgebungsplan mit Feuerwehrzufahrt und Aufstellflächen vor den Nordfenstern prüfen; Feuerwehr/Brandschutzbehörde konsultieren.",
+   "source": "fachliche Einschätzung",
+   "who": "Brandschutz",
+   "lastSeen": 1,
+   "status": "Closed",
+   "closedIn": 2
+  },
+  "VISUAL-og2-treppenkern-ohne-treppendarstellung:OG2-TK-W": {
+   "id": "VISUAL-og2-treppenkern-ohne-treppendarstellung:OG2-TK-W",
+   "topicGuid": "73c1829e-9067-5ca3-8796-4db399530b7f",
+   "firstSeen": 2,
+   "history": [
+    {
+     "v": 2,
+     "event": "neu",
+     "text": "In v2_grundriss_OG2.png ist der Treppenhauskern leer (nur Beschriftung und eine Tür), der Lauf endet im Plan offenbar im OG1. Als Ankunftsgeschoss ist das akzeptabel, ein Podest/Austritt wäre aber lesbarer."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "In v3_grundriss_OG2.png ist das Treppenhaus weiterhin leer (nur Beschriftung und Türen), während im EG der Lauf gezeichnet ist. Als Ankunftsgeschoss akzeptabel, ein Podest/Austritt wäre lesbarer."
+    }
+   ],
+   "title": "OG2-Treppenkern ohne Treppendarstellung",
+   "severity": "INFO",
+   "discipline": "Visual QA",
+   "origin": "Fach-Agent Visual QA",
+   "elements": [
+    "OG2-TK-W",
+    "OG2-TK-E",
+    "OG1-TR"
+   ],
+   "guids": [
+    "2NAQ2mqYnPphl2A5QIgjuO",
+    "2bM8SV9E1QdRdo29ynWyW8",
+    "3GiGg1L81VzwMxHUfogRDt"
+   ],
+   "text": "In v3_grundriss_OG2.png ist das Treppenhaus weiterhin leer (nur Beschriftung und Türen), während im EG der Lauf gezeichnet ist. Als Ankunftsgeschoss akzeptabel, ein Podest/Austritt wäre lesbarer.",
+   "who": "Visual QA",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "MEP-ku-che-og1-u-ber-technikraum:EG-TE": {
+   "id": "MEP-ku-che-og1-u-ber-technikraum:EG-TE",
+   "topicGuid": "2f6c40e6-260e-5d94-b44f-a94f062c6a91",
+   "firstSeen": 2,
+   "history": [
+    {
+     "v": 2,
+     "event": "neu",
+     "text": "OG1-A-KU liegt direkt über EG-TE. Dort stehen Speicher, Verteilung und Elektro-Hausanschlüsse. Eine undichte Küchendecke oder ein Leitungsschaden gefährdet Elektro und Zähler. Die Küchenabwasserleitung müsste zudem durch die HBV-Decke über dem Technikraum oder lang horizontal zu A-SZ. Küche nicht über den Technikraum legen. Falls nicht möglich: Decke über EG-TE mit Abdichtung und Entwässerung planen und die Elektroverteilung ausserhalb der Tropfzone anordnen.\nGrundlage: fachliche Einschätzung\nPrüfen: Schnitt durch EG-TE und OG1-A-KU: Lage von Küchenzeile, Abläufen und Technikgeräten prüfen. Mit dem Elektro- und Sanitärplaner abstimmen."
+    },
+    {
+     "v": 3,
+     "event": "erledigt",
+     "text": "Haustechnik: Über EG-TE liegt in OG1 und OG2 jetzt der trockene Essplatz OG1-A-ES / OG2-A-ES. OG1-A-KU und OG2-A-KU liegen nicht mehr über dem Technikraum."
+    }
+   ],
+   "title": "Küche OG1 über Technikraum",
+   "severity": "WARNING",
+   "discipline": "Haustechnik",
+   "origin": "Fach-Agent Haustechnik",
+   "elements": [
+    "EG-TE",
+    "OG1-A-KU",
+    "OG1-DE"
+   ],
+   "guids": [
+    "330d2hcF9NeQJ9BqVGGZJ6",
+    "3QLk$X8P5U3fR3wiG6bXVs",
+    "1JOxvuoWfM1gZ7HHN8sQsE"
+   ],
+   "text": "OG1-A-KU liegt direkt über EG-TE. Dort stehen Speicher, Verteilung und Elektro-Hausanschlüsse. Eine undichte Küchendecke oder ein Leitungsschaden gefährdet Elektro und Zähler. Die Küchenabwasserleitung müsste zudem durch die HBV-Decke über dem Technikraum oder lang horizontal zu A-SZ. Küche nicht über den Technikraum legen. Falls nicht möglich: Decke über EG-TE mit Abdichtung und Entwässerung planen und die Elektroverteilung ausserhalb der Tropfzone anordnen.\nGrundlage: fachliche Einschätzung\nPrüfen: Schnitt durch EG-TE und OG1-A-KU: Lage von Küchenzeile, Abläufen und Technikgeräten prüfen. Mit dem Elektro- und Sanitärplaner abstimmen.",
+   "source": "fachliche Einschätzung",
+   "who": "Haustechnik",
+   "lastSeen": 2,
+   "status": "Closed",
+   "closedIn": 3
+  },
+  "MEP-steigzonenquerschnitt-knapp-fu-r-alle-me:EG-A-SZ": {
+   "id": "MEP-steigzonenquerschnitt-knapp-fu-r-alle-me:EG-A-SZ",
+   "topicGuid": "2473d9e9-7a59-5509-8468-3937d1fdd696",
+   "firstSeen": 2,
+   "history": [
+    {
+     "v": 2,
+     "event": "neu",
+     "text": "A-SZ misst 0.58 × 0.65 m, B-SZ 0.55 × 0.55 m. Darin sollen Schmutzwasser-Fallstrang mit Lüftung, Kalt-/Warmwasser, Zu-/Abluft, Fortluft und Elektro Platz finden. Das ist für zwei Lüftungsleitungen plus Sanitär knapp, besonders bei B-SZ. Querschnitte mit Sanitär- und Lüftungsplaner nachrechnen, Revisionszugang vorsehen und gegebenenfalls vergrössern. Die Schachtwände EI 60 mit Zugangstüren oder Revisionsöffnungen im Bad planen.\nGrundlage: fachliche Einschätzung\nPrüfen: Strangschema mit Rohrdurchmessern und Dämmstärken auf den Schachtgrundriss legen und die freie Fläche messen."
+    },
+    {
+     "v": 3,
+     "event": "erledigt",
+     "text": "Haustechnik: A-SZ auf 0.93 × 0.65 m und B-SZ auf 0.75 × 0.75 m vergrössert. Die Küchenmedien laufen in A-SZ2. Revisionsöffnungen EG-A-RV1, EG-A-RV2 und EG-B-RV1 sind vorhanden. Die Querschnittsrechnung bleibt Aufgabe des Fachplaners im nächsten Schritt."
+    }
+   ],
+   "title": "Steigzonenquerschnitt knapp für alle Medien",
+   "severity": "INFO",
+   "discipline": "Haustechnik",
+   "origin": "Fach-Agent Haustechnik",
+   "elements": [
+    "EG-A-SZ",
+    "EG-B-SZ",
+    "EG-A-SW1",
+    "EG-B-SW1"
+   ],
+   "guids": [
+    "0sHzGfNe5TKxhl8iRTD9A6",
+    "1vDW540KrPpQuXT4P5bIzH",
+    "1NQLy6MJbQtPEBrDcl99Qi",
+    "0QTW4$JzfRWvj3e$GCb$Ff"
+   ],
+   "text": "A-SZ misst 0.58 × 0.65 m, B-SZ 0.55 × 0.55 m. Darin sollen Schmutzwasser-Fallstrang mit Lüftung, Kalt-/Warmwasser, Zu-/Abluft, Fortluft und Elektro Platz finden. Das ist für zwei Lüftungsleitungen plus Sanitär knapp, besonders bei B-SZ. Querschnitte mit Sanitär- und Lüftungsplaner nachrechnen, Revisionszugang vorsehen und gegebenenfalls vergrössern. Die Schachtwände EI 60 mit Zugangstüren oder Revisionsöffnungen im Bad planen.\nGrundlage: fachliche Einschätzung\nPrüfen: Strangschema mit Rohrdurchmessern und Dämmstärken auf den Schachtgrundriss legen und die freie Fläche messen.",
+   "source": "fachliche Einschätzung",
+   "who": "Haustechnik",
+   "lastSeen": 2,
+   "status": "Closed",
+   "closedIn": 3
+  },
+  "MEP-technikraum-verteilwege-und-schall:EG-TE": {
+   "id": "MEP-technikraum-verteilwege-und-schall:EG-TE",
+   "topicGuid": "4ffadcae-51af-50cd-b30d-0d2475789ff9",
+   "firstSeen": 2,
+   "history": [
+    {
+     "v": 2,
+     "event": "neu",
+     "text": "EG-TE (10 m²) liegt südlich des Kerns. Die Wege zu A-SZ sind kurz, zu B-SZ (x 3.0) aber über 7 m und müssen im EG in der Bodenplatte oder im Bodenaufbau geführt werden. Der Platz für Speicher, Hausanschlüsse, Verteiler und Zähler ist bei 10 m² ohne Aufstellplan nicht belegt. Der Raum grenzt an die Küche EG-A-KU. Schallentkopplung von Speicher, Pumpen und Aussengerät ist nachzuweisen. Aussengerät oder Erdsonde mit Aufstellort ausweisen.\nGrundlage: fachliche Einschätzung\nPrüfen: Aufstellplan des Technikraums mit Gerätemassen vom HLKS-Planer, Leitungsführung EG im Grundriss prüfen."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Der Weg zu Wohnung A über EG-TE-IW1 in A-SZ2 ist kurz. Zu B-SZ führt er rund 7 m in Leerrohren unter WT-1 durch. Der Aufstellplan fehlt weiterhin: Speicher, Hausanschlüsse, Verteiler, Zähler und Revisionsflächen auf 10 m². Die Annahme mit Aussengerät an der Südfassade vor EG-TE ist nicht modelliert. Schall von Speicher, Pumpen und Aussengerät ist für A-KU und den Essplatz darüber nachzuweisen. Aufstellplan und Schallschutzkonzept durch den HLKS-Planer erstellen.\nGrundlage: fachliche Einschätzung\nPrüfen: Aufstellplan mit Gerätemassen auf EG-TE legen. Leerrohrtrasse EG-TE bis B-SZ im Plan prüfen. Schallprognose für Aussengerät einholen."
+    }
+   ],
+   "title": "Technikraum: Aufstellplan, Verteilwege und Schall",
+   "severity": "INFO",
+   "discipline": "Haustechnik",
+   "origin": "Fach-Agent Haustechnik",
+   "elements": [
+    "EG-TE",
+    "EG-TE-IW1",
+    "EG-TE-T1"
+   ],
+   "guids": [
+    "330d2hcF9NeQJ9BqVGGZJ6",
+    "3NDxQQkkjRaeV5RcAWrjPN",
+    "1VQlTILSzQCe5RdnUGEbiL"
+   ],
+   "text": "Der Weg zu Wohnung A über EG-TE-IW1 in A-SZ2 ist kurz. Zu B-SZ führt er rund 7 m in Leerrohren unter WT-1 durch. Der Aufstellplan fehlt weiterhin: Speicher, Hausanschlüsse, Verteiler, Zähler und Revisionsflächen auf 10 m². Die Annahme mit Aussengerät an der Südfassade vor EG-TE ist nicht modelliert. Schall von Speicher, Pumpen und Aussengerät ist für A-KU und den Essplatz darüber nachzuweisen. Aufstellplan und Schallschutzkonzept durch den HLKS-Planer erstellen.\nGrundlage: fachliche Einschätzung\nPrüfen: Aufstellplan mit Gerätemassen auf EG-TE legen. Leerrohrtrasse EG-TE bis B-SZ im Plan prüfen. Schallprognose für Aussengerät einholen.",
+   "source": "fachliche Einschätzung",
+   "who": "Haustechnik",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "FACADE-attika-und-vordach-nur-in-notizen-wa-rme:OG2-DA": {
+   "id": "FACADE-attika-und-vordach-nur-in-notizen-wa-rme:OG2-DA",
+   "topicGuid": "419663f1-5aa9-5377-8bb3-6025fc25da8c",
+   "firstSeen": 2,
+   "history": [
+    {
+     "v": 2,
+     "event": "neu",
+     "text": "Die Attika (Aufbordung 0.2 m) und das Vordach über EG-HE sind nicht modelliert. Am Dachrand des Flachdachs (U 0.12) und am Anschluss des Vordachs an den Kern entstehen lineare Wärmebrücken. Die Gebäudehöhe von ca. 9.46 m liegt knapp unter 9.5 m. Bitte die Attikadämmung ohne Unterbruch bis über die Aufbordung führen und das Vordach thermisch getrennt befestigen. Die Wärmebrücken kommen in den Energienachweis.\nGrundlage: fachliche Einschätzung\nPrüfen: Attikadetail im Schnitt 1:20 prüfen. Ψ-Werte für Dachrand und Vordachanschluss im Energienachweis aufführen."
+    },
+    {
+     "v": 3,
+     "event": "noch offen",
+     "text": "Attika (Aufbordung 0.2 m) und Vordach über EG-HE sind weiterhin nur in Text und Notizen vorhanden. Die Attikadämmung ist ohne Unterbruch über die Aufbordung zu führen, das Vordach mit thermisch getrennten Konsolen am Kern zu befestigen (so in den Notizen vorgesehen). Die linearen Wärmebrücken sind im Energienachweis aufzuführen. Die Gebäudehöhe von ca. 9.46 m mit Attika liegt knapp unter 9.5 m, jede Aufbauänderung am Dach ist gegen die Höhe zu prüfen.\nGrundlage: fachliche Einschätzung\nPrüfen: Attikadetail und Vordachanschluss im Schnitt 1:20 prüfen. Ψ-Werte im Energienachweis kontrollieren. Gebäudehöhe inkl. Attika nachmessen."
+    }
+   ],
+   "title": "Attika und Vordach nicht modelliert: Wärmebrücken Dachrand und Eingang",
+   "severity": "INFO",
+   "discipline": "Energie/Fassade",
+   "origin": "Fach-Agent Energie/Fassade",
+   "elements": [
+    "OG2-DA",
+    "EG-HE",
+    "OG2-AW-N2"
+   ],
+   "guids": [
+    "1CXqAS5pPHbfPWpgD_6nmC",
+    "16HQBg96LS4hbbcg0JCUKn",
+    "1jXBIw6YHU6e7jEQc9YUjL"
+   ],
+   "text": "Attika (Aufbordung 0.2 m) und Vordach über EG-HE sind weiterhin nur in Text und Notizen vorhanden. Die Attikadämmung ist ohne Unterbruch über die Aufbordung zu führen, das Vordach mit thermisch getrennten Konsolen am Kern zu befestigen (so in den Notizen vorgesehen). Die linearen Wärmebrücken sind im Energienachweis aufzuführen. Die Gebäudehöhe von ca. 9.46 m mit Attika liegt knapp unter 9.5 m, jede Aufbauänderung am Dach ist gegen die Höhe zu prüfen.\nGrundlage: fachliche Einschätzung\nPrüfen: Attikadetail und Vordachanschluss im Schnitt 1:20 prüfen. Ψ-Werte im Energienachweis kontrollieren. Gebäudehöhe inkl. Attika nachmessen.",
+   "source": "fachliche Einschätzung",
+   "who": "Energie/Fassade",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "FIRE-technikraum-am-treppenhaus-tu-rklasse-ei:EG-TE-T1": {
+   "id": "FIRE-technikraum-am-treppenhaus-tu-rklasse-ei:EG-TE-T1",
+   "topicGuid": "e3a25515-df42-5efa-a053-55a3039374dd",
+   "firstSeen": 2,
+   "history": [
+    {
+     "v": 2,
+     "event": "neu",
+     "text": "Der neue Technikraum EG-TE (Hausanschlüsse, Zähler, Speicher, Verteilung) grenzt über EG-TE-T1 an den Fluchtweg bei EG-TK-S. Die Tür ist EI 30 selbstschliessend, die Trennwand EG-TE-IW1 EI 60. Ein Raum mit erhöhter Brandlast und elektrischen Anlagen am Treppenhaus sollte als eigener Brandabschnitt gelten, die Tür sollte der Wandklasse entsprechen. Bitte Anforderung festlegen und Türklasse anpassen oder die Abweichung begründen.\nGrundlage: fachliche Einschätzung\nPrüfen: Grundriss EG: Türklasse und Wandklasse des Technikraums im Brandschutzkonzept vergleichen; Nutzung (Speicher, Elektro) mit Haustechnik klären."
+    },
+    {
+     "v": 3,
+     "event": "erledigt",
+     "text": "Brandschutz: EG-TE-T1 ist jetzt EI 60 selbstschliessend (IFC-Name), gleiche Klasse wie EG-TE-IW1; EG-TE gilt als eigener Brandabschnitt."
+    }
+   ],
+   "title": "Technikraum am Treppenhaus: Türklasse EI 30 gegenüber Wand EI 60",
+   "severity": "WARNING",
+   "discipline": "Brandschutz",
+   "origin": "Fach-Agent Brandschutz",
+   "elements": [
+    "EG-TE-T1",
+    "EG-TE-IW1",
+    "EG-TK-S",
+    "EG-TE"
+   ],
+   "guids": [
+    "1VQlTILSzQCe5RdnUGEbiL",
+    "3NDxQQkkjRaeV5RcAWrjPN",
+    "14ktiGbM1PUBBaDic9gONN",
+    "330d2hcF9NeQJ9BqVGGZJ6"
+   ],
+   "text": "Der neue Technikraum EG-TE (Hausanschlüsse, Zähler, Speicher, Verteilung) grenzt über EG-TE-T1 an den Fluchtweg bei EG-TK-S. Die Tür ist EI 30 selbstschliessend, die Trennwand EG-TE-IW1 EI 60. Ein Raum mit erhöhter Brandlast und elektrischen Anlagen am Treppenhaus sollte als eigener Brandabschnitt gelten, die Tür sollte der Wandklasse entsprechen. Bitte Anforderung festlegen und Türklasse anpassen oder die Abweichung begründen.\nGrundlage: fachliche Einschätzung\nPrüfen: Grundriss EG: Türklasse und Wandklasse des Technikraums im Brandschutzkonzept vergleichen; Nutzung (Speicher, Elektro) mit Haustechnik klären.",
+   "source": "fachliche Einschätzung",
+   "who": "Brandschutz",
+   "lastSeen": 2,
+   "status": "Closed",
+   "closedIn": 3
+  },
+  "FIRE-steigzonen-durchdringen-holz-beton-decke:EG-A-SW1": {
+   "id": "FIRE-steigzonen-durchdringen-holz-beton-decke:EG-A-SW1",
+   "topicGuid": "6fc6d597-7e57-5560-98c0-84bb5acc4939",
+   "firstSeen": 2,
+   "history": [
+    {
+     "v": 2,
+     "event": "neu",
+     "text": "Die Steigzonen (Schachtwände EI 60) laufen deckungsgleich durch EG bis OG2 und durchstossen OG1-DE, OG2-DE und OG2-DA. Das Dach ist ein BSP-Hohlkastenelement. Die Abschottung der Durchführungen auf Geschossniveau und die Dichtigkeit der Schächte gegen Brandübertragung zwischen Geschossen und Wohnungen sind nicht festgelegt. Bitte Schachtdeckel/Abschottungen mit gleichwertiger Feuerwiderstandsklasse wie die Decke definieren.\nGrundlage: fachliche Einschätzung\nPrüfen: Schnitt durch Steigzone: Abschottung je Decke und Feuerwiderstand mit Brandschutzkonzept und Sanitärplaner abgleichen."
+    },
+    {
+     "v": 3,
+     "event": "erledigt",
+     "text": "Brandschutz: Schott EI 60 je Geschossdecke ist im Materialtext von OG1-DE, OG2-DE und OG2-DA festgelegt (Schachtdurchbrüche abgeschottet EI 60), entsprechend REI 60 der Decke. Konkrete Systeme bleiben Ausführungsfrage."
+    }
+   ],
+   "title": "Steigzonen durchdringen Holz-Beton-Decken: Abschottung offen",
+   "severity": "WARNING",
+   "discipline": "Brandschutz",
+   "origin": "Fach-Agent Brandschutz",
+   "elements": [
+    "EG-A-SW1",
+    "OG1-A-SW1",
+    "OG1-DE",
+    "OG2-DE"
+   ],
+   "guids": [
+    "1NQLy6MJbQtPEBrDcl99Qi",
+    "13yOSbEorUgPPmXXE5xM2R",
+    "1JOxvuoWfM1gZ7HHN8sQsE",
+    "0dlGPxxa1VrAMJW$oEe3dY"
+   ],
+   "text": "Die Steigzonen (Schachtwände EI 60) laufen deckungsgleich durch EG bis OG2 und durchstossen OG1-DE, OG2-DE und OG2-DA. Das Dach ist ein BSP-Hohlkastenelement. Die Abschottung der Durchführungen auf Geschossniveau und die Dichtigkeit der Schächte gegen Brandübertragung zwischen Geschossen und Wohnungen sind nicht festgelegt. Bitte Schachtdeckel/Abschottungen mit gleichwertiger Feuerwiderstandsklasse wie die Decke definieren.\nGrundlage: fachliche Einschätzung\nPrüfen: Schnitt durch Steigzone: Abschottung je Decke und Feuerwiderstand mit Brandschutzkonzept und Sanitärplaner abgleichen.",
+   "source": "fachliche Einschätzung",
+   "who": "Brandschutz",
+   "lastSeen": 2,
+   "status": "Closed",
+   "closedIn": 3
+  },
+  "VISUAL-u-berlappende-raumbeschriftungen-im-grun:OG2-A-KU": {
+   "id": "VISUAL-u-berlappende-raumbeschriftungen-im-grun:OG2-A-KU",
+   "topicGuid": "49c13636-0f0d-56bc-b584-9114c3068b61",
+   "firstSeen": 3,
+   "history": [
+    {
+     "v": 3,
+     "event": "neu",
+     "text": "In v3_grundriss_EG.png und v3_grundriss_OG2.png überlagern sich Beschriftungen: 'Küche' mit 'Steigzone Küche', 'Bad' mit 'Entree/Korridor' (Wohnung B), 'Reduit / Lüftungsgerät' mit 'Steigzone'. Zudem überlappt die Treppenbeschriftung den Lauf im EG."
+    }
+   ],
+   "title": "Überlappende Raumbeschriftungen im Grundriss",
+   "severity": "INFO",
+   "discipline": "Visual QA",
+   "origin": "Fach-Agent Visual QA",
+   "elements": [
+    "OG2-A-KU",
+    "OG2-B-KU",
+    "EG-A-KU",
+    "EG-B-KU",
+    "EG-TR"
+   ],
+   "guids": [
+    "24sSWQqEDQFwo2_0S7V66Q",
+    "0g6DabfC1SkvCuuk62K$9o",
+    "0Fv3bkOY5M4wG3mo7UgLTg",
+    "3sVdUhLEzHNQ50p5glOAdf",
+    "3gSqkIY0PN8xHO8NjH3I2l"
+   ],
+   "text": "In v3_grundriss_EG.png und v3_grundriss_OG2.png überlagern sich Beschriftungen: 'Küche' mit 'Steigzone Küche', 'Bad' mit 'Entree/Korridor' (Wohnung B), 'Reduit / Lüftungsgerät' mit 'Steigzone'. Zudem überlappt die Treppenbeschriftung den Lauf im EG.",
+   "who": "Visual QA",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "STRUCTURAL-zwischenwa-nde-bsp-80-mm-querdruck-und-a:EG-A-IW5": {
+   "id": "STRUCTURAL-zwischenwa-nde-bsp-80-mm-querdruck-und-a:EG-A-IW5",
+   "topicGuid": "880a2527-9710-5a6a-b215-97dab1adb819",
+   "firstSeen": 3,
+   "history": [
+    {
+     "v": 3,
+     "event": "neu",
+     "text": "Die neuen Zwischenlinienwände sind nur 0.10 m dick (BSP 80 mm plus Gipsfaser) und tragen beidseitig Deckenfelder von je ca. 3–4.7 m aus drei Geschossen, im EG also Linienlasten aus OG1, OG2 und Dach auf 80 mm Brettsperrholz. Querdruck am Deckenauflager (Auflagerfläche, Wandstösse, Schwelle) sowie REI 60 mit so dünnem Querschnitt sind fraglich. Bitte Wanddicke oder Lagenaufbau im EG erhöhen bzw. Nachweis führen; Schlitze und Türöffnungen in IW6/IW9 berücksichtigen.\nGrundlage: fachliche Einschätzung\nPrüfen: Linienlast aus Deckenaufbau und Einzugsbreite ermitteln, Querdruck und Abbrand REI 60 nach SIA 265 / Lignum-Tabellen durch Holzbauingenieur."
+    }
+   ],
+   "title": "Zwischenwände BSP 80 mm: Querdruck und Abbrand über drei Geschosse",
+   "severity": "WARNING",
+   "discipline": "Tragwerk",
+   "origin": "Fach-Agent Tragwerk",
+   "elements": [
+    "EG-A-IW5",
+    "EG-A-IW6",
+    "EG-A-IW7",
+    "EG-A-IW9",
+    "EG-A-IW10",
+    "EG-B-IW8"
+   ],
+   "guids": [
+    "3TI9eaVDTJzhHVvJMnCdWz",
+    "04iinfzPvP6hPNwtwQtkCk",
+    "1I1hRIO4DQ_vx2uJZ_6ICD",
+    "28N5LPFn5KLxDLbS__i0LL",
+    "38r_6MCvfSGOJPtC5INnvc",
+    "39fd4hq2vHBuDsOqGmaY0r"
+   ],
+   "text": "Die neuen Zwischenlinienwände sind nur 0.10 m dick (BSP 80 mm plus Gipsfaser) und tragen beidseitig Deckenfelder von je ca. 3–4.7 m aus drei Geschossen, im EG also Linienlasten aus OG1, OG2 und Dach auf 80 mm Brettsperrholz. Querdruck am Deckenauflager (Auflagerfläche, Wandstösse, Schwelle) sowie REI 60 mit so dünnem Querschnitt sind fraglich. Bitte Wanddicke oder Lagenaufbau im EG erhöhen bzw. Nachweis führen; Schlitze und Türöffnungen in IW6/IW9 berücksichtigen.\nGrundlage: fachliche Einschätzung\nPrüfen: Linienlast aus Deckenaufbau und Einzugsbreite ermitteln, Querdruck und Abbrand REI 60 nach SIA 265 / Lignum-Tabellen durch Holzbauingenieur.",
+   "source": "fachliche Einschätzung",
+   "who": "Tragwerk",
+   "lastSeen": 3,
+   "status": "Open"
+  },
+  "FIRE-revisionso-ffnungen-ei-30-in-schachtwa-n:EG-A-RV1": {
+   "id": "FIRE-revisionso-ffnungen-ei-30-in-schachtwa-n:EG-A-RV1",
+   "topicGuid": "c56e59d3-b469-5776-a870-275198651759",
+   "firstSeen": 3,
+   "history": [
+    {
+     "v": 3,
+     "event": "neu",
+     "text": "Die Revisionsöffnungen A-RV1 (Korridor), A-RV2 (Küche) und B-RV1 (Bad) sind EI 30, die Schachtwände der Steigzonen und die Geschossschotts sind EI 60. Die Öffnung bildet die schwächste Stelle der Schachtwand. Bitte Revisionsklappen in der Klasse der Schachtwand (EI 60) festlegen oder die Abweichung im Brandschutzkonzept begründen.\nGrundlage: fachliche Einschätzung\nPrüfen: Türliste/Schachtdetail: Feuerwiderstand der Revisionsklappen mit Wandklasse der Schächte und Brandschutzkonzept vergleichen."
+    }
+   ],
+   "title": "Revisionsöffnungen EI 30 in Schachtwänden EI 60",
+   "severity": "WARNING",
+   "discipline": "Brandschutz",
+   "origin": "Fach-Agent Brandschutz",
+   "elements": [
+    "EG-A-RV1",
+    "EG-A-RV2",
+    "EG-B-RV1",
+    "OG1-A-RV1"
+   ],
+   "guids": [
+    "0rAq0NDynNbgHtlwgkFPgh",
+    "24XMJCljnUAONZE55RtFd2",
+    "1EaaWyWNzKEBoUaiumTRrz",
+    "2O3RbkNW5OFQALXbMURa1e"
+   ],
+   "text": "Die Revisionsöffnungen A-RV1 (Korridor), A-RV2 (Küche) und B-RV1 (Bad) sind EI 30, die Schachtwände der Steigzonen und die Geschossschotts sind EI 60. Die Öffnung bildet die schwächste Stelle der Schachtwand. Bitte Revisionsklappen in der Klasse der Schachtwand (EI 60) festlegen oder die Abweichung im Brandschutzkonzept begründen.\nGrundlage: fachliche Einschätzung\nPrüfen: Türliste/Schachtdetail: Feuerwiderstand der Revisionsklappen mit Wandklasse der Schächte und Brandschutzkonzept vergleichen.",
+   "source": "fachliche Einschätzung",
+   "who": "Brandschutz",
+   "lastSeen": 3,
+   "status": "Open"
+  }
+ }
+}
