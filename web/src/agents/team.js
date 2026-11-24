@@ -36,9 +36,15 @@ const summarizeChecks = (c) => ({ counts: c.counts, ids: c.metrics.ids.map((s) =
   findings: c.findings.slice(0, 40).map((f) => ({ id: f.id, severity: f.severity, title: f.title, text: f.text.slice(0, 300), elements: f.elements.slice(0, 6) })), more: Math.max(0, c.findings.length - 40) });
 
 export class Team {
-  constructor({ client, brief, site, idsXml, models, cycles = 2, stopOn = 'ERROR', wishes = '', startCode = null, startChecks = null, render = null, emit = () => {} }) {
+  constructor({ client, brief, site, idsXml, models, cycles = 2, stopOn = 'ERROR', wishes = '', startCode = null, startChecks = null, render = null, emit = () => {}, prior = null }) {
     Object.assign(this, { client, brief, site, idsXml, models, cycles, stopOn, wishes, startCode, startChecks, render, emit });
-    this.versions = []; this.ledger = { issues: {} }; this.cost = 0; this.agents = []; this.aborted = false;
+    this.versions = []; this.ledger = { issues: {} }; this.cost = 0; this.agents = []; this.aborted = false; this.firstV = 1;
+    // continue an earlier run: the next version revises `prior.base` with the new wish; ledger, costs and numbering carry on
+    if (prior?.base) {
+      this.versions = [...prior.versions.filter((x) => x !== prior.base), prior.base];
+      this.ledger = structuredClone(prior.ledger); this.cost = prior.cost ?? 0;
+      this.firstV = Math.max(...prior.versions.map((x) => x.v)) + 1;
+    }
     this.controller = new AbortController();
   }
   // agents often shorten ids ("FIRE-x" instead of "FIRE-x:EG-A-WT"): map to the ledger id, or null
@@ -95,7 +101,7 @@ export class Team {
     let task;
     if (v === 1 && !this.startCode) task = `Version N=1. Erste Version: entwirf das Gebäude.${wishes}`;
     else if (v === 1) task = `Version N=1. Ausgangslage: der Generator des Referenzentwurfs (unten), sein Prüfergebnis steht darunter (nicht nochmals laufen lassen). Passe ihn an den Brief und die Wünsche an; behalte Keys, wo Bauteile bleiben. Ändere ihn mit edit_generator (Suchen/Ersetzen); run_design nur für einen vollständig neuen Generator.${wishes}\n\n## Generator Referenzentwurf\n\`\`\`js\n${this.startCode}\n\`\`\`${this.startChecks ? `\n\n## Prüfergebnis Referenzentwurf\n${JSON.stringify(summarizeChecks(this.startChecks))}` : ''}`;
-    else task = `Version N=${v}. Überarbeite deinen Generator von v${v - 1} (unten). Ändere ihn mit edit_generator (Suchen/Ersetzen); run_design nur für einen vollständig neuen Generator. Offene Punkte aus dem Issue-Ledger (alle mit Bauteil-Keys):\n${openIssuesText(this.ledger)}${wishes}\n\n## Generator v${v - 1}\n\`\`\`js\n${prev.code}\n\`\`\``;
+    else task = `Version N=${v}. Überarbeite deinen Generator von v${prev.v} (unten). Ändere ihn mit edit_generator (Suchen/Ersetzen); run_design nur für einen vollständig neuen Generator. Offene Punkte aus dem Issue-Ledger (alle mit Bauteil-Keys):\n${openIssuesText(this.ledger)}${wishes}\n\n## Generator v${prev.v}\n\`\`\`js\n${prev.code}\n\`\`\``;
     const messages = [{ role: 'user', content: [{ type: 'text', text: ctx }, { type: 'text', text: task }] }];
     let best = null, runs = 0, notes = '';
     let current = v === 1 ? this.startCode : prev.code; // the generator edit_generator works on
@@ -219,11 +225,11 @@ export class Team {
   async run() {
     const t0 = Date.now();
     try {
-      for (let v = 1; v <= this.cycles; v++) {
+      for (let v = this.firstV; v < this.firstV + this.cycles; v++) {
         if (this.aborted) break;
         this.emit({ type: 'phase', v, phase: 'design', text: `v${v} · Architektur entwirft` });
         const V = await this.architect(v);
-        V.v = v;
+        V.v = v; V.wish = this.wishes?.trim() ?? ''; V.base = this.versions.at(-1)?.v ?? 0;
         if (this.render) { this.emit({ type: 'phase', v, phase: 'render', text: `v${v} · Pläne zeichnen` }); V.images = this.render(V.design, V.checks, v); }
         const prev = this.versions.at(-1);
         if (prev) { const a = new Set(Object.values(prev.comp.keys).map((x) => x.guid)), b = new Set(Object.values(V.comp.keys).map((x) => x.guid)); V.identity = { common: [...b].filter((g) => a.has(g)).length, added: [...b].filter((g) => !a.has(g)).length, removed: [...a].filter((g) => !b.has(g)).length }; }

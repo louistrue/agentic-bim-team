@@ -78,8 +78,20 @@ function relabel(st, D, checks, label) {
 // ── sheet + title block ────────────────────────────────────────────────────
 // S.tab is the NAME of the drawing ('EG', 'Axo SW', 'Situation', 'code'): it survives switching Stände,
 // even when a Stand has a different number of storeys.
+// iterate: a delivered agent version can be revised with a new wish (the version on the sheet, else the latest)
+const contBase = () => (S.stands[S.cur]?.V ?? S.stands.findLast((x) => x.V)?.V) ?? null;
+function updateCont() {
+  const sel = $('#mode'); let o = sel.querySelector('option[value="cont"]'); const b = contBase();
+  if (!b) { if (o) { if (sel.value === 'cont') sel.value = 'ref'; o.remove(); } }
+  else { if (!o) { o = document.createElement('option'); o.value = 'cont'; sel.prepend(o); } o.textContent = `v${b.v} weiterentwickeln`; }
+  const cont = !!b && sel.value === 'cont';
+  $('#start').textContent = cont ? `v${b.v} weiterentwickeln` : 'Team starten';
+  $('#wishes').placeholder = cont ? `nächster Wunsch an v${b.v}, z.B. «Balkone nach Süden vergrössern», oder leer: nur offene Issues` : 'frei formulieren oder unten wählen';
+}
+$('#mode').addEventListener('change', updateCont);
 function showStand(i) {
   S.cur = i; const st = S.stands[i]; if (!st) return;
+  updateCont();
   if (S.tab !== 'code' && !st.images.some((im) => im.name === S.tab)) S.tab = st.images.some((im) => im.name === 'Axo SW') ? 'Axo SW' : st.images[0]?.name;
   $('#vers').innerHTML = `<span>Stände</span>` + S.stands.map((x, n) => `<button data-i="${n}" class="${n === i ? 'on' : ''}" title="${esc(x.long ?? x.label)}">${x.final ? `<b>${esc(x.label)}</b>` : esc(x.label)}</button>`).join('');
   $('#tabs').innerHTML = st.images.map((im) => `<button data-t="${esc(im.name)}" class="${im.name === S.tab ? 'on' : ''}">${esc(im.name)}</button>`).join('') + `<button data-t="code" class="${S.tab === 'code' ? 'on' : ''} ${S.codeLive ? 'live' : ''}">Generator-Code</button>`;
@@ -310,7 +322,7 @@ $('#dl-zip').addEventListener('click', async () => {
 function report() {
   const T = S.team, L = Object.values(T?.ledger.issues ?? {}), finals = S.stands.filter((x) => x.final);
   const last = S.stands.findLast((x) => !x.wip);
-  return [`# Agententeam – Bericht`, '', `Projekt: ${S.data.brief.project} · ${new Date().toLocaleString('de-CH')}`, `Wunsch: ${T?.wishes || '–'}`, T ? `Modelle: Architektur ${modelName(T.models.architect)}, Prüfende ${modelName(T.models.reviewer)} · Kosten ca. $${T.cost.toFixed(2)}` : 'Kein Agentenlauf, nur Referenzentwurf.', '',
+  return [`# Agententeam – Bericht`, '', `Projekt: ${S.data.brief.project} · ${new Date().toLocaleString('de-CH')}`, ...(finals.some((s) => s.V) ? finals.filter((s) => s.V).map((s) => `Wunsch ${s.label}${s.V.base ? ` (aus v${s.V.base})` : ''}: ${s.V.wish || '– (nur offene Issues)'}`) : ['Wunsch: –']), T ? `Modelle: Architektur ${modelName(T.models.architect)}, Prüfende ${modelName(T.models.reviewer)} · Kosten ca. $${T.cost.toFixed(2)}` : 'Kein Agentenlauf, nur Referenzentwurf.', '',
     '## Stände', '', '| Stand | Bauteile | GlobalIds gleich | IDS | Prüfregeln E/W |', '|---|---|---|---|---|',
     ...S.stands.filter((x) => !x.wip).map((s) => `| ${s.long ?? s.label} | ${s.comp.elements} | ${s.kept ? `${s.kept.common}/${s.kept.total} wie ${s.kept.vs}` : '–'} | ${s.checks.metrics.ids.filter((x) => x.status === 'pass').length}/${s.checks.metrics.ids.length} | ${s.checks.counts.ERROR}/${s.checks.counts.WARNING} |`), '',
     '## Was der Code geprüft hat', '', ...last.checks.ran.map((r) => `- ${r}`), '',
@@ -367,15 +379,20 @@ $('#start').addEventListener('click', async () => {
   if (!key) { $('#pw').focus(); return showErr('Zuerst mit dem Kurs-Passwort anmelden.'); }
   if (!/^sk-ant-/.test(key)) return showErr('Ein eigener Schlüssel beginnt mit sk-ant-.');
   try { if (own && $('#remember').checked) sessionStorage.setItem('abt-key', own); else sessionStorage.removeItem('abt-key'); } catch {}
-  // keep the reference, drop earlier runs
-  S.stands = S.stands.filter((x) => x.id === 'ref'); S.bcf = null; $('#dl-bcf').disabled = true; $('#bcf-hint').hidden = false; showStand(0);
-  $('#rows').innerHTML = ''; $('#costbox').hidden = true; S.lastCode = $('#mode').value === 'ref' ? S.data.code : '';
+  const mode = $('#mode').value, base = mode === 'cont' ? contBase() : null;
+  if (mode === 'cont' && !base) return showErr('Es gibt noch keine Version zum Weiterentwickeln.');
+  if (base) { S.lastCode = base.code; log('sys', `<b>Weiter ab v${base.v}</b> · Stände, Issue-Register und BCF bleiben, die nächste Version heisst v${Math.max(...S.team.versions.map((x) => x.v)) + 1}.`); }
+  else {
+    // fresh start: keep the reference, drop earlier runs
+    S.stands = S.stands.filter((x) => x.id === 'ref'); S.bcf = null; $('#dl-bcf').disabled = true; $('#bcf-hint').hidden = false; showStand(0);
+    $('#rows').innerHTML = ''; $('#costbox').hidden = true; S.lastCode = mode === 'ref' ? S.data.code : '';
+  }
   const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true, maxRetries: 3 });
-  const arch = $('#m-arch').value;
-  S.team = new Team({ client, brief: S.data.brief, site: S.data.site, idsXml: S.data.idsXml, cycles: Number($('#cycles').value), wishes: $('#wishes').value, startCode: $('#mode').value === 'ref' ? S.data.code : null, startChecks: $('#mode').value === 'ref' ? S.stands[0].checks : null,
+  const arch = $('#m-arch').value, prior = base ? { base, versions: S.team.versions, ledger: S.team.ledger, cost: S.team.cost } : null;
+  S.team = new Team({ client, brief: S.data.brief, site: S.data.site, idsXml: S.data.idsXml, cycles: Number($('#cycles').value), wishes: $('#wishes').value, startCode: mode === 'ref' ? S.data.code : null, startChecks: mode === 'ref' ? S.stands[0].checks : null, prior,
     models: { architect: arch, reviewer: $('#m-rev').value, architectEffort: arch.includes('opus') ? 'medium' : 'low' }, render: (D, checks, v) => relabel(S.stands.findLast((x) => x.design === D), D, checks, `v${v}`), emit: onEvent });
   renderRegister();
-  S.running = true; S.pinned = false; $('#start').disabled = true; $('#stop').hidden = false;
+  S.running = true; S.pinned = false; $('#start').disabled = true; $('#mode').disabled = true; $('#stop').hidden = false;
   resetProcess(); stage('brief');
   log('c', 'Brief → IDS', `${S.data.brief.requirements.length} AIA-Zeilen, davon ${S.data.brief.requirements.filter((r) => r.ifc).length} als IDS-Spezifikationen, der Rest als Prüfregel. Parzelle ${esc(S.data.site.parcel.number)}, ${S.data.site.parcel.registeredArea} m², Zone W3.`);
   if ($('#wishes').value.trim()) log('sys', `Wunsch: ${esc($('#wishes').value.trim())}`);
@@ -384,7 +401,12 @@ $('#start').addEventListener('click', async () => {
   await S.team.run();
 });
 $('#stop').addEventListener('click', () => S.team?.abort());
-function finish(ok = true) { S.running = false; dropWip(); S.codeLive = false; $('#start').disabled = false; $('#stop').hidden = true; document.querySelectorAll('#process li.active').forEach((n) => (ok ? n.classList.replace('active', 'done') : n.classList.remove('active'))); showStand(S.cur); }
+function finish(ok = true) {
+  S.running = false; dropWip(); S.codeLive = false; $('#start').disabled = false; $('#mode').disabled = false; $('#stop').hidden = true;
+  // steer on: the next start continues from the version on the sheet unless the student switches back
+  const can = S.stands.some((x) => x.V); if (can) { if (!$('#mode').querySelector('option[value="cont"]')) updateCont(); $('#mode').value = 'cont'; if (ok) $('#wishes').value = ''; } document.querySelectorAll('#process li.active').forEach((n) => (ok ? n.classList.replace('active', 'done') : n.classList.remove('active')));  showStand(S.cur);
+  if (can) log('sys', `Weitersteuern: neuen Wunsch eingeben und «${$('#start').textContent}» drücken. Oben einen anderen Stand anwählen, um von dort aus weiterzuarbeiten.`);
+}
 
 // ── Gegenprobe: falsify the stand on the sheet, run only code ──────────────
 $('#sabo-run').addEventListener('click', async () => {
