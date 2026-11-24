@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd">
+  <ids:info>
+    <ids:title>Ersatzneubau Loorenstrasse 62 – Informationsanforderungen (aus AIA)</ids:title>
+    <ids:copyright>Lehrbeispiel BFH Minor BXMid03</ids:copyright>
+    <ids:version>1.0</ids:version>
+    <ids:description>Automatisch aus brief.json erzeugt. Nicht als IDS prüfbar: R09 (Regelprüfung).</ids:description>
+    <ids:date>2026-11-24</ids:date>
+    <ids:purpose>Freigabe Vorprojekt</ids:purpose>
+    <ids:milestone>SIA Phase 31 Vorprojekt</ids:milestone>
+  </ids:info>
+  <ids:specifications>
+  <ids:specification name="R01 Jede Wand ist als tragend oder nicht tragend deklariert." ifcVersion="IFC4" identifier="R01" description="Projekt-AIA" instructions="Architektur liefert, Tragwerksplanung prüft">
+    <ids:applicability minOccurs="1" maxOccurs="unbounded"><ids:entity><ids:name><ids:simpleValue>IFCWALL</ids:simpleValue></ids:name></ids:entity></ids:applicability>
+    <ids:requirements><ids:property dataType="IFCBOOLEAN" cardinality="required"><ids:propertySet><ids:simpleValue>Pset_WallCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>LoadBearing</ids:simpleValue></ids:baseName></ids:property></ids:requirements>
+  </ids:specification>
+  <ids:specification name="R02 Aussenwände haben einen U-Wert ≤ 0.17 W/m²K." ifcVersion="IFC4" identifier="R02" description="SIA 380/1:2016 Grenzwert Einzelbauteil (Projektwert, Energieplanung bestätigt)" instructions="Architektur liefert, Energieplanung prüft">
+    <ids:applicability minOccurs="1" maxOccurs="unbounded"><ids:entity><ids:name><ids:simpleValue>IFCWALL</ids:simpleValue></ids:name></ids:entity><ids:property><ids:propertySet><ids:simpleValue>Pset_WallCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>IsExternal</ids:simpleValue></ids:baseName><ids:value><ids:simpleValue>true</ids:simpleValue></ids:value></ids:property></ids:applicability>
+    <ids:requirements><ids:property dataType="IFCTHERMALTRANSMITTANCEMEASURE" cardinality="required"><ids:propertySet><ids:simpleValue>Pset_WallCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>ThermalTransmittance</ids:simpleValue></ids:baseName><ids:value><xs:restriction base="xs:double"><xs:maxInclusive value="0.17"/></xs:restriction></ids:value></ids:property></ids:requirements>
+  </ids:specification>
+  <ids:specification name="R03 Fenster in Aussenwänden haben einen U-Wert ≤ 1.0 W/m²K." ifcVersion="IFC4" identifier="R03" description="SIA 380/1:2016 (Projektwert)" instructions="Architektur liefert, Energieplanung prüft">
+    <ids:applicability minOccurs="1" maxOccurs="unbounded"><ids:entity><ids:name><ids:simpleValue>IFCWINDOW</ids:simpleValue></ids:name></ids:entity></ids:applicability>
+    <ids:requirements><ids:property dataType="IFCTHERMALTRANSMITTANCEMEASURE" cardinality="required"><ids:propertySet><ids:simpleValue>Pset_WindowCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>ThermalTransmittance</ids:simpleValue></ids:baseName><ids:value><xs:restriction base="xs:double"><xs:maxInclusive value="1"/></xs:restriction></ids:value></ids:property></ids:requirements>
+  </ids:specification>
+  <ids:specification name="R04 Tragende Wände haben eine Feuerwiderstandsangabe." ifcVersion="IFC4" identifier="R04" description="VKF-Brandschutzrichtlinie 15-15 (Projektannahme Gebäude geringer Höhe, Brandschutz bestätigt)" instructions="Architektur liefert, Brandschutz prüft">
+    <ids:applicability minOccurs="1" maxOccurs="unbounded"><ids:entity><ids:name><ids:simpleValue>IFCWALL</ids:simpleValue></ids:name></ids:entity><ids:property><ids:propertySet><ids:simpleValue>Pset_WallCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>LoadBearing</ids:simpleValue></ids:baseName><ids:value><ids:simpleValue>true</ids:simpleValue></ids:value></ids:property></ids:applicability>
+    <ids:requirements><ids:property dataType="IFCLABEL" cardinality="required"><ids:propertySet><ids:simpleValue>Pset_WallCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>FireRating</ids:simpleValue></ids:baseName><ids:value><xs:restriction base="xs:string"><xs:enumeration value="R 30"/><xs:enumeration value="REI 30"/><xs:enumeration value="REI 60"/><xs:enumeration value="REI 90"/></xs:restriction></ids:value></ids:property></ids:requirements>
+  </ids:specification>
+  <ids:specification name="R05 Wohnungstrennwände und Treppenhauswände bilden Brandabschnitte (EI 30 oder höher)." ifcVersion="IFC4" identifier="R05" description="VKF 15-15 (Projektannahme)" instructions="Architektur liefert, Brandschutz prüft">
+    <ids:applicability minOccurs="1" maxOccurs="unbounded"><ids:entity><ids:name><ids:simpleValue>IFCWALL</ids:simpleValue></ids:name></ids:entity><ids:property><ids:propertySet><ids:simpleValue>Pset_WallCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>Reference</ids:simpleValue></ids:baseName><ids:value><xs:restriction base="xs:string"><xs:enumeration value="party"/><xs:enumeration value="core"/></xs:restriction></ids:value></ids:property></ids:applicability>
+    <ids:requirements><ids:property dataType="IFCLABEL" cardinality="required"><ids:propertySet><ids:simpleValue>Pset_WallCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>FireRating</ids:simpleValue></ids:baseName><ids:value><xs:restriction base="xs:string"><xs:enumeration value="EI 30"/><xs:enumeration value="EI 60"/><xs:enumeration value="REI 30"/><xs:enumeration value="REI 60"/><xs:enumeration value="REI 90"/></xs:restriction></ids:value></ids:property></ids:requirements>
+  </ids:specification>
+  <ids:specification name="R06 Türen vom Treppenhaus in die Wohnungen sind EI 30 und selbstschliessend." ifcVersion="IFC4" identifier="R06" description="VKF 15-15 (Projektannahme)" instructions="Architektur liefert, Brandschutz prüft">
+    <ids:applicability minOccurs="1" maxOccurs="unbounded"><ids:entity><ids:name><ids:simpleValue>IFCDOOR</ids:simpleValue></ids:name></ids:entity><ids:property><ids:propertySet><ids:simpleValue>Pset_DoorCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>Reference</ids:simpleValue></ids:baseName><ids:value><xs:restriction base="xs:string"><xs:enumeration value="Wohnungstuer"/></xs:restriction></ids:value></ids:property></ids:applicability>
+    <ids:requirements><ids:property dataType="IFCLABEL" cardinality="required"><ids:propertySet><ids:simpleValue>Pset_DoorCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>FireRating</ids:simpleValue></ids:baseName><ids:value><xs:restriction base="xs:string"><xs:enumeration value="EI 30"/></xs:restriction></ids:value></ids:property><ids:property dataType="IFCBOOLEAN" cardinality="required"><ids:propertySet><ids:simpleValue>Pset_DoorCommon</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>SelfClosing</ids:simpleValue></ids:baseName><ids:value><ids:simpleValue>true</ids:simpleValue></ids:value></ids:property></ids:requirements>
+  </ids:specification>
+  <ids:specification name="R07 Jeder Raum hat eine Nettogeschossfläche und ist einer Wohnung bzw. Nutzung zugeordnet." ifcVersion="IFC4" identifier="R07" description="Projekt-AIA, SIA 416" instructions="Architektur liefert, Bauherrschaft nutzt (Vermietung, SIA 416)">
+    <ids:applicability minOccurs="1" maxOccurs="unbounded"><ids:entity><ids:name><ids:simpleValue>IFCSPACE</ids:simpleValue></ids:name></ids:entity></ids:applicability>
+    <ids:requirements><ids:property cardinality="required"><ids:propertySet><ids:simpleValue>Qto_SpaceBaseQuantities</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>NetFloorArea</ids:simpleValue></ids:baseName></ids:property><ids:property cardinality="required"><ids:propertySet><ids:simpleValue>BIM_Projekt</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>Wohnung</ids:simpleValue></ids:baseName></ids:property></ids:requirements>
+  </ids:specification>
+  <ids:specification name="R08 Das Gebäude hat eine Geschossfläche (Qto_BuildingBaseQuantities.GrossFloorArea)." ifcVersion="IFC4" identifier="R08" description="Projekt-AIA" instructions="Architektur liefert, Baubewilligung (Ausnützung)">
+    <ids:applicability minOccurs="1" maxOccurs="unbounded"><ids:entity><ids:name><ids:simpleValue>IFCBUILDING</ids:simpleValue></ids:name></ids:entity></ids:applicability>
+    <ids:requirements><ids:property cardinality="required"><ids:propertySet><ids:simpleValue>Qto_BuildingBaseQuantities</ids:simpleValue></ids:propertySet><ids:baseName><ids:simpleValue>GrossFloorArea</ids:simpleValue></ids:baseName></ids:property></ids:requirements>
+  </ids:specification>
+  </ids:specifications>
+</ids:ids>

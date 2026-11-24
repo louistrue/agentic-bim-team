@@ -1,0 +1,51 @@
+{
+  "project": "Ersatzneubau Loorenstrasse 62",
+  "client": "Demo-Bauherrschaft (fiktiv, Lehrbeispiel BFH)",
+  "site": {
+    "address": "Loorenstrasse 62, 8053 Zürich",
+    "replaceEgid": "302060735",
+    "floorLevel": 600.0
+  },
+  "program": {
+    "units": 6,
+    "unitMix": "je Geschoss 2 Wohnungen: 3.5 Zimmer (ca. 80–90 m²) und 4.5 Zimmer (ca. 95–110 m²)",
+    "fullStoreys": 3,
+    "construction": "Holzbau (Holzrahmenbau Aussen- und Innenwände, Brettsperrholz-Decken), Treppenhauskern und Bodenplatte in Stahlbeton",
+    "energy": "Minergie",
+    "minRoomArea_m2": 10,
+    "minClearHeight_m": 2.4,
+    "minWindowFloorRatio": 0.1,
+    "notChecked": [
+      "Hindernisfreiheit SIA 500 (Wendekreise, Türbreiten im Detail)",
+      "Schallschutz SIA 181",
+      "Statik (Bemessung nach SIA 260–265)",
+      "Haustechnik-Dimensionierung, Lüftungsanlage Minergie",
+      "Kosten"
+    ]
+  },
+  "zoning": {
+    "zone": "W3",
+    "source": "Bauordnung der Stadt Zürich (BZO 2016) Art. 13 Abs. 1, Fassung V45 Stand 15.04.2026, https://oerebdocs.zh.ch/getDoc?docid=6",
+    "maxFullStoreys": 3,
+    "maxAtticStoreysCountable": 1,
+    "maxBasementCountable": 0,
+    "maxBuildingHeight_m": 9.5,
+    "minBoundaryDistance_m": 5.0,
+    "lengthSurcharge": { "facadeOver_m": 12, "factor": 0.3333, "maxDistance_m": 10, "source": "BZO 2016 Art. 14 Abs. 1" },
+    "maxFloorAreaRatio": 0.9,
+    "maxFloorAboveGround_m": 1.0,
+    "neighbourDistance_m": 5.0,
+    "neighbourDistanceNote": "Projektannahme: Schutzabstand zu Bestandesbauten bei brennbarer Aussenwand (Holzfassade) – durch Brandschutzfachperson nach VKF zu bestätigen"
+  },
+  "requirements": [
+    { "id": "R01", "text": "Jede Wand ist als tragend oder nicht tragend deklariert.", "ifc": "IfcWall", "pset": "Pset_WallCommon", "property": "LoadBearing", "datatype": "IfcBoolean", "who": "Architektur liefert, Tragwerksplanung prüft", "source": "Projekt-AIA" },
+    { "id": "R02", "text": "Aussenwände haben einen U-Wert ≤ 0.17 W/m²K.", "ifc": "IfcWall", "filter": { "pset": "Pset_WallCommon", "property": "IsExternal", "value": true }, "pset": "Pset_WallCommon", "property": "ThermalTransmittance", "datatype": "IfcThermalTransmittanceMeasure", "max": 0.17, "who": "Architektur liefert, Energieplanung prüft", "source": "SIA 380/1:2016 Grenzwert Einzelbauteil (Projektwert, Energieplanung bestätigt)" },
+    { "id": "R03", "text": "Fenster in Aussenwänden haben einen U-Wert ≤ 1.0 W/m²K.", "ifc": "IfcWindow", "pset": "Pset_WindowCommon", "property": "ThermalTransmittance", "datatype": "IfcThermalTransmittanceMeasure", "max": 1.0, "who": "Architektur liefert, Energieplanung prüft", "source": "SIA 380/1:2016 (Projektwert)" },
+    { "id": "R04", "text": "Tragende Wände haben eine Feuerwiderstandsangabe.", "ifc": "IfcWall", "filter": { "pset": "Pset_WallCommon", "property": "LoadBearing", "value": true }, "pset": "Pset_WallCommon", "property": "FireRating", "datatype": "IfcLabel", "enum": ["R 30", "REI 30", "REI 60", "REI 90"], "who": "Architektur liefert, Brandschutz prüft", "source": "VKF-Brandschutzrichtlinie 15-15 (Projektannahme Gebäude geringer Höhe, Brandschutz bestätigt)" },
+    { "id": "R05", "text": "Wohnungstrennwände und Treppenhauswände bilden Brandabschnitte (EI 30 oder höher).", "ifc": "IfcWall", "filter": { "pset": "Pset_WallCommon", "property": "Reference", "enum": ["party", "core"] }, "pset": "Pset_WallCommon", "property": "FireRating", "datatype": "IfcLabel", "enum": ["EI 30", "EI 60", "REI 30", "REI 60", "REI 90"], "who": "Architektur liefert, Brandschutz prüft", "source": "VKF 15-15 (Projektannahme)" },
+    { "id": "R06", "text": "Türen vom Treppenhaus in die Wohnungen sind EI 30 und selbstschliessend.", "ifc": "IfcDoor", "filter": { "pset": "Pset_DoorCommon", "property": "Reference", "enum": ["Wohnungstuer"] }, "pset": "Pset_DoorCommon", "property": "FireRating", "datatype": "IfcLabel", "enum": ["EI 30"], "alsoRequire": { "property": "SelfClosing", "datatype": "IfcBoolean", "value": true }, "who": "Architektur liefert, Brandschutz prüft", "source": "VKF 15-15 (Projektannahme)" },
+    { "id": "R07", "text": "Jeder Raum hat eine Nettogeschossfläche und ist einer Wohnung bzw. Nutzung zugeordnet.", "ifc": "IfcSpace", "qto": "Qto_SpaceBaseQuantities", "quantity": "NetFloorArea", "alsoRequireProject": "Wohnung", "who": "Architektur liefert, Bauherrschaft nutzt (Vermietung, SIA 416)", "source": "Projekt-AIA, SIA 416" },
+    { "id": "R08", "text": "Das Gebäude hat eine Geschossfläche (Qto_BuildingBaseQuantities.GrossFloorArea).", "ifc": "IfcBuilding", "qto": "Qto_BuildingBaseQuantities", "quantity": "GrossFloorArea", "who": "Architektur liefert, Baubewilligung (Ausnützung)", "source": "Projekt-AIA" },
+    { "id": "R09", "text": "Das Modell ist in EPSG:2056 / LN02 georeferenziert.", "check": "georef", "who": "Architektur liefert, Vermessung/Baubewilligung", "source": "Projekt-AIA" }
+  ]
+}

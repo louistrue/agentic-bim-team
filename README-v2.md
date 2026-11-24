@@ -25,3 +25,17 @@ true into deterministic code built on [ifc-lite](https://ifclite.com) (latest pa
 Run: `npx tsx orchestrator-v2.ts "Loorenstrasse 62, 8053 Zürich" brief.json` (needs Claude Code ≥ 2.1.280 at
 `~/.local/bin/claude` or `CLAUDE_BIN`). Zoning values are copied from BZO 2016 Art. 13/14 with source; ÖREB
 overlays (Quartierplan, Baulinie, Sicherheitszone) and everything in `brief.program.notChecked` stay human checks.
+
+## Live site (browser, bring your own key)
+
+`web/` is a static site that runs the same team in the student's browser: https://louistrue.github.io/agentic-bim-team/
+
+- Compiler, checks, issue ledger and BCF are browser ports of `scripts/compile.mjs`, `check.mjs`, `issues.mjs`
+  (`web/src/core/`). `npm test` in `web/` proves they reproduce the CLI run exactly: same GlobalIds, same IDS results,
+  same findings, same BCF topics for v1–v3, and that sabotage is caught.
+- The architect writes a generator (JS function body) that runs in a throwaway Web Worker without network access; the
+  tool `run_design` compiles and checks it and returns the findings. Visual QA gets real plan images (`<canvas>`);
+  the four specialists answer with structured output. Agent calls use the student's key directly against
+  `api.anthropic.com` (no server). Cost is shown live from the API usage.
+- "Gegenprobe" sabotages the latest design and runs only the code – free, no key.
+- Deploy: `bash web/deploy-pages.sh` (builds and force-pushes `gh-pages`).

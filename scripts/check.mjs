@@ -82,6 +82,11 @@ for (const f of facades) {
 }
 const parcel = site.parcel.polygonLocal;
 const corners = facades.flatMap((f) => [f.a, f.b]);
+// building outline for G2: convex hull of ALL outer-face corners (start AND end points).
+// (Was: start points only, sorted by angle – drops a corner when two facade walls start at the same point,
+//  which turned rooms in that corner into false "outside the envelope" ERRORs.)
+const footprintHull = (() => { const P = [...corners].sort((p, q) => p[0] - q[0] || p[1] - q[1]); if (P.length < 3) return P; const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]); const lo = [], up = []; for (const p of P) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); } for (const p of [...P].reverse()) { while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); } return [...lo.slice(0, -1), ...up.slice(0, -1)]; })();
+
 const outside = corners.filter((p) => !inPoly(p, parcel));
 if (outside.length) add('Z0', 'ERROR', 'Gebäude ragt über die Parzellengrenze', `${outside.length} Fassadenecken liegen ausserhalb der Parzelle ${site.parcel.egrid}.`, extWalls.map((w) => w.key), { discipline: 'Zonenordnung', source: Z.source });
 const boundaryPts = [];
@@ -144,7 +149,7 @@ for (const sp of spaces) {
   const clear = S[sp.storey].height - slabAbove(sp.storey);
   if (clear < PR.minClearHeight_m) add('P3', 'ERROR', `Lichte Höhe ${sp.key} zu gering`, `${r2(clear)} m < ${PR.minClearHeight_m} m.`, [sp.key], { discipline: 'Architektur', source: 'Projektanforderung' });
   const c = sp.polygon.reduce((s, p) => [s[0] + p[0] / sp.polygon.length, s[1] + p[1] / sp.polygon.length], [0, 0]);
-  if (sp.storey === ground.key && corners.length && !inPoly(c, [...facades.map((f) => f.a)].sort((p, q) => Math.atan2(p[1] - cy, p[0] - cx) - Math.atan2(q[1] - cy, q[0] - cx)))) add('G2', 'ERROR', `Raum ${sp.key} liegt ausserhalb der Gebäudehülle`, 'Raumschwerpunkt ausserhalb des Fussabdrucks.', [sp.key], { discipline: 'Geometrie' });
+  if (sp.storey === ground.key && corners.length && !inPoly(c, footprintHull)) add('G2', 'ERROR', `Raum ${sp.key} liegt ausserhalb der Gebäudehülle`, 'Raumschwerpunkt ausserhalb des Fussabdrucks.', [sp.key], { discipline: 'Geometrie' });
 }
 
 // ── 5. Fire safety (escape, stairs, compartments) ────────────────────────────
