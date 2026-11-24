@@ -5,6 +5,7 @@ import { runGenerator } from './core/sandbox.js';
 import { compileDesign } from './core/compile.js';
 import { checkDesign } from './core/check.js';
 import { drawPlan, drawAxon, drawSite, toPngBase64 } from './core/render.js';
+import { drawable } from './core/wip.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -37,6 +38,7 @@ function renderImages(D, checks, tag) {
 }
 
 function addStand(st) {
+  dropWip(); S.pinned = false;
   const prev = [...S.stands].reverse().find((x) => x.final && x.id !== st.id);
   if (prev && st.comp) { const a = new Set(Object.values(prev.comp.keys).map((x) => x.guid)); const b = Object.values(st.comp.keys).map((x) => x.guid); st.kept = { common: b.filter((g) => a.has(g)).length, total: b.length, vs: prev.label }; }
   const canv = renderImages(st.design, st.checks, st.label);
@@ -44,6 +46,25 @@ function addStand(st) {
   st.forModel = canv.map((x) => ({ name: `${x.name} (${st.label})`, base64: toPngBase64(x.c) }));
   S.stands.push(st); showStand(S.stands.length - 1);
   return st;
+}
+
+// ── live preview while the architect writes: one temporary, unchecked state («v1 · entsteht») ──
+// It is never exported: downloads, ZIP, report and Gegenprobe use the last checked state (realCur).
+const realCur = () => { const st = S.stands[S.cur]; return st && !st.wip ? st : S.stands.findLast((x) => !x.wip); };
+function dropWip() { const i = S.stands.findIndex((x) => x.wip); if (i < 0) return; S.stands.splice(i, 1); if (S.cur >= S.stands.length || S.cur === i) S.cur = S.stands.length - 1; }
+let wipBusy = false;
+async function onWip(e) {
+  if (wipBusy || !S.running) return; wipBusy = true;
+  try {
+    const g = await runGenerator(e.code, { timeoutMs: 2000 });
+    if (!S.running || !g.ok || !drawable(g.design)) return;
+    const label = `v${e.v} · entsteht`;
+    let images; try { images = renderImages(g.design, null, label).map((x) => ({ name: x.name, url: x.c.toDataURL('image/png') })); } catch { return; }
+    const wasOn = S.stands[S.cur]?.wip;
+    dropWip();
+    S.stands.push({ id: 'wip', wip: true, label, long: `v${e.v} · entsteht`, design: g.design, images });
+    showStand(S.pinned && !wasOn ? S.cur : S.stands.length - 1);
+  } finally { wipBusy = false; }
 }
 
 // a delivered version is drawn again with its own label ("v2", not the check run "v2.3")
@@ -66,6 +87,11 @@ function showStand(i) {
   $('#code').hidden = !code; $('#stage').hidden = code; $('#zoomctl').hidden = code; $('#draw').classList.toggle('code', code);
   if (!code) viewer.show(st.images.find((im) => im.name === S.tab)?.url ?? '', `${S.tab}`);
   else renderCode();
+  $('.titleblock').classList.toggle('wip', !!st.wip); $('#tb-wip').hidden = !st.wip;
+  const real = realCur();
+  $('#dl-label').textContent = st.wip ? `Herunterladen: letzter geprüfter Stand (${real?.label ?? '–'})` : 'Herunterladen, Stand jetzt';
+  $('#sabo-src').textContent = `Basis: ${real?.long ?? real?.label ?? '–'}`;
+  if (st.wip) { $('#tb-stand').textContent = st.long; ['#tb-el', '#tb-ids', '#tb-chk', '#tb-guid', '#tb-fac', '#tb-units'].forEach((x) => { $(x).textContent = '–'; }); return; }
   const c = st.checks, ids = c.metrics.ids, f = c.metrics.facades ?? [];
   const minF = f.length ? f.reduce((a, b) => (b.actual - b.required < a.actual - a.required ? b : a)) : null;
   $('#tb-stand').textContent = st.long ?? st.label;
@@ -75,10 +101,9 @@ function showStand(i) {
   $('#tb-guid').textContent = st.kept ? `${st.kept.common} von ${st.kept.total} gleich wie ${st.kept.vs}` : '–';
   $('#tb-fac').textContent = minF ? `${minF.facade} ${minF.actual} m (min. ${minF.required})` : '–';
   $('#tb-units').textContent = `${c.metrics.units} · ${Math.round(c.metrics.grossFloorArea)} m²`;
-  $('#sabo-src').textContent = `Basis: ${st.long ?? st.label}`;
 }
 const renderCode = () => { const pre = $('#code'); const atEnd = pre.scrollHeight - pre.scrollTop - pre.clientHeight < 40; pre.textContent = S.code || '// noch kein Code'; if (atEnd || S.codeLive) pre.scrollTop = pre.scrollHeight; };
-$('#vers').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) showStand(Number(b.dataset.i)); });
+$('#vers').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; const i = Number(b.dataset.i); S.pinned = i < S.stands.length - 1; showStand(i); });
 $('#tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; S.tab = b.dataset.t; showStand(S.cur); });
 document.addEventListener('click', (e) => { if (e.target.matches('.sabo-out img')) { const z = el(`<div class="zoom"><img src="${e.target.src}"></div>`); z.onclick = () => z.remove(); document.body.append(z); } });
 
@@ -160,7 +185,7 @@ function onEvent(e) {
     case 'phase':
       if (e.phase === 'design') { stage('design'); }
       if (e.phase === 'render') stage('render');
-      if (e.phase === 'review') { stage('review'); nowSet(`5 Prüfende · v${e.v}`, 'Visual QA schaut die Pläne an, Tragwerk, Haustechnik, Energie/Fassade und Brandschutz lesen das Modell …\n'); }
+      if (e.phase === 'review') { if (S.stands[S.cur]?.wip) S.cur = S.stands.length - 2; dropWip(); showStand(S.cur); stage('review'); nowSet(`5 Prüfende · v${e.v}`, 'Visual QA schaut die Pläne an, Tragwerk, Haustechnik, Energie/Fassade und Brandschutz lesen das Modell …\n'); }
       if (e.phase === 'issues') stage('issues');
       if (e.phase === 'converged') { stage('issues', 'done'); log('sys', `v${e.v}: kein ERROR mehr offen, das Team hört auf.`); }
       break;
@@ -172,7 +197,7 @@ function onEvent(e) {
       }
       if (e.status === 'start') reviewers[e.name] = true;
       else if (e.status === 'error') { const r = log('a', `${esc(e.name)}: keine gültige Antwort`, esc(/JSON|Unexpected|token/i.test(e.error) ? 'Die Antwort war kein lesbares Prüfergebnis. Dieser Prüfende fällt für diese Version aus; der Lauf geht weiter.' : `${explain({ error: e.error, status: Number(String(e.error).match(/^(\d{3}) /)?.[1]) || undefined })} Dieser Prüfende fällt für diese Version aus; der Lauf geht weiter.`), 'bad'); r.title = `technisch: ${firstLine(e.error)}`; }
-      else { const r = e.review; const K = S.stands.at(-1)?.comp.keys; log('a', `${esc(e.name)}${e.role === 'visual' ? ` · ${({ PASS: 'Zeichnungen in Ordnung', FAIL: 'Zeichnungen mit Mängeln' })[r.verdict] ?? esc(r.verdict)}` : ''} <span class="k">${modelName(e.model)}</span>`, `${esc(r.summary)}${flist(r.findings, K)}${r.resolved.length ? `<ul>${r.resolved.map((x) => `<li><span class="sev OK">✓</span>erledigt: <span class="k">${esc(x.issueId)}</span></li>`).join('')}</ul>` : ''}`); }
+      else { const r = e.review; const K = S.stands.findLast((x) => x.comp)?.comp.keys; log('a', `${esc(e.name)}${e.role === 'visual' ? ` · ${({ PASS: 'Zeichnungen in Ordnung', FAIL: 'Zeichnungen mit Mängeln' })[r.verdict] ?? esc(r.verdict)}` : ''} <span class="k">${modelName(e.model)}</span>`, `${esc(r.summary)}${flist(r.findings, K)}${r.resolved.length ? `<ul>${r.resolved.map((x) => `<li><span class="sev OK">✓</span>erledigt: <span class="k">${esc(x.issueId)}</span></li>`).join('')}</ul>` : ''}`); }
       break;
     case 'thinking': if (e.name.startsWith('Architektur')) nowAdd(e.delta); else nowAdd(e.delta.length > 0 && Math.random() < 0.2 ? '' : ''), nowAdd(e.delta); break;
     case 'text': nowAdd(e.delta); break;
@@ -211,6 +236,7 @@ function onEvent(e) {
       log('c', `Issue-Register → BCF · v${V.v}`, `${V.issueStats.new} neu · ${V.issueStats.open} offen · ${V.issueStats.closed} erledigt${V.review.rejected.length ? ` · ${V.review.rejected.length} Agenten-${V.review.rejected.length === 1 ? "Befund" : "Befunde"} abgelehnt` : ''}<br><span class="cnt"><span class="${V.openErrors ? 'e' : ''}">${V.openErrors} ERROR offen</span> · <span class="${V.openWarnings ? 'w' : ''}">${V.openWarnings} WARNING offen</span></span>`);
       renderRegister(); break;
     }
+    case 'wip': onWip(e); break;
     case 'cost': $('#costbox').hidden = false; $('#cost').textContent = e.total.toFixed(2); break;
     case 'done': nowEnd(); log('sys', `Fertig nach ${e.seconds} s, Kosten ca. $${e.cost.toFixed(2)}. Unten: Issue-Register. Unter der Zeichnung: alles herunterladen.`); finish(); break;
     case 'error': nowEnd(); log('sys', `Abbruch: ${esc(explain(e))}`, '', 'bad'); showErr(explain(e)); finish(false); break;
@@ -271,22 +297,22 @@ $('#filters').addEventListener('click', (e) => { const b = e.target.closest('but
 const save = (blob, name) => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); };
 const slug = (s) => s.replace(/[^\w.]+/g, '_');
 const ifcName = (st) => `loorenstrasse62_${st.V ? `v${st.V.v}` : slug(st.label)}.ifc`;
-$('#dl-ifc').addEventListener('click', () => { const st = S.stands[S.cur]; if (st) save(new Blob([st.comp.ifc], { type: 'application/x-step' }), ifcName(st)); });
+$('#dl-ifc').addEventListener('click', () => { const st = realCur(); if (st) save(new Blob([st.comp.ifc], { type: 'application/x-step' }), ifcName(st)); });
 $('#dl-bcf').addEventListener('click', () => { if (S.bcf) save(new Blob([S.bcf], { type: 'application/octet-stream' }), 'loorenstrasse62_issues.bcf'); });
 $('#dl-ids').addEventListener('click', () => save(new Blob([S.data.idsXml], { type: 'application/xml' }), 'loorenstrasse62_requirements.ids'));
 $('#dl-zip').addEventListener('click', async () => {
   const z = new JSZip();
-  for (const st of S.stands) { const d = `${slug(st.label)}/`; z.file(`${d}${ifcName(st)}`, st.comp.ifc); z.file(`${d}design.json`, JSON.stringify(st.design, null, 1)); z.file(`${d}generator.js`, st.code ?? ''); z.file(`${d}checks.json`, JSON.stringify(st.checks, null, 1)); if (st.V?.review) z.file(`${d}review.json`, JSON.stringify(st.V.review, null, 1)); if (st.V?.bcf) z.file(`${d}issues.bcf`, st.V.bcf); st.images.forEach((im) => z.file(`${d}plaene/${slug(im.name)}.png`, im.url.split(',')[1], { base64: true })); }
+  for (const st of S.stands.filter((x) => !x.wip)) { const d = `${slug(st.label)}/`; z.file(`${d}${ifcName(st)}`, st.comp.ifc); z.file(`${d}design.json`, JSON.stringify(st.design, null, 1)); z.file(`${d}generator.js`, st.code ?? ''); z.file(`${d}checks.json`, JSON.stringify(st.checks, null, 1)); if (st.V?.review) z.file(`${d}review.json`, JSON.stringify(st.V.review, null, 1)); if (st.V?.bcf) z.file(`${d}issues.bcf`, st.V.bcf); st.images.forEach((im) => z.file(`${d}plaene/${slug(im.name)}.png`, im.url.split(',')[1], { base64: true })); }
   if (S.bcf) z.file('issues.bcf', S.bcf);
   z.file('requirements.ids', S.data.idsXml); z.file('brief.json', JSON.stringify(S.data.brief, null, 1)); if (S.team) z.file('issues.json', JSON.stringify(S.team.ledger, null, 1)); z.file('report.md', report());
   save(await z.generateAsync({ type: 'blob' }), `agententeam_${new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-')}.zip`);
 });
 function report() {
   const T = S.team, L = Object.values(T?.ledger.issues ?? {}), finals = S.stands.filter((x) => x.final);
-  const last = S.stands.at(-1);
+  const last = S.stands.findLast((x) => !x.wip);
   return [`# Agententeam – Bericht`, '', `Projekt: ${S.data.brief.project} · ${new Date().toLocaleString('de-CH')}`, `Wunsch: ${T?.wishes || '–'}`, T ? `Modelle: Architektur ${modelName(T.models.architect)}, Prüfende ${modelName(T.models.reviewer)} · Kosten ca. $${T.cost.toFixed(2)}` : 'Kein Agentenlauf, nur Referenzentwurf.', '',
     '## Stände', '', '| Stand | Bauteile | GlobalIds gleich | IDS | Prüfregeln E/W |', '|---|---|---|---|---|',
-    ...S.stands.map((s) => `| ${s.long ?? s.label} | ${s.comp.elements} | ${s.kept ? `${s.kept.common}/${s.kept.total} wie ${s.kept.vs}` : '–'} | ${s.checks.metrics.ids.filter((x) => x.status === 'pass').length}/${s.checks.metrics.ids.length} | ${s.checks.counts.ERROR}/${s.checks.counts.WARNING} |`), '',
+    ...S.stands.filter((x) => !x.wip).map((s) => `| ${s.long ?? s.label} | ${s.comp.elements} | ${s.kept ? `${s.kept.common}/${s.kept.total} wie ${s.kept.vs}` : '–'} | ${s.checks.metrics.ids.filter((x) => x.status === 'pass').length}/${s.checks.metrics.ids.length} | ${s.checks.counts.ERROR}/${s.checks.counts.WARNING} |`), '',
     '## Was der Code geprüft hat', '', ...last.checks.ran.map((r) => `- ${r}`), '',
     '## Was nicht geprüft wurde (Fachperson)', '', ...[...new Set([...(S.data.site.humanChecks ?? []).map((h) => (typeof h === 'string' ? h : h.text ?? JSON.stringify(h))), ...(S.data.brief.program.notChecked ?? [])])].map((h) => `- ${h}`), '',
     '## Offene Issues', '', ...L.filter((i) => i.status === 'Open').map((i) => `- **${i.severity}** ${i.id} – ${i.title} (${i.origin}; ${i.elements.join(', ')})`), '',
@@ -349,7 +375,7 @@ $('#start').addEventListener('click', async () => {
   S.team = new Team({ client, brief: S.data.brief, site: S.data.site, idsXml: S.data.idsXml, cycles: Number($('#cycles').value), wishes: $('#wishes').value, startCode: $('#mode').value === 'ref' ? S.data.code : null, startChecks: $('#mode').value === 'ref' ? S.stands[0].checks : null,
     models: { architect: arch, reviewer: $('#m-rev').value, architectEffort: arch.includes('opus') ? 'medium' : 'low' }, render: (D, checks, v) => relabel(S.stands.findLast((x) => x.design === D), D, checks, `v${v}`), emit: onEvent });
   renderRegister();
-  S.running = true; $('#start').disabled = true; $('#stop').hidden = false;
+  S.running = true; S.pinned = false; $('#start').disabled = true; $('#stop').hidden = false;
   resetProcess(); stage('brief');
   log('c', 'Brief → IDS', `${S.data.brief.requirements.length} AIA-Zeilen, davon ${S.data.brief.requirements.filter((r) => r.ifc).length} als IDS-Spezifikationen, der Rest als Prüfregel. Parzelle ${esc(S.data.site.parcel.number)}, ${S.data.site.parcel.registeredArea} m², Zone W3.`);
   if ($('#wishes').value.trim()) log('sys', `Wunsch: ${esc($('#wishes').value.trim())}`);
@@ -358,11 +384,11 @@ $('#start').addEventListener('click', async () => {
   await S.team.run();
 });
 $('#stop').addEventListener('click', () => S.team?.abort());
-function finish(ok = true) { S.running = false; S.codeLive = false; $('#start').disabled = false; $('#stop').hidden = true; document.querySelectorAll('#process li.active').forEach((n) => (ok ? n.classList.replace('active', 'done') : n.classList.remove('active'))); showStand(S.cur); }
+function finish(ok = true) { S.running = false; dropWip(); S.codeLive = false; $('#start').disabled = false; $('#stop').hidden = true; document.querySelectorAll('#process li.active').forEach((n) => (ok ? n.classList.replace('active', 'done') : n.classList.remove('active'))); showStand(S.cur); }
 
 // ── Gegenprobe: falsify the stand on the sheet, run only code ──────────────
 $('#sabo-run').addEventListener('click', async () => {
-  const base = S.stands[S.cur]; if (!base) return;
+  const base = realCur(); if (!base) return;
   const sel = [...document.querySelectorAll('#sabo input:checked')].map((i) => i.value);
   const D = structuredClone(base.design); const did = [], skipped = [];
   if (sel.includes('move')) { const sh = (p) => { p[0] += 4; }; D.walls.forEach((w) => { sh(w.start); sh(w.end); }); [...D.slabs, ...D.spaces].forEach((s) => s.polygon.forEach(sh)); (D.stairs ?? []).forEach((t) => sh(t.position)); (D.columns ?? []).forEach((c) => sh(c.position)); D.slabs.forEach((s) => (s.openings ?? []).forEach((h) => { h.x += 4; })); did.push('Gebäude +4 m nach Osten'); }
