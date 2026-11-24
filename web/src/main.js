@@ -179,7 +179,12 @@ function onEvent(e) {
     case 'code': {
       S.code = e.code; S.codeLive = !!e.partial;
       if (e.partial) { const n = e.code.split('\n').length; $('#now-who').dataset.lines = n; now.txt = `schreibt den Generator: ${n} Zeilen, ${(e.code.length / 1000).toFixed(1)} kB …\n\n` + e.code.split('\n').slice(-5).join('\n'); paintNow(); }
-      else { log('a', 'Generator abgegeben', `${e.code.split('\n').length} Zeilen JavaScript · Entwurfsabsicht, kein IFC`); stage('compile'); }
+      else {
+        const lines = e.code.split('\n'), base = S.lastCode ? S.lastCode.split('\n') : null;
+        if (base) { const old = new Set(base), changed = lines.filter((l) => !old.has(l)).length; log('a', 'Generator geändert', `${changed} von ${lines.length} Zeilen neu oder geändert · Entwurfsabsicht, kein IFC`); }
+        else log('a', 'Generator abgegeben', `${lines.length} Zeilen JavaScript · Entwurfsabsicht, kein IFC`);
+        S.lastCode = e.code; stage('compile');
+      }
       if (S.cur >= 0) { const tb = document.querySelector('#tabs [data-t="code"]'); if (tb) tb.classList.toggle('live', S.codeLive); }
       if (S.tab === 'code') renderCode();
       break;
@@ -338,7 +343,7 @@ $('#start').addEventListener('click', async () => {
   try { if (own && $('#remember').checked) sessionStorage.setItem('abt-key', own); else sessionStorage.removeItem('abt-key'); } catch {}
   // keep the reference, drop earlier runs
   S.stands = S.stands.filter((x) => x.id === 'ref'); S.bcf = null; $('#dl-bcf').disabled = true; $('#bcf-hint').hidden = false; showStand(0);
-  $('#rows').innerHTML = ''; $('#costbox').hidden = true;
+  $('#rows').innerHTML = ''; $('#costbox').hidden = true; S.lastCode = $('#mode').value === 'ref' ? S.data.code : '';
   const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true, maxRetries: 3 });
   const arch = $('#m-arch').value;
   S.team = new Team({ client, brief: S.data.brief, site: S.data.site, idsXml: S.data.idsXml, cycles: Number($('#cycles').value), wishes: $('#wishes').value, startCode: $('#mode').value === 'ref' ? S.data.code : null, startChecks: $('#mode').value === 'ref' ? S.stands[0].checks : null,
