@@ -14,7 +14,7 @@ const hhmmss = () => new Date().toLocaleTimeString('de-CH', { hour12: false });
 const modelName = (m) => ({ 'claude-opus-5-5': 'Opus 5.5', 'claude-sonnet-5-5': 'Sonnet 5.5', 'claude-haiku-5-5': 'Haiku 5.5' }[m] ?? m);
 
 // A "Stand" is any compiled state: the reference design, every self-check run, every delivered version.
-const S = { data: null, team: null, stands: [], cur: -1, tab: 0, code: '', codeLive: false, filter: 'open', running: false, courseKey: null };
+const S = { data: null, team: null, stands: [], cur: -1, tab: 'Axo SW', code: '', codeLive: false, filter: 'open', running: false, courseKey: null };
 
 // ── data + reference design ────────────────────────────────────────────────
 async function loadData() {
@@ -47,12 +47,17 @@ function addStand(st) {
 }
 
 // ── sheet + title block ────────────────────────────────────────────────────
+// S.tab is the NAME of the drawing ('EG', 'Axo SW', 'Situation', 'code'): it survives switching Stände,
+// even when a Stand has a different number of storeys.
 function showStand(i) {
   S.cur = i; const st = S.stands[i]; if (!st) return;
-  if (S.tab >= st.images.length + 1) S.tab = 0;
+  if (S.tab !== 'code' && !st.images.some((im) => im.name === S.tab)) S.tab = st.images.some((im) => im.name === 'Axo SW') ? 'Axo SW' : st.images[0]?.name;
   $('#vers').innerHTML = `<span>Stände</span>` + S.stands.map((x, n) => `<button data-i="${n}" class="${n === i ? 'on' : ''}" title="${esc(x.long ?? x.label)}">${x.final ? `<b>${esc(x.label)}</b>` : esc(x.label)}</button>`).join('');
-  $('#tabs').innerHTML = st.images.map((im, n) => `<button data-t="${n}" class="${n === S.tab ? 'on' : ''}">${esc(im.name)}</button>`).join('') + `<button data-t="code" class="${S.tab === 'code' ? 'on' : ''} ${S.codeLive ? 'live' : ''}">Generator-Code</button>`;
-  if (S.tab === 'code') { $('#img').hidden = true; $('#code').hidden = false; } else { $('#code').hidden = true; $('#img').hidden = false; $('#img').src = st.images[S.tab]?.url ?? ''; }
+  $('#tabs').innerHTML = st.images.map((im) => `<button data-t="${esc(im.name)}" class="${im.name === S.tab ? 'on' : ''}">${esc(im.name)}</button>`).join('') + `<button data-t="code" class="${S.tab === 'code' ? 'on' : ''} ${S.codeLive ? 'live' : ''}">Generator-Code</button>`;
+  const code = S.tab === 'code';
+  $('#code').hidden = !code; $('#stage').hidden = code; $('#zoomctl').hidden = code; $('#draw').classList.toggle('code', code);
+  if (!code) viewer.show(st.images.find((im) => im.name === S.tab)?.url ?? '', `${S.tab}`);
+  else renderCode();
   const c = st.checks, ids = c.metrics.ids, f = c.metrics.facades ?? [];
   const minF = f.length ? f.reduce((a, b) => (b.actual - b.required < a.actual - a.required ? b : a)) : null;
   $('#tb-stand').textContent = st.long ?? st.label;
@@ -66,8 +71,39 @@ function showStand(i) {
 }
 const renderCode = () => { const pre = $('#code'); const atEnd = pre.scrollHeight - pre.scrollTop - pre.clientHeight < 40; pre.textContent = S.code || '// noch kein Code'; if (atEnd || S.codeLive) pre.scrollTop = pre.scrollHeight; };
 $('#vers').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) showStand(Number(b.dataset.i)); });
-$('#tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; S.tab = b.dataset.t === 'code' ? 'code' : Number(b.dataset.t); showStand(S.cur); if (S.tab === 'code') renderCode(); });
-document.addEventListener('click', (e) => { if (e.target.matches('.draw img, .sabo-out img')) { const z = el(`<div class="zoom"><img src="${e.target.src}"></div>`); z.onclick = () => z.remove(); document.body.append(z); } });
+$('#tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; S.tab = b.dataset.t; showStand(S.cur); });
+document.addEventListener('click', (e) => { if (e.target.matches('.sabo-out img')) { const z = el(`<div class="zoom"><img src="${e.target.src}"></div>`); z.onclick = () => z.remove(); document.body.append(z); } });
+
+// ── drawing viewer: wheel / pinch zoom, drag to pan, double-click to fit ──
+// The zoom is kept while switching Stände on the same drawing, so versions can be compared at the same spot.
+const viewer = (() => {
+  const stage = $('#stage'), img = $('#img');
+  const Z = { k: 1, x: 0, y: 0, fitK: 1, key: '', w: 0, h: 0 };
+  const apply = () => { img.style.transform = `translate(${Z.x}px, ${Z.y}px) scale(${Z.k})`; stage.classList.toggle('zoomed', Z.k > Z.fitK * 1.02); $('#zoomlvl').textContent = `${Math.round((Z.k / Z.fitK) * 100)} %`; };
+  const fit = () => { const cw = stage.clientWidth, ch = stage.clientHeight; if (!Z.w || !cw) return; Z.fitK = Math.min(cw / Z.w, ch / Z.h) * 0.96; Z.k = Z.fitK; Z.x = (cw - Z.w * Z.k) / 2; Z.y = (ch - Z.h * Z.k) / 2; apply(); };
+  const zoomAt = (f, mx, my) => { const k2 = Math.min(Math.max(Z.k * f, Z.fitK * 0.6), Z.fitK * 14); Z.x = mx - (mx - Z.x) * (k2 / Z.k); Z.y = my - (my - Z.y) * (k2 / Z.k); Z.k = k2; apply(); };
+  const local = (e) => { const r = stage.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  stage.addEventListener('wheel', (e) => { e.preventDefault(); const [mx, my] = local(e); zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0018)), mx, my); }, { passive: false });
+  const ptr = new Map(); let pinch = null;
+  stage.addEventListener('pointerdown', (e) => { stage.setPointerCapture(e.pointerId); ptr.set(e.pointerId, local(e)); if (ptr.size === 2) { const [a, b] = [...ptr.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]) }; } stage.classList.add('drag'); });
+  stage.addEventListener('pointermove', (e) => {
+    if (!ptr.has(e.pointerId)) return; const p = local(e), prev = ptr.get(e.pointerId); ptr.set(e.pointerId, p);
+    if (ptr.size === 1) { Z.x += p[0] - prev[0]; Z.y += p[1] - prev[1]; apply(); }
+    else if (ptr.size === 2 && pinch) { const [a, b] = [...ptr.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); zoomAt(d / pinch.d, (a[0] + b[0]) / 2, (a[1] + b[1]) / 2); pinch.d = d; }
+  });
+  const up = (e) => { ptr.delete(e.pointerId); if (ptr.size < 2) pinch = null; if (!ptr.size) stage.classList.remove('drag'); };
+  stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
+  stage.addEventListener('dblclick', (e) => { const [mx, my] = local(e); if (Z.k > Z.fitK * 1.05) fit(); else zoomAt(2.5, mx, my); });
+  $('#zoomctl').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; const cw = stage.clientWidth / 2, ch = stage.clientHeight / 2; if (b.dataset.z === 'in') zoomAt(1.4, cw, ch); else if (b.dataset.z === 'out') zoomAt(1 / 1.4, cw, ch); else fit(); });
+  new ResizeObserver(() => { const keep = Z.k > Z.fitK * 1.02; if (!keep) fit(); }).observe(stage);
+  return {
+    show(url, key) {
+      if (img.dataset.url === url) return; img.dataset.url = url;
+      const keepView = key === Z.key && Z.k > Z.fitK * 1.02;
+      const probe = new Image(); probe.onload = () => { const same = probe.naturalWidth === Z.w && probe.naturalHeight === Z.h; Z.w = probe.naturalWidth; Z.h = probe.naturalHeight; img.src = url; img.style.width = `${Z.w}px`; img.style.height = `${Z.h}px`; Z.key = key; if (keepView && same) apply(); else fit(); }; probe.src = url;
+    },
+  };
+})();
 
 // ── process line ───────────────────────────────────────────────────────────
 function stage(name, state = 'active') {

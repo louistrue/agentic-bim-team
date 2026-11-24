@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Agententeam</title>
 <meta name="description" content="Ein Team aus KI-Agenten plant einen Ersatzneubau. Code kompiliert das IFC, prüft gegen IDS und Bauordnung und führt die Issues als BCF." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -70,7 +70,7 @@
 
     <div class="sheet">
       <nav class="tabs" id="tabs"></nav>
-      <div class="draw" id="draw"><img id="img" alt="" /><pre id="code" hidden></pre></div>
+      <div class="draw" id="draw"><div class="stage" id="stage"><img id="img" alt="Zeichnung" draggable="false" /></div><div class="zoomctl" id="zoomctl"><button data-z="out" title="verkleinern">−</button><span id="zoomlvl">100 %</span><button data-z="in" title="vergrössern">+</button><button data-z="fit" title="ganze Zeichnung">Einpassen</button></div><pre id="code" hidden></pre></div>
       <div class="titleblock">
         <div class="tb-main">
           <div class="tb-cell wide"><label>Projekt</label><b>Loorenstrasse 62</b></div>
