@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Agententeam</title>
+<meta name="description" content="Ein Team aus KI-Agenten plant einen Ersatzneubau. Code kompiliert das IFC, prüft gegen IDS und Bauordnung und führt die Issues als BCF." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/agentic-bim-team/assets/index-CzBh1bJJ.js"></script>
+  <link rel="modulepreload" crossorigin href="/agentic-bim-team/assets/error-wJ5RwKpd.js">
+  <link rel="modulepreload" crossorigin href="/agentic-bim-team/assets/sync-interval-BScnobTX.js">
+  <link rel="stylesheet" crossorigin href="/agentic-bim-team/assets/index-BEzbXa4E.css">
+</head>
+<body>
+<header class="bar">
+  <div class="mark">AGENTENTEAM</div>
+  <div class="proj">Ersatzneubau Loorenstrasse 62, 8053 Zürich <span>Parzelle WI3988 · Zone W3 · EPSG:2056</span></div>
+  <div class="status"><span id="who">nicht angemeldet</span><span class="cost" id="costbox" hidden>USD <b id="cost">0.00</b></span></div>
+</header>
+
+<main class="desk">
+  <aside class="side">
+    <section class="panel" id="auftrag">
+      <h2><i>01</i> Auftrag</h2>
+      <div class="login" id="login">
+        <form id="login-form" autocomplete="off"><label for="pw">Kurs-Passwort</label><div class="inline"><input id="pw" type="password" spellcheck="false" autocomplete="current-password" /><button class="b" type="submit">Anmelden</button></div></form>
+        <p class="okline" id="login-ok" hidden>Angemeldet. Das Team läuft auf dem Kurs-Konto. <a href="#" id="logout">Abmelden</a></p>
+        <p class="errline" id="login-err" hidden></p>
+        <details id="ownkey"><summary>eigener API-Schlüssel</summary><input id="key" type="password" aria-label="eigener API-Schlüssel" autocomplete="off" spellcheck="false" placeholder="sk-ant-…" /><label class="tick"><input type="checkbox" id="remember" /> in diesem Tab merken</label></details>
+      </div>
+
+      <label for="wishes">Zusätzlicher Wunsch der Bauherrschaft</label>
+      <textarea id="wishes" rows="3" placeholder="frei formulieren oder unten wählen"></textarea>
+      <ul class="presets" id="chips">
+        <li tabindex="0" role="button" data-w="Im EG statt einer Wohnung ein Gemeinschaftsraum mit Küche für alle Bewohnenden (dann 5 Wohnungen).">Gemeinschaftsraum im EG</li>
+        <li tabindex="0" role="button" data-w="Alle Wohnungen sollen 2.5 Zimmer haben, dafür 9 Wohnungen (3 pro Geschoss).">9 × 2.5-Zimmer-Wohnungen</li>
+        <li tabindex="0" role="button" data-w="Jede Wohnung braucht eine Loggia nach Süden oder Westen (als Aussparung in der Fassade).">Loggien nach Süden/Westen</li>
+        <li tabindex="0" role="button" data-w="Das Treppenhaus soll an der Nordfassade liegen, damit alle Wohnungen nach Süden durchgehend sind.">Treppenhaus an die Nordfassade</li>
+        <li tabindex="0" role="button" data-w="Die Bauherrschaft will so viel Fläche wie möglich: Gebäudehöhe und Grenzabstände maximal ausnützen.">Maximal ausnützen</li>
+      </ul>
+
+      <fieldset class="opts">
+        <div><label for="mode">Ausgangslage</label><select id="mode"><option value="ref">Referenzentwurf anpassen</option><option value="scratch">leeres Blatt</option></select></div>
+        <div><label for="m-arch">Architektur</label><select id="m-arch"><option value="claude-sonnet-5-5">Sonnet 5.5 · schnell</option><option value="claude-opus-5-5">Opus 5.5 · gründlich</option></select></div>
+        <div><label for="m-rev">Prüfende</label><select id="m-rev"><option value="claude-sonnet-5-5">Sonnet 5.5</option><option value="claude-haiku-5-5">Haiku 5.5</option></select></div>
+        <div><label for="cycles">Versionen max.</label><select id="cycles"><option>1</option><option selected>2</option><option>3</option></select></div>
+      </fieldset>
+      <p class="est" id="estimate"></p>
+      <div class="go"><button type="button" class="b solid" id="start">Team starten</button><button type="button" class="b" id="stop" hidden>Abbrechen</button></div>
+      <p class="errline" id="err" hidden></p>
+    </section>
+
+    <section class="panel log" id="logpanel">
+      <h2><i>02</i> Protokoll <span class="legend"><b class="a">A</b> Agent <b class="c">C</b> Code</span></h2>
+      <div class="now" id="now" hidden><div class="now-who" id="now-who"></div><div class="now-txt" id="now-txt"></div></div>
+      <button type="button" class="jump" id="jump" hidden>↓ neue Einträge</button>
+      <ol class="rows" id="rows"><li class="row sys"><time></time><b>·</b><span>Bereit. Auftrag erfassen und starten, oder unten die Gegenprobe ohne Login.</span></li></ol>
+    </section>
+  </aside>
+
+  <section class="work">
+    <ol class="process" id="process">
+      <li class="c" data-st="brief"><i>1</i>Brief → IDS</li>
+      <li class="a" data-st="design"><i>2</i>Architektur entwirft</li>
+      <li class="c" data-st="compile"><i>3</i>Compiler → IFC</li>
+      <li class="c" data-st="check"><i>4</i>Prüfungen</li>
+      <li class="c" data-st="render"><i>5</i>Pläne</li>
+      <li class="a" data-st="review"><i>6</i>5 Prüfende urteilen</li>
+      <li class="c" data-st="issues"><i>7</i>Issues → BCF</li>
+    </ol>
+
+    <div class="sheet">
+      <nav class="tabs" id="tabs"></nav>
+      <div class="draw" id="draw"><div class="stage" id="stage"><img id="img" alt="Zeichnung" draggable="false" /></div><div class="zoomctl" id="zoomctl"><button type="button" data-z="out" title="verkleinern" aria-label="verkleinern">−</button><span id="zoomlvl">100 %</span><button type="button" data-z="in" title="vergrössern" aria-label="vergrössern">+</button><button type="button" data-z="fit" title="ganze Zeichnung">Einpassen</button></div><pre id="code" hidden></pre></div>
+      <div class="titleblock">
+        <div class="tb-main">
+          <div class="tb-cell wide"><label>Projekt</label><b>Loorenstrasse 62</b></div>
+          <div class="tb-cell"><label>Stand <span id="tb-wip" class="wiptag" hidden>ENTSTEHT · UNGEPRÜFT</span></label><b id="tb-stand">Referenzentwurf</b></div>
+          <div class="tb-cell"><label>Bauteile</label><b id="tb-el">–</b></div>
+          <div class="tb-cell"><label>IDS aus AIA</label><b id="tb-ids">–</b></div>
+          <div class="tb-cell"><label>Prüfregeln</label><b id="tb-chk">–</b></div>
+          <div class="tb-cell"><label>GlobalIds zur Vorversion</label><b id="tb-guid">–</b></div>
+          <div class="tb-cell"><label>knappste Fassade</label><b id="tb-fac">–</b></div>
+          <div class="tb-cell"><label>Wohnungen · GF</label><b id="tb-units">–</b></div>
+        </div>
+        <div class="tb-dl">
+          <label id="dl-label">Herunterladen, Stand jetzt</label>
+          <div class="dlrow"><button type="button" class="b solid" id="dl-ifc">IFC</button><button type="button" class="b" id="dl-bcf" disabled title="BCF entsteht erst mit einem Agentenlauf">BCF</button><button type="button" class="b" id="dl-ids">IDS</button><button type="button" class="b" id="dl-zip">ZIP</button></div>
+          <p id="bcf-hint">BCF (Issue-Register) gibt es erst nach einem Agentenlauf.</p><p>In <a href="https://ifclite.com" target="_blank" rel="noopener">ifclite.com</a> öffnen: IFC und BCF hineinziehen, IDS unter Data validation.</p>
+        </div>
+      </div>
+    </div>
+    <div class="vers" id="vers"></div>
+  </section>
+</main>
+
+<section class="band" id="issues">
+  <h2><i>03</i> Issue-Register <span>ein Befund behält sein BCF-Topic und seine GlobalIds über alle Versionen</span></h2>
+  <div class="filters" id="filters"><button type="button" data-f="open" class="on">offen</button><button type="button" data-f="closed">erledigt</button><button type="button" data-f="rejected">abgelehnt</button><button type="button" data-f="all">alle</button></div>
+  <div class="tablewrap"><table class="reg"><thead><tr><th>Status</th><th>Schwere</th><th>Befund</th><th>Herkunft</th><th>Bauteile → GlobalId</th><th>Verlauf</th></tr></thead><tbody id="reg"><tr><td colspan="6" class="mute">Noch kein Lauf. Das Register füllt sich, sobald die Prüfenden urteilen.</td></tr></tbody></table></div>
+</section>
+
+<section class="band" id="gegenprobe">
+  <h2><i>04</i> Gegenprobe <span>ohne Login · ohne KI · ohne Kosten</span></h2>
+  <div class="gp">
+    <div>
+      <p>Den aktuellen Stand gezielt verfälschen. Danach laufen nur Compiler und Prüfungen. Merkt der Code die Manipulation, und an welchem Bauteil?</p>
+      <ul class="sabo" id="sabo">
+        <li><label><input type="checkbox" value="move" /> Gebäude 4 m nach Osten schieben</label></li>
+        <li><label><input type="checkbox" value="door" /> eine Wohnungstür EI 30 → EI 15</label></li>
+        <li><label><input type="checkbox" value="win" /> alle Zimmerfenster entfernen</label></li>
+        <li><label><input type="checkbox" value="u" /> Aussenwände U = 0.24 W/m²K</label></li>
+        <li><label><input type="checkbox" value="storey" /> ein Vollgeschoss aufstocken</label></li>
+        <li><label><input type="checkbox" value="key" /> alle Keys umbenennen</label></li>
+      </ul>
+      <div class="go"><button type="button" class="b solid" id="sabo-run">Prüfen</button><span class="mute" id="sabo-src">Basis: Referenzentwurf</span></div>
+    </div>
+    <div class="sabo-out" id="sabo-out"></div>
+  </div>
+</section>
+
+<section class="band how" id="wie">
+  <h2><i>05</i> Wer macht was</h2>
+  <div class="cols">
+    <div><h3><b class="a">A</b> Agenten entscheiden und urteilen</h3><p>Die Architektur schreibt kein IFC, sondern ein kleines Programm, das die Entwurfsabsicht beschreibt: Wände, Öffnungen, Räume, Treppen, jedes Element mit einem festen Key. Fünf Prüfende (Visual QA, Tragwerk, Haustechnik, Energie/Fassade, Brandschutz) schauen Pläne und Daten an. Ein Befund zählt nur, wenn er ein existierendes Bauteil nennt.</p></div>
+    <div><h3><b class="c">C</b> Code rechnet und führt Buch</h3><p>Der Compiler (<a href="https://ifclite.com" target="_blank" rel="noopener">ifc-lite</a>) erzeugt IFC4: GlobalId aus dem Key, gestapelte Geschosse, berechnete Mengen, Georeferenz EPSG:2056. Geprüft werden das IDS aus der AIA, Grenzabstand mit Mehrlängenzuschlag, Gebäudehöhe, Belichtung, Treppen, Fluchtwege und U-Werte. Das Register schreibt BCF 2.1 mit Viewpoints.</p></div>
+    <div><h3><b class="h">M</b> Menschen geben frei</h3><p>Ohne Befund heisst nur: Die Prüfungen, die jemand geschrieben hat, sind erfüllt. Quartierplan, Baulinie, Sicherheitszone Flughafen, Bemessung und Brandschutzkonzept prüft eine Fachperson. Der Bericht im ZIP listet, was nicht geprüft wurde, und endet mit einer leeren Unterschriftenzeile.</p></div>
+  </div>
+  <p class="mute small">Daten: Parzelle und ÖREB-Kataster Kanton Zürich, swissALTI3D und swissBUILDINGS3D © swisstopo, BZO Stadt Zürich 2016 Art. 13/14. Lehrbeispiel BFH Minor BXMid03, keine Bauberatung. Alles läuft im Browser; Anfragen gehen direkt an api.anthropic.com. Quellcode: <a href="https://github.com/louistrue/agentic-bim-team" target="_blank" rel="noopener">github.com/louistrue/agentic-bim-team</a></p>
+</section>
+</body>
+</html>

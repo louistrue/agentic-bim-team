@@ -1,0 +1,10 @@
+{
+ "v": 1,
+ "kdf": "PBKDF2-SHA256",
+ "iter": 600000,
+ "salt": "1dqx8xfhJdjX2QiCU2zEcg==",
+ "iv": "JSjIrBIVkyLULpsa",
+ "ct": "hCWqQeJrBBTTpQDJs5DTOPQ59LtVRSslvoFDPJ+fAQWtJlzTCb/NkN2HifdrNP6h+yIlj+NhwDR0a7SXEcIEJyAMzehyeRvE44XB8t0zFbjjQAkIqmCB75X2dKTaYUzspenOxwrtvZrLv6ebdIcsE8US/kQmKIFjPac=",
+ "course": "BFH Minor BXMid03 HS26",
+ "created": "2026-11-24"
+}
