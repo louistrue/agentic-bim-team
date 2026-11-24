@@ -5,6 +5,7 @@ import { compileDesign } from '../core/compile.js';
 import { checkDesign } from '../core/check.js';
 import { updateIssues } from '../core/issues.js';
 import { runGenerator } from '../core/sandbox.js';
+import { partialToRunnable, editsToRunnable } from '../core/wip.js';
 import { ARCHITECT, VISUAL_QA, SPECIALISTS, specialistPrompt, REVIEW_SCHEMA } from './prompts.js';
 
 // $ per million tokens (input, output, cache write, cache read) – Claude API list prices, Nov 2026
@@ -98,6 +99,7 @@ export class Team {
     const messages = [{ role: 'user', content: [{ type: 'text', text: ctx }, { type: 'text', text: task }] }];
     let best = null, runs = 0, notes = '';
     let current = v === 1 ? this.startCode : prev.code; // the generator edit_generator works on
+    let wipAt = 0, wipSrc = null;
     // fingerprint of the starting design: a wish must change the building, not only comments
     const geomKey = (D) => JSON.stringify([D.storeys, D.walls, D.openings, D.slabs, D.spaces, D.stairs, D.columns]);
     let startKey = null, refusedUnchanged = false;
@@ -107,7 +109,15 @@ export class Team {
       const msg = await this.call(name, { model, max_tokens: 64000, system: ARCHITECT, tools: TOOLS, messages, cache_control: { type: 'ephemeral' }, thinking: { type: 'adaptive', display: 'summarized' }, output_config: { effort: this.models.architectEffort ?? 'medium' } }, {
         onThinking: (d) => this.emit({ type: 'thinking', name, delta: d }),
         onText: (t) => this.emit({ type: 'text', name, delta: t }),
-        onToolInput: (snap) => { if (typeof snap?.code === 'string' && snap.code.length - codeShown.length > 40) { codeShown = snap.code; this.emit({ type: 'code', name, code: snap.code, partial: true }); } },
+        onToolInput: (snap) => {
+          if (typeof snap?.code === 'string' && snap.code.length - codeShown.length > 40) { codeShown = snap.code; this.emit({ type: 'code', name, code: snap.code, partial: true }); }
+          // live preview while the architect is still writing (display only, unchecked)
+          const now = Date.now(); if (now - wipAt < 2500) return;
+          let src = null;
+          if (typeof snap?.code === 'string') src = partialToRunnable(snap.code);
+          else if (Array.isArray(snap?.edits) && current) src = editsToRunnable(current, snap.edits);
+          if (src && src !== wipSrc) { wipAt = now; wipSrc = src; this.emit({ type: 'wip', name, v, code: src }); }
+        },
       });
       messages.push({ role: 'assistant', content: msg.content });
       if (msg.stop_reason === 'max_tokens') throw new Error(`${name}: Antwort abgeschnitten (max_tokens)`);
