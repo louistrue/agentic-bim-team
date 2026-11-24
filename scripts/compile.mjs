@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync, renameSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { IfcCreator } from '@ifc-lite/create';
 import { stableGuid } from '../lib/guid.mjs';
+import { aggregateSpaces } from '../web/src/core/compile.js';
 
 const args = process.argv.slice(2);
 const src = args[0];
@@ -74,18 +75,19 @@ const slabAbove = (st) => {
 let cur = '__project', n = 0;
 const at = (key) => { cur = key; n = 0; };
 const c = new IfcCreator({
-  Name: D.name ?? 'Projekt', Schema: 'IFC4', Author: 'agentic-bim-team', Organization: 'BFH Minor BXMid03 · Demo',
+  Name: [...String(D.name ?? 'Projekt')].slice(0, 255).join(''), Schema: 'IFC4', Author: 'agentic-bim-team', Organization: 'BFH Minor BXMid03 · Demo',
   FileName: out.split('/').pop(), Timestamp: Date.parse('2026-11-24T08:00:00Z'),
   GuidSource: () => stableGuid(`${cur}#${n++}`),
 });
 const ids = {}; // key → expressId
-const psets = (id, key, list) => list.filter(Boolean).forEach((ps, i) => { at(`${key}/pset/${ps.Name}`); c.addIfcPropertySet(id, { Name: ps.Name, Properties: ps.Properties.filter((p) => p.NominalValue !== undefined && p.NominalValue !== null) }); });
+const lab = (v, n = 255) => (v == null ? v : [...String(v)].slice(0, n).join('')); // IFC4 IfcLabel = STRING(255)
+const psets = (id, key, list) => list.filter(Boolean).forEach((ps, i) => { at(`${key}/pset/${ps.Name}`); c.addIfcPropertySet(id, { Name: ps.Name, Properties: ps.Properties.filter((p) => p.NominalValue !== undefined && p.NominalValue !== null).map((p) => (typeof p.NominalValue === 'string' && !p.Type ? { ...p, NominalValue: lab(p.NominalValue) } : p)) }); });
 const qto = (id, key, name, q) => { at(`${key}/qto`); c.addIfcElementQuantity(id, { Name: name, Quantities: q.map(([Name, Value, k]) => ({ Name, Value: r3(Value), Kind: { L: 'IfcQuantityLength', A: 'IfcQuantityArea', V: 'IfcQuantityVolume', C: 'IfcQuantityCount' }[k] })) }); };
 const project = (id, key, props) => psets(id, key, [{ Name: 'BIM_Projekt', Properties: Object.entries(props).map(([Name, NominalValue]) => ({ Name, NominalValue })) }]);
-const material = (id, key, m) => { if (!m) return; at(`${key}/mat`); c.addIfcMaterial(id, typeof m === 'string' ? { Name: m } : m); };
+const material = (id, key, m) => { if (!m) return; at(`${key}/mat`); c.addIfcMaterial(id, typeof m === 'string' ? { Name: lab(m) } : { ...m, Name: lab(m.Name) }); };
 
 // storeys
-for (const s of storeys) { at(s.key); ids[s.key] = c.addIfcBuildingStorey({ Name: s.name ?? s.key, Elevation: s.elevation }); }
+for (const s of storeys) { at(s.key); ids[s.key] = c.addIfcBuildingStorey({ Name: lab(s.name ?? s.key), Elevation: s.elevation }); }
 
 // walls: base at storey floor, top under the slab above
 const openingsByWall = {};
@@ -93,7 +95,7 @@ for (const o of D.openings ?? []) (openingsByWall[o.wall] ??= []).push(o);
 for (const w of D.walls ?? []) {
   const st = S[w.storey]; const h = r3(st.height - slabAbove(w.storey));
   at(w.key);
-  const id = c.addIfcWall(ids[w.storey], { Name: w.name ?? w.key, Tag: w.key, ObjectType: w.type, Start: [w.start[0], w.start[1], 0], End: [w.end[0], w.end[1], 0], Thickness: w.thickness, Height: h,
+  const id = c.addIfcWall(ids[w.storey], { Name: lab(w.name ?? w.key), Tag: w.key, ObjectType: lab(w.type), Start: [w.start[0], w.start[1], 0], End: [w.end[0], w.end[1], 0], Thickness: w.thickness, Height: h,
     PredefinedType: w.type === 'partition' ? 'PARTITIONING' : w.loadBearing ? 'SOLIDWALL' : 'NOTDEFINED' });
   ids[w.key] = id;
   const L = len(w.start, w.end); const holes = (openingsByWall[w.key] ?? []).reduce((s, o) => s + o.width * o.height, 0);
@@ -110,7 +112,7 @@ for (const w of D.walls ?? []) {
 // openings (hosted windows / doors)
 for (const o of D.openings ?? []) {
   const w = W[o.wall]; at(o.key);
-  const common = { Name: o.name ?? o.key, Tag: o.key, Position: [o.offset + o.width / 2, 0, o.sill ?? 0], Width: o.width, Height: o.height };
+  const common = { Name: lab(o.name ?? o.key, 247), /* the opening element is named '<Name> Opening' */ Tag: o.key, Position: [o.offset + o.width / 2, 0, o.sill ?? 0], Width: o.width, Height: o.height };
   const id = o.kind === 'door' ? c.addIfcWallDoor(ids[o.wall], { ...common, OperationType: o.operation ?? 'SINGLE_SWING_LEFT' }) : c.addIfcWallWindow(ids[o.wall], common);
   ids[o.key] = id;
   const ext = w.type === 'external';
@@ -118,8 +120,9 @@ for (const o of D.openings ?? []) {
     { Name: 'Reference', NominalValue: o.reference ?? o.kind }, { Name: 'IsExternal', NominalValue: ext },
     { Name: 'FireRating', NominalValue: o.fireRating },
     o.uValue != null ? { Name: 'ThermalTransmittance', NominalValue: o.uValue, Type: 'IfcThermalTransmittanceMeasure' } : null,
-    o.gValue != null && o.kind !== 'door' ? { Name: 'SolarHeatGainTransmittance', NominalValue: o.gValue, Type: 'IfcNormalisedRatioMeasure' } : null,
-    o.kind === 'door' && o.selfClosing != null ? { Name: 'SelfClosing', NominalValue: !!o.selfClosing } : null].filter(Boolean) }]);
+    o.kind === 'door' && o.selfClosing != null ? { Name: 'SelfClosing', NominalValue: !!o.selfClosing } : null].filter(Boolean) },
+    // g-value: SolarHeatGainTransmittance is defined in Pset_DoorWindowGlazingType, not in Pset_WindowCommon (IFC4)
+    o.gValue != null && o.kind !== 'door' ? { Name: 'Pset_DoorWindowGlazingType', Properties: [{ Name: 'SolarHeatGainTransmittance', NominalValue: o.gValue, Type: 'IfcNormalisedRatioMeasure' }] } : null]);
   qto(id, o.key, o.kind === 'door' ? 'Qto_DoorBaseQuantities' : 'Qto_WindowBaseQuantities', [['Width', o.width, 'L'], ['Height', o.height, 'L'], ['Area', o.width * o.height, 'A']]);
   project(id, o.key, { DesignKey: o.key, HostWall: o.wall, ...(o.space ? { Raum: o.space } : {}) });
 }
@@ -128,7 +131,7 @@ for (const o of D.openings ?? []) {
 for (const s of D.slabs ?? []) {
   const st = S[s.storey]; const z = s.kind === 'roof' ? st.height - s.thickness : -s.thickness;
   at(s.key);
-  const id = c.addIfcSlab(ids[s.storey], { Name: s.name ?? s.key, Tag: s.key, Position: [0, 0, z], Thickness: s.thickness, Profile: s.polygon,
+  const id = c.addIfcSlab(ids[s.storey], { Name: lab(s.name ?? s.key), Tag: s.key, Position: [0, 0, z], Thickness: s.thickness, Profile: s.polygon,
     Openings: (s.openings ?? []).map((h, i) => ({ Name: `${s.key}-O${i + 1}`, Width: h.w, Height: h.d, Position: [h.x + h.w / 2, h.y + h.d / 2, 0] })),
     PredefinedType: s.kind === 'roof' ? 'ROOF' : s.kind === 'base' ? 'BASESLAB' : 'FLOOR' });
   ids[s.key] = id;
@@ -144,7 +147,7 @@ for (const s of D.slabs ?? []) {
 
 for (const col of D.columns ?? []) {
   const h = r3(S[col.storey].height - slabAbove(col.storey)); at(col.key);
-  const id = c.addIfcColumn(ids[col.storey], { Name: col.name ?? col.key, Tag: col.key, Position: [col.position[0] - col.width / 2, col.position[1] - col.depth / 2, 0], Width: col.width, Depth: col.depth, Height: h });
+  const id = c.addIfcColumn(ids[col.storey], { Name: lab(col.name ?? col.key), Tag: col.key, Position: [col.position[0] - col.width / 2, col.position[1] - col.depth / 2, 0], Width: col.width, Depth: col.depth, Height: h });
   ids[col.key] = id;
   psets(id, col.key, [{ Name: 'Pset_ColumnCommon', Properties: [{ Name: 'LoadBearing', NominalValue: true }, { Name: 'FireRating', NominalValue: col.fireRating }, { Name: 'IsExternal', NominalValue: false }] }]);
   qto(id, col.key, 'Qto_ColumnBaseQuantities', [['Length', h, 'L'], ['CrossSectionArea', col.width * col.depth, 'A'], ['GrossVolume', col.width * col.depth * h, 'V']]);
@@ -154,7 +157,7 @@ for (const col of D.columns ?? []) {
 
 for (const t of D.stairs ?? []) {
   at(t.key);
-  const id = c.addIfcStair(ids[t.storey], { Name: t.name ?? t.key, Tag: t.key, Position: [t.position[0], t.position[1], 0], Direction: (t.directionDeg ?? 0) * Math.PI / 180, NumberOfRisers: t.risers, RiserHeight: t.riserHeight, TreadLength: t.tread, Width: t.width });
+  const id = c.addIfcStair(ids[t.storey], { Name: lab(t.name ?? t.key), Tag: t.key, Position: [t.position[0], t.position[1], 0], Direction: (t.directionDeg ?? 0) * Math.PI / 180, NumberOfRisers: t.risers, RiserHeight: t.riserHeight, TreadLength: t.tread, Width: t.width });
   ids[t.key] = id;
   psets(id, t.key, [{ Name: 'Pset_StairCommon', Properties: [{ Name: 'NumberOfRiser', NominalValue: t.risers, Type: 'IfcCountMeasure' }, { Name: 'RiserHeight', NominalValue: t.riserHeight, Type: 'IfcPositiveLengthMeasure' }, { Name: 'TreadLength', NominalValue: t.tread, Type: 'IfcPositiveLengthMeasure' }, { Name: 'FireExit', NominalValue: true }, { Name: 'FireRating', NominalValue: t.fireRating }] }]);
   project(id, t.key, { DesignKey: t.key, Laufbreite: t.width });
@@ -162,7 +165,7 @@ for (const t of D.stairs ?? []) {
 
 for (const sp of D.spaces ?? []) {
   const h = r3(S[sp.storey].height - slabAbove(sp.storey)); at(sp.key);
-  const id = c.addIfcSpace(ids[sp.storey], { Name: sp.name ?? sp.key, LongName: sp.longName ?? sp.usage, Tag: sp.key, Position: [0, 0, 0], Profile: sp.polygon, Height: h });
+  const id = c.addIfcSpace(ids[sp.storey], { Name: lab(sp.name ?? sp.key), LongName: lab(sp.longName ?? sp.usage), Tag: sp.key, Position: [0, 0, 0], Profile: sp.polygon, Height: h });
   ids[sp.key] = id;
   const A = area(sp.polygon);
   psets(id, sp.key, [{ Name: 'Pset_SpaceCommon', Properties: [{ Name: 'Reference', NominalValue: sp.usage }, { Name: 'IsExternal', NominalValue: false }] }]);
@@ -172,7 +175,7 @@ for (const sp of D.spaces ?? []) {
 
 for (const f of D.footings ?? []) {
   at(f.key);
-  const id = c.addIfcFooting(ids[f.storey], { Name: f.name ?? f.key, Tag: f.key, Position: [f.position[0], f.position[1], 0], Width: f.width, Depth: f.depth, Height: f.height, PredefinedType: f.type ?? 'STRIP_FOOTING' });
+  const id = c.addIfcFooting(ids[f.storey], { Name: lab(f.name ?? f.key), Tag: f.key, Position: [f.position[0], f.position[1], 0], Width: f.width, Depth: f.depth, Height: f.height, PredefinedType: f.type ?? 'STRIP_FOOTING' });
   ids[f.key] = id;
   project(id, f.key, { DesignKey: f.key });
 }
@@ -186,7 +189,8 @@ if (c.buildingId) {
 }
 
 at('__rels');
-const { content } = c.toIfc();
+// IfcSpace must be aggregated into its storey, not contained (IfcRelContainedInSpatialStructure WR31)
+const content = aggregateSpaces(c.toIfc().content, new Set((D.spaces ?? []).map((sp) => ids[sp.key])), Object.fromEntries(storeys.map((s) => [ids[s.key], s.key])), stableGuid);
 const tmp = `${out}.tmp.ifc`;
 writeFileSync(tmp, content);
 

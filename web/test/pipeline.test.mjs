@@ -57,4 +57,33 @@ for (const v of [1, 2, 3]) {
   ok(!c.findings.some((f) => f.rule === 'G2'), 'G2: room in the far corner is inside (outline from all corners)');
   const r2 = compileDesign({ ...D, storeys: [] }); ok(!r2.ok && /returned an object with keys/.test(r2.problems[0].msg), 'compiler explains a missing storeys array');
 }
+{ // regression (audit 2026-11-24): IFC4 rules, pset names, label length, BCF stability
+  const D = JSON.parse(readFileSync(`${W}design_v3.json`)); const r = compileDesign(D);
+  const rels = [...r.ifc.matchAll(/^#\d+=\s*IFCRELCONTAINEDINSPATIALSTRUCTURE\([^(]*\(([^)]*)\)/gm)].flatMap((m) => m[1].split(',').map((x) => Number(x.slice(1))));
+  const spaceIds = new Set([...r.ifc.matchAll(/^#(\d+)=\s*IFCSPACE\(/gm)].map((m) => Number(m[1])));
+  ok(spaceIds.size === D.spaces.length && !rels.some((id) => spaceIds.has(id)), 'IfcSpace not in IfcRelContainedInSpatialStructure (WR31)');
+  const agg = [...r.ifc.matchAll(/^#\d+=\s*IFCRELAGGREGATES\('[^']+',[^,]*,\$,\$,#(\d+),\(([^)]*)\)/gm)].flatMap((m) => m[2].split(',').map((x) => Number(x.slice(1))));
+  ok([...spaceIds].every((id) => agg.filter((a) => a === id).length === 1), 'every IfcSpace aggregated exactly once into a storey (WR41)');
+  const guids = [...r.ifc.matchAll(/^#\d+=\s*IFC[A-Z]+\('([0-9A-Za-z_$]{22})'/gm)].map((m) => m[1]);
+  ok(new Set(guids).size === guids.length && guids.every((g) => /^[0-3]/.test(g)), `all ${guids.length} GlobalIds unique and valid`);
+  const wc = [...r.ifc.matchAll(/^#\d+=\s*IFCPROPERTYSET\('[^']+',[^,]*,'(Pset_[A-Za-z]+)',\$,\(([^)]*)\)/gm)];
+  const propName = Object.fromEntries([...r.ifc.matchAll(/^#(\d+)=\s*IFCPROPERTYSINGLEVALUE\('([^']+)'/gm)].map((m) => [m[1], m[2]]));
+  const inPset = (ps, prop) => wc.some((m) => m[1] === ps && m[2].split(',').some((x) => propName[x.slice(1)] === prop));
+  ok(!inPset('Pset_WindowCommon', 'SolarHeatGainTransmittance') && inPset('Pset_DoorWindowGlazingType', 'SolarHeatGainTransmittance'), 'g-value in Pset_DoorWindowGlazingType, not Pset_WindowCommon');
+  const long = 'Ä'.repeat(300) + "'";
+  const E = { name: long, storeys: [{ key: 'EG', name: long, elevation: 0, height: 3 }], walls: [{ key: 'W1', name: long, storey: 'EG', start: [0, 0], end: [5, 0], thickness: 0.3, type: 'external', reference: long }],
+    openings: [{ key: 'F1', name: long, kind: 'window', wall: 'W1', offset: 0.1, width: 1, height: 1, sill: 1 }], spaces: [{ key: 'R1', name: long, usage: long, storey: 'EG', polygon: [[0, 0], [5, 0], [5, 4]] }] };
+  const e = compileDesign(E);
+  const strs = [...e.ifc.split('DATA;')[1].matchAll(/'((?:[^']|'')*)'/g)].map((m) => m[1].replace(/''/g, "'").replace(/\\X2\\([0-9A-F]+)\\X0\\/g, (_, h) => String.fromCharCode(...h.match(/.{4}/g).map((x) => parseInt(x, 16)))));
+  ok(e.ok && strs.every((x) => x.length <= 255) && strs.some((x) => x === 'Ä'.repeat(255)), 'IfcLabel values ≤ 255 characters (long names truncated, umlauts kept)');
+  const sp = compileDesign({ ...E, storeys: [...E.storeys, { key: 'OG', elevation: 3, height: 3 }], spaces: [...E.spaces, { key: 'R2', usage: 'x', storey: 'OG', polygon: [[0, 0], [5, 0], [5, 4]] }] });
+  ok(sp.ok && !/IFCRELCONTAINEDINSPATIALSTRUCTURE\('[^']+',[^,]*,\$,\$,\(\)/.test(sp.ifc) && /IFCRELAGGREGATES\([^)]*#\d+,\(#\d+\)\);\s*\n(#\d+=IFCRELAGGREGATES|ENDSEC)/.test(sp.ifc), 'storey with only spaces: no empty containment, space aggregated');
+  const run = async () => (await updateIssues({ v: 1, D, K: r.keys, checks: { findings: [] }, review: { findings: [{ id: 'X:EG-A-WO', rule: 'X', title: long, text: long, severity: 'ERROR', discipline: 'Visual QA', elements: ['EG-A-WO'] }] } })).bcf;
+  const [b1, b2] = [await readBCF(await run()), await readBCF(await run())];
+  ok(b1.projectId && b1.projectId === b2.projectId, `BCF ProjectId stable across exports (${b1.projectId})`);
+  const t = [...b1.topics.values()][0], cam = t.viewpoints[0].perspectiveCamera;
+  const d = cam.cameraDirection, u = cam.cameraUpVector;
+  ok(Math.abs(d.x * u.x + d.y * u.y + d.z * u.z) < 1e-9 && u.z > 0.8 && d.z < 0, 'BCF camera up vector orthogonal, Z-up, looking down');
+  ok(t.title.includes("'") && !/ /.test(t.creationAuthor ?? t.author ?? ''), 'BCF title keeps quotes, author has no spaces');
+}
 process.exit(fail ? 1 : 0);
