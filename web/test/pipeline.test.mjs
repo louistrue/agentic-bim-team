@@ -6,7 +6,7 @@ import { requirementsToIds } from '../src/core/ids.js';
 import { updateIssues } from '../src/core/issues.js';
 import { readBCF } from '@ifc-lite/bcf';
 const W = new URL('../../workspace/', import.meta.url).pathname;
-const site = JSON.parse(readFileSync(W + 'site.json')), brief = JSON.parse(readFileSync(W + '../brief.json')), idsXml = readFileSync(W + 'requirements.ids', 'utf8');
+const site = JSON.parse(readFileSync(W + 'site.json')), brief = JSON.parse(readFileSync(W + '../brief.json')), idsXml = readFileSync(new URL('../public/data/requirements.ids', import.meta.url), 'utf8'); // shipped IDS (regenerated from brief.json)
 let fail = 0; const ok = (c, m) => { console.log(`${c ? 'ok  ' : 'FAIL'} ${m}`); if (!c) fail++; };
 for (const v of [1, 2, 3]) {
   const D = JSON.parse(readFileSync(`${W}design_v${v}.json`));
@@ -17,7 +17,8 @@ for (const v of [1, 2, 3]) {
   const c = await checkDesign({ v, D, K: r.keys, ifc: r.ifc, site, brief, idsXml });
   const c0 = JSON.parse(readFileSync(`${W}checks_v${v}.json`));
   ok(JSON.stringify(c.findings.map((f) => f.id).sort()) === JSON.stringify(c0.findings.map((f) => f.id).sort()), `v${v} same findings as CLI (${c.findings.length})`);
-  ok(JSON.stringify(c.metrics.ids) === JSON.stringify(c0.metrics.ids), `v${v} IDS summary identical: ${c.metrics.ids.map((s) => s.id + ':' + s.status).join(' ')}`);
+  const sameIds = c.metrics.ids.every((x, i) => { const y = c0.metrics.ids[i]; return x.id === y.id && x.status === y.status && (x.id === 'R07' ? x.applicable > 0 && x.applicable < y.applicable : x.applicable === y.applicable); }); // R07 now applies only to apartment rooms
+  ok(sameIds && c.metrics.ids.length === c0.metrics.ids.length, `v${v} IDS summary identical: ${c.metrics.ids.map((s) => s.id + ':' + s.status).join(' ')}`);
   ok(c.georef.level === 50 && c.georef.crs === 'EPSG:2056', `v${v} georef ${c.georef.crs} LoGeoRef ${c.georef.level}`);
 }
 // sabotage must be caught
@@ -35,7 +36,9 @@ for (const v of [1, 2, 3]) {
 }
 {
   const x = requirementsToIds(brief);
-  ok(x.xml === idsXml, `IDS from brief identical to CLI (${x.specifications} specs, not IDS: ${x.notIds})`);
+  const tmpIds = `${(await import('node:os')).tmpdir()}/req-${process.pid}.ids`;
+  (await import('node:child_process')).execFileSync('node', [new URL('../../scripts/requirements-to-ids.mjs', import.meta.url).pathname, new URL('../public/data/brief.json', import.meta.url).pathname, tmpIds], { stdio: 'ignore' });
+  ok(x.xml === idsXml && readFileSync(tmpIds, 'utf8') === idsXml, `IDS from brief identical to shipped file and CLI (${x.specifications} specs, not IDS: ${x.notIds})`);
   let ledger = { issues: {} };
   for (const v of [1, 2, 3]) {
     const D = JSON.parse(readFileSync(`${W}design_v${v}.json`)); const r = compileDesign(D);
@@ -85,5 +88,38 @@ for (const v of [1, 2, 3]) {
   const d = cam.cameraDirection, u = cam.cameraUpVector;
   ok(Math.abs(d.x * u.x + d.y * u.y + d.z * u.z) < 1e-9 && u.z > 0.8 && d.z < 0, 'BCF camera up vector orthogonal, Z-up, looking down');
   ok(t.title.includes("'") && !/ /.test(t.creationAuthor ?? t.author ?? ''), 'BCF title keeps quotes, author has no spaces');
+}
+{ // regression (audit 2026-11-24, part 2): R07/R03 applicability, deterministic BCF, header
+  const ref = new Function(readFileSync(new URL('../public/data/reference_generator.js', import.meta.url), 'utf8'))();
+  const run = async (D) => { const r = compileDesign(D); return { r, c: await checkDesign({ v: 5, D, K: r.keys, ifc: r.ifc, site, brief, idsXml }) }; };
+  const base = await run(ref);
+  ok(base.c.metrics.ids.every((x) => x.status === 'pass' && x.applicable > 0), `reference design passes IDS ${base.c.metrics.ids.filter((x) => x.status === 'pass').length}/${base.c.metrics.ids.length}, no spec vacuous`);
+  ok(/^FILE_DESCRIPTION\(\('ViewDefinition \[DesignTransferView_V1\.0\]'\),'2;1'\);$/m.test(base.r.ifc), 'IFC header declares ViewDefinition [DesignTransferView_V1.0]');
+  const s1 = structuredClone(ref); const room = s1.spaces.find((x) => x.usage === 'Zimmer'); delete room.unit;
+  const r07 = (await run(s1)).c.findings.filter((f) => f.rule === 'R07');
+  ok(r07.length === 1 && r07[0].elements[0] === room.key, `sabotage: apartment room ${room.key} without unit → R07`);
+  const s2 = structuredClone(ref); s2.spaces.filter((x) => x.usage === 'Treppenhaus').forEach((x) => { delete x.unit; });
+  ok(!(await run(s2)).c.findings.some((f) => f.rule === 'R07'), 'stair hall without unit is not an R07 finding (common area)');
+  const s3 = structuredClone(ref); const extW = new Set(s3.walls.filter((w) => w.type === 'external').map((w) => w.key));
+  const inner = s3.walls.find((w) => w.type !== 'external' && Math.hypot(w.end[0] - w.start[0], w.end[1] - w.start[1]) > 2.5 && !s3.openings.some((o) => o.wall === w.key));
+  s3.openings.push({ key: 'X-INNENFENSTER', kind: 'window', wall: inner.key, offset: 0.5, width: 1, height: 1, sill: 1, uValue: 1.6 });
+  s3.openings.find((o) => o.kind === 'window' && extW.has(o.wall)).uValue = 1.6;
+  const r03 = (await run(s3)).c.findings.filter((f) => f.rule === 'R03');
+  ok(r03.length === 1 && r03[0].elements[0] !== 'X-INNENFENSTER', 'R03 applies to windows in external walls only');
+  // BCF: identical XML across exports, valid dates, header points at the version's IFC
+  const D3 = JSON.parse(readFileSync(`${W}design_v3.json`)); const r3 = compileDesign(D3);
+  let led = { issues: {} };
+  for (const v of [1, 2, 3]) { const D = JSON.parse(readFileSync(`${W}design_v${v}.json`)); const r = compileDesign(D); led = (await updateIssues({ v, D, K: r.keys, checks: JSON.parse(readFileSync(`${W}checks_v${v}.json`)), review: JSON.parse(readFileSync(`${W}review_v${v}.json`)), ledger: led })).ledger; }
+  const xmlOf = async (bcf) => { const JSZip = (await import('jszip')).default; const z = await JSZip.loadAsync(bcf); return Object.fromEntries(await Promise.all(Object.keys(z.files).sort().map(async (k) => [k, await z.files[k].async('string')]))); };
+  const once = async () => xmlOf((await updateIssues({ v: 3, D: D3, K: r3.keys, checks: JSON.parse(readFileSync(`${W}checks_v3.json`)), review: JSON.parse(readFileSync(`${W}review_v3.json`)), ledger: structuredClone(led) })).bcf);
+  const [x1, x2] = [await once(), await once()];
+  ok(JSON.stringify(x1) === JSON.stringify(x2), `BCF XML identical across exports (${Object.keys(x1).length} files: comment/viewpoint GUIDs and dates stable)`);
+  const markups = Object.entries(x1).filter(([k]) => k.endsWith('markup.bcf')).map(([, v]) => v);
+  const projGuid = r3.ifc.match(/IFCPROJECT\('([^']{22})'/)[1];
+  const dates = markups.flatMap((m) => [...m.matchAll(/<(?:CreationDate|ModifiedDate|Date)>([^<]+)</g)].map((d) => d[1]));
+  ok(dates.length > 0 && dates.every((d) => /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?Z$/.test(d) && !isNaN(Date.parse(d))), `${dates.length} BCF dates are valid xs:dateTime`);
+  ok(markups.every((m) => m.includes(`<File IfcProject="${projGuid}" isExternal="true">`) && /<Filename>loorenstrasse62_v[123]\.ifc<\/Filename>/.test(m)), `every topic Header/File references IfcProject ${projGuid} and its version's IFC`);
+  const closed = markups.filter((m) => /TopicStatus="Closed"/.test(m));
+  ok(closed.length && closed.every((m) => m.match(/<CreationDate>([^<]+)/)[1] <= m.match(/<ModifiedDate>([^<]+)/)[1]), 'closed topics: CreationDate ≤ ModifiedDate');
 }
 process.exit(fail ? 1 : 0);

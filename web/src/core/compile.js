@@ -153,7 +153,7 @@ export function compileDesign(D, { fileName = 'design.ifc' } = {}) {
     const A = area(sp.polygon);
     psets(id, sp.key, [{ Name: 'Pset_SpaceCommon', Properties: [{ Name: 'Reference', NominalValue: sp.usage }, { Name: 'IsExternal', NominalValue: false }] }]);
     qto(id, sp.key, 'Qto_SpaceBaseQuantities', [['NetFloorArea', A, 'A'], ['GrossFloorArea', A, 'A'], ['Height', h, 'L'], ['NetVolume', A * h, 'V'], ['NetPerimeter', perim(sp.polygon), 'L']]);
-    project(id, sp.key, { DesignKey: sp.key, Wohnung: sp.unit ?? '-', Nutzung: sp.usage, SIA416: sp.sia416 ?? (sp.usage === 'Treppenhaus' ? 'VF' : sp.usage === 'Technik' ? 'FF' : 'HNF') });
+    project(id, sp.key, { DesignKey: sp.key, ...(sp.unit && sp.unit !== '-' ? { Wohnung: sp.unit } : {}), Nutzung: sp.usage, SIA416: sp.sia416 ?? (sp.usage === 'Treppenhaus' ? 'VF' : sp.usage === 'Technik' ? 'FF' : 'HNF') });
   }
 
   for (const f of D.footings ?? []) {
@@ -173,6 +173,8 @@ export function compileDesign(D, { fileName = 'design.ifc' } = {}) {
 
   at('__rels');
   let { content } = c.toIfc();
+  // IFC4 header: the content (swept solids, voiding openings, psets, quantities) is a Design Transfer View export
+  content = content.replace(/^FILE_DESCRIPTION\(\([^;]*\),'2;1'\);/m, "FILE_DESCRIPTION(('ViewDefinition [DesignTransferView_V1.0]'),'2;1');");
   // IfcSpace is a spatial structure element: it must be aggregated into its storey (IfcRelAggregates),
   // not contained (IfcRelContainedInSpatialStructure WR31 / IfcSpatialStructureElement WR41).
   content = aggregateSpaces(content, new Set((D.spaces ?? []).map((sp) => ids[sp.key])), Object.fromEntries(storeys.map((s) => [ids[s.key], s.key])));

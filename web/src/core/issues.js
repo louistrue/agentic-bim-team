@@ -2,9 +2,9 @@
 // A finding keeps its id (rule:element) across versions, so its BCF topic keeps its GUID:
 // new in vN → Open · still there → comment · gone → Closed (rule checks) or explicitly resolved (agents).
 import { createBCFProject, createBCFTopic, createBCFComment, addCommentToTopic, addTopicToProject, createViewpoint, addViewpointToTopic, updateTopicStatus, writeBCF } from '@ifc-lite/bcf';
-import { stableUuid } from './guid.js';
+import { stableUuid, stableGuid } from './guid.js';
 
-export async function updateIssues({ v, D, K, checks, review = { findings: [] }, ledger = { issues: {} } }) {
+export async function updateIssues({ v, D, K, checks, review = { findings: [] }, ledger = { issues: {} }, ifcProjectGuid = stableGuid('__project#0'), ifcFileName = (ver) => `loorenstrasse62_v${ver}.ifc` }) {
   const now = new Date().toISOString();
   const S = Object.fromEntries(D.storeys.map((s) => [s.key, s]));
 
@@ -43,6 +43,9 @@ export async function updateIssues({ v, D, K, checks, review = { findings: [] },
   }
 
   // write the BCF project from the ledger (rebuilt each time; topic GUIDs are stable)
+  // deterministic timestamps: version v is dated 2026-11-24T08:00Z + (v-1) h, history entry i adds i s → repeated exports are identical
+  const when = (ver, i = 0) => new Date(Date.parse('2026-11-24T08:00:00Z') + (ver - 1) * 3600e3 + i * 1000).toISOString();
+  const ifcFile = (ver) => ({ ifcProject: ifcProjectGuid, filename: ifcFileName(ver), date: when(ver), isExternal: true });
   const project = createBCFProject({ name: `${D.name} – Koordination`, version: '2.1' });
   project.projectId = stableUuid('bcf-project'); // same BCF project across exports (was random per download)
   const typeOf = { ERROR: 'Error', WARNING: 'Warning', INFO: 'Info' };
@@ -50,13 +53,16 @@ export async function updateIssues({ v, D, K, checks, review = { findings: [] },
   for (const L of Object.values(ledger.issues)) {
     const t = createBCFTopic({ title: `[${L.id.split(':')[0]}] ${L.title}`, description: `${L.text}\n\nQuelle: ${L.source ?? '–'}\nZuständig: ${L.who ?? '–'}\nHerkunft: ${L.origin}\nBauteile: ${L.elements.join(', ') || 'Modell'}`, author: L.origin.startsWith('Fach') ? `${String(L.discipline ?? 'fach').toLowerCase().replace(/[^a-z0-9äöü._-]+/g, '-')}@agententeam` : 'pruefung@agententeam', topicType: typeOf[L.severity] ?? 'Info', topicStatus: 'Open', priority: L.severity === 'ERROR' ? 'High' : 'Normal', labels: [L.discipline, L.origin, `seit v${L.firstSeen}`].filter(Boolean) });
     t.guid = L.topicGuid;
+    t.creationDate = when(L.firstSeen); t.header = [ifcFile(L.lastSeen)]; // the IFC version the viewpoint GUIDs belong to
     if (L.guids.length) {
       const c = L.elements.map(centre).reduce((s, p, i, a) => s.map((x, j) => x + p[j] / a.length), [0, 0, 0]);
       const vp = createViewpoint({ camera: { position: toViewer([c[0] - 14, c[1] - 18, c[2] + 11]), target: toViewer(c), up: toViewer(UP), fov: Math.PI / 3, aspectRatio: 16 / 9 }, selectedGuids: L.guids, coloredGuids: [{ color: colour[L.severity] ?? colour.INFO, guids: L.guids }] });
+      vp.guid = stableUuid(`viewpoint:${L.id}:v${L.lastSeen}`);
       addViewpointToTopic(t, vp);
     }
-    for (const h of L.history) addCommentToTopic(t, createBCFComment({ author: 'orchestrator@agententeam', comment: `v${h.v} · ${h.event}: ${h.text}` }));
-    if (L.status === 'Closed') updateTopicStatus(t, 'Closed', 'orchestrator@agententeam');
+    L.history.forEach((h, i) => { const cm = createBCFComment({ author: 'orchestrator@agententeam', comment: `v${h.v} · ${h.event}: ${h.text}` }); cm.guid = stableUuid(`comment:${L.id}:${i}:v${h.v}`); cm.date = when(h.v, i + 1); addCommentToTopic(t, cm); });
+    if (L.history.length) t.modifiedDate = when(L.history.at(-1).v, L.history.length); // addCommentToTopic stamps the wall clock
+    if (L.status === 'Closed') { updateTopicStatus(t, 'Closed', 'orchestrator@agententeam'); t.modifiedDate = when(L.closedIn, L.history.length + 1); }
     addTopicToProject(project, t);
   }
   const blob = await writeBCF(project);
