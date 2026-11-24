@@ -19,6 +19,8 @@ const FALLBACK = { betas: ['server-side-fallback-2026-07-01'], fallbacks: 'defau
 const TOOLS = [
   { name: 'run_design', description: 'Run the design generator (a JS function body ending with `return design;`), compile it to IFC and run all deterministic checks. Returns compiler problems or the check findings.', eager_input_streaming: true,
     input_schema: { type: 'object', additionalProperties: false, required: ['code'], properties: { code: { type: 'string', description: 'JavaScript function body. No imports, no I/O. Must end with return design;' } } } },
+  { name: 'edit_generator', description: 'Change the CURRENT generator (the one given to you, or your last successful run_design) with exact find/replace edits, then compile and check it like run_design. Use this for revisions instead of resending the whole generator. Each find must occur exactly once in the current generator.',
+    input_schema: { type: 'object', additionalProperties: false, required: ['edits'], properties: { edits: { type: 'array', items: { type: 'object', additionalProperties: false, required: ['find', 'replace'], properties: { find: { type: 'string', description: 'exact text from the current generator, unique' }, replace: { type: 'string' } } } } } } },
   { name: 'finish', description: 'End the turn after the last run_design. The last successful run_design becomes this version.',
     input_schema: { type: 'object', additionalProperties: false, required: ['notes'], properties: { notes: { type: 'string', description: 'German notes: per open issue id → change (element keys) or reason; design decisions; assumptions.' } } } },
 ];
@@ -77,7 +79,7 @@ export class Team {
     const t0 = performance.now();
     const g = await runGenerator(code);
     if (!g.ok) return { ok: false, stage: 'generator', error: g.error };
-    let comp; try { comp = compileDesign(g.design, { fileName: `design_v${v}.ifc` }); } catch (e) { return { ok: false, stage: 'compiler', error: String(e.message ?? e) }; }
+    let comp; try { comp = compileDesign(g.design, { fileName: `loorenstrasse62_v${v}.ifc` }); } catch (e) { return { ok: false, stage: 'compiler', error: String(e.message ?? e) }; }
     if (!comp.ok) return { ok: false, stage: 'compiler', problems: comp.problems.slice(0, 30), more: Math.max(0, comp.problems.length - 30) };
     let checks; try { checks = await checkDesign({ v, D: g.design, K: comp.keys, ifc: comp.ifc, site: this.site, brief: this.brief, idsXml: this.idsXml }); } catch (e) { return { ok: false, stage: 'checks', error: String(e.message ?? e) }; }
     return { ok: true, design: g.design, code, comp, checks, ms: Math.round(performance.now() - t0) };
@@ -88,13 +90,18 @@ export class Team {
     const model = this.models.architect, name = `Architektur v${v}`;
     this.emit({ type: 'agent', name, role: 'architect', model, status: 'start', v });
     const ctx = `## Brief (AIA der Bauherrschaft)\n${JSON.stringify(this.brief)}\n\n## Standort (site.json)\n${JSON.stringify(this.site)}`;
-    const wishes = this.wishes?.trim() ? `\n\n## Zusätzliche Wünsche der Bauherrschaft (heute, vom Studierenden)\n${this.wishes.trim()}` : '';
+    const wishes = this.wishes?.trim() ? `\n\n## Wunsch der Bauherrschaft (Hauptaufgabe dieser Version, im Modell umsetzen)\n${this.wishes.trim()}` : '';
     let task;
     if (v === 1 && !this.startCode) task = `Version N=1. Erste Version: entwirf das Gebäude.${wishes}`;
-    else if (v === 1) task = `Version N=1. Ausgangslage: der Generator des Referenzentwurfs (unten), sein Prüfergebnis steht darunter (nicht nochmals laufen lassen). Passe ihn an den Brief und die Wünsche an; behalte Keys, wo Bauteile bleiben. run_design braucht immer den VOLLSTÄNDIGEN Generator.${wishes}\n\n## Generator Referenzentwurf\n\`\`\`js\n${this.startCode}\n\`\`\`${this.startChecks ? `\n\n## Prüfergebnis Referenzentwurf\n${JSON.stringify(summarizeChecks(this.startChecks))}` : ''}`;
-    else task = `Version N=${v}. Überarbeite deinen Generator von v${v - 1} (unten). run_design braucht immer den VOLLSTÄNDIGEN Generator. Offene Punkte aus dem Issue-Ledger (alle mit Bauteil-Keys):\n${openIssuesText(this.ledger)}${wishes}\n\n## Generator v${v - 1}\n\`\`\`js\n${prev.code}\n\`\`\``;
+    else if (v === 1) task = `Version N=1. Ausgangslage: der Generator des Referenzentwurfs (unten), sein Prüfergebnis steht darunter (nicht nochmals laufen lassen). Passe ihn an den Brief und die Wünsche an; behalte Keys, wo Bauteile bleiben. Ändere ihn mit edit_generator (Suchen/Ersetzen); run_design nur für einen vollständig neuen Generator.${wishes}\n\n## Generator Referenzentwurf\n\`\`\`js\n${this.startCode}\n\`\`\`${this.startChecks ? `\n\n## Prüfergebnis Referenzentwurf\n${JSON.stringify(summarizeChecks(this.startChecks))}` : ''}`;
+    else task = `Version N=${v}. Überarbeite deinen Generator von v${v - 1} (unten). Ändere ihn mit edit_generator (Suchen/Ersetzen); run_design nur für einen vollständig neuen Generator. Offene Punkte aus dem Issue-Ledger (alle mit Bauteil-Keys):\n${openIssuesText(this.ledger)}${wishes}\n\n## Generator v${v - 1}\n\`\`\`js\n${prev.code}\n\`\`\``;
     const messages = [{ role: 'user', content: [{ type: 'text', text: ctx }, { type: 'text', text: task }] }];
     let best = null, runs = 0, notes = '';
+    let current = v === 1 ? this.startCode : prev.code; // the generator edit_generator works on
+    // fingerprint of the starting design: a wish must change the building, not only comments
+    const geomKey = (D) => JSON.stringify([D.storeys, D.walls, D.openings, D.slabs, D.spaces, D.stairs, D.columns]);
+    let startKey = null, refusedUnchanged = false;
+    if (current && this.wishes?.trim()) { const g0 = await runGenerator(current); if (g0.ok) startKey = geomKey(g0.design); }
     for (let turn = 0; turn < 12; turn++) {
       let codeShown = '';
       const msg = await this.call(name, { model, max_tokens: 64000, system: ARCHITECT, tools: TOOLS, messages, cache_control: { type: 'ephemeral' }, thinking: { type: 'adaptive', display: 'summarized' }, output_config: { effort: this.models.architectEffort ?? 'medium' } }, {
@@ -105,21 +112,47 @@ export class Team {
       messages.push({ role: 'assistant', content: msg.content });
       if (msg.stop_reason === 'max_tokens') throw new Error(`${name}: Antwort abgeschnitten (max_tokens)`);
       const uses = msg.content.filter((b) => b.type === 'tool_use');
-      if (!uses.length) { if (best) break; messages.push({ role: 'user', content: 'Bitte rufe run_design mit dem vollständigen Generator auf.' }); continue; }
+      if (!uses.length) { if (best) break; messages.push({ role: 'user', content: current ? 'Bitte ändere den Generator mit edit_generator (oder sende ihn vollständig mit run_design).' : 'Bitte rufe run_design mit dem vollständigen Generator auf.' }); continue; }
       const results = []; let done = false;
       for (const u of uses) {
-        if (u.name === 'run_design') {
-          if (typeof u.input?.code !== 'string') { results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: 'INVALID_INPUT: code (string) fehlt' }); continue; }
+        if (u.name === 'run_design' || u.name === 'edit_generator') {
+          let code;
+          if (u.name === 'edit_generator') {
+            const edits = Array.isArray(u.input?.edits) ? u.input.edits : null;
+            if (!current) { results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: 'Es gibt noch keinen Generator zum Ändern. Sende den vollständigen Generator mit run_design.' }); continue; }
+            if (!edits?.length) { results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: 'INVALID_INPUT: edits fehlt oder ist leer.' }); continue; }
+            code = current; let bad = null;
+            for (const [i, e] of edits.entries()) {
+              if (typeof e?.find !== 'string' || typeof e?.replace !== 'string' || !e.find) { bad = `Edit ${i + 1}: find und replace müssen Text sein.`; break; }
+              const n = code.split(e.find).length - 1;
+              if (n !== 1) { bad = `Edit ${i + 1}: find kommt ${n}-mal im aktuellen Generator vor (muss genau 1-mal sein): ${JSON.stringify(e.find.slice(0, 120))}`; break; }
+              code = code.replace(e.find, () => e.replace);
+            }
+            if (bad) { results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: `${bad} Keine Änderung übernommen, kein Prüflauf gezählt.` }); continue; }
+          } else {
+            if (typeof u.input?.code !== 'string') { results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: 'INVALID_INPUT: code (string) fehlt' }); continue; }
+            code = u.input.code;
+            // placeholders / fragments are not a design: refuse without counting a run
+            if (code.trim().length < 400 || !/return\s+[A-Za-z_$]/.test(code) || /return\s+null\b/.test(code)) {
+              results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: `Abgelehnt, kein Prüflauf gezählt: run_design braucht den VOLLSTÄNDIGEN Generator (${code.trim().length} Zeichen erhalten, keine Platzhalter, am Ende return design;).${current ? ' Für Änderungen am bestehenden Generator nimm edit_generator.' : ''}` });
+              continue;
+            }
+          }
           runs++;
-          this.emit({ type: 'code', name, code: u.input.code, partial: false });
+          this.emit({ type: 'code', name, code, partial: false });
           this.emit({ type: 'step', who: 'code', name: 'Compiler + Prüfungen', text: `Lauf ${runs}: Generator ausführen → IFC kompilieren → prüfen` });
-          const r = await this.evaluate(v, u.input.code);
+          const r = await this.evaluate(v, code);
           this.emit({ type: 'selfcheck', name, v, run: runs, result: r.ok ? { ok: true, counts: r.checks.counts, elements: r.comp.elements, ms: r.ms, findings: r.checks.findings, design: r.design, comp: r.comp, checks: r.checks, code: r.code } : r });
-          if (r.ok) { if (!best || r.checks.counts.ERROR <= best.checks.counts.ERROR) best = r; else best = r; }
+          if (r.ok) { best = r; current = code; }
           const body = r.ok ? { ok: true, elements: r.comp.elements, grossFloorArea: r.comp.grossFloorArea, ...summarizeChecks(r.checks), runsLeft: Math.max(0, 4 - runs) } : r;
           results.push({ type: 'tool_result', tool_use_id: u.id, content: JSON.stringify(body), is_error: !r.ok });
         } else if (u.name === 'finish') {
-          if (!best) { results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: 'Noch kein erfolgreicher run_design – zuerst run_design aufrufen.' }); continue; }
+          if (!best) { results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: 'Noch kein erfolgreicher Prüflauf: zuerst edit_generator oder run_design aufrufen.' }); continue; }
+          if (startKey && !refusedUnchanged && geomKey(best.design) === startKey) {
+            refusedUnchanged = true;
+            results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: 'Abgelehnt: Das Gebäude ist unverändert, der Wunsch der Bauherrschaft ist nicht umgesetzt. Setze ihn jetzt im Modell um (Wände, Öffnungen, Räume, Treppen mit edit_generator oder einem neuen vollständigen Generator). Nur wenn er nach Brief oder Bauordnung wirklich nicht machbar ist: finish erneut aufrufen und in den Notizen konkret begründen, welche Regel oder welches Mass es verhindert.' });
+            continue;
+          }
           notes = String(u.input?.notes ?? ''); done = true; results.push({ type: 'tool_result', tool_use_id: u.id, content: 'ok' });
         } else results.push({ type: 'tool_result', tool_use_id: u.id, is_error: true, content: `unknown tool ${u.name}` });
       }
