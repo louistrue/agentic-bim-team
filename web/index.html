@@ -25,17 +25,17 @@
         <form id="login-form" autocomplete="off"><label for="pw">Kurs-Passwort</label><div class="inline"><input id="pw" type="password" spellcheck="false" autocomplete="current-password" /><button class="b" type="submit">Anmelden</button></div></form>
         <p class="okline" id="login-ok" hidden>Angemeldet. Das Team läuft auf dem Kurs-Konto. <a href="#" id="logout">Abmelden</a></p>
         <p class="errline" id="login-err" hidden></p>
-        <details id="ownkey"><summary>eigener API-Schlüssel</summary><input id="key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-…" /><label class="tick"><input type="checkbox" id="remember" /> in diesem Tab merken</label></details>
+        <details id="ownkey"><summary>eigener API-Schlüssel</summary><input id="key" type="password" aria-label="eigener API-Schlüssel" autocomplete="off" spellcheck="false" placeholder="sk-ant-…" /><label class="tick"><input type="checkbox" id="remember" /> in diesem Tab merken</label></details>
       </div>
 
       <label for="wishes">Zusätzlicher Wunsch der Bauherrschaft</label>
       <textarea id="wishes" rows="3" placeholder="frei formulieren oder unten wählen"></textarea>
       <ul class="presets" id="chips">
-        <li data-w="Im EG statt einer Wohnung ein Gemeinschaftsraum mit Küche für alle Bewohnenden (dann 5 Wohnungen).">Gemeinschaftsraum im EG</li>
-        <li data-w="Alle Wohnungen sollen 2.5 Zimmer haben, dafür 9 Wohnungen (3 pro Geschoss).">9 × 2.5-Zimmer-Wohnungen</li>
-        <li data-w="Jede Wohnung braucht eine Loggia nach Süden oder Westen (als Aussparung in der Fassade).">Loggien nach Süden/Westen</li>
-        <li data-w="Das Treppenhaus soll an der Nordfassade liegen, damit alle Wohnungen nach Süden durchgehend sind.">Treppenhaus an die Nordfassade</li>
-        <li data-w="Die Bauherrschaft will so viel Fläche wie möglich: Gebäudehöhe und Grenzabstände maximal ausnützen.">Maximal ausnützen</li>
+        <li tabindex="0" role="button" data-w="Im EG statt einer Wohnung ein Gemeinschaftsraum mit Küche für alle Bewohnenden (dann 5 Wohnungen).">Gemeinschaftsraum im EG</li>
+        <li tabindex="0" role="button" data-w="Alle Wohnungen sollen 2.5 Zimmer haben, dafür 9 Wohnungen (3 pro Geschoss).">9 × 2.5-Zimmer-Wohnungen</li>
+        <li tabindex="0" role="button" data-w="Jede Wohnung braucht eine Loggia nach Süden oder Westen (als Aussparung in der Fassade).">Loggien nach Süden/Westen</li>
+        <li tabindex="0" role="button" data-w="Das Treppenhaus soll an der Nordfassade liegen, damit alle Wohnungen nach Süden durchgehend sind.">Treppenhaus an die Nordfassade</li>
+        <li tabindex="0" role="button" data-w="Die Bauherrschaft will so viel Fläche wie möglich: Gebäudehöhe und Grenzabstände maximal ausnützen.">Maximal ausnützen</li>
       </ul>
 
       <fieldset class="opts">
@@ -45,14 +45,14 @@
         <div><label for="cycles">Versionen max.</label><select id="cycles"><option>1</option><option selected>2</option><option>3</option></select></div>
       </fieldset>
       <p class="est" id="estimate"></p>
-      <div class="go"><button class="b solid" id="start">Team starten</button><button class="b" id="stop" hidden>Abbrechen</button></div>
+      <div class="go"><button type="button" class="b solid" id="start">Team starten</button><button type="button" class="b" id="stop" hidden>Abbrechen</button></div>
       <p class="errline" id="err" hidden></p>
     </section>
 
     <section class="panel log" id="logpanel">
       <h2><i>02</i> Protokoll <span class="legend"><b class="a">A</b> Agent <b class="c">C</b> Code</span></h2>
       <div class="now" id="now" hidden><div class="now-who" id="now-who"></div><div class="now-txt" id="now-txt"></div></div>
-      <button class="jump" id="jump" hidden>↓ neue Einträge</button>
+      <button type="button" class="jump" id="jump" hidden>↓ neue Einträge</button>
       <ol class="rows" id="rows"><li class="row sys"><time></time><b>·</b><span>Bereit. Auftrag erfassen und starten, oder unten die Gegenprobe ohne Login.</span></li></ol>
     </section>
   </aside>
@@ -70,7 +70,7 @@
 
     <div class="sheet">
       <nav class="tabs" id="tabs"></nav>
-      <div class="draw" id="draw"><div class="stage" id="stage"><img id="img" alt="Zeichnung" draggable="false" /></div><div class="zoomctl" id="zoomctl"><button data-z="out" title="verkleinern">−</button><span id="zoomlvl">100 %</span><button data-z="in" title="vergrössern">+</button><button data-z="fit" title="ganze Zeichnung">Einpassen</button></div><pre id="code" hidden></pre></div>
+      <div class="draw" id="draw"><div class="stage" id="stage"><img id="img" alt="Zeichnung" draggable="false" /></div><div class="zoomctl" id="zoomctl"><button type="button" data-z="out" title="verkleinern" aria-label="verkleinern">−</button><span id="zoomlvl">100 %</span><button type="button" data-z="in" title="vergrössern" aria-label="vergrössern">+</button><button type="button" data-z="fit" title="ganze Zeichnung">Einpassen</button></div><pre id="code" hidden></pre></div>
       <div class="titleblock">
         <div class="tb-main">
           <div class="tb-cell wide"><label>Projekt</label><b>Loorenstrasse 62</b></div>
@@ -84,8 +84,8 @@
         </div>
         <div class="tb-dl">
           <label>Herunterladen, Stand jetzt</label>
-          <div class="dlrow"><button class="b solid" id="dl-ifc">IFC</button><button class="b" id="dl-bcf" disabled>BCF</button><button class="b" id="dl-ids">IDS</button><button class="b" id="dl-zip">ZIP</button></div>
-          <p>In <a href="https://ifclite.com" target="_blank" rel="noopener">ifclite.com</a> öffnen: IFC und BCF hineinziehen, IDS unter Data validation.</p>
+          <div class="dlrow"><button type="button" class="b solid" id="dl-ifc">IFC</button><button type="button" class="b" id="dl-bcf" disabled title="BCF entsteht erst mit einem Agentenlauf">BCF</button><button type="button" class="b" id="dl-ids">IDS</button><button type="button" class="b" id="dl-zip">ZIP</button></div>
+          <p id="bcf-hint">BCF (Issue-Register) gibt es erst nach einem Agentenlauf.</p><p>In <a href="https://ifclite.com" target="_blank" rel="noopener">ifclite.com</a> öffnen: IFC und BCF hineinziehen, IDS unter Data validation.</p>
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@
 
 <section class="band" id="issues">
   <h2><i>03</i> Issue-Register <span>ein Befund behält sein BCF-Topic und seine GlobalIds über alle Versionen</span></h2>
-  <div class="filters" id="filters"><button data-f="open" class="on">offen</button><button data-f="closed">erledigt</button><button data-f="rejected">abgelehnt</button><button data-f="all">alle</button></div>
+  <div class="filters" id="filters"><button type="button" data-f="open" class="on">offen</button><button type="button" data-f="closed">erledigt</button><button type="button" data-f="rejected">abgelehnt</button><button type="button" data-f="all">alle</button></div>
   <div class="tablewrap"><table class="reg"><thead><tr><th>Status</th><th>Schwere</th><th>Befund</th><th>Herkunft</th><th>Bauteile → GlobalId</th><th>Verlauf</th></tr></thead><tbody id="reg"><tr><td colspan="6" class="mute">Noch kein Lauf. Das Register füllt sich, sobald die Prüfenden urteilen.</td></tr></tbody></table></div>
 </section>
 
@@ -112,7 +112,7 @@
         <li><label><input type="checkbox" value="storey" /> ein Vollgeschoss aufstocken</label></li>
         <li><label><input type="checkbox" value="key" /> alle Keys umbenennen</label></li>
       </ul>
-      <div class="go"><button class="b solid" id="sabo-run">Prüfen</button><span class="mute" id="sabo-src">Basis: Referenzentwurf</span></div>
+      <div class="go"><button type="button" class="b solid" id="sabo-run">Prüfen</button><span class="mute" id="sabo-src">Basis: Referenzentwurf</span></div>
     </div>
     <div class="sabo-out" id="sabo-out"></div>
   </div>

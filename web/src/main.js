@@ -46,6 +46,14 @@ function addStand(st) {
   return st;
 }
 
+// a delivered version is drawn again with its own label ("v2", not the check run "v2.3")
+function relabel(st, D, checks, label) {
+  const canv = renderImages(D, checks, label);
+  const imgs = canv.map((x) => ({ name: x.name, url: x.c.toDataURL('image/png') })), forModel = canv.map((x) => ({ name: `${x.name} (${label})`, base64: toPngBase64(x.c) }));
+  if (st) { st.images = imgs; st.forModel = forModel; }
+  return forModel;
+}
+
 // ── sheet + title block ────────────────────────────────────────────────────
 // S.tab is the NAME of the drawing ('EG', 'Axo SW', 'Situation', 'code'): it survives switching Stände,
 // even when a Stand has a different number of storeys.
@@ -83,7 +91,11 @@ const viewer = (() => {
   const fit = () => { const cw = stage.clientWidth, ch = stage.clientHeight; if (!Z.w || !cw) return; Z.fitK = Math.min(cw / Z.w, ch / Z.h) * 0.96; Z.k = Z.fitK; Z.x = (cw - Z.w * Z.k) / 2; Z.y = (ch - Z.h * Z.k) / 2; apply(); };
   const zoomAt = (f, mx, my) => { const k2 = Math.min(Math.max(Z.k * f, Z.fitK * 0.6), Z.fitK * 14); Z.x = mx - (mx - Z.x) * (k2 / Z.k); Z.y = my - (my - Z.y) * (k2 / Z.k); Z.k = k2; apply(); };
   const local = (e) => { const r = stage.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
-  stage.addEventListener('wheel', (e) => { e.preventDefault(); const [mx, my] = local(e); zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0018)), mx, my); }, { passive: false });
+  // the wheel zooms only with Ctrl/⌘ (trackpad pinch sends ctrlKey) or after clicking into the drawing; otherwise the page scrolls
+  let armed = false;
+  document.addEventListener('pointerdown', (e) => { armed = stage.contains(e.target); });
+  $('#draw').addEventListener('pointerleave', () => { armed = false; });
+  stage.addEventListener('wheel', (e) => { if (!(e.ctrlKey || e.metaKey || armed)) return; e.preventDefault(); const [mx, my] = local(e); zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0018)), mx, my); }, { passive: false });
   const ptr = new Map(); let pinch = null;
   stage.addEventListener('pointerdown', (e) => { stage.setPointerCapture(e.pointerId); ptr.set(e.pointerId, local(e)); if (ptr.size === 2) { const [a, b] = [...ptr.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]) }; } stage.classList.add('drag'); });
   stage.addEventListener('pointermove', (e) => {
@@ -126,9 +138,14 @@ function log(kind, title, detail = '', cls = '') {
 }
 const now = { who: '', t0: 0, txt: '' };
 function nowSet(who, txt = '') { now.who = who; now.t0 = Date.now(); now.txt = txt; $('#now').hidden = false; $('#now').classList.add('busy'); paintNow(); }
-function nowAdd(t) { now.txt = (now.txt + t).slice(-900); paintNow(); }
+function nowAdd(t) { now.txt = (now.txt + t).slice(-6000); paintNow(); }
 function nowEnd() { $('#now').classList.remove('busy'); $('#now').hidden = true; }
-function paintNow() { $('#now-who').innerHTML = `<span>${esc(now.who)}</span><em>${Math.round((Date.now() - now.t0) / 1000)} s</em>`; $('#now-txt').textContent = now.txt; }
+function paintNow() {
+  $('#now-who').innerHTML = `<span>${esc(now.who)}</span><em>${Math.round((Date.now() - now.t0) / 1000)} s</em>`;
+  const t = $('#now-txt'); if (t.textContent === now.txt) return;
+  const stick = t.scrollHeight - t.scrollTop - t.clientHeight < 30; // follow only while the reader is at the bottom
+  t.textContent = now.txt; if (stick) t.scrollTop = t.scrollHeight;
+}
 setInterval(() => { if (!$('#now').hidden) paintNow(); }, 1000);
 const sevs = (c) => `<span class="cnt"><span class="${c.ERROR ? 'e' : ''}">${c.ERROR} ERROR</span> · <span class="${c.WARNING ? 'w' : ''}">${c.WARNING} WARNING</span></span>`;
 const flist = (fs, K, max = 6) => `<ul>${fs.slice(0, max).map((f) => { const okEl = !K || (f.elements ?? []).some((k) => K[k]); return `<li class="${okEl ? '' : 'rej'}"><span class="sev ${f.severity}">${f.severity[0]}</span>${esc(f.title)} <span class="k">${esc((f.elements ?? []).slice(0, 2).join(', '))}${okEl ? '' : ' · abgelehnt: Bauteil existiert nicht'}${f.issueId ? ` · ↺ ${esc(f.issueId)}` : ''}</span></li>`; }).join('')}${fs.length > max ? `<li class="k">… ${fs.length - max} weitere</li>` : ''}</ul>`;
@@ -154,8 +171,8 @@ function onEvent(e) {
         break;
       }
       if (e.status === 'start') reviewers[e.name] = true;
-      else if (e.status === 'error') log('a', `${esc(e.name)}: keine gültige Antwort`, esc(e.error), 'bad');
-      else { const r = e.review; const K = S.stands.at(-1)?.comp.keys; log('a', `${esc(e.name)}${e.role === 'visual' ? ` · ${r.verdict}` : ''} <span class="k">${modelName(e.model)}</span>`, `${esc(r.summary)}${flist(r.findings, K)}${r.resolved.length ? `<ul>${r.resolved.map((x) => `<li><span class="sev OK">✓</span>erledigt: <span class="k">${esc(x.issueId)}</span></li>`).join('')}</ul>` : ''}`); }
+      else if (e.status === 'error') { const r = log('a', `${esc(e.name)}: keine gültige Antwort`, esc(/JSON|Unexpected|token/i.test(e.error) ? 'Die Antwort war kein lesbares Prüfergebnis. Dieser Prüfende fällt für diese Version aus; der Lauf geht weiter.' : `${explain({ error: e.error, status: Number(String(e.error).match(/^(\d{3}) /)?.[1]) || undefined })} Dieser Prüfende fällt für diese Version aus; der Lauf geht weiter.`), 'bad'); r.title = `technisch: ${firstLine(e.error)}`; }
+      else { const r = e.review; const K = S.stands.at(-1)?.comp.keys; log('a', `${esc(e.name)}${e.role === 'visual' ? ` · ${({ PASS: 'Zeichnungen in Ordnung', FAIL: 'Zeichnungen mit Mängeln' })[r.verdict] ?? esc(r.verdict)}` : ''} <span class="k">${modelName(e.model)}</span>`, `${esc(r.summary)}${flist(r.findings, K)}${r.resolved.length ? `<ul>${r.resolved.map((x) => `<li><span class="sev OK">✓</span>erledigt: <span class="k">${esc(x.issueId)}</span></li>`).join('')}</ul>` : ''}`); }
       break;
     case 'thinking': if (e.name.startsWith('Architektur')) nowAdd(e.delta); else nowAdd(e.delta.length > 0 && Math.random() < 0.2 ? '' : ''), nowAdd(e.delta); break;
     case 'text': nowAdd(e.delta); break;
@@ -173,8 +190,8 @@ function onEvent(e) {
         const st = addStand({ id: `v${e.v}r${e.run}`, label: `v${e.v}.${e.run}`, long: `v${e.v}, Prüflauf ${e.run}`, design: r.design, comp: r.comp, checks: r.checks, code: r.code, final: false });
         log('c', `Compiler + Prüfungen · v${e.v} Lauf ${e.run}`, `IFC mit ${r.elements} Bauteilen in ${r.ms} ms, ohne KI. ${sevs(r.counts)}${st.kept ? `<br><span class="k">${st.kept.common} von ${st.kept.total} GlobalIds gleich wie ${esc(st.kept.vs)}</span>` : ''}${r.findings.length ? flist(r.findings) : ''}`);
         nowSet(`Architektur · v${e.v}`, r.counts.ERROR ? `liest ${r.counts.ERROR} ERROR und korrigiert …\n` : 'prüft das Ergebnis …\n');
-      } else log('c', `${r.stage === 'generator' ? 'Generator' : r.stage === 'compiler' ? 'Compiler' : 'Prüfungen'} lehnt ab · Lauf ${e.run}`, esc(r.error ?? (r.problems ?? []).slice(0, 6).map((p) => `${p.key}: ${p.msg}`).join('\n')), 'bad');
-      stage('check', 'done');
+      } else log('c', `${r.stage === 'generator' ? 'Generator' : r.stage === 'compiler' ? 'Compiler' : 'Prüfungen'} lehnt ab · Lauf ${e.run}`, esc(r.error ? deErr(r.error) : (r.problems ?? []).slice(0, 6).map((p) => `${p.key}: ${deMsg(p.msg)}`).join('\n') + ((r.problems?.length ?? 0) + (r.more ?? 0) > 6 ? `\n… ${(r.problems.length + (r.more ?? 0)) - 6} weitere` : '')), 'bad');
+      stage('check', 'done'); stage('design'); // the architect reads the result and goes on
       break;
     }
     case 'version': {
@@ -185,13 +202,13 @@ function onEvent(e) {
     }
     case 'issues': {
       const V = e.V; nowEnd(); stage('issues', 'done');
-      S.bcf = V.bcf; $('#dl-bcf').disabled = false;
-      log('c', `Issue-Register → BCF · v${V.v}`, `${V.issueStats.new} neu · ${V.issueStats.open} offen · ${V.issueStats.closed} erledigt${V.review.rejected.length ? ` · ${V.review.rejected.length} Agenten-Befunde abgelehnt` : ''}<br><span class="cnt"><span class="${V.openErrors ? 'e' : ''}">${V.openErrors} ERROR offen</span> · <span class="${V.openWarnings ? 'w' : ''}">${V.openWarnings} WARNING offen</span></span>`);
+      S.bcf = V.bcf; $('#dl-bcf').disabled = false; $('#dl-bcf').title = ''; $('#bcf-hint').hidden = true;
+      log('c', `Issue-Register → BCF · v${V.v}`, `${V.issueStats.new} neu · ${V.issueStats.open} offen · ${V.issueStats.closed} erledigt${V.review.rejected.length ? ` · ${V.review.rejected.length} Agenten-${V.review.rejected.length === 1 ? "Befund" : "Befunde"} abgelehnt` : ''}<br><span class="cnt"><span class="${V.openErrors ? 'e' : ''}">${V.openErrors} ERROR offen</span> · <span class="${V.openWarnings ? 'w' : ''}">${V.openWarnings} WARNING offen</span></span>`);
       renderRegister(); break;
     }
     case 'cost': $('#costbox').hidden = false; $('#cost').textContent = e.total.toFixed(2); break;
-    case 'done': nowEnd(); log('sys', `Fertig nach ${e.seconds} s, Kosten ca. $${e.cost.toFixed(2)}. Unten: Issue-Register. Oben rechts: alles herunterladen.`); finish(); break;
-    case 'error': nowEnd(); log('sys', `Abbruch: ${esc(explain(e))}`, '', 'bad'); showErr(explain(e)); finish(); break;
+    case 'done': nowEnd(); log('sys', `Fertig nach ${e.seconds} s, Kosten ca. $${e.cost.toFixed(2)}. Unten: Issue-Register. Unter der Zeichnung: alles herunterladen.`); finish(); break;
+    case 'error': nowEnd(); log('sys', `Abbruch: ${esc(explain(e))}`, '', 'bad'); showErr(explain(e)); finish(false); break;
   }
 }
 function explain(e) {
@@ -201,8 +218,35 @@ function explain(e) {
   if (s === 429) return 'Zu viele Anfragen gleichzeitig (429). In einer Minute nochmals starten oder Prüfende auf Haiku stellen.';
   if (/credit balance/i.test(m)) return 'Kein Guthaben auf dem API-Konto.';
   if (s === 529 || /overloaded/i.test(m)) return 'Die API ist gerade überlastet (529). In einer Minute nochmals versuchen.';
-  return m;
+  if (/abgebrochen|abort/i.test(m)) return 'Lauf abgebrochen.';
+  if (/connection|network|fetch|timed? ?out/i.test(m) && !s) return 'Keine Verbindung zu api.anthropic.com. Internet prüfen und nochmals starten.';
+  if (/max_tokens/.test(m)) return 'Die Antwort der Architektur war zu lang und wurde abgeschnitten. Nochmals starten.';
+  if (/refusal/.test(m)) return 'Das Modell hat die Anfrage abgelehnt. Wunsch umformulieren und nochmals starten.';
+  if (/kein kompilierbares Design/.test(m)) return 'Die Architektur hat kein gültiges Modell abgegeben. Nochmals starten, eventuell mit Opus.';
+  const inner = m.match(/"message":"([^"]+)"/)?.[1];
+  if (s) return `Die API meldet einen Fehler (${s})${inner ? `: ${inner}` : ''}.`;
+  const one = firstLine(m); return /[äöü]|\b(der|die|das|ist|nicht)\b/.test(one) ? one : `Unerwarteter Fehler: ${one}`;
 }
+
+// compiler problems are written for the architect agent (English); students read them in German
+const DE = [
+  [/^design is not an object$/, () => 'Der Generator liefert kein Design-Objekt.'],
+  [/^design\.(\w+) missing or empty.*$/s, (m) => `Im Design fehlt die Liste «${m[1]}» oder sie ist leer.`],
+  [/^key missing or not .*$/, () => 'Key fehlt oder enthält unerlaubte Zeichen (erlaubt: A–Z, a–z, 0–9, . _ -).'],
+  [/^duplicate key$/, () => 'Key kommt doppelt vor.'],
+  [/^storey elevation (\S+) ≠ (\S+)\.elevation \+ height \(([^)]+)\).*$/, (m) => `Geschoss liegt auf ${m[1]} m statt auf ${m[3]} m (Oberkante ${m[2]}); Geschosse müssen lückenlos übereinander liegen.`],
+  [/^unknown storey (.*)$/, (m) => `Geschoss «${m[1]}» gibt es nicht.`],
+  [/^thickness (\S+) m implausible$/, (m) => `Wandstärke ${m[1]} m ist nicht plausibel.`],
+  [/^wall shorter than 0\.3 m$/, () => 'Wand ist kürzer als 0.3 m.'],
+  [/^host wall (.*) not found$/, (m) => `Wand ${m[1]} für diese Öffnung gibt es nicht.`],
+  [/^opening \[(\S+), (\S+)\] m does not fit in wall (\S+) \(length (\S+) m.*$/, (m) => `Öffnung (${m[1]}–${m[2]} m) passt nicht in Wand ${m[3]} (Länge ${m[4]} m, 0.1 m Randabstand).`],
+  [/^opening top (\S+) m too close to storey height (\S+) m$/, (m) => `Öffnung reicht bis ${m[1]} m, zu nah an der Geschosshöhe ${m[2]} m.`],
+  [/^overlaps opening (\S+) in wall (\S+)$/, (m) => `überschneidet Öffnung ${m[1]} in Wand ${m[2]}.`],
+];
+const deMsg = (msg) => { for (const [re, f] of DE) { const m = String(msg).match(re); if (m) return f(m); } return String(msg); };
+// only the first line of an error, never a stack trace or a blob: URL
+const firstLine = (e) => String(e ?? '').split('\n')[0].replace(/\(?(blob:|https?:\/\/)\S+\)?/g, '').replace(/\s+at\s*$/, '').trim();
+const deErr = (e) => { const m = firstLine(e); return /Error|is not|undefined|unexpected/i.test(m) && !/[äöü]|Zeitlimit|Design-Objekt/.test(m) ? `Fehler im JavaScript des Generators, die Architektur korrigiert ihn: ${m}` : m; };
 
 // ── issue register ─────────────────────────────────────────────────────────
 function renderRegister() {
@@ -211,7 +255,7 @@ function renderRegister() {
   for (const i of Object.values(L.issues).sort((a, b) => (a.status > b.status ? -1 : a.status < b.status ? 1 : a.severity > b.severity ? 1 : -1))) {
     const st = i.status === 'Open' ? 'open' : 'closed';
     if (S.filter !== 'all' && S.filter !== st) continue;
-    rows.push(`<tr class="${st}"><td><span class="st-${st}">${st === 'open' ? 'OFFEN' : `ERLEDIGT v${i.closedIn}`}</span><span class="k">seit v${i.firstSeen}</span></td><td><span class="sev ${i.severity}">${i.severity}</span></td><td><span class="t">${esc(i.title)}</span><span class="k">${esc(i.id)}</span></td><td>${esc(i.origin)}<span class="k">${esc(i.discipline)}</span></td><td>${i.elements.slice(0, 3).map((k, n) => `<span class="k">${esc(k)} → ${esc(i.guids[n])}</span>`).join('')}</td><td><details><summary>${i.history.length} Einträge</summary>${i.history.map((h) => `<p><b>v${h.v} ${esc(h.event)}:</b> ${esc(h.text).slice(0, 500)}</p>`).join('')}</details></td></tr>`);
+    rows.push(`<tr class="${st}"><td><span class="st-${st}">${st === 'open' ? 'OFFEN' : `ERLEDIGT v${i.closedIn}`}</span><span class="k">seit v${i.firstSeen}</span></td><td><span class="sev ${i.severity}">${i.severity}</span></td><td><span class="t">${esc(i.title)}</span><span class="k">${esc(i.id)}</span></td><td>${esc(i.origin)}<span class="k">${esc(i.discipline)}</span></td><td>${i.elements.slice(0, 3).map((k, n) => `<span class="k">${esc(k)} → ${esc(i.guids[n])}</span>`).join('')}</td><td><details><summary>${i.history.length} ${i.history.length === 1 ? "Eintrag" : "Einträge"}</summary>${i.history.map((h) => `<p><b>v${h.v} ${esc(h.event)}:</b> ${esc(h.text).slice(0, 500)}</p>`).join('')}</details></td></tr>`);
   }
   if (S.filter === 'rejected' || S.filter === 'all') for (const st of S.stands.filter((x) => x.V?.review)) for (const r of st.V.review.rejected) rows.push(`<tr class="closed"><td><span class="st-rej">ABGELEHNT</span><span class="k">${esc(st.label)}</span></td><td></td><td><span class="t">${esc(r.title ?? '–')}</span></td><td>${esc(r.source)}</td><td><span class="k">${esc(r.reason)}</span></td><td></td></tr>`);
   $('#reg').innerHTML = rows.join('') || `<tr><td colspan="6" class="mute">${S.team ? 'keine Einträge in dieser Ansicht' : 'Noch kein Lauf. Das Register füllt sich, sobald die Prüfenden urteilen.'}</td></tr>`;
@@ -221,12 +265,13 @@ $('#filters').addEventListener('click', (e) => { const b = e.target.closest('but
 // ── downloads: always the stand on the sheet ───────────────────────────────
 const save = (blob, name) => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); };
 const slug = (s) => s.replace(/[^\w.]+/g, '_');
-$('#dl-ifc').addEventListener('click', () => { const st = S.stands[S.cur]; if (st) save(new Blob([st.comp.ifc], { type: 'application/x-step' }), `loorenstrasse62_${slug(st.label)}.ifc`); });
+const ifcName = (st) => `loorenstrasse62_${st.V ? `v${st.V.v}` : slug(st.label)}.ifc`;
+$('#dl-ifc').addEventListener('click', () => { const st = S.stands[S.cur]; if (st) save(new Blob([st.comp.ifc], { type: 'application/x-step' }), ifcName(st)); });
 $('#dl-bcf').addEventListener('click', () => { if (S.bcf) save(new Blob([S.bcf], { type: 'application/octet-stream' }), 'loorenstrasse62_issues.bcf'); });
 $('#dl-ids').addEventListener('click', () => save(new Blob([S.data.idsXml], { type: 'application/xml' }), 'loorenstrasse62_requirements.ids'));
 $('#dl-zip').addEventListener('click', async () => {
   const z = new JSZip();
-  for (const st of S.stands) { const d = `${slug(st.label)}/`; z.file(`${d}model.ifc`, st.comp.ifc); z.file(`${d}design.json`, JSON.stringify(st.design, null, 1)); z.file(`${d}generator.js`, st.code ?? ''); z.file(`${d}checks.json`, JSON.stringify(st.checks, null, 1)); if (st.V?.review) z.file(`${d}review.json`, JSON.stringify(st.V.review, null, 1)); if (st.V?.bcf) z.file(`${d}issues.bcf`, st.V.bcf); st.images.forEach((im) => z.file(`${d}plaene/${slug(im.name)}.png`, im.url.split(',')[1], { base64: true })); }
+  for (const st of S.stands) { const d = `${slug(st.label)}/`; z.file(`${d}${ifcName(st)}`, st.comp.ifc); z.file(`${d}design.json`, JSON.stringify(st.design, null, 1)); z.file(`${d}generator.js`, st.code ?? ''); z.file(`${d}checks.json`, JSON.stringify(st.checks, null, 1)); if (st.V?.review) z.file(`${d}review.json`, JSON.stringify(st.V.review, null, 1)); if (st.V?.bcf) z.file(`${d}issues.bcf`, st.V.bcf); st.images.forEach((im) => z.file(`${d}plaene/${slug(im.name)}.png`, im.url.split(',')[1], { base64: true })); }
   if (S.bcf) z.file('issues.bcf', S.bcf);
   z.file('requirements.ids', S.data.idsXml); z.file('brief.json', JSON.stringify(S.data.brief, null, 1)); if (S.team) z.file('issues.json', JSON.stringify(S.team.ledger, null, 1)); z.file('report.md', report());
   save(await z.generateAsync({ type: 'blob' }), `agententeam_${new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-')}.zip`);
@@ -234,11 +279,11 @@ $('#dl-zip').addEventListener('click', async () => {
 function report() {
   const T = S.team, L = Object.values(T?.ledger.issues ?? {}), finals = S.stands.filter((x) => x.final);
   const last = S.stands.at(-1);
-  return [`# Agententeam – Bericht`, '', `Projekt: ${S.data.brief.project} · ${new Date().toLocaleString('de-CH')}`, `Wunsch: ${T?.wishes || '–'}`, T ? `Modelle: Architektur ${T.models.architect}, Prüfende ${T.models.reviewer} · Kosten ca. $${T.cost.toFixed(2)}` : 'Kein Agentenlauf, nur Referenzentwurf.', '',
+  return [`# Agententeam – Bericht`, '', `Projekt: ${S.data.brief.project} · ${new Date().toLocaleString('de-CH')}`, `Wunsch: ${T?.wishes || '–'}`, T ? `Modelle: Architektur ${modelName(T.models.architect)}, Prüfende ${modelName(T.models.reviewer)} · Kosten ca. $${T.cost.toFixed(2)}` : 'Kein Agentenlauf, nur Referenzentwurf.', '',
     '## Stände', '', '| Stand | Bauteile | GlobalIds gleich | IDS | Prüfregeln E/W |', '|---|---|---|---|---|',
     ...S.stands.map((s) => `| ${s.long ?? s.label} | ${s.comp.elements} | ${s.kept ? `${s.kept.common}/${s.kept.total} wie ${s.kept.vs}` : '–'} | ${s.checks.metrics.ids.filter((x) => x.status === 'pass').length}/${s.checks.metrics.ids.length} | ${s.checks.counts.ERROR}/${s.checks.counts.WARNING} |`), '',
     '## Was der Code geprüft hat', '', ...last.checks.ran.map((r) => `- ${r}`), '',
-    '## Was nicht geprüft wurde (Fachperson)', '', ...(S.data.site.humanChecks ?? []).map((h) => `- ${typeof h === 'string' ? h : h.text ?? JSON.stringify(h)}`), ...(S.data.brief.program.notChecked ?? []).map((h) => `- ${h}`), '',
+    '## Was nicht geprüft wurde (Fachperson)', '', ...[...new Set([...(S.data.site.humanChecks ?? []).map((h) => (typeof h === 'string' ? h : h.text ?? JSON.stringify(h))), ...(S.data.brief.program.notChecked ?? [])])].map((h) => `- ${h}`), '',
     '## Offene Issues', '', ...L.filter((i) => i.status === 'Open').map((i) => `- **${i.severity}** ${i.id} – ${i.title} (${i.origin}; ${i.elements.join(', ')})`), '',
     '## Erledigte Issues', '', ...L.filter((i) => i.status === 'Closed').map((i) => `- ${i.id} – ${i.title} (erledigt in v${i.closedIn})`), '',
     '## Abgelehnte Agenten-Befunde', '', ...finals.flatMap((s) => (s.V?.review?.rejected ?? []).map((r) => `- ${s.label} ${r.source}: ${r.title ?? ''} – ${r.reason}`)), '',
@@ -282,6 +327,7 @@ function estimate() {
 }
 ['#m-arch', '#m-rev', '#cycles'].forEach((s) => $(s).addEventListener('change', estimate));
 $('#chips').addEventListener('click', (e) => { const w = e.target.closest('li')?.dataset.w; if (w) { const t = $('#wishes'); t.value = t.value.trim() ? `${t.value.trim()}\n${w}` : w; } });
+$('#chips').addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.target.closest('li')?.click(); } });
 
 $('#start').addEventListener('click', async () => {
   showErr(null);
@@ -289,20 +335,14 @@ $('#start').addEventListener('click', async () => {
   const own = $('#key').value.trim(), key = own || S.courseKey;
   if (!key) { $('#pw').focus(); return showErr('Zuerst mit dem Kurs-Passwort anmelden.'); }
   if (!/^sk-ant-/.test(key)) return showErr('Ein eigener Schlüssel beginnt mit sk-ant-.');
-  if (!own) {
-    let n = 0; const day = new Date().toISOString().slice(0, 10);
-    try { const r = JSON.parse(localStorage.getItem('abt-runs') ?? '{}'); n = r.day === day ? r.n : 0; } catch {}
-    if (n >= 3) return showErr('Mit dem Kurs-Konto sind 3 Läufe pro Tag und Browser möglich.');
-    try { localStorage.setItem('abt-runs', JSON.stringify({ day, n: n + 1 })); } catch {}
-  }
   try { if (own && $('#remember').checked) sessionStorage.setItem('abt-key', own); else sessionStorage.removeItem('abt-key'); } catch {}
   // keep the reference, drop earlier runs
-  S.stands = S.stands.filter((x) => x.id === 'ref'); S.bcf = null; $('#dl-bcf').disabled = true; showStand(0);
+  S.stands = S.stands.filter((x) => x.id === 'ref'); S.bcf = null; $('#dl-bcf').disabled = true; $('#bcf-hint').hidden = false; showStand(0);
   $('#rows').innerHTML = ''; $('#costbox').hidden = true;
   const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true, maxRetries: 3 });
   const arch = $('#m-arch').value;
   S.team = new Team({ client, brief: S.data.brief, site: S.data.site, idsXml: S.data.idsXml, cycles: Number($('#cycles').value), wishes: $('#wishes').value, startCode: $('#mode').value === 'ref' ? S.data.code : null, startChecks: $('#mode').value === 'ref' ? S.stands[0].checks : null,
-    models: { architect: arch, reviewer: $('#m-rev').value, architectEffort: arch.includes('opus') ? 'medium' : 'low' }, render: (D, checks, v) => S.stands.findLast((x) => x.design === D)?.forModel ?? renderImages(D, checks, `v${v}`).map((x) => ({ name: x.name, base64: toPngBase64(x.c) })), emit: onEvent });
+    models: { architect: arch, reviewer: $('#m-rev').value, architectEffort: arch.includes('opus') ? 'medium' : 'low' }, render: (D, checks, v) => relabel(S.stands.findLast((x) => x.design === D), D, checks, `v${v}`), emit: onEvent });
   renderRegister();
   S.running = true; $('#start').disabled = true; $('#stop').hidden = false;
   resetProcess(); stage('brief');
@@ -313,32 +353,32 @@ $('#start').addEventListener('click', async () => {
   await S.team.run();
 });
 $('#stop').addEventListener('click', () => S.team?.abort());
-function finish() { S.running = false; S.codeLive = false; $('#start').disabled = false; $('#stop').hidden = true; document.querySelectorAll('#process li.active').forEach((n) => n.classList.replace('active', 'done')); showStand(S.cur); }
+function finish(ok = true) { S.running = false; S.codeLive = false; $('#start').disabled = false; $('#stop').hidden = true; document.querySelectorAll('#process li.active').forEach((n) => (ok ? n.classList.replace('active', 'done') : n.classList.remove('active'))); showStand(S.cur); }
 
 // ── Gegenprobe: falsify the stand on the sheet, run only code ──────────────
 $('#sabo-run').addEventListener('click', async () => {
   const base = S.stands[S.cur]; if (!base) return;
   const sel = [...document.querySelectorAll('#sabo input:checked')].map((i) => i.value);
-  const D = structuredClone(base.design); const did = [];
+  const D = structuredClone(base.design); const did = [], skipped = [];
   if (sel.includes('move')) { const sh = (p) => { p[0] += 4; }; D.walls.forEach((w) => { sh(w.start); sh(w.end); }); [...D.slabs, ...D.spaces].forEach((s) => s.polygon.forEach(sh)); (D.stairs ?? []).forEach((t) => sh(t.position)); (D.columns ?? []).forEach((c) => sh(c.position)); D.slabs.forEach((s) => (s.openings ?? []).forEach((h) => { h.x += 4; })); did.push('Gebäude +4 m nach Osten'); }
-  if (sel.includes('door')) { const d = D.openings.find((o) => o.reference === 'Wohnungstuer'); if (d) { d.fireRating = 'EI 15'; did.push(`${d.key}: EI 15`); } }
-  if (sel.includes('win')) { const rooms = new Set(D.spaces.filter((s) => s.usage === 'Zimmer').map((s) => s.key)); const n = D.openings.length; D.openings = D.openings.filter((o) => !(o.kind === 'window' && rooms.has(o.space))); did.push(`${n - D.openings.length} Zimmerfenster entfernt`); }
+  if (sel.includes('door')) { const d = D.openings.find((o) => o.reference === 'Wohnungstuer'); if (d) { d.fireRating = 'EI 15'; did.push(`${d.key}: EI 15`); } else skipped.push('keine Wohnungstür (Typ Wohnungstuer) im Stand'); }
+  if (sel.includes('win')) { const rooms = new Set(D.spaces.filter((s) => s.usage === 'Zimmer').map((s) => s.key)); const n = D.openings.length; D.openings = D.openings.filter((o) => !(o.kind === 'window' && rooms.has(o.space))); if (n === D.openings.length) skipped.push('keine Zimmerfenster im Stand'); else did.push(`${n - D.openings.length} Zimmerfenster entfernt`); }
   if (sel.includes('u')) { D.walls.filter((w) => w.type === 'external').forEach((w) => { w.uValue = 0.24; }); did.push('Aussenwände U = 0.24'); }
   if (sel.includes('storey')) { const top = [...D.storeys].sort((a, b) => a.elevation - b.elevation).at(-1); const nk = `${top.key}X`; D.storeys.push({ key: nk, name: 'Aufstockung', elevation: top.elevation + top.height, height: top.height }); D.slabs.filter((s) => s.storey === top.key && s.kind === 'roof').forEach((s) => { s.storey = nk; }); D.walls.filter((w) => w.storey === top.key && w.type === 'external').forEach((w) => D.walls.push({ ...structuredClone(w), key: `${w.key}-X`, storey: nk })); did.push('ein Vollgeschoss mehr'); }
   if (sel.includes('key')) { const map = {}; [D.storeys, D.walls, D.openings, D.slabs, D.spaces, D.stairs ?? [], D.columns ?? []].flat().forEach((x) => { map[x.key] = `${x.key}_neu`; x.key = map[x.key]; }); D.walls.forEach((w) => { w.storey = map[w.storey]; }); D.openings.forEach((o) => { o.wall = map[o.wall]; if (o.space) o.space = map[o.space]; }); [...D.slabs, ...D.spaces, ...(D.stairs ?? []), ...(D.columns ?? [])].forEach((x) => { x.storey = map[x.storey]; }); did.push('alle Keys umbenannt'); }
   const comp = compileDesign(D);
-  if (!comp.ok) { $('#sabo-out').innerHTML = `<div><div class="verdict no">Compiler lehnt ab</div><ul>${comp.problems.slice(0, 8).map((p) => `<li><span class="k">${esc(p.key)}</span> ${esc(p.msg)}</li>`).join('')}</ul></div>`; return; }
+  if (!comp.ok) { $('#sabo-out').innerHTML = `<div><div class="verdict no">Compiler lehnt ab</div><ul>${comp.problems.slice(0, 8).map((p) => `<li><span class="k">${esc(p.key)}</span> ${esc(deMsg(p.msg))}</li>`).join('')}</ul></div>`; return; }
   const t0 = performance.now();
   const c = await checkDesign({ v: 99, D, K: comp.keys, ifc: comp.ifc, site: S.data.site, brief: S.data.brief, idsXml: S.data.idsXml });
   const ms = Math.round(performance.now() - t0);
   const baseG = new Set(Object.values(base.comp.keys).map((x) => x.guid)); const kept = Object.values(comp.keys).filter((x) => baseG.has(x.guid)).length;
   const newF = c.findings.filter((f) => !base.checks.findings.some((b) => b.id === f.id || (sel.includes('key') && b.rule === f.rule)));
-  const caught = sel.length === 0 ? null : newF.length > 0 || (sel.includes('key') && kept === 0);
+  const caught = sel.length === 0 || !did.length ? null : newF.length > 0 || (sel.includes('key') && kept === 0);
   const st = [...D.storeys].sort((a, b) => a.elevation - b.elevation);
   const pic = sel.includes('move') ? drawSite(D, c, S.data.site, 'Gegenprobe') : drawPlan(D, c, (st[1] ?? st[0]).key, 'Gegenprobe');
-  $('#sabo-out').innerHTML = `<div><div class="verdict ${caught === false ? 'no' : caught ? 'ok' : ''}">${caught === null ? 'Nichts gewählt' : caught ? 'Erkannt' : 'Nicht erkannt: hier fehlt eine Prüfung'}</div>
-    <p class="k">${esc(did.join(' · ') || '–')} · geprüft in ${ms} ms, ohne KI</p>${sevs(c.counts)}
-    <ul>${newF.slice(0, 12).map((f) => `<li><span class="sev ${f.severity}">${f.severity[0]}</span><b>${esc(f.rule)}</b> ${esc(f.title)} <span class="k">${esc(f.elements.slice(0, 2).join(', '))}</span></li>`).join('')}</ul>
+  $('#sabo-out').innerHTML = `<div><div class="verdict ${caught === false ? 'no' : caught ? 'ok' : ''}">${caught === null ? (sel.length ? 'Nicht anwendbar' : 'Nichts gewählt') : caught ? 'Erkannt' : 'Nicht erkannt: hier fehlt eine Prüfung'}</div>
+    <p class="k">${sel.length ? `${esc([...did, ...skipped.map((x) => `nicht verfälscht: ${x}`)].join(' · '))} · ` : 'Oben mindestens eine Verfälschung ankreuzen. Unverändert: '}geprüft in ${ms} ms, ohne KI</p>${sevs(c.counts)}
+    <ul>${newF.slice(0, 12).map((f) => `<li><span class="sev ${f.severity}">${f.severity[0]}</span><b>${esc(f.rule)}</b> ${esc(f.title)} <span class="k">${esc(f.elements.slice(0, 2).join(', '))}</span></li>`).join('')}${newF.length > 12 ? `<li class="k">… ${newF.length - 12} weitere neue Befunde</li>` : ''}</ul>
     ${sel.includes('key') ? `<p><b>GlobalIds:</b> ${kept} von ${Object.keys(comp.keys).length} gleich wie ${esc(base.long ?? base.label)}. ${kept === 0 ? 'Für die Koordination sind das lauter neue Bauteile; jedes BCF-Topic verliert seinen Bezug.' : ''}</p>` : ''}</div>
     <img src="${pic.toDataURL()}" alt="verfälschter Stand">`;
 });
